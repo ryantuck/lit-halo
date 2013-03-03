@@ -9,10 +9,8 @@
 
 MovingDotPattern::MovingDotPattern()
 {
-	
-	Serial.println("mdp constructor");
-	totalSequences = 1;
-	sequences = new Sequence*[totalSequences];
+	maxSequences = 1;
+	sequences = new Sequence*[maxSequences];
 	
 	sequences[0] = new MovingDotSequence();
 }

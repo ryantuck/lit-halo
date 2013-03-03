@@ -40,7 +40,8 @@ public:
 	//	Default does nothing.
 	virtual void	update();
 	
-	//	Returns actual number of elements
+	//	Returns number of non-null elements.
+	//	Relevant for creation/destruction.
 	int				numElements();
 	
 	//	Sorts elements so existing elements are first, NULL pointers last.

@@ -8,10 +8,10 @@
 
 Headband::Headband()
 {
-	pattern = new MovingDotPattern();
+	pattern = new kernPattern();
 	
 	//	Button initialization
-	colorButton		= Button(8);
+	colorButton		= Button(5);
 	patternButton	= Button(4);
 	
 	//	Strip needs initialization bc of non-default constructor.
@@ -25,7 +25,7 @@ void Headband::update()
 	getAudio();
 	updateColors();
 	updateLEDs();
-	updateStrip();
+	updateStrip();	
 }
 
 void Headband::linkUp()

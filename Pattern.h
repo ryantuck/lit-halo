@@ -25,7 +25,7 @@ public:
 	Audio*			audio;
 	Color*			colors;
 	byte			numLEDs;
-	byte			totalSequences;
+	byte			maxSequences;
 	
 	//	Constructor
 	Pattern();
@@ -44,6 +44,10 @@ public:
 	
 	//	[ real sequences ... null pointers ]
 	void rearrangeSequences();
+	
+protected:
+	
+	void createSegmentsArray(int number);
 };
 
 #endif

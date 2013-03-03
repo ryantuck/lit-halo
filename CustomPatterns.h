@@ -10,6 +10,7 @@
 #define ____CustomPatterns__
 
 #include "MovingDotPattern.h"
+#include "kernPattern.h"
 
 
 #endif

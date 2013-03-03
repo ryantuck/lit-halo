@@ -116,7 +116,7 @@ byte Color::minVal(byte red, byte green, byte blue)
 
 void Color::expandNums()
 {
-	byte tmpMax = maxVal(r,g,b);
+	float tmpMax = maxVal(r,g,b);
 	
 	float ratio = 0;
 	

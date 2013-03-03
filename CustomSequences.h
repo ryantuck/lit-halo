@@ -12,6 +12,7 @@
 #include "MovingDotSequence.h"
 #include "LayerTestingSequence.h"
 #include "CreationSequence.h"
+#include "kernSequence.h"
 
 
 

@@ -31,12 +31,9 @@ void LayerTestingSequence::update()
 {
 	for (int n=0;n<numElements();n++)
 	{
-		elements[n]->rateCounter++;
-		
 		if (elements[n]->canUpdate())
 		{
 			elements[n]->move(1);
-			elements[n]->rateCounter = 0;
 		}
 		
 		elements[n]->update();

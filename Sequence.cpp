@@ -16,7 +16,6 @@ Sequence::Sequence()
 
 Sequence::~Sequence()
 {
-	Serial.println("Sequence destructor");
 	for (int n=0;n<numElements();n++)
 		delete elements[n];
 	
@@ -26,12 +25,9 @@ Sequence::~Sequence()
 
 void Sequence::linkUp()
 {
-	Serial.println("seq linkup");
 	
 	for (int i=0;i<numElements();i++)
 	{
-		Serial.println("seq lu loop");
-		
 		elements[i]->leds		= leds;
 		elements[i]->audio		= audio;
 		elements[i]->numLEDs	= numLEDs;

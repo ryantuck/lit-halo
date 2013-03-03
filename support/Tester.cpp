@@ -13,6 +13,19 @@ Tester::Tester()
 	
 }
 
+void Tester::kernTest()
+{
+	Headband myHeadband;
+	
+	myHeadband.linkUp();
+	
+	for(int n=0;n<20;n++)
+	{
+		myHeadband.update();
+		myHeadband.printLEDs();
+	}
+}
+
 void Tester::colors()
 {
 	Serial.println("================================");
@@ -22,7 +35,7 @@ void Tester::colors()
 	
 	
 	Color red	= Color(1,0,0);
-	Color green = Color(0,2,0);
+	Color green = Color(0,7,0);
 	Color blue	= Color(0,0,127);
 	
 	Serial.println("** Color red   = Color(1,0,0);  **");

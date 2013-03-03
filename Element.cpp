@@ -22,9 +22,6 @@ Element::~Element()
 {
 	//	Should include error checking for previously-freed objects.
 	
-	Serial.print("Element destructor ");
-	Serial.println(numSegments());
-	
 	for (int n=0;n<numSegments();n++)
 	{
 		delete segments[n];
@@ -44,7 +41,7 @@ void Element::update()
 
 void Element::updateLEDs()
 {
-	byte	maxAddress	= numLEDs-1;
+	byte maxAddress	= numLEDs-1;
 	
 	if (io)
 	{
@@ -137,8 +134,12 @@ bool Element::canUpdate()
 {
 	if (rateCounter == rate)
 	{
-		rateCounter = 0;
+		rateCounter = 1;
 		return 1;
+	}
+	else
+	{
+		rateCounter++;
 	}
 	
 	return 0;

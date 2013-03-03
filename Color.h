@@ -19,7 +19,7 @@ public:
 	byte g;
 	byte b;
 	
-	//	Constructors [default r,g,b = 0]
+	//	Constructors [default r,g,b = 1,69,100]
 	Color();
 	Color(byte red,byte green, byte blue);
 	

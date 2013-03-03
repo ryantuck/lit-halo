@@ -16,6 +16,7 @@ Button::Button(int newPin)
 {
 	pin = newPin;
 	pinMode(pin, INPUT);
+	digitalWrite(pin, HIGH);
 }
 
 void Button::checkState()

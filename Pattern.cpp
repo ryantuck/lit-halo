@@ -8,13 +8,12 @@
 
 Pattern::Pattern()
 {
-//	totalSequences = 1;
-//	sequences = new Sequence*[totalSequences];
+	maxSequences = 1;
+	sequences = new Sequence*[maxSequences];
 }
 
 Pattern::~Pattern()
 {
-	Serial.println("Pattern destructor");
 	for (int n=0;n<numSequences();n++)
 		delete sequences[n];
 	
@@ -24,8 +23,6 @@ Pattern::~Pattern()
 
 void Pattern::linkUp()
 {
-	Serial.println("pattern linkup");
-	
 	for (int i=0;i<numSequences();i++)
 	{
 		sequences[i]->numLEDs	= numLEDs;
@@ -46,7 +43,7 @@ int Pattern::numSequences()
 {
 	int tmpSum = 0;
 	
-	for (int n=0;n<totalSequences;n++)
+	for (int n=0;n<maxSequences;n++)
 		if(sequences[n] != NULL)
 			tmpSum++;
 
@@ -57,7 +54,7 @@ void Pattern::rearrangeSequences()
 {
 	int index = 0;
 	
-	while (index < totalSequences)
+	while (index < maxSequences)
 	{
 		if (sequences[index] != NULL)
 			index++;
@@ -73,4 +70,10 @@ void Pattern::rearrangeSequences()
 				index++;
 		}
 	}
-}	
+}
+
+void Pattern::createSegmentsArray(int number)
+{
+	maxSequences = number;
+	sequences = new Sequence*[maxSequences];
+}
