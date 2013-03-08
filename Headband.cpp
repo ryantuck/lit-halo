@@ -62,14 +62,18 @@ void Headband::updateStrip()
 	
 	for (int n=0;n<numLEDs;n++)
 	{
-		Color tmpColor;
+		//	adjust r,g,b values based on led brightess and write to strip.
 		
-		tmpColor.setColor(leds[n].color);
+		float ratio = leds[n].brightness / 100;
+		
+		int tmpR = leds[n].color.r * ratio;
+		int tmpG = leds[n].color.g * ratio;
+		int tmpB = leds[n].color.b * ratio;
 		
 		strip.setPixelColor(n,
-							tmpColor.r,
-							tmpColor.g,
-							tmpColor.b);
+							tmpR,
+							tmpG,
+							tmpB);
 	}
 	
 	strip.show();
