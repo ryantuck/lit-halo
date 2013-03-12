@@ -8,14 +8,10 @@
 
 Headband::Headband()
 {
-<<<<<<< HEAD
-	pattern = new MovingDotPattern();
-=======
 	//	initial value for pattern index.
 	patternIndex = 0;
 	pattern = createPattern(patternIndex);
->>>>>>> Pattern List Functionality / pins updated
-	
+
 	//	Button initialization
 	colorButton		= Button(5);
 	patternButton	= Button(4);
