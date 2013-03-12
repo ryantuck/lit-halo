@@ -20,8 +20,6 @@ class Headband
 {
 public:
 	
-	
-	
 	Pattern*	pattern;
 	Audio		audio;
 	LED			leds[16];
@@ -33,21 +31,8 @@ public:
 	Button		colorButton;
 	Button		patternButton;
 	
-	//	Pattern patternList
-	
-//	Color		colorList[8];
-//	byte		rc	[3];
-//	byte		gm	[3];
-//	byte		by	[3];
-//	byte		rgb	[3];
-//	byte		cmy	[3];
-//	byte		rgy	[3];
-//	byte		gbc	[3];
-//	byte		rbm	[3];
-//	byte*		colorCombos[8];
-//	byte		colorIndex;
-//	Color		currentColors[3];
-	
+	int patternIndex; //	should go elsewhere?
+		
 	//	Constructor
 	Headband();
 	
@@ -71,6 +56,9 @@ public:
 	
 	//	Updates audio object.
 	void		getAudio();
+	
+	//	Creates new instance of pattern object.
+	Pattern* createPattern(int index);
 	
 	//	For testing.
 	void		printLEDs();

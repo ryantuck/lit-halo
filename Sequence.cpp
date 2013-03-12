@@ -11,7 +11,7 @@ Sequence::Sequence()
 	maxElements	= 1;
 	elements = new Element*[maxElements];
 	
-	io				= true;
+	io = true;
 }
 
 Sequence::~Sequence()

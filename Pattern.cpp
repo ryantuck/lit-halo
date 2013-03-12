@@ -72,7 +72,7 @@ void Pattern::rearrangeSequences()
 	}
 }
 
-void Pattern::createSegmentsArray(int number)
+void Pattern::createSequencesArray(int number)
 {
 	maxSequences = number;
 	sequences = new Sequence*[maxSequences];

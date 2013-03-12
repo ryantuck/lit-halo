@@ -9,7 +9,7 @@
 
 RainbowSnakeElement::RainbowSnakeElement()
 {
-	createSegments(6);
+	createSegmentsArray(6);
 	
 	Segment* red		= new Segment;
 	Segment* yellow		= new Segment;

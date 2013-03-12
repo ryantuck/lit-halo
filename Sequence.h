@@ -33,23 +33,23 @@ public:
 	~Sequence();
 
 	//	Links vitals to elements
-	void			linkUp();
+	void linkUp();
 	
 	//	Updates all elements based on defined behavior.
 	//	Virtual so custom sequences can define their own behavior.
 	//	Default does nothing.
-	virtual void	update();
+	virtual void update();
 	
 	//	Returns number of non-null elements.
 	//	Relevant for creation/destruction.
-	int				numElements();
+	int numElements();
 	
 	//	Sorts elements so existing elements are first, NULL pointers last.
-	void			rearrangeElements();
+	void rearrangeElements();
 	
 	
 	//	For testing
-	void			printVitals();
+	void printVitals();
 	
 protected:
 	void createElementsArray(int number);

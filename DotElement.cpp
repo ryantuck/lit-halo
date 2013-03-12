@@ -9,7 +9,7 @@
 
 DotElement::DotElement()
 {
-	createSegments(1);
+	createSegmentsArray(1);
 	
 	segments[0]->color.setColor(1,69,100);
 	segments[0]->length	= 1;

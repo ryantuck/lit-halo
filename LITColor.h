@@ -27,12 +27,12 @@ public:
 	
 	Color*	colorList[8];
 	
-	byte	rc	[3];
+	byte	rc	[3];		//	complements
 	byte	gm	[3];
 	byte	by	[3];
-	byte	rgb	[3];
+	byte	rgb	[3];		//	triples
 	byte	cmy	[3];
-	byte	rgy	[3];
+	byte	rgy	[3];		//	2 primaries + mix
 	byte	gbc	[3];
 	byte	rbm	[3];
 	byte*	colorCombos[8];

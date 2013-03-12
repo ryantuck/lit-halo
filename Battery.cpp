@@ -19,8 +19,13 @@ void Battery::readVoltage()
 
 int Battery::percentage()
 {
-	int maxVoltage = 750;
-	int minVoltage = 0;
+	int maxVoltage = 860;		//	4.2 V ?
+	int minVoltage = 675;		//	3.3 V ?
 	
-	return maxVoltage - minVoltage;
+	float ratio = 100 / (maxVoltage - minVoltage);
+	
+	int pct = (voltage - minVoltage) * ratio;
+	
+	return pct;
 }
+

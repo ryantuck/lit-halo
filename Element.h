@@ -95,7 +95,7 @@ protected:
 	//	Sets maxSegments.
 	//	Creates segments[] array.
 	//	Creates segments object and makes array point to them.
-	void	createSegments(int number);
+	void	createSegmentsArray(int number);
 };
 
 

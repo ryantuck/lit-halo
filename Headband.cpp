@@ -8,14 +8,22 @@
 
 Headband::Headband()
 {
+<<<<<<< HEAD
 	pattern = new MovingDotPattern();
+=======
+	//	initial value for pattern index.
+	patternIndex = 0;
+	pattern = createPattern(patternIndex);
+>>>>>>> Pattern List Functionality / pins updated
 	
 	//	Button initialization
 	colorButton		= Button(5);
 	patternButton	= Button(4);
 	
 	//	Strip needs initialization bc of non-default constructor.
-	strip  = LPD8806(16,2,3);
+	//	DAT - D3
+	//	CLK - D2
+	strip = LPD8806(16,3,2);
 	strip.begin();
 }
 
@@ -62,7 +70,7 @@ void Headband::updateStrip()
 	
 	for (int n=0;n<numLEDs;n++)
 	{
-		//	adjust r,g,b values based on led brightess and write to strip.
+		//	adjust r,g,b values based on led brightness and write to strip.
 		
 		float ratio = leds[n].brightness / 100;
 		
@@ -89,12 +97,38 @@ void Headband::checkButtons()
 		else							LITColor.colorIndex++;
 	}
 	
-	//	add pattern button functionality
+	patternButton.checkState();
+	if (patternButton.pressed)
+	{
+		Serial.println("pressed");
+		delete pattern;
+		pattern = NULL;
+		pattern = createPattern(patternIndex);
+		if (patternIndex == 10)		patternIndex = 0;
+		else						patternIndex++;
+	}
+	
+	
+	
 }
 
 void Headband::getAudio()
 {
 	audio.update();
+}
+
+Pattern* Headband::createPattern(int index)
+{
+	switch (index)
+	{
+		case 0:
+			return new MovingDotPattern;
+			break;
+		case 1:
+			return new kernPattern;
+			break;
+	}
+	return NULL;
 }
 
 

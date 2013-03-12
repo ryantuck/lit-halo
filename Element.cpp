@@ -8,7 +8,7 @@
 
 Element::Element()
 {
-	createSegments(1);
+	createSegmentsArray(1);
 	
 	layer		= 1;
 	rate		= 1;
@@ -186,7 +186,7 @@ byte Element::updateValue(byte parameter,
 	return parameter;
 }
 
-void Element::createSegments(int number)
+void Element::createSegmentsArray(int number)
 {
 	maxSegments = number;
 	segments = new Segment*[number];

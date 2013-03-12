@@ -9,7 +9,7 @@
 
 AlternatingElement::AlternatingElement()
 {
-	createSegments(8);
+	createSegmentsArray(8);
 	
 	layer		= 1;
 	rate		= 1;
@@ -26,7 +26,7 @@ AlternatingElement::AlternatingElement()
 
 AlternatingElement::AlternatingElement(Color newColor,bool odds)
 {
-	createSegments(8);
+	createSegmentsArray(8);
 	
 	layer		= 1;
 	rate		= 1;

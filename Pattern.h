@@ -47,7 +47,7 @@ public:
 	
 protected:
 	
-	void createSegmentsArray(int number);
+	void createSequencesArray(int number);
 };
 
 #endif
