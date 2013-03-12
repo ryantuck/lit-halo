@@ -8,7 +8,7 @@
 
 Headband::Headband()
 {
-	pattern = new kernPattern();
+	pattern = new MovingDotPattern();
 	
 	//	Button initialization
 	colorButton		= Button(5);
