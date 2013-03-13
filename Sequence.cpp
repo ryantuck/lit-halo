@@ -32,7 +32,7 @@ void Sequence::linkUp()
 		elements[i]->audio		= audio;
 		elements[i]->numLEDs	= numLEDs;
 		elements[i]->colors		= colors;
-		elements[i]->updateColors();
+		//elements[i]->updateColors();
 	}
 }
 

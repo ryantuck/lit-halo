@@ -15,7 +15,7 @@ AlternatingElement::AlternatingElement()
 	rate		= 1;
 	brightness	= 100;
 	io			= 1;
-	
+    
 	for (int n=0;n<maxSegments;n++)
 	{
 		segments[n]->length	=1;
