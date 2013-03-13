@@ -9,8 +9,11 @@
 Headband::Headband()
 {
 	//	initial value for pattern index.
+
 	patternIndex = 3;
 	pattern = createPattern(patternIndex);
+
+
 
 	//	Button initialization
 	colorButton		= Button(5);

@@ -26,7 +26,7 @@ void Button::checkState()
 	
 	if (pressedCounter == 0)
 	{
-		if (state == HIGH)
+		if (state == LOW)
 		{
 			pressed = 1;
 			pressedCounter = 1;

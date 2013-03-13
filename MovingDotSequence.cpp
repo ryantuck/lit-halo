@@ -10,11 +10,12 @@ MovingDotSequence::MovingDotSequence()
 {
 	createElementsArray(3);
 	
-	for (int n=0;n<maxElements;n++)
+	for (int n=0;n<numElements();n++)
 	{
 		elements[n] = new DotElement;
 		elements[n]->rate = 5*n;
 	}
+    
 }
 
 void MovingDotSequence::update()
@@ -30,5 +31,6 @@ void MovingDotSequence::update()
 		
 		elements[n]->update();
 	}
+
 }
 
