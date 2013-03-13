@@ -11,6 +11,7 @@
 
 #include "MovingDotPattern.h"
 #include "kernPattern.h"
+#include "Pattern0.h"
 
 
 #endif
