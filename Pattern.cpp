@@ -35,6 +35,9 @@ void Pattern::linkUp()
 
 void Pattern::update()
 {
+	Serial.print("num sequences: ");
+	Serial.println(numSequences());
+	
 	for (int i=0;i<numSequences();i++)
 		sequences[i]->update();
 }

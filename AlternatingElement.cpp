@@ -8,7 +8,7 @@
 #include "AlternatingElement.h"
 
 AlternatingElement::AlternatingElement()
-{
+{	
 	createSegmentsArray(8);
 	
 	layer		= 1;
@@ -18,9 +18,9 @@ AlternatingElement::AlternatingElement()
 	
 	for (int n=0;n<maxSegments;n++)
 	{
-		segments[n]->length	=1;
+		segments[n]->length	= 1;
 		segments[n]->start	= 2*n;
-		segments[n]->color.setColor(1,69,100);
+		segments[n]->color.setColor(1,69,20);
 	}
 }
 

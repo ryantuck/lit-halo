@@ -11,8 +11,7 @@
 
 kernPattern::kernPattern()
 {
-	maxSequences = 1;
-	sequences = new Sequence*[maxSequences];
+	createSequencesArray(1);
 	
 	sequences[0] = new kernSequence;
 }

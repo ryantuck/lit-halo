@@ -9,7 +9,7 @@
 Headband::Headband()
 {
 	//	initial value for pattern index.
-	patternIndex = 2;
+	patternIndex = 3;
 	pattern = createPattern(patternIndex);
 
 	//	Button initialization
@@ -125,6 +125,10 @@ Pattern* Headband::createPattern(int index)
 			break;
 		case 2:
 			return new Pattern0;
+			break;
+		case 3:
+			return new Pattern1;
+			Serial.println("pattern1 created");
 			break;
 	}
 	return NULL;

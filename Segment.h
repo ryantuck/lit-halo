@@ -26,6 +26,9 @@ public:
 
 	//	For testing
 	void printVitals();
+	
+private:
+	byte checkVal(byte val, byte min, byte max, bool cycles);
 };
 
 #endif

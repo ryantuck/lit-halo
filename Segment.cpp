@@ -26,6 +26,19 @@ Segment::Segment(Color newColor, byte newLength, byte newStart)
 	start	= newStart;
 }
 
+byte Segment::checkVal(byte parameter, byte minVal, byte maxVal, bool cycles)
+{
+	if (parameter == maxVal)
+	{
+		if (cycles) parameter = minVal;
+		else		parameter = maxVal;
+	}
+	else if (parameter == minVal)
+	{
+		if (cycles) parameter = maxVal;
+		else		parameter = minVal;
+	}
+}
 
 
 void Segment::printVitals()

@@ -14,6 +14,7 @@
 
 class RainbowSnakeElement : public Element
 {
+public:
 	RainbowSnakeElement();
 };
 

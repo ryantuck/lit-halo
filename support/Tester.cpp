@@ -13,19 +13,6 @@ Tester::Tester()
 	
 }
 
-void Tester::kernTest()
-{
-	Headband myHeadband;
-	
-	myHeadband.linkUp();
-	
-	for(int n=0;n<20;n++)
-	{
-		myHeadband.update();
-		myHeadband.printLEDs();
-	}
-}
-
 void Tester::colors()
 {
 	Serial.println("================================");
@@ -106,22 +93,72 @@ void Tester::segments()
 
 void Tester::elements()
 {
-
+	DotElement myDot;
+	AlternatingElement myAlt;
+	RainbowSnakeElement mySnake;
+	
+	Serial.println("Dot");
+	myDot.printVitals();
+	
+	for (int n=0;n<myDot.numSegments();n++)
+	{
+		Serial.print(n);	Serial.print(" ");
+		myDot.segments[n]->color.printVitals();
+	}
+	
+	Serial.println("Alt");
+	myAlt.printVitals();
+	
+	for (int n=0;n<myAlt.numSegments();n++)
+	{
+		Serial.print(n);	Serial.print(" ");
+		myAlt.segments[n]->color.printVitals();
+	}
+	
+	Serial.println("Snake");
+	mySnake.printVitals();
+	
+	for (int n=0;n<mySnake.numSegments();n++)
+	{
+		Serial.print(n);	Serial.print(" ");
+		mySnake.segments[n]->color.printVitals();
+	}
 }
 
 void Tester::sequences()
 {
+	SeqAltTest mySAT;
 	
+	for (int n=0;n<mySAT.elements[0]->numSegments();n++)
+	{
+		Serial.print(n); Serial.print(" ");
+		mySAT.elements[0]->segments[n]->color.printVitals();
+	}
 }
 
 void Tester::patterns()
 {
+	Pattern1 myPatt;
 	
+	int x = myPatt.sequences[0]->elements[0]->numSegments();
+	
+	for (int n=0;n<x;n++)
+	{
+		Serial.print(n); Serial.print(" ");
+		myPatt.sequences[0]->elements[0]->segments[n]->color.printVitals();
+	}
 }
 
 void Tester::headband()
 {
+	Headband myHeadband;
+	myHeadband.linkUp();
 	
+	for (int n=0;n<20;n++)
+	{
+		myHeadband.update();
+		myHeadband.printLEDs();
+	}
 }
 
 

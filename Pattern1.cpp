@@ -11,8 +11,7 @@
 
 Pattern1::Pattern1()
 {
-	maxSequences = 1;
-	sequences = new Sequence*[maxSequences];
+	createSequencesArray(1);
 	
-	sequences[0] = new kernSequence;
+	sequences[0] = new SeqAltTest;
 }
