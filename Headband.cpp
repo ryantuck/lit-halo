@@ -78,9 +78,9 @@ void Headband::updateStrip()
 		int tmpB = leds[n].color.b * ratio;
 		
 		strip.setPixelColor(n,
-							tmpR,
-							tmpG,
-							tmpB);
+							leds[n].color.r,
+							leds[n].color.g,
+							leds[n].color.b);
 	}
 	
 	strip.show();
