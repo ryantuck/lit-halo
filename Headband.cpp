@@ -10,10 +10,8 @@ Headband::Headband()
 {
 	//	initial value for pattern index.
 
-	patternIndex = 3;
+	patternIndex = 0;
 	pattern = createPattern(patternIndex);
-
-
 
 	//	Button initialization
 	colorButton		= Button(5);
@@ -71,11 +69,18 @@ void Headband::updateStrip()
 	{
 		//	adjust r,g,b values based on led brightness and write to strip.
 		
+		Serial.print(leds[n].color.r); Serial.print(" ");
+		Serial.print(leds[n].color.g); Serial.print(" ");
+		Serial.print(leds[n].color.b); Serial.print(" ");
+		Serial.println();
+		
 		float ratio = leds[n].brightness / 100;
 		
 		int tmpR = leds[n].color.r * ratio;
 		int tmpG = leds[n].color.g * ratio;
 		int tmpB = leds[n].color.b * ratio;
+		
+		
 		
 		strip.setPixelColor(n,
 							tmpR,
@@ -131,7 +136,6 @@ Pattern* Headband::createPattern(int index)
 			break;
 		case 3:
 			return new Pattern1;
-			Serial.println("pattern1 created");
 			break;
 	}
 	return NULL;

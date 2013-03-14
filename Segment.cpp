@@ -15,11 +15,12 @@ Segment::Segment()
 
 Segment::Segment(Color newColor, byte newLength, byte newStart)
 {
-	if (newLength	<  1)	newLength	=  1;
-	if (newLength	> 16)	newLength	= 16;
+	Serial.print("1 length: "); Serial.print(newLength);
 	
-	if (newStart	<  0)	newStart	=  0;
-	if (newStart	> 15)	newStart	= 15;
+	newLength	= checkVal(newLength, 1, 16, 0);
+	newStart	= checkVal(newStart,  0, 15, 1);
+	
+	Serial.print("2 length: "); Serial.print(newLength);
 	
 	color.setColor(newColor);
 	length	= newLength;
@@ -38,6 +39,8 @@ byte Segment::checkVal(byte parameter, byte minVal, byte maxVal, bool cycles)
 		if (cycles) parameter = maxVal;
 		else		parameter = minVal;
 	}
+	
+	return parameter;
 }
 
 
