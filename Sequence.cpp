@@ -41,13 +41,13 @@ void Sequence::update()
 
 int Sequence::numElements()
 {	
-	int tmpSum = 0;
+	int count = 0;
 	
 	for (int n=0;n<maxElements;n++)
 		if (elements[n] != NULL)
-			tmpSum++;
+			count++;
 
-	return tmpSum;
+	return count;
 }
 
 void Sequence::rearrangeElements()

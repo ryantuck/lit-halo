@@ -25,7 +25,6 @@ void Audio::update()
 	getEQ();
 	weighEQ();
 	checkBeats();
-	//printSpectrum();
 }
 
 void Audio::getEQ()
@@ -83,8 +82,6 @@ void Audio::adjustPot()
 	
 	pot.update(newPotVal);
 }
-
-
 
 
 

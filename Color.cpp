@@ -18,8 +18,6 @@ Color::Color(byte red, byte green, byte blue)
 	r = check(red);
 	g = check(green);
 	b = check(blue);
-	
-	expandNums();
 }
 
 void Color::setColor(Color newColor)
@@ -27,8 +25,6 @@ void Color::setColor(Color newColor)
 	r = check(newColor.r);
 	g = check(newColor.g);
 	b = check(newColor.b);
-	
-	expandNums();
 }
 
 void Color::setColor(byte red,byte green,byte blue)
@@ -36,8 +32,6 @@ void Color::setColor(byte red,byte green,byte blue)
 	r = check(red);
 	g = check(green);
 	b = check(blue);
-	
-	//expandNums();
 }
 
 void Color::mixWith(Color otherColor)

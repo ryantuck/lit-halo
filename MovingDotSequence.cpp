@@ -26,7 +26,7 @@ void MovingDotSequence::update()
 	
 	for (int n=0;n<numElements();n++)
 	{
-		elements[n]->segments[0]->color.setColor(colors[n]);
+		//elements[n]->segments[0]->color.setColor(colors[n]);
 		
 		if (elements[n]->canUpdate())
 		{

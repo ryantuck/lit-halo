@@ -15,13 +15,9 @@ Segment::Segment()
 
 Segment::Segment(Color newColor, byte newLength, byte newStart)
 {
-	Serial.print("1 length: "); Serial.print(newLength);
-	
 	newLength	= checkVal(newLength, 1, 16, 0);
 	newStart	= checkVal(newStart,  0, 15, 1);
-	
-	Serial.print("2 length: "); Serial.print(newLength);
-	
+
 	color.setColor(newColor);
 	length	= newLength;
 	start	= newStart;

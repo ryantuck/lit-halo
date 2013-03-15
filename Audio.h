@@ -6,10 +6,6 @@
 //	*	Handles all audio processing.
 
 
-//	TODO
-//	*	add centroid function
-
-
 //	####################################################################
 
 #ifndef ____Audio__

@@ -3,7 +3,10 @@
 //	Sequence.h
 
 //	*	Container for elements.
-//	*	
+
+//	TODO
+//	*	test destructor without delete[] operator
+
 
 //	####################################################################
 

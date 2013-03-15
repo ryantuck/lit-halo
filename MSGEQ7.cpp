@@ -110,8 +110,17 @@ byte MSGEQ7::minBand()
 	return tmpMinBand;
 }
 
-
-
+float MSGEQ7::centroid()
+{
+	int tmpSum = 0;
+	
+	for (int n=0;n<7;n++)
+	{
+		tmpSum += n * spectrum[n];
+	}
+	
+	return tmpSum / spectrumSum();
+}
 
 
 

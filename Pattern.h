@@ -6,6 +6,10 @@
 //	*	Owned by headband.
 //	*	Highest level of abstraction in pattern architecture.
 
+//	TODO
+//	*	test destructor without delete[] operator
+//	*	what does rearrangeSequences() do? is it used?
+
 //	####################################################################
 
 #ifndef ____Pattern__

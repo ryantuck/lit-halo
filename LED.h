@@ -16,8 +16,8 @@ class LED
 public:
 	
 	Color	color;
-	byte	brightness;		//	0 - 100
-	byte	currentLayer;	//	1 - 127
+	byte	brightness;		//	0 - 127
+	byte	currentLayer;	//	1 - 10
 	
 	//	Constructors
 	LED();

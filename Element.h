@@ -10,6 +10,10 @@
 //	*	"Primary" objects of pattern architecture.
 //	*	Lowest level of abstraction needed for custom objects.
 
+//	TODO
+//	*	test if delete[] operator necessary
+//	*	possibly merge canUpdate() and update()
+
 
 //	####################################################################
 
@@ -58,9 +62,6 @@ public:
 	
 	//	Update function. Runs each iteration.
 	void	update();
-	
-	//	Updates colors of segments each iteration.
-	void updateColors();
 	
 	//	Change parameters
 	void	move		(bool direction);	//	∆ segments starts

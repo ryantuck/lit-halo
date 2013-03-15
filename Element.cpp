@@ -35,16 +35,12 @@ Element::~Element()
 
 void Element::update()
 {
-	//	update colors (?)
 	updateLEDs();
 }
 
 void Element::updateLEDs()
 {
 	byte maxAddress	= numLEDs-1;
-	
-	Serial.println("updateLEDs function");
-	Serial.println(numLEDs);
 	
 	if (io)
 	{
@@ -65,24 +61,16 @@ void Element::updateLEDs()
 					leds[tmpAddress].currentLayer	= layer;
 					leds[tmpAddress].brightness		= brightness;
 					leds[tmpAddress].color.setColor(segments[a]->color);
-                    //leds[tmpAddress].color.findRGB(brightness);
+                    leds[tmpAddress].color.findRGB(brightness);
                     
 				}
 				else if (layer == leds[tmpAddress].currentLayer)
 				{
 					leds[tmpAddress].color.mixWith(segments[a]->color);
-                    //leds[tmpAddress].color.findRGB(brightness);
+                    leds[tmpAddress].color.findRGB(brightness);
 				}
 			}
 		}
-	}
-}
-
-void Element::updateColors()
-{
-	for (int n=0;n<numSegments();n++)
-	{
-		segments[n]->color.setColor(colors[n]);
 	}
 }
 
@@ -109,7 +97,7 @@ void Element::fade(bool direction)
 	brightness = updateValue(brightness,
 							 direction,
 							 0,
-							 100,
+							 127,
 							 0);
 }
 

@@ -35,24 +35,19 @@ void Pattern::linkUp()
 
 void Pattern::update()
 {
-	Serial.print("num sequences: ");
-	Serial.println(numSequences());
-	
-	Serial.println(numLEDs);
-	
 	for (int i=0;i<numSequences();i++)
 		sequences[i]->update();
 }
 
 int Pattern::numSequences()
 {
-	int tmpSum = 0;
+	int count = 0;
 	
 	for (int n=0;n<maxSequences;n++)
 		if(sequences[n] != NULL)
-			tmpSum++;
+			count++;
 
-	return tmpSum;
+	return count;
 }
 
 void Pattern::rearrangeSequences()
