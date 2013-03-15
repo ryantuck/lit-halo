@@ -7,8 +7,6 @@
 //	TODO
 //	*	add checkBattery() function.
 //	*	remove updateColors() function.
-//	*	change button names
-//	*	change checkButtons functionality
 //	*	clean up createPattern().
 
 //	####################################################################
@@ -35,8 +33,8 @@ public:
 	
 	LPD8806		strip;
 	
-	Button		colorButton;
-	Button		patternButton;
+	Button		upButton;
+	Button		downButton;
 	
 	int patternIndex;				//	should go elsewhere?
 		

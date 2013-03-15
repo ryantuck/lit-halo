@@ -14,8 +14,8 @@ Headband::Headband()
 	pattern = createPattern(patternIndex);
 
 	//	Button initialization
-	colorButton		= Button(5);
-	patternButton	= Button(4);
+	downButton		= Button(5);
+	upButton		= Button(4);
 	
 	//	Strip needs initialization bc of non-default constructor.
 	//	DAT - D3
@@ -75,24 +75,25 @@ void Headband::updateStrip()
 
 void Headband::checkButtons()
 {
-	colorButton.checkState();
-	if (colorButton.pressed)
-	{
-		Serial.println("pressed");
-		if (LITColor.colorIndex == 7)	LITColor.colorIndex = 0;
-		else							LITColor.colorIndex++;
-	}
+	upButton.checkState();
+	downButton.checkState();
 	
-	patternButton.checkState();
-	if (patternButton.pressed)
+	if (upButton.pressed)
 	{
-		Serial.println("pressed");
+		patternIndex == 10 ? patternIndex = 0 : patternIndex++;
+		
 		delete pattern;
-		pattern = NULL;
 		pattern = createPattern(patternIndex);
 		linkUp();
-		if (patternIndex == 10)		patternIndex = 0;
-		else						patternIndex++;
+	}
+	
+	else if (downButton.pressed)
+	{
+		patternIndex == 0 ? patternIndex = 10 : patternIndex--;
+		
+		delete pattern;
+		pattern = createPattern(patternIndex);
+		linkUp();
 	}
 }
 
