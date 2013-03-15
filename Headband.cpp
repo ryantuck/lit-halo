@@ -10,7 +10,7 @@ Headband::Headband()
 {
 	//	initial value for pattern index.
 
-	patternIndex = 2;
+	patternIndex = 3;
 	pattern = updatePattern(patternIndex);
 
 	//	Button initialization
@@ -26,8 +26,7 @@ Headband::Headband()
 
 void Headband::update()
 {
-	//	Should also ensure any other steps needed to be taken go in here.
-	//		checkBattery().
+	//Serial.println("update Headband");
 	
 	checkButtons();
 	getAudio();
@@ -37,6 +36,8 @@ void Headband::update()
 
 void Headband::linkUp()
 {
+	Serial.println("hbLink up");
+
 	pattern->numLEDs	= sizeof(leds)/sizeof(LED);
 
 	pattern->leds		= leds;
@@ -82,15 +83,21 @@ void Headband::checkButtons()
 	{
 		if (upButton.pressed)
 		{
+			Serial.print("up pressed: ");	Serial.println(patternIndex);
+			
 			patternIndex == 10 ? patternIndex = 1 : patternIndex++;
 			
+			delete pattern;
 			pattern = updatePattern(patternIndex);
 		}
 		
 		else if (downButton.pressed)
 		{
+			Serial.print("down pressed: ");	Serial.println(patternIndex);
+			
 			patternIndex == 1 ? patternIndex = 10 : patternIndex--;
 
+			delete pattern;
 			pattern = updatePattern(patternIndex);
 		}
 	}
@@ -113,20 +120,20 @@ void Headband::getAudio()
 
 Pattern* Headband::updatePattern(int index)
 {
-	delete pattern;
+	
 	
 	switch (index)
 	{
 		case 0:
-			return new Pattern0;
+			return new MovingDotPattern;
 			linkUp();
 			break;
 		case 1:
-			return new Pattern1;
+			return new MovingDotPattern;
 			linkUp();
 			break;
 		case 2:
-			return new kernPattern;
+			return new MovingDotPattern;
 			linkUp();
 			break;
 		case 3:

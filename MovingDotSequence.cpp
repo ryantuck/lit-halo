@@ -15,25 +15,22 @@ MovingDotSequence::MovingDotSequence()
 		elements[n] = new DotElement;
 		elements[n]->rate = 5*n;
 	}
+	
+	elements[0]->segments[0]->color.setColor(LITColor.red);
+	elements[1]->segments[0]->color.setColor(LITColor.green);
+	elements[2]->segments[0]->color.setColor(LITColor.blue);
+	
     
 }
 
 void MovingDotSequence::update()
-{
-	Serial.print("numElements: "); Serial.println(numElements());
-	
-	Serial.println(numLEDs);
-	
+{	
 	for (int n=0;n<numElements();n++)
 	{
-		//elements[n]->segments[0]->color.setColor(colors[n]);
-		
 		if (elements[n]->canUpdate())
 		{
 			elements[n]->move(n % 2);
 		}
-		
-		Serial.println(elements[n]->numLEDs);
 		
 		elements[n]->update();
 	}

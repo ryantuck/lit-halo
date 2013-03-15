@@ -23,6 +23,8 @@ Pattern::~Pattern()
 
 void Pattern::linkUp()
 {
+	Serial.println("patternLink up");
+	
 	for (int i=0;i<numSequences();i++)
 	{
 		sequences[i]->numLEDs	= numLEDs;

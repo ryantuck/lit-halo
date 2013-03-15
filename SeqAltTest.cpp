@@ -18,7 +18,5 @@ SeqAltTest::SeqAltTest()
 
 void SeqAltTest::update()
 {
-	Serial.println("sequence update");
-	
 	elements[0]->update();
 }

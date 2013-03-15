@@ -14,6 +14,7 @@
 
 #include "Sequence.h"
 #include "CustomElements.h"
+#include "LITColor.h"
 
 class MovingDotSequence : public Sequence
 {
