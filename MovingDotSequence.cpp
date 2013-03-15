@@ -24,7 +24,7 @@ MovingDotSequence::MovingDotSequence()
 }
 
 void MovingDotSequence::update()
-{	
+{
 	for (int n=0;n<numElements();n++)
 	{
 		if (elements[n]->canUpdate())
