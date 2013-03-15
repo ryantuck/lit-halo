@@ -20,6 +20,8 @@ MovingDotSequence::MovingDotSequence()
 
 void MovingDotSequence::update()
 {
+	Serial.print("numElements: "); Serial.println(numElements());
+	
 	for (int n=0;n<numElements();n++)
 	{
 		elements[n]->segments[0]->color.setColor(colors[n]);

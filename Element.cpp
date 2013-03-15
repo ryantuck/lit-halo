@@ -43,6 +43,8 @@ void Element::updateLEDs()
 {
 	byte maxAddress	= numLEDs-1;
 	
+	Serial.println("updateLEDs function");
+	
 	if (io)
 	{
 		for (int a=0;a<numSegments();a++)
