@@ -36,6 +36,8 @@ void Headband::update()
 void Headband::linkUp()
 {
 	pattern->numLEDs	= sizeof(leds)/sizeof(LED);
+	
+	Serial.println(pattern->numLEDs);
 	pattern->leds		= leds;
 	pattern->audio		= &audio;
 	pattern->colors		= LITColor.currentColors;
@@ -108,6 +110,7 @@ void Headband::checkButtons()
 		delete pattern;
 		pattern = NULL;
 		pattern = createPattern(patternIndex);
+		linkUp();
 		if (patternIndex == 10)		patternIndex = 0;
 		else						patternIndex++;
 	}

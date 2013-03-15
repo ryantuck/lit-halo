@@ -154,11 +154,14 @@ void Tester::headband()
 	Headband myHeadband;
 	myHeadband.linkUp();
 	
-	for (int n=0;n<20;n++)
-	{
-		myHeadband.update();
-		myHeadband.printLEDs();
-	}
+	myHeadband.update();
+	myHeadband.printLEDs();
+	
+//	for (int n=0;n<20;n++)
+//	{
+//		myHeadband.update();
+//		myHeadband.printLEDs();
+//	}
 }
 
 

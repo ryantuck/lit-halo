@@ -38,6 +38,8 @@ void Pattern::update()
 	Serial.print("num sequences: ");
 	Serial.println(numSequences());
 	
+	Serial.println(numLEDs);
+	
 	for (int i=0;i<numSequences();i++)
 		sequences[i]->update();
 }

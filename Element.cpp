@@ -42,10 +42,9 @@ void Element::update()
 void Element::updateLEDs()
 {
 	byte maxAddress	= numLEDs-1;
-    Color myBlue;
-    myBlue.setColor(0,0,1);
 	
 	Serial.println("updateLEDs function");
+	Serial.println(numLEDs);
 	
 	if (io)
 	{
@@ -61,18 +60,18 @@ void Element::updateLEDs()
 					tmpAddress = tmpAddress-maxAddress-1;
                 
                 
-				if (this->layer > leds[tmpAddress].currentLayer)
+				if (layer > leds[tmpAddress].currentLayer)
 				{
 					leds[tmpAddress].currentLayer	= layer;
 					leds[tmpAddress].brightness		= brightness;
 					leds[tmpAddress].color.setColor(segments[a]->color);
-                    leds[tmpAddress].color.findRGB(brightness);
+                    //leds[tmpAddress].color.findRGB(brightness);
                     
 				}
-				else if (this->layer == leds[tmpAddress].currentLayer)
+				else if (layer == leds[tmpAddress].currentLayer)
 				{
 					leds[tmpAddress].color.mixWith(segments[a]->color);
-                    leds[tmpAddress].color.findRGB(brightness);
+                    //leds[tmpAddress].color.findRGB(brightness);
 				}
 			}
 		}
