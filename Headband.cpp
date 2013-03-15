@@ -10,7 +10,7 @@ Headband::Headband()
 {
 	//	initial value for pattern index.
 
-	patternIndex = 0;
+	patternIndex = 1;
 	pattern = createPattern(patternIndex);
 
 	//	Button initialization
@@ -26,28 +26,29 @@ Headband::Headband()
 
 void Headband::update()
 {
+	//	Should also ensure any other steps needed to be taken go in here.
+	//		checkBattery().
+	
 	checkButtons();
 	getAudio();
-	updateColors();
 	updateLEDs();
-	updateStrip();	
+	updateStrip();
 }
 
 void Headband::linkUp()
 {
 	pattern->numLEDs	= sizeof(leds)/sizeof(LED);
-	
-	Serial.println(pattern->numLEDs);
+
 	pattern->leds		= leds;
 	pattern->audio		= &audio;
-	pattern->colors		= LITColor.currentColors;
-	
+
 	pattern->linkUp();
 }
 
 void Headband::updateLEDs()
 {
 	int numLEDs = sizeof(leds) / sizeof(LED);
+	
 	for (int n=0;n<numLEDs;n++)
 	{
 		leds[n].color.setColor(0, 0, 0);
@@ -57,33 +58,12 @@ void Headband::updateLEDs()
 	pattern->update();
 }
 
-void Headband::updateColors()
-{	
-	for (int n=0;n<3;n++)
-		LITColor.currentColors[n] = *LITColor.colorList[LITColor.colorCombos[LITColor.colorIndex][n]];
-}
-
 void Headband::updateStrip()
 {
 	int numLEDs = sizeof(leds)/sizeof(LED);
 	
 	for (int n=0;n<numLEDs;n++)
 	{
-		//	adjust r,g,b values based on led brightness and write to strip.
-		
-		Serial.print(leds[n].color.r); Serial.print(" ");
-		Serial.print(leds[n].color.g); Serial.print(" ");
-		Serial.print(leds[n].color.b); Serial.print(" ");
-		Serial.println();
-		
-		float ratio = leds[n].brightness / 100;
-		
-		int tmpR = leds[n].color.r * ratio;
-		int tmpG = leds[n].color.g * ratio;
-		int tmpB = leds[n].color.b * ratio;
-		
-		
-		
 		strip.setPixelColor(n,
 							leds[n].color.r,
 							leds[n].color.g,
@@ -114,9 +94,6 @@ void Headband::checkButtons()
 		if (patternIndex == 10)		patternIndex = 0;
 		else						patternIndex++;
 	}
-	
-	
-	
 }
 
 void Headband::getAudio()

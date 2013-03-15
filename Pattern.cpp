@@ -28,7 +28,7 @@ void Pattern::linkUp()
 		sequences[i]->numLEDs	= numLEDs;
 		sequences[i]->leds		= leds;
 		sequences[i]->audio		= audio;
-		sequences[i]->colors	= colors;
+		
 		sequences[i]->linkUp();
 	}
 }

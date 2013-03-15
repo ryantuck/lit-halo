@@ -4,6 +4,13 @@
 
 //	*	Acts as over-arching object in code structure.
 
+//	TODO
+//	*	add checkBattery() function.
+//	*	remove updateColors() function.
+//	*	change button names
+//	*	change checkButtons functionality
+//	*	clean up createPattern().
+
 //	####################################################################
 
 #ifndef ____Headband__
@@ -31,8 +38,9 @@ public:
 	Button		colorButton;
 	Button		patternButton;
 	
-	int patternIndex; //	should go elsewhere?
+	int patternIndex;				//	should go elsewhere?
 		
+	
 	//	Constructor
 	Headband();
 	

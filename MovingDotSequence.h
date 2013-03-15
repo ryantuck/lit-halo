@@ -2,7 +2,10 @@
 
 //	MovingDotSequence.h
 
-//	*	Single moving dot. 
+//	*	Single moving dot.
+
+//	TODO
+//	*	colors must be pre-defined
 
 //	####################################################################
 

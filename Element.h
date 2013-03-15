@@ -34,7 +34,6 @@ public:
 	
 	byte		rateCounter;
 	
-	Color*		colors;
 	LED*		leds;
 	Audio*		audio;
 	byte		numLEDs;

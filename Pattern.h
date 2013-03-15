@@ -23,7 +23,6 @@ public:
 	Sequence**		sequences;
 	LED*			leds;
 	Audio*			audio;
-	Color*			colors;
 	byte			numLEDs;
 	byte			maxSequences;
 	

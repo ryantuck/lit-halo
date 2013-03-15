@@ -5,6 +5,11 @@
 //	*	Handles MSGEQ7 and potentiometer interactions.
 //	*	Handles all audio processing.
 
+
+//	TODO
+//	*	add centroid function
+
+
 //	####################################################################
 
 #ifndef ____Audio__

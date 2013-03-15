@@ -21,7 +21,6 @@ public:
 	Element**		elements;
 	LED*			leds;
 	Audio*			audio;
-	Color*			colors;
 	bool			io;
 	byte			numLEDs;
 	byte			maxElements;

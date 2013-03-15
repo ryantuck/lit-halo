@@ -31,9 +31,6 @@ void Sequence::linkUp()
 		elements[i]->leds		= leds;
 		elements[i]->audio		= audio;
 		elements[i]->numLEDs	= numLEDs;
-		Serial.println(elements[i]->numLEDs);
-		elements[i]->colors		= colors;
-		elements[i]->updateColors();
 	}
 }
 
