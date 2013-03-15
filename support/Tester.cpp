@@ -149,6 +149,12 @@ void Tester::patterns()
 	}
 }
 
+
+void Tester::kernTest()
+{
+    //dummy function to make compiler happy
+}
+
 void Tester::headband()
 {
 	Headband myHeadband;
