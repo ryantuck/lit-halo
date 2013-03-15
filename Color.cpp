@@ -37,7 +37,7 @@ void Color::setColor(byte red,byte green,byte blue)
 	g = check(green);
 	b = check(blue);
 	
-	expandNums();
+	//expandNums();
 }
 
 void Color::mixWith(Color otherColor)
@@ -129,6 +129,110 @@ void Color::expandNums()
 	r = check(tmpR);
 	g = check(tmpG);
 	b = check(tmpB);
+}
+
+void Color::findRGB(byte brightness)
+{
+    double h,s,v;
+    double min, max, delta;
+    
+    double      hh, p, q, t, ff;
+    long        i;
+    
+    min = this->r < this->g ? this->r : this->g;
+    min = min  < this->b ? min  : this->b;
+        
+    max = this->r > this->g ? this->r : this->g;
+    max = max  > this->b ? max  : this->b;
+        
+    //v = max;                                    //v
+    delta = max - min;
+    if( max > 0.0 )
+    {
+        s = (delta / max);                        // s
+    }
+    else
+    {
+        // r = g = b = 0                          // s = 0, v is undefined
+        s = 0.0;
+        h = -1;                                   // its now undefined
+    }
+    if(this->r >= max )                           // > is bogus, just keeps compilor happy
+        h = ( this->g - this->b ) / delta;        // between yellow & magenta
+    else
+        if( this->g >= max )
+            h = 2.0 + ( this->b - this->r ) / delta;  // between cyan & yellow
+        else
+            h = 4.0 + ( this->r - this->g ) / delta;  // between magenta & cyan
+        
+    h *= 60.0;                              // degrees
+        
+    if( h < 0.0 )
+        h += 360.0;
+        
+    //set v to brightness
+    v = brightness;
+    
+    if(s <= 0.0) // < is bogus, just shuts up warnings
+    {       
+        if(h == -1) // h == NAN
+        {   
+            this->r = v;
+            this->g = v;
+            this->b = v;
+            return;
+        }
+        // error - should never happen
+        this->r = 0.0;
+        this->g = 0.0;
+        this->b = 0.0;
+        return;
+    }
+    hh = h;
+    if(hh >= 360.0) hh = 0.0;
+    hh /= 60.0;
+    i = (long)hh;
+    ff = hh - i;
+    p = v * (1.0 - s);
+    q = v * (1.0 - (s * ff));
+    t = v * (1.0 - (s * (1.0 - ff)));
+    
+    switch(i)
+    {
+        case 0:
+            this->r = v;
+            this->g = t;
+            this->b = p;
+            break;
+        case 1:
+            this->r = q;
+            this->g = v;
+            this->b = p;
+            break;
+        case 2:
+            this->r = p;
+            this->g = v;
+            this->b = t;
+            break;
+            
+        case 3:
+            this->r = p;
+            this->g = q;
+            b = v;
+            break;
+        case 4:
+            this->r = t;
+            this->g = p;
+            this->b = v;
+            break;
+        case 5:
+        default:
+            this->r = v;
+            this->g = p;
+            this->b = q;
+            break;
+    }
+
 }
 
 

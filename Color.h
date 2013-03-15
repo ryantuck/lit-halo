@@ -33,6 +33,9 @@ public:
 	
 	//	Adds inputs to current color's rgb vals
 	void add (int dr, int dg, int db);
+    
+    //convert rgb color to equivalent rgb at specified brightness (0-127)
+    void findRGB(byte brightness);
 	
 	//	For testing
 	void printVitals();
@@ -51,6 +54,7 @@ private:
 	byte minVal(byte red, byte green, byte blue);
 	
 	void expandNums();
+
 };
 
 #endif

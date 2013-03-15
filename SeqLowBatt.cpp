@@ -14,7 +14,7 @@ SeqLowBatt::SeqLowBatt()
 	
 	elements[0] = new AlternatingElement(LITColor.red,0);
 	
-	elements[0]->rate = 5;
+	elements[0]->rate = 3;
 	elements[0]->brightness = 0;
 	
 	state = 0;
@@ -35,13 +35,15 @@ void SeqLowBatt::update()
 				elements[0]->fade(1);
 				
 				if (elements[0]->brightness >= 100) state = 1;
-				
 				break;
 				
 			case 1:
 				
 				elements[0]->fade(0);
-				if (elements[0]->brightness <= 0) state = 2;
+				if (elements[0]->brightness <= 0)
+                {
+                    state = 2;
+                }
 				
 				break;
 				
@@ -50,7 +52,7 @@ void SeqLowBatt::update()
                 elements[0]->io = 0;
 				longWhileCounter++;
 				
-				if (longWhileCounter >= 120)
+				if (longWhileCounter >= 1000)
 				{
 					longWhileCounter = 0;
 					state = 0;
