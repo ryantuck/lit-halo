@@ -21,8 +21,16 @@ public:
 	bool lastState;
 	bool pressed;
 	byte pressedCounter;
+    
+    int lastDebounceTime;
 	
 	void checkState();
+    
+    //kern's new members
+    bool buttonState;
+    bool lastButtonState;
+    int lastDebouceTime;
+    int debounceDelay;
 };
 
 

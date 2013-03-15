@@ -164,6 +164,11 @@ void Tester::headband()
 //	}
 }
 
+void Tester::kernTest()
+{
+    //dummy function
+}
+
 
 
 

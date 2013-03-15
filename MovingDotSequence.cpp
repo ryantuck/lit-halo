@@ -20,9 +20,6 @@ MovingDotSequence::MovingDotSequence()
 
 void MovingDotSequence::update()
 {
-	Serial.print("numElements: "); Serial.println(numElements());
-	
-	Serial.println(numLEDs);
 	
 	for (int n=0;n<numElements();n++)
 	{
@@ -32,8 +29,6 @@ void MovingDotSequence::update()
 		{
 			elements[n]->move(n % 2);
 		}
-		
-		Serial.println(elements[n]->numLEDs);
 		
 		elements[n]->update();
 	}

@@ -33,6 +33,7 @@ inline void	delayMicroseconds(int a){};
 inline int	analogRead(int a){return 0;};
 inline int	digitalRead(int a){return 1;};
 inline void shiftOut(int a,int b,int c, int d);
+inline int millis(){return 1;};
 
 extern SPIClass SPI;
 extern SerialClass Serial;

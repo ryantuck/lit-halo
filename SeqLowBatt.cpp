@@ -12,9 +12,7 @@ SeqLowBatt::SeqLowBatt()
 {
 	createElementsArray(1);
 	
-	Color myColor(20,30,10);
-	
-	elements[0] = new AlternatingElement(myColor,0);
+	elements[0] = new AlternatingElement(LITColor.red,0);
 	
 	elements[0]->rate = 3;
 	elements[0]->brightness = 0;
