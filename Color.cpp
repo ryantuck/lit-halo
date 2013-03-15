@@ -139,17 +139,17 @@ void Color::findRGB(byte brightness)
     double      hh, p, q, t, ff;
     long        i;
     
-    min = this->r < this->g ? this->r : this->g;
-    min = min  < this->b ? min  : this->b;
+    min = r	< g ? r : g;
+    min = min < b ? min : b;
         
-    max = this->r > this->g ? this->r : this->g;
-    max = max  > this->b ? max  : this->b;
+    max = r > g ? r : g;
+    max = max  > b ? max : b;
         
     //v = max;                                    //v
     delta = max - min;
     if( max > 0.0 )
     {
-        s = (delta / max);                        // s
+        s = delta / max;                        // s
     }
     else
     {
@@ -157,13 +157,13 @@ void Color::findRGB(byte brightness)
         s = 0.0;
         h = -1;                                   // its now undefined
     }
-    if(this->r >= max )                           // > is bogus, just keeps compilor happy
-        h = ( this->g - this->b ) / delta;        // between yellow & magenta
+    if( r >= max )                           // > is bogus, just keeps compilor happy
+        h = ( g - b ) / delta;        // between yellow & magenta
     else
-        if( this->g >= max )
-            h = 2.0 + ( this->b - this->r ) / delta;  // between cyan & yellow
+        if( g >= max )
+            h = 2.0 + ( b - r ) / delta;  // between cyan & yellow
         else
-            h = 4.0 + ( this->r - this->g ) / delta;  // between magenta & cyan
+            h = 4.0 + ( r - g ) / delta;  // between magenta & cyan
         
     h *= 60.0;                              // degrees
         
@@ -177,15 +177,15 @@ void Color::findRGB(byte brightness)
     {       
         if(h == -1) // h == NAN
         {   
-            this->r = v;
-            this->g = v;
-            this->b = v;
+            r = v;
+            g = v;
+            b = v;
             return;
         }
         // error - should never happen
-        this->r = 0.0;
-        this->g = 0.0;
-        this->b = 0.0;
+        r = 0.0;
+        g = 0.0;
+        b = 0.0;
         return;
     }
     hh = h;
@@ -200,36 +200,36 @@ void Color::findRGB(byte brightness)
     switch(i)
     {
         case 0:
-            this->r = v;
-            this->g = t;
-            this->b = p;
+            r = v;
+			g = t;
+            b = p;
             break;
         case 1:
-            this->r = q;
-            this->g = v;
-            this->b = p;
+            r = q;
+            g = v;
+            b = p;
             break;
         case 2:
-            this->r = p;
-            this->g = v;
-            this->b = t;
+            r = p;
+            g = v;
+            b = t;
             break;
             
         case 3:
-            this->r = p;
-            this->g = q;
+            r = p;
+            g = q;
             b = v;
             break;
         case 4:
-            this->r = t;
-            this->g = p;
-            this->b = v;
+            r = t;
+            g = p;
+            b = v;
             break;
         case 5:
         default:
-            this->r = v;
-            this->g = p;
-            this->b = q;
+            r = v;
+            g = p;
+            b = q;
             break;
     }
 
