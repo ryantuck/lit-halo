@@ -60,11 +60,14 @@ public:
 	//	Checks buttons for presses and updates counters accordingly.
 	void		checkButtons();
 	
+	//	Checks battery.
+	void		checkBattery();
+	
 	//	Updates audio object.
 	void		getAudio();
 	
 	//	Creates new instance of pattern object.
-	Pattern* createPattern(int index);
+	Pattern* updatePattern(int index);
 	
 	//	For testing.
 	void		printLEDs();
