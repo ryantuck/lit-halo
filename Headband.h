@@ -67,7 +67,7 @@ public:
 	void		getAudio();
 	
 	//	Creates new instance of pattern object.
-	Pattern* updatePattern(int index);
+	void updatePattern(int index);
 	
 	//	For testing.
 	void		printLEDs();

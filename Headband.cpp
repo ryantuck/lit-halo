@@ -9,10 +9,8 @@
 Headband::Headband()
 {
 	//	initial value for pattern index.
-	
-	patternIndex = 3;
-
-	pattern = updatePattern(patternIndex);
+	patternIndex = 1;
+	updatePattern(patternIndex);
 
 	//	Button initialization
 	downButton		= Button(5);
@@ -85,24 +83,25 @@ void Headband::checkButtons()
 	{
 		if (upButton.pressed)
 		{
-			Serial.print("up pressed: ");	Serial.println(patternIndex);
-			
-//			if(patternIndex == 3) patternIndex = 1;
-//            else patternIndex++;
-//			
-//			delete pattern;
-//			pattern = updatePattern(patternIndex);
+            if(patternIndex == 3) patternIndex = 1;
+            else patternIndex++;
+            Serial.println();
+            Serial.print("Up button pressed. patternIndex is ");
+            Serial.println(patternIndex);
+            
+			updatePattern(patternIndex);
 		}
 		
 		else if (downButton.pressed)
 		{
-			Serial.print("down pressed: ");	Serial.println(patternIndex);
 			
-//			if(patternIndex == 1)	patternIndex = 3;
-//            else					patternIndex--;
-//
-//			delete pattern;
-//			pattern = updatePattern(patternIndex);
+			if(patternIndex == 1) patternIndex = 3;
+            else patternIndex--;
+            Serial.println();
+            Serial.print("Down button pressed. patternIndex is ");
+            Serial.println(patternIndex);
+
+			updatePattern(patternIndex);
 		}
 	}
 }
@@ -122,30 +121,29 @@ void Headband::getAudio()
 	audio.update();
 }
 
-Pattern* Headband::updatePattern(int index)
+void Headband::updatePattern(int index)
 {
 	
 	
 	switch (index)
 	{
 		case 0:
-			return new MovingDotPattern;
+			pattern =  new Pattern0;
 			linkUp();
 			break;
 		case 1:
-			return new MovingDotPattern;
+			pattern = new MovingDotPattern;
 			linkUp();
 			break;
 		case 2:
-			return new MovingDotPattern;
+			pattern = new MovingDotPattern;
 			linkUp();
 			break;
 		case 3:
-			return new MovingDotPattern;
+			pattern =  new MovingDotPattern;
 			linkUp();
 			break;
 	}
-	return NULL;
 }
 
 
