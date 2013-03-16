@@ -85,24 +85,24 @@ void Headband::checkButtons()
 	{
 		if (upButton.pressed)
 		{
-			Serial.print("up pressed: ");	Serial.println(patternIndex);
+			Serial.print("up: ");	Serial.println(patternIndex);
 			
-//			if(patternIndex == 3) patternIndex = 1;
-//            else patternIndex++;
-//			
-//			delete pattern;
-//			pattern = updatePattern(patternIndex);
+			if(patternIndex == 3) patternIndex = 1;
+            else patternIndex++;
+			
+			//delete pattern;
+			pattern = updatePattern(patternIndex);
 		}
 		
 		else if (downButton.pressed)
 		{
-			Serial.print("down pressed: ");	Serial.println(patternIndex);
+			Serial.print("down: ");	Serial.println(patternIndex);
 			
-//			if(patternIndex == 1)	patternIndex = 3;
-//            else					patternIndex--;
-//
-//			delete pattern;
-//			pattern = updatePattern(patternIndex);
+			if(patternIndex == 1)	patternIndex = 3;
+            else					patternIndex--;
+
+			//delete pattern;
+			pattern = updatePattern(patternIndex);
 		}
 	}
 }
@@ -124,7 +124,8 @@ void Headband::getAudio()
 
 Pattern* Headband::updatePattern(int index)
 {
-	
+	delete pattern;
+	pattern = NULL;
 	
 	switch (index)
 	{
