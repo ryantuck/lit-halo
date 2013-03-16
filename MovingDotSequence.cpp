@@ -34,6 +34,5 @@ void MovingDotSequence::update()
 		
 		elements[n]->update();
 	}
-
 }
 
