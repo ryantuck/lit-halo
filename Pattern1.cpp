@@ -11,7 +11,7 @@
 
 Pattern1::Pattern1()
 {
-	createSequencesArray(1);
+    createSequencesArray(1);
 	
-	sequences[0] = new SeqAltTest;
+	sequences[0] = new SeqCentroidToColor;
 }

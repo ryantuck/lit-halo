@@ -136,11 +136,11 @@ void Headband::updatePattern(int index)
 			linkUp();
 			break;
 		case 2:
-			pattern = new MovingDotPattern;
+			pattern = new Pattern1;
 			linkUp();
 			break;
 		case 3:
-			pattern =  new MovingDotPattern;
+			pattern =  new Pattern0;
 			linkUp();
 			break;
 	}

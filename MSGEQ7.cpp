@@ -112,7 +112,7 @@ byte MSGEQ7::minBand()
 
 float MSGEQ7::centroid()
 {
-	int tmpSum = 0;
+	float tmpSum = 0;
 	
 	for (int n=0;n<7;n++)
 	{

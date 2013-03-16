@@ -15,7 +15,7 @@
 #include "kernSequence.h"
 #include "SeqLowBatt.h"
 #include "SeqAltTest.h"
-
+#include "SeqCentroidToColor.h"
 
 
 

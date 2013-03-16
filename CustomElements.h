@@ -12,6 +12,7 @@
 #include "DotElement.h"
 #include "RainbowSnakeElement.h"
 #include "AlternatingElement.h"
+#include "WholeElement.h"
 
 
 #endif
