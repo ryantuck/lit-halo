@@ -87,22 +87,22 @@ void Headband::checkButtons()
 		{
 			Serial.print("up pressed: ");	Serial.println(patternIndex);
 			
-			if(patternIndex == 3) patternIndex = 1;
-            else patternIndex++;
-			
-			delete pattern;
-			pattern = updatePattern(patternIndex);
+//			if(patternIndex == 3) patternIndex = 1;
+//            else patternIndex++;
+//			
+//			delete pattern;
+//			pattern = updatePattern(patternIndex);
 		}
 		
 		else if (downButton.pressed)
 		{
 			Serial.print("down pressed: ");	Serial.println(patternIndex);
 			
-			if(patternIndex == 1) patternIndex = 3;
-            else patternIndex--;
-
-			delete pattern;
-			pattern = updatePattern(patternIndex);
+//			if(patternIndex == 1)	patternIndex = 3;
+//            else					patternIndex--;
+//
+//			delete pattern;
+//			pattern = updatePattern(patternIndex);
 		}
 	}
 }
