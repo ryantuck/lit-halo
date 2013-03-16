@@ -17,20 +17,14 @@ private:
 public:
 	Button();
 	Button(int pin);
-	bool state;
-	bool lastState;
-	bool pressed;
-	byte pressedCounter;
     
-    int lastDebounceTime;
+	bool pressed;
+    bool released;
+    bool lastButtonState;
 	
 	void checkState();
     
-    //kern's new members
-    bool buttonState;
-    bool lastButtonState;
-    int lastDebouceTime;
-    int debounceDelay;
+    
 };
 
 
