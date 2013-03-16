@@ -40,9 +40,7 @@ void Button::checkState()
         released	= 0;
     }
     lastButtonState = reading;
-    
-    if(pressed)		Serial.println("button pressed");
-    if(released)	Serial.println("button released");
+
 }
 
 
