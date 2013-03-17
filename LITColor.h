@@ -24,6 +24,8 @@ public:
 	Color	magenta;
 	Color	white;
 	Color	black;
+	
+	Color* colorList[8];
 };
 
 extern LITColorClass LITColor;

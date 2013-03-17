@@ -13,5 +13,5 @@ Pattern3::Pattern3()
 {
 	createSequencesArray(1);
 	
-	sequences[0] = new LayerTestingSequence;
+	sequences[0] = new SeqAltTest;
 }

@@ -140,7 +140,7 @@ void Headband::updatePattern(int index)
 			linkUp();
 			break;
 		case 3:
-			pattern =  new Pattern4;
+			pattern =  new Pattern5;
 			linkUp();
 			break;
 	}

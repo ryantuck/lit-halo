@@ -18,6 +18,7 @@
 #include "SeqCentroidToColor.h"
 #include "SeqCycleColor.h"
 #include "SeqMovingBlur.h"
+#include "SeqEphemeralSnake.h"
 
 
 

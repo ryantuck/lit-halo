@@ -13,14 +13,14 @@ AlternatingElement::AlternatingElement()
 	
 	layer		= 1;
 	rate		= 1;
-	brightness	= 100;
+	brightness	= 127;
 	io			= 1;
     
 	for (int n=0;n<maxSegments;n++)
 	{
 		segments[n]->length	= 1;
 		segments[n]->start	= 2*n;
-		segments[n]->color.setColor(1,69,20);
+		segments[n]->color.setColor(1,69,1);
 	}
 }
 
