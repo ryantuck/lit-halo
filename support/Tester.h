@@ -28,6 +28,8 @@ public:
 	void patterns();
 	void headband();
 	
+	void brightnessTest();
+	
 	void kernTest();
 
 };

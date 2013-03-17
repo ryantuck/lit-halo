@@ -16,6 +16,7 @@
 #include "SeqLowBatt.h"
 #include "SeqAltTest.h"
 #include "SeqCentroidToColor.h"
+#include "SeqCycleColor.h"
 
 
 

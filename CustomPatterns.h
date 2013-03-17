@@ -13,6 +13,8 @@
 #include "kernPattern.h"
 #include "Pattern0.h"
 #include "Pattern1.h"
+#include "Pattern2.h"
+#include "Pattern3.h"
 
 
 #endif

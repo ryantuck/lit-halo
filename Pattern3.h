@@ -9,9 +9,14 @@
 #ifndef __LIT_Source__Pattern3__
 #define __LIT_Source__Pattern3__
 
-#include <iostream>
+#include "Pattern.h"
+#include "CustomSequences.h"
 
-
+class Pattern3 : public Pattern
+{
+public:
+	Pattern3();
+};
 
 #endif
 

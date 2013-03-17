@@ -13,6 +13,42 @@ Tester::Tester()
 	
 }
 
+void Tester::brightnessTest()
+{
+	//	For a certain created color, findRGB() is run for 128 different
+	//	brightnesses, and printed.
+	
+	/*
+	 
+	 RESULTS
+	 
+	 	*	findRGB() does not jive with the way Color class is already set up. it permanantly changes the color instead of simply returning some combination of color and brightness. This need to be addressed.
+	 
+	 	*	Also, it pretty much does what my code already had done. I was under the impression that the RGB values at full brightness would be different than RGB values at low brightness. As is evident, findRGB() pretty much multiplies numbers linearly.
+	 
+	 	*	Therefore, I propose we address this issue by removing findRGB() from the code for the time being and revert back to my simpler, cleaner code. Also, in the future, new functions should be thoroughly vetted before being added to working code. Just because they are on some wikipedia page does not make them worth having.
+
+		*/
+
+		
+	
+	Color myColor;
+	
+	for (int n=0;n<128;n++)
+	{
+		//	Unfortunately, we need to add this line.
+		//	If it's taken out, myColor is permanantly changed and therefore
+		//	we're not actually running findRGB(n) on the same original color.
+		myColor.setColor(1,5,3);
+		
+		myColor.findRGB(n);
+		
+		Serial.print(n);	Serial.print(" ");
+		
+		myColor.printVitals();
+	}
+}
+
 void Tester::colors()
 {
 	Serial.println("================================");
