@@ -9,7 +9,7 @@
 Headband::Headband()
 {
 	//	initial value for pattern index.
-	patternIndex = 1;
+	patternIndex = 2;
 	updatePattern(patternIndex);
 
 	//	Button initialization
@@ -136,7 +136,7 @@ void Headband::updatePattern(int index)
 			linkUp();
 			break;
 		case 2:
-			pattern = new Pattern1;
+			pattern = new Pattern2;
 			linkUp();
 			break;
 		case 3:

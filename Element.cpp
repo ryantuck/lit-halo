@@ -14,7 +14,7 @@ Element::Element()
 	rate		= 1;
 	rateCounter = 0;
 	io			= 1;
-	brightness	= 100;
+	brightness	= 127;
 	numLEDs		= 0;
 }
 
@@ -61,13 +61,13 @@ void Element::updateLEDs()
 					leds[tmpAddress].currentLayer	= layer;
 					leds[tmpAddress].brightness		= brightness;
 					leds[tmpAddress].color.setColor(segments[a]->color);
-                    leds[tmpAddress].color.findRGB(brightness);
-                    
+                    leds[tmpAddress].adjustColor();
 				}
 				else if (layer == leds[tmpAddress].currentLayer)
 				{
+					leds[tmpAddress].brightness = brightness;
 					leds[tmpAddress].color.mixWith(segments[a]->color);
-                    leds[tmpAddress].color.findRGB(brightness);
+					leds[tmpAddress].adjustColor();
 				}
 			}
 		}

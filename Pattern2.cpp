@@ -13,5 +13,5 @@ Pattern2::Pattern2()
 {
 	createSequencesArray(1);
 	
-	sequences[0] = new SeqCycleColor;
+	sequences[0] = new SeqMovingBlur(LITColor.magenta);
 }

@@ -15,6 +15,7 @@ class DotElement : public Element
 {
 public:
 	DotElement();
+	DotElement(Color myColor, int myStart);
 };
 
 

@@ -23,6 +23,9 @@ public:
 	LED();
 	LED(Color newColor, byte newBrightness, byte newLayer);
 	
+	//	Adjusts color based on LED brightness.
+	void adjustColor();
+	
 	//	For testing
 	void printVitals();
 };

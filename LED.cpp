@@ -26,6 +26,16 @@ LED::LED(Color newColor, byte newBrightness, byte newLayer)
 	currentLayer	= newLayer;
 }
 
+void LED::adjustColor()
+{
+	float ratio = (float) brightness / 127;
+		
+	color.r *= ratio;
+	color.g *= ratio;
+	color.b *= ratio;
+}
+
+
 
 
 void LED::printVitals()
