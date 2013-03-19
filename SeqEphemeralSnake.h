@@ -29,7 +29,6 @@ public:
 	int		maxLength;
 	bool	direction;
 	bool	growing;
-	bool	pleaseDestroy;
 };
 
 

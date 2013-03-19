@@ -23,6 +23,8 @@ public:
 	//	Constructors
 	Segment();
 	Segment(Color newColor, byte newLength, byte newStart);
+	
+	void check();
 
 	//	For testing
 	void printVitals();

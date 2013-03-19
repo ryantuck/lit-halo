@@ -59,7 +59,7 @@ void Sequence::rearrangeElements()
 			index++;
 		else
 		{
-			if (elements[index+1] != NULL)
+			if (elements[index+1] != NULL && index != maxElements)
 			{
 				elements[index]		= elements[index+1];
 				elements[index+1]	= NULL;
@@ -75,6 +75,11 @@ void Sequence::createElementsArray(int number)
 {
 	maxElements = number;
 	elements = new Element*[number];
+	
+	for (int n=0;n<maxElements;n++)
+	{
+		elements[n] = NULL;
+	}
 }
 
 void Sequence::printVitals()

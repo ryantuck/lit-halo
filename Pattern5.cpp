@@ -10,7 +10,7 @@
 
 Pattern5::Pattern5()
 {
-	createSequencesArray(6);
+	createSequencesArray(10);
 	
 	for (int n=0;n<maxSequences;n++)
 	{
@@ -42,7 +42,7 @@ void Pattern5::update()
 		
 		Color	tmpColor		= *LITColor.colorList[rand() % 6];
 		int		tmpStart		= rand() % 15;
-		int		tmpLength		= rand() % 10 + 5;
+		int		tmpLength		= rand() % 7 + 1;
 		int		tmpRate			= 1;//rand() % 10;
 		int		tmpLayer		= rand() % 10 + 1;
 		bool	tmpDirection	= rand() % 2;
@@ -61,17 +61,18 @@ void Pattern5::update()
 	
 	for (int n=0;n<numSequences();n++)
 	{
-		if (sequences[n]->elements[0]->segments[0]->length == 0)
+		if (sequences[n]->io == 0)
 		{
 			delete sequences[n];
 			sequences[n] = NULL;
+			
+			rearrangeSequences();
 		}
 	}
 	
-	rearrangeSequences();
-	
 	for (int n=0;n<numSequences();n++)
 	{
+		Serial.print(n);		Serial.print(" ");
 		sequences[n]->update();
 	}
 	

@@ -46,6 +46,8 @@ void Element::updateLEDs()
 	{
 		for (int a=0;a<numSegments();a++)
 		{
+			segments[a]->check();
+			
 			int tmpStart	= segments[a]->start;
 			int tmpLength	= segments[a]->length;
 			

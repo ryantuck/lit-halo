@@ -14,7 +14,7 @@ SeqEphemeralSnake::SeqEphemeralSnake()
 	createElementsArray(1);
 	
 	elements[0] = new Element;
-	pleaseDestroy = 0;
+	io = 1;
 	linkUp();
 }
 
@@ -37,7 +37,6 @@ SeqEphemeralSnake::SeqEphemeralSnake(Color myColor,
 	maxLength		= myLength;
 	direction		= myDirection;
 	growing			= 1;
-	pleaseDestroy	= 0;
 	
 	linkUp();
 	
@@ -80,8 +79,16 @@ void SeqEphemeralSnake::update()
 	
 	if (!growing && elements[0]->segments[0]->length == 0)
 	{
-		pleaseDestroy = 1;
+		io = 0;
 	}
+	
+	
+	Serial.print(growing);							Serial.print(" ");
+	Serial.print(direction);						Serial.print(" ");
+	Serial.print(maxLength);						Serial.print(" ");
+	Serial.print(elements[0]->segments[0]->start);	Serial.print(" ");
+	Serial.print(elements[0]->segments[0]->length);	Serial.print(" ");
+	Serial.println();
 	
 	elements[0]->update();
 }

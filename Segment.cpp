@@ -15,24 +15,29 @@ Segment::Segment()
 
 Segment::Segment(Color newColor, byte newLength, byte newStart)
 {
-	newLength	= checkVal(newLength, 1, 16, 0);
-	newStart	= checkVal(newStart,  0, 15, 1);
+	length	= checkVal(newLength, 1, 16, 0);
+	start	= checkVal(newStart,  0, 15, 1);
 
 	color.setColor(newColor);
-	length	= newLength;
-	start	= newStart;
 }
+
+void Segment::check()
+{
+	length	= checkVal(length, 1, 16, 0);
+	start	= checkVal(start,  0, 15, 1);
+}
+
 
 byte Segment::checkVal(byte parameter, byte minVal, byte maxVal, bool cycles)
 {
-	if (parameter == maxVal)
+	while (parameter > maxVal)
 	{
-		if (cycles) parameter = minVal;
+		if (cycles) parameter -= maxVal + 1;
 		else		parameter = maxVal;
 	}
-	else if (parameter == minVal)
+	while (parameter < minVal)
 	{
-		if (cycles) parameter = maxVal;
+		if (cycles) parameter += maxVal + 1;
 		else		parameter = minVal;
 	}
 	
