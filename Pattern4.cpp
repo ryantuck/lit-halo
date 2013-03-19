@@ -14,7 +14,7 @@ Pattern4::Pattern4()
 	
 	for (int n=0;n<maxSequences;n++)
 	{
-		sequences[n] = new MovingDotSequence;
+		sequences[n] = new SeqMovingDot;
 		sequences[n]->elements[0]->rate = n;
 	}
 	

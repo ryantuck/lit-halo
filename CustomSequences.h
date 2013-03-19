@@ -9,8 +9,8 @@
 #ifndef ____CustomSequences__
 #define ____CustomSequences__
 
-#include "MovingDotSequence.h"
-#include "LayerTestingSequence.h"
+#include "SeqMovingDot.h"
+#include "SeqLayerTesting.h"
 #include "CreationSequence.h"
 #include "kernSequence.h"
 #include "SeqLowBatt.h"
@@ -19,6 +19,7 @@
 #include "SeqCycleColor.h"
 #include "SeqMovingBlur.h"
 #include "SeqEphemeralSnake.h"
+#include "SeqRainbowSnake.h"
 
 
 

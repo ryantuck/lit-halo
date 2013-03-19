@@ -16,10 +16,10 @@
 #include "CustomElements.h"
 #include "LITColor.h"
 
-class MovingDotSequence : public Sequence
+class SeqMovingDot : public Sequence
 {
 public:
-	MovingDotSequence();
+	SeqMovingDot();
 	void update();
 };
 

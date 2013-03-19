@@ -153,13 +153,17 @@ void Tester::patterns()
 void Tester::headband()
 {
 	Headband myHeadband;
-	myHeadband.linkUp();
+	//emyHeadband.linkUp();
 	
 	myHeadband.update();
 	myHeadband.printLEDs();
 	
 	for (int n=0;n<200;n++)
 	{
+		
+		
+		Serial.print("Iteration: "); Serial.println(n);
+		
 		myHeadband.update();
 		myHeadband.printLEDs();
 	}

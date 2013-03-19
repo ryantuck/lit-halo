@@ -15,6 +15,7 @@ SeqEphemeralSnake::SeqEphemeralSnake()
 	
 	elements[0] = new Element;
 	pleaseDestroy = 0;
+	linkUp();
 }
 
 SeqEphemeralSnake::SeqEphemeralSnake(Color myColor,
@@ -37,6 +38,8 @@ SeqEphemeralSnake::SeqEphemeralSnake(Color myColor,
 	direction		= myDirection;
 	growing			= 1;
 	pleaseDestroy	= 0;
+	
+	linkUp();
 	
 }
 
@@ -79,7 +82,6 @@ void SeqEphemeralSnake::update()
 	{
 		pleaseDestroy = 1;
 	}
-	
 	
 	elements[0]->update();
 }

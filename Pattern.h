@@ -8,7 +8,7 @@
 
 //	TODO
 //	*	test destructor without delete[] operator
-//	*	what does rearrangeSequences() do? is it used?
+//	*	what does rearrangeSequences() do? is it used?fg
 
 //	####################################################################
 

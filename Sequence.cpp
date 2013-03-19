@@ -25,8 +25,6 @@ Sequence::~Sequence()
 
 void Sequence::linkUp()
 {
-	Serial.println("Sequence linkUp");
-	
 	for (int i=0;i<numElements();i++)
 	{
 		elements[i]->leds		= leds;

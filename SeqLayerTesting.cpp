@@ -4,7 +4,7 @@
 
 //	####################################################################
 
-#include "LayerTestingSequence.h"
+#include "SeqLayerTesting.h"
 
 LayerTestingSequence::LayerTestingSequence()
 {

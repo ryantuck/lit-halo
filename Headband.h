@@ -6,8 +6,6 @@
 
 //	TODO
 //	*	add checkBattery() function.
-//	*	remove updateColors() function.
-//	*	clean up createPattern().
 
 //	####################################################################
 

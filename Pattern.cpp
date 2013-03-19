@@ -23,8 +23,6 @@ Pattern::~Pattern()
 
 void Pattern::linkUp()
 {
-	Serial.println("patternLink up");
-	
 	for (int i=0;i<numSequences();i++)
 	{
 		sequences[i]->numLEDs	= numLEDs;
@@ -62,7 +60,7 @@ void Pattern::rearrangeSequences()
 			index++;
 		else
 		{
-			if (sequences[index+1] != NULL)
+			if (sequences[index+1] != NULL && index != maxSequences - 1)
 			{
 				sequences[index]	= sequences[index+1];
 				sequences[index+1]	= NULL;
@@ -78,4 +76,10 @@ void Pattern::createSequencesArray(int number)
 {
 	maxSequences = number;
 	sequences = new Sequence*[maxSequences];
+	
+	//	Not sure if this helps
+	for (int n=0;n<maxSequences;n++)
+	{
+		sequences[n] = NULL;
+	}
 }

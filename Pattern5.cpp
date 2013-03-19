@@ -10,7 +10,13 @@
 
 Pattern5::Pattern5()
 {
-	createSequencesArray(8);
+	createSequencesArray(6);
+	
+	for (int n=0;n<maxSequences;n++)
+	{
+		sequences[n] = NULL;
+		
+	}
 	
 	//	don't need to create any sequences here.
 	//	they will be created randomly in the update() function.
@@ -36,10 +42,10 @@ void Pattern5::update()
 		
 		Color	tmpColor		= *LITColor.colorList[rand() % 6];
 		int		tmpStart		= rand() % 15;
-		int		tmpLength		= rand() % 15;
-		int		tmpRate			= rand() % 10;
-		int		tmpLayer		= rand() % 10;
-		bool	tmpDirection	= rand() % 1;
+		int		tmpLength		= rand() % 10 + 5;
+		int		tmpRate			= 1;//rand() % 10;
+		int		tmpLayer		= rand() % 10 + 1;
+		bool	tmpDirection	= rand() % 2;
 		
 		
 		sequences[newAddress] = new SeqEphemeralSnake(tmpColor,
@@ -48,6 +54,8 @@ void Pattern5::update()
 													  tmpRate,
 													  tmpLayer,
 													  tmpDirection);
+		
+		linkUp();
 		
 	}
 	
@@ -61,5 +69,10 @@ void Pattern5::update()
 	}
 	
 	rearrangeSequences();
+	
+	for (int n=0;n<numSequences();n++)
+	{
+		sequences[n]->update();
+	}
 	
 }

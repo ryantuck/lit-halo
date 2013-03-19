@@ -11,5 +11,5 @@ MovingDotPattern::MovingDotPattern()
 {
 	createSequencesArray(1);
 	
-	sequences[0] = new MovingDotSequence();
+	sequences[0] = new SeqMovingDot();
 }

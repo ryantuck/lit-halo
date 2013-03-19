@@ -8,26 +8,19 @@
 
 Headband::Headband()
 {
-	//	initial value for pattern index.
-	patternIndex = 3;
+	patternIndex = 5;
 	updatePattern(patternIndex);
 
-	//	Button initialization
 	downButton		= Button(5);
 	upButton		= Button(4);
 	
-	//	Strip needs initialization bc of non-default constructor.
-	//	DAT - D3
-	//	CLK - D2
+	//	dat-3 / clk-2
 	strip = LPD8806(16,3,2);
 	strip.begin();
 }
 
 void Headband::update()
 {
-
-	//Serial.println("update Headband");
-
 	checkButtons();
 	getAudio();
 	updateLEDs();
@@ -128,11 +121,11 @@ void Headband::updatePattern(int index)
 	switch (index)
 	{
 		case 0:
-			pattern =  new Pattern0;
+			pattern = new Pattern0;
 			linkUp();
 			break;
 		case 1:
-			pattern = new MovingDotPattern;
+			pattern = new Pattern1;
 			linkUp();
 			break;
 		case 2:
@@ -140,7 +133,19 @@ void Headband::updatePattern(int index)
 			linkUp();
 			break;
 		case 3:
-			pattern =  new Pattern5;
+			pattern = new Pattern3;
+			linkUp();
+			break;
+		case 4:
+			pattern = new Pattern4;
+			linkUp();
+			break;
+		case 5:
+			pattern = new Pattern5;
+			linkUp();
+			break;
+		case 6:
+			pattern = new Pattern6;
 			linkUp();
 			break;
 	}

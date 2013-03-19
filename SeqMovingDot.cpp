@@ -4,9 +4,9 @@
 
 //	####################################################################
 
-#include "MovingDotSequence.h"
+#include "SeqMovingDot.h"
 
-MovingDotSequence::MovingDotSequence()
+SeqMovingDot::SeqMovingDot()
 {
 	createElementsArray(1);
 	
@@ -16,7 +16,7 @@ MovingDotSequence::MovingDotSequence()
 	}
 }
 
-void MovingDotSequence::update()
+void SeqMovingDot::update()
 {
 	elements[0]->update();
 }
