@@ -28,7 +28,7 @@ public:
 	//	Constructor
 	Audio();
 	
-	//	Grabs eq, weighs it, and checks for beats
+	//	Grabs eq, weighs it, and checks for beats.
 	void update();
 	
 	//	Updates beatCounters.
