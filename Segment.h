@@ -25,6 +25,7 @@ public:
 	Segment(Color newColor, byte newLength, byte newStart);
 	
 	void check();
+	void resize(bool growing, bool direction);
 
 	//	For testing
 	void printVitals();

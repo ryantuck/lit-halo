@@ -46,30 +46,7 @@ void SeqEphemeralSnake::update()
 {
 	if (elements[0]->canUpdate())
 	{
-		if (direction)
-		{
-			if (growing)
-			{
-				elements[0]->segments[0]->length++;
-			}
-			else
-			{
-				elements[0]->segments[0]->length--;
-				elements[0]->segments[0]->start++;
-			}
-		}
-		else
-		{
-			if (growing)
-			{
-				elements[0]->segments[0]->length++;
-				elements[0]->segments[0]->start--;
-			}
-			else
-			{
-				elements[0]->segments[0]->length--;
-			}
-		}
+		elements[0]->segments[0]->resize(growing, direction);
 	}
 	
 	if (elements[0]->segments[0]->length == maxLength)

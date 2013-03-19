@@ -27,6 +27,37 @@ void Segment::check()
 	start	= checkVal(start,  0, 15, 1);
 }
 
+void Segment::resize(bool growing, bool direction)
+{
+	if (direction)
+	{
+		if (growing)
+		{
+			length++;
+		}
+		else
+		{
+			length--;
+			start++;
+		}
+	}
+	else
+	{
+		if (growing)
+		{
+			length++;
+			start--;
+		}
+		else
+		{
+			length--;
+		}
+	}
+	
+	check();
+
+}
+
 
 byte Segment::checkVal(byte parameter, byte minVal, byte maxVal, bool cycles)
 {
