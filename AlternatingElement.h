@@ -10,6 +10,7 @@
 #define ____AlternatingElement__
 
 #include "Element.h"
+#include "LITColor.h"
 
 class AlternatingElement : public Element
 {

@@ -4,6 +4,12 @@
 
 //	3/16/13
 
+/*
+ 
+ This needs work - doesn't look much like a moving blur. Needs brightness adjustments to allow for brightness gradient to be noticeable.
+ 
+ */
+
 //	########################################################################
 
 #ifndef __LIT_Source__SeqMovingBlur__

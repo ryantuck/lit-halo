@@ -1,10 +1,19 @@
-//
+//	########################################################################
+
 //  Pattern1.h
-//  LITheadband
-//
-//  Created by Daniel Kern on 3/11/13.
-//  Copyright (c) 2013 Daniel Kern. All rights reserved.
-//
+
+//	3/16/13
+
+/*
+ 
+ Runs a sequence that matches the centroid of the spectrum to a color.
+ 
+ *	Needs work still.
+ 
+ */
+
+//	########################################################################
+
 
 #ifndef __LITheadband__Pattern1__
 #define __LITheadband__Pattern1__
@@ -18,4 +27,4 @@ public:
 	Pattern1();
 };
 
-#endif /* defined(__LITheadband__Pattern1__) */
+#endif

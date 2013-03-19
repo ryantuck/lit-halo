@@ -10,6 +10,7 @@
 #define ____DotElement__
 
 #include "Element.h"
+#include "LITColor.h"
 
 class DotElement : public Element
 {

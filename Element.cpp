@@ -10,6 +10,8 @@ Element::Element()
 {
 	createSegmentsArray(1);
 	
+	segments[0] = new Segment;
+	
 	layer		= 1;
 	rate		= 1;
 	rateCounter = 0;
@@ -187,11 +189,6 @@ void Element::createSegmentsArray(int number)
 {
 	maxSegments = number;
 	segments = new Segment*[number];
-	
-	for (int n=0;n<number;n++)
-	{
-		segments[n] = new Segment;
-	}
 }
 
 

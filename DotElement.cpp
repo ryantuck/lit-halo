@@ -11,9 +11,7 @@ DotElement::DotElement()
 {
 	createSegmentsArray(1);
 	
-	segments[0]->color.setColor(1,69,100);
-	segments[0]->length	= 1;
-	segments[0]->start	= 0;
+	segments[0] = new Segment(LITColor.red,1,0);
 	
 	layer		= 1;
 	rate		= 3;
@@ -26,9 +24,7 @@ DotElement::DotElement(Color myColor, int myStart)
 {
 	createSegmentsArray(1);
 	
-	segments[0]->color.setColor(myColor);
-	segments[0]->length	= 1;
-	segments[0]->start	= myStart;
+	segments[0] = new Segment(myColor,1,myStart);
 	
 	layer		= 1;
 	rate		= 3;

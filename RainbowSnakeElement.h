@@ -11,6 +11,7 @@
 #define ____RainbowSnakeElement__
 
 #include "Element.h"
+#include "LITColor.h"
 
 class RainbowSnakeElement : public Element
 {

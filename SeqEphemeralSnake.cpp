@@ -54,7 +54,7 @@ void SeqEphemeralSnake::update()
 		growing = 0;
 	}
 	
-	if (!growing && elements[0]->segments[0]->length == 0)
+	if (!growing && elements[0]->segments[0]->length == 1)
 	{
 		io = 0;
 	}

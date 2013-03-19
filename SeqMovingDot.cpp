@@ -10,10 +10,14 @@ SeqMovingDot::SeqMovingDot()
 {
 	createElementsArray(1);
 	
-	for (int n=0;n<maxElements;n++)
-	{
-		elements[n] = new DotElement;
-	}
+	elements[0] = new DotElement;
+}
+
+SeqMovingDot::SeqMovingDot(Color myColor, int myStart)
+{
+	createElementsArray(1);
+	
+	elements[0] = new DotElement(myColor,myStart);
 }
 
 void SeqMovingDot::update()

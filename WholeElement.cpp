@@ -1,10 +1,10 @@
-//
+//	########################################################################
+
 //  WholeElement.cpp
-//  LITheadband
-//
-//  Created by Daniel Kern on 3/15/13.
-//  Copyright (c) 2013 Daniel Kern. All rights reserved.
-//
+
+//	3/16/13
+
+//	########################################################################
 
 #include "WholeElement.h"
 
@@ -12,16 +12,12 @@ WholeElement::WholeElement()
 {
     createSegmentsArray(16);
     
-    for(int n = 0; n < maxSegments; n++)
-    {
-        segments[n]->color.setColor(LITColor.white);
-        segments[n]->length	= 1;
-        segments[n]->start	= n;
-    }
+    for(int n=0; n<maxSegments; n++)
+		segments[n] = new Segment(LITColor.white,1,n);
     
     layer		= 1;
     rate		= 1;
     brightness	= 127;
-    io = 1;
+    io			= 1;
 }
 		

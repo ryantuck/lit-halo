@@ -12,29 +12,13 @@ Pattern5::Pattern5()
 {
 	createSequencesArray(10);
 	
-	for (int n=0;n<maxSequences;n++)
-	{
-		sequences[n] = NULL;
-		
-	}
-	
 	//	don't need to create any sequences here.
-	//	they will be created randomly in the update() function.
+	//	they will be created in the update() function.
 }
 
 void Pattern5::update()
 {
-	//	if random condition is met && numSequences < maxSequences
-	//		create ephemeralsnake sequence with random:
-	//			color
-	//			rate
-	//			direction
-	//			layer
-	
-	//	for all sequences
-	//		if sequence should be destroyed
-	//		destroy sequence
-	//		rearrange sequences
+	//	could benefit from another condition to be met (audio, etc)
 	
 	if (numSequences() < maxSequences)
 	{
@@ -63,16 +47,15 @@ void Pattern5::update()
 	{
 		if (sequences[n]->io == 0)
 		{
+			Serial.println("deleted");
 			delete sequences[n];
 			sequences[n] = NULL;
-			
 			rearrangeSequences();
 		}
 	}
 	
 	for (int n=0;n<numSequences();n++)
 	{
-		Serial.print(n);		Serial.print(" ");
 		sequences[n]->update();
 	}
 	

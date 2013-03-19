@@ -1,10 +1,11 @@
-//
+//	########################################################################
+
 //  SeqCentroidToColor.cpp
-//  LITheadband
-//
-//  Created by Daniel Kern on 3/15/13.
-//  Copyright (c) 2013 Daniel Kern. All rights reserved.
-//
+
+//	3/16/13
+
+//	########################################################################
+
 
 #include "SeqCentroidToColor.h"
 

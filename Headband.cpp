@@ -60,8 +60,8 @@ void Headband::updateStrip()
 	{
 		strip.setPixelColor(n,
 							leds[n].color.r,
-							leds[n].color.g,
-							leds[n].color.b);
+							leds[n].color.b,
+							leds[n].color.g);
 	}
 	
 	strip.show();

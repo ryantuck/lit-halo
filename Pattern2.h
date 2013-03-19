@@ -1,10 +1,17 @@
-//
+//	########################################################################
+
 //  Pattern2.h
-//  LIT-Source
-//
-//  Created by Ryan Tuck on 3/15/13.
-//  Copyright (c) 2013 Ryan Tuck. All rights reserved.
-//
+
+//	3/16/13
+
+/*
+ 
+ Simply has a moving blur go around the headband. Could be expanded to use multiple moving blurs. 
+ 
+ */
+
+//	########################################################################
+
 
 #ifndef __LIT_Source__Pattern2__
 #define __LIT_Source__Pattern2__
@@ -18,4 +25,4 @@ public:
 	Pattern2();
 };
 
-#endif /* defined(__LIT_Source__Pattern2__) */
+#endif

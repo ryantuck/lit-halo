@@ -4,8 +4,7 @@
 
 //	*	Single moving dot.
 
-//	TODO
-//	*	colors must be pre-defined
+//	*	Should probably have constructor that can define direction of movement.
 
 //	####################################################################
 
@@ -20,6 +19,7 @@ class SeqMovingDot : public Sequence
 {
 public:
 	SeqMovingDot();
+	SeqMovingDot(Color myColor, int myStart);
 	void update();
 };
 

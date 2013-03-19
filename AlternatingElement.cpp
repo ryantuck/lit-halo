@@ -17,11 +17,7 @@ AlternatingElement::AlternatingElement()
 	io			= 1;
     
 	for (int n=0;n<maxSegments;n++)
-	{
-		segments[n]->length	= 1;
-		segments[n]->start	= 2*n;
-		segments[n]->color.setColor(1,69,1);
-	}
+		segments[n] = new Segment(LITColor.red,1,2*n);
 }
 
 AlternatingElement::AlternatingElement(Color newColor,bool odds)
@@ -37,9 +33,5 @@ AlternatingElement::AlternatingElement(Color newColor,bool odds)
 	if (odds)	tmpStart = 1;
 	
 	for (int n=0;n<maxSegments;n++)
-	{
-		segments[n]->length	= 1;
-		segments[n]->start	= tmpStart + 2*n;
-		segments[n]->color.setColor(newColor);
-	}
+		segments[n] = new Segment(LITColor.red,1,tmpStart + 2*n);
 }

@@ -4,6 +4,12 @@
 
 //	3/17/13
 
+/*
+ 
+ Contains six moving dots, one for each primary color. They move around at various rates and directions. 
+ 
+ */
+
 //	########################################################################
 
 #ifndef __LIT_Source__Pattern4__

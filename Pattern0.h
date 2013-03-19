@@ -1,10 +1,17 @@
-//
+//	########################################################################
+
 //  Pattern0.h
-//  LIT-Source
-//
-//  Created by Ryan Tuck on 3/13/13.
-//  Copyright (c) 2013 Ryan Tuck. All rights reserved.
-//
+
+//	3/16/13
+
+/*
+ 
+ Runs low battery sequence - flashing red lights. 
+ 
+ */
+
+//	########################################################################
+
 
 #ifndef __LIT_Source__Pattern0__
 #define __LIT_Source__Pattern0__
@@ -18,4 +25,4 @@ public:
 	Pattern0();
 };
 
-#endif /* defined(__LIT_Source__Pattern0__) */
+#endif

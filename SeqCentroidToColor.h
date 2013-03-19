@@ -1,10 +1,19 @@
-//
+//	########################################################################
+
 //  SeqCentroidToColor.h
-//  LITheadband
-//
-//  Created by Daniel Kern on 3/15/13.
-//  Copyright (c) 2013 Daniel Kern. All rights reserved.
-//
+
+//	3/16/13
+
+/*
+ 
+ Matches the centroid to a color. 
+ 
+ *	Needs work still. 
+ 
+ */
+
+//	########################################################################
+
 
 #ifndef __LITheadband__SeqCentroidToColor__
 #define __LITheadband__SeqCentroidToColor__
@@ -21,4 +30,4 @@ public:
 
 };
 
-#endif /* defined(__LITheadband__SeqCentroidToColor__) */
+#endif

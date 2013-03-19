@@ -1,10 +1,17 @@
-//
+//	########################################################################
+
 //  SeqLowBatt.h
-//  LIT-Source
-//
-//  Created by Ryan Tuck on 3/13/13.
-//  Copyright (c) 2013 Ryan Tuck. All rights reserved.
-//
+
+//	3/16/13
+
+/*
+ 
+ Flashes red lights to let user know to turn the HB off.
+ 
+ */
+
+//	########################################################################
+
 
 #ifndef __LIT_Source__SeqLowBatt__
 #define __LIT_Source__SeqLowBatt__
@@ -23,7 +30,5 @@ public:
 	
 	int longWhileCounter;
 };
-
-
 
 #endif

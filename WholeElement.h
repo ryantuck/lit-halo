@@ -1,10 +1,19 @@
-//
+//	########################################################################
+
 //  WholeElement.h
-//  LITheadband
-//
-//  Created by Daniel Kern on 3/15/13.
-//  Copyright (c) 2013 Daniel Kern. All rights reserved.
-//
+
+//	3/16/13
+
+/*
+ 
+ Contains 16 1-length segments to cover the entire headband.
+ 
+ Functionality is suspect - need to see good application to repeat usage.
+ 
+ */
+
+//	########################################################################
+
 
 #ifndef __LITheadband__WholeElement__
 #define __LITheadband__WholeElement__
@@ -18,4 +27,4 @@ public:
 	WholeElement();
 };
 
-#endif /* defined(__LITheadband__WholeElement__) */
+#endif
