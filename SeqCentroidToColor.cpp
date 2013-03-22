@@ -11,6 +11,7 @@
 
 SeqCentroidToColor::SeqCentroidToColor()
 {
+	clearElements();
     Serial.println("constructor just got called. BAM");
 	createElementsArray(1);
 	

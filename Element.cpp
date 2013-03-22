@@ -8,6 +8,10 @@
 
 Element::Element()
 {
+	Serial.println("element constructor");
+	
+	clearSegments();
+	
 	createSegmentsArray(1);
 	
 	segments[0] = new Segment;
@@ -24,11 +28,21 @@ Element::~Element()
 {
 	//	Should include error checking for previously-freed objects.
 	
+	Serial.println("element destructor");
+	
 	for (int n=0;n<numSegments();n++)
 	{
 		delete segments[n];
-		segments[n] = NULL;	// ?
+		Serial.print(n); Serial.println(" deleted segment");
 	}
+		
+	
+	for (int n=0;n<maxSegments;n++)
+	{
+		segments[n] = NULL;
+		Serial.print(n); Serial.println(" nulled segment ptr");
+	}
+		
 	
 	delete [] segments;
 	segments = NULL;
@@ -189,6 +203,31 @@ void Element::createSegmentsArray(int number)
 {
 	maxSegments = number;
 	segments = new Segment*[number];
+}
+
+void Element::clearSegments()
+{
+	if (segments != NULL)
+	{
+		if (numSegments() != 0)
+		{
+			for (int n=0;n<numSegments();n++)
+			{
+				delete segments[n];
+				Serial.print(n); Serial.println(" deleted segment");
+			}
+			
+			for (int n=0;n<maxSegments;n++)
+			{
+				segments[n] = NULL;
+				Serial.print(n); Serial.println(" nulled segment ptr");
+			}
+			
+			delete [] segments;
+			segments = NULL;
+
+		}
+	}
 }
 
 

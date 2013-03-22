@@ -10,6 +10,7 @@
 
 WholeElement::WholeElement()
 {
+	clearSegments();
     createSegmentsArray(16);
     
     for(int n=0; n<maxSegments; n++)

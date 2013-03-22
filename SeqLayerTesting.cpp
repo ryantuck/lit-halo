@@ -8,6 +8,7 @@
 
 LayerTestingSequence::LayerTestingSequence()
 {
+	clearElements();
 	createElementsArray(3);
 	
 	elements[0] = new Element;

@@ -10,12 +10,13 @@
 
 Pattern4::Pattern4()
 {
+	clearSequences();
 	createSequencesArray(6);
 	
 	for (int n=0;n<maxSequences;n++)
 	{
 		sequences[n] = new SeqMovingDot(*LITColor.colorList[n],n);
-		sequences[n]->elements[0]->rate = n;
+		sequences[n]->elements[0]->rate = n*4;
 	}
 }
 

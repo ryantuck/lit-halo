@@ -10,7 +10,8 @@
 
 Pattern5::Pattern5()
 {
-	createSequencesArray(10);
+	clearSequences();
+	createSequencesArray(3);
 	
 	//	don't need to create any sequences here.
 	//	they will be created in the update() function.
@@ -20,14 +21,16 @@ void Pattern5::update()
 {
 	//	could benefit from another condition to be met (audio, etc)
 	
-	if (numSequences() < maxSequences)
+	if (numSequences() < maxSequences && rand() % 4 == 1)
 	{
+		Serial.println("created");
+		
 		int newAddress = numSequences();
 		
 		Color	tmpColor		= *LITColor.colorList[rand() % 6];
 		int		tmpStart		= rand() % 15;
-		int		tmpLength		= rand() % 7 + 1;
-		int		tmpRate			= 1;//rand() % 10;
+		int		tmpLength		= 5;
+		int		tmpRate			= 4;
 		int		tmpLayer		= rand() % 10 + 1;
 		bool	tmpDirection	= rand() % 2;
 		

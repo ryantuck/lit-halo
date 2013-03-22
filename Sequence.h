@@ -32,7 +32,7 @@ public:
 	Sequence();
 	
 	//	Destructor delets all elements
-	~Sequence();
+	virtual ~Sequence();
 
 	//	Links vitals to elements
 	void linkUp();
@@ -55,6 +55,7 @@ public:
 	
 protected:
 	void createElementsArray(int number);
+	void clearElements();
 };
 
 

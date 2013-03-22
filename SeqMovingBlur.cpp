@@ -10,6 +10,7 @@
 
 SeqMovingBlur::SeqMovingBlur()
 {
+	clearElements();
 	createElementsArray(5);
 	
 	for (int n=0;n<maxElements;n++)
@@ -27,6 +28,7 @@ SeqMovingBlur::SeqMovingBlur()
 
 SeqMovingBlur::SeqMovingBlur(Color blurColor)
 {
+	clearElements();
 	createElementsArray(5);
 	
 	for (int n=0;n<maxElements;n++)

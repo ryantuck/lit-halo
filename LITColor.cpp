@@ -18,10 +18,10 @@ LITColorClass::LITColorClass()
 	black.setColor	(0,0,0);
 	
 	colorList[0] = &red;
-	colorList[1] = &green;
-	colorList[2] = &blue;
-	colorList[3] = &yellow;
-	colorList[4] = &cyan;
+	colorList[2] = &green;
+	colorList[4] = &blue;
+	colorList[1] = &yellow;
+	colorList[3] = &cyan;
 	colorList[5] = &magenta;
 	colorList[6] = &white;
 	colorList[7] = &black;

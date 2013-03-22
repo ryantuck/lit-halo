@@ -8,16 +8,28 @@
 
 Sequence::Sequence()
 {
-	maxElements	= 1;
-	elements = new Element*[maxElements];
+	clearElements();
+	createElementsArray(1);
+	
+	elements[0] = new Element;
 	
 	io = true;
 }
 
 Sequence::~Sequence()
 {
+	Serial.println("sequence destructor");
+	
 	for (int n=0;n<numElements();n++)
+	{
 		delete elements[n];
+		Serial.print(n); Serial.println(" deleted element");
+	}
+		
+	
+	for (int n=0;n<maxElements;n++)
+		elements[n] = NULL;
+		
 	
 	delete [] elements;
 	elements = NULL;
@@ -81,6 +93,30 @@ void Sequence::createElementsArray(int number)
 		elements[n] = NULL;
 	}
 }
+
+void Sequence::clearElements()
+{
+	if (elements != NULL)
+	{
+		if (numElements() != 0)
+		{
+			for (int n=0;n<numElements();n++)
+			{
+				delete elements[n];
+				Serial.print(n); Serial.println(" deleted element");
+			}
+			
+			
+			for (int n=0;n<maxElements;n++)
+				elements[n] = NULL;
+			
+			
+			delete [] elements;
+			elements = NULL;
+		}
+	}
+}
+
 
 void Sequence::printVitals()
 {

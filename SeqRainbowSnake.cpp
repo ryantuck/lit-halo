@@ -10,9 +10,11 @@
 
 SeqRainbowSnake::SeqRainbowSnake()
 {
+	clearElements();
 	createElementsArray(1);
 	
 	elements[0] = new RainbowSnakeElement;
+	elements[0]->rate = 10;
 }
 
 void SeqRainbowSnake::update()

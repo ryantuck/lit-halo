@@ -9,6 +9,7 @@
 
 RainbowSnakeElement::RainbowSnakeElement()
 {
+	clearSegments();
 	createSegmentsArray(6);
 	
 	for (int n=0;n<maxSegments;n++)

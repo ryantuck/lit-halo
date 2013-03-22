@@ -34,7 +34,7 @@ public:
 	Pattern();
 	
 	//	Destructor deletes all sequences
-	~Pattern();
+	virtual ~Pattern();
 	
 	//	Links vitals with sequences
 	void linkUp();
@@ -51,6 +51,7 @@ public:
 protected:
 	
 	void createSequencesArray(int number);
+	void clearSequences();
 };
 
 #endif

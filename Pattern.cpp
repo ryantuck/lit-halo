@@ -8,14 +8,18 @@
 
 Pattern::Pattern()
 {
-	maxSequences = 1;
-	sequences = new Sequence*[maxSequences];
+	createSequencesArray(1);
+	sequences[0] = new Sequence;
 }
 
 Pattern::~Pattern()
 {
 	for (int n=0;n<numSequences();n++)
 		delete sequences[n];
+	
+	for (int n=0;n<maxSequences;n++)
+		sequences[n] = NULL;
+		
 	
 	delete [] sequences;
 	sequences = NULL;
@@ -83,3 +87,26 @@ void Pattern::createSequencesArray(int number)
 		sequences[n] = NULL;
 	}
 }
+
+void Pattern::clearSequences()
+{
+	if (sequences != NULL)
+	{
+		if (numSequences() != 0)
+		{
+			for (int n=0;n<numSequences();n++)
+				delete sequences[n];
+			
+			for (int n=0;n<maxSequences;n++)
+				sequences[n] = NULL;
+			
+			
+			delete [] sequences;
+			sequences = NULL;
+		}
+	}
+}
+
+
+
+

@@ -46,7 +46,7 @@ public:
 	Element();
 	
 	//	Destructor deletes all segments.
-	~Element();
+	virtual ~Element();
 
 	//	Returns number of non-null segments.
 	//	Relevant if segments are created/destroyed.
@@ -96,6 +96,7 @@ protected:
 	//	Creates segments[] array.
 	//	Creates segments object and makes array point to them.
 	void	createSegmentsArray(int number);
+	void	clearSegments();
 };
 
 

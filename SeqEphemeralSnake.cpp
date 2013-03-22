@@ -11,6 +11,7 @@
 
 SeqEphemeralSnake::SeqEphemeralSnake()
 {
+	clearElements();
 	createElementsArray(1);
 	
 	elements[0] = new Element;
@@ -25,6 +26,7 @@ SeqEphemeralSnake::SeqEphemeralSnake(Color myColor,
 									 int myLayer,
 									 bool myDirection)
 {
+	clearElements();
 	createElementsArray(1);
 	elements[0] = new Element;
 	
@@ -60,12 +62,12 @@ void SeqEphemeralSnake::update()
 	}
 	
 	
-	Serial.print(growing);							Serial.print(" ");
-	Serial.print(direction);						Serial.print(" ");
-	Serial.print(maxLength);						Serial.print(" ");
-	Serial.print(elements[0]->segments[0]->start);	Serial.print(" ");
-	Serial.print(elements[0]->segments[0]->length);	Serial.print(" ");
-	Serial.println();
+//	Serial.print(growing);							Serial.print(" ");
+//	Serial.print(direction);						Serial.print(" ");
+//	Serial.print(maxLength);						Serial.print(" ");
+//	Serial.print(elements[0]->segments[0]->start);	Serial.print(" ");
+//	Serial.print(elements[0]->segments[0]->length);	Serial.print(" ");
+//	Serial.println();
 	
 	elements[0]->update();
 }

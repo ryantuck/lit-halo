@@ -9,6 +9,9 @@
 
 DotElement::DotElement()
 {
+	
+	clearSegments();
+	Serial.println("dot element constructor");
 	createSegmentsArray(1);
 	
 	segments[0] = new Segment(LITColor.red,1,0);
@@ -22,6 +25,7 @@ DotElement::DotElement()
 
 DotElement::DotElement(Color myColor, int myStart)
 {
+	clearSegments();
 	createSegmentsArray(1);
 	
 	segments[0] = new Segment(myColor,1,myStart);

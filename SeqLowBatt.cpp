@@ -11,6 +11,7 @@
 
 SeqLowBatt::SeqLowBatt()
 {
+	clearElements();
 	createElementsArray(1);
 	
 	elements[0] = new AlternatingElement(LITColor.red,0);

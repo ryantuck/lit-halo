@@ -11,6 +11,7 @@
 
 Pattern6::Pattern6()
 {
+	clearSequences();
 	createSequencesArray(1);
 	
 	sequences[0] = new SeqRainbowSnake;

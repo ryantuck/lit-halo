@@ -8,7 +8,8 @@
 #include "AlternatingElement.h"
 
 AlternatingElement::AlternatingElement()
-{	
+{
+	clearSegments();
 	createSegmentsArray(8);
 	
 	layer		= 1;
@@ -22,6 +23,7 @@ AlternatingElement::AlternatingElement()
 
 AlternatingElement::AlternatingElement(Color newColor,bool odds)
 {
+	clearSegments();
 	createSegmentsArray(8);
 	
 	layer		= 1;

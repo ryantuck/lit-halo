@@ -89,6 +89,9 @@ void Tester::leds()
 
 void Tester::segments()
 {
+	Sequence* mySequence = new Sequence;
+	
+	delete mySequence;
 	
 }
 
@@ -162,10 +165,10 @@ void Tester::headband()
 	{
 		
 		
-		Serial.print("Iteration: "); Serial.println(n);
+		//Serial.print("Iteration: "); Serial.println(n);
 		
 		myHeadband.update();
-		myHeadband.printLEDs();
+		//myHeadband.printLEDs();
 	}
 }
 
