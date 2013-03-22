@@ -9,7 +9,7 @@
 #include "SeqGlitter.h"
 
 
-SeqGlitter :: SeqGlitter(Color myColor,int layer)
+SeqGlitter :: SeqGlitter(Color newColor,int layer)
 {
     createElementsArray(16);
     
@@ -21,15 +21,17 @@ SeqGlitter :: SeqGlitter(Color myColor,int layer)
     
     prob_on = 0;
     counter = 0;
-    state = 0; //prob_on is going up
+    state   = 0; //prob_on is going up
     
-    myColor = myColor;
+    myColor = newColor;
   
 }
 
 void SeqGlitter :: update()
 {
-    if(prob_on <= 0 | prob_on >= 100) state = ~state;
+    if (prob_on <= 0)   state = 1;
+    if (prob_on >= 100) state = 0;
+    
     if(state) prob_on++;
     else prob_on--;
     

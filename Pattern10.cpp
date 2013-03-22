@@ -36,11 +36,21 @@ void Pattern10 :: update()
             for(int n = 0; n < numSequences(); n++)
             {
                 if(rand()%2 == 1)
+                {
+                    delete sequences[n];
+                    sequences[n] = NULL;
+                }
             }
+            rearrangeSequences();
                 
             //add new SeqGlitter sequence using random color and random layer
+            if (numSequences() < maxSequences)
+            {
+                sequences[numSequences()] = new SeqGlitter(*LITColor.colorList[rand()%7], rand()%10+1);
+            }
                 
             //move to next state
+            state = 0;
             break;
     }
     

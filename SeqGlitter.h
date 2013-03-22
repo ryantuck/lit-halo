@@ -16,10 +16,10 @@
 class SeqGlitter : public Sequence
 {
 public:
-	SeqGlitter(Color myColor, int layer);
+	SeqGlitter(Color newColor, int layer);
 	void update();
     
-    double prob_on;
+    int prob_on;
     int counter;
     bool state;
     

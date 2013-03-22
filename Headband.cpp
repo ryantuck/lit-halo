@@ -125,27 +125,27 @@ void Headband::updatePattern(int index)
 			linkUp();
 			break;
 		case 1:
-			pattern = new Pattern1;
+			pattern = new Pattern0;
 			linkUp();
 			break;
 		case 2:
-			pattern = new Pattern2;
+			pattern = new Pattern0;
 			linkUp();
 			break;
 		case 3:
-			pattern = new Pattern3;
+			pattern = new Pattern0;
 			linkUp();
 			break;
 		case 4:
-			pattern = new Pattern4;
+			pattern = new Pattern0;
 			linkUp();
 			break;
 		case 5:
-			pattern = new Pattern5;
+			pattern = new Pattern0;
 			linkUp();
 			break;
 		case 6:
-			pattern = new Pattern6;
+			pattern = new Pattern10;
 			linkUp();
 			break;
 	}
