@@ -16,8 +16,9 @@
 #include "Pattern4.h"
 #include "Pattern5.h"
 #include "Pattern6.h"
+#include "Pattern7.h"
 
-#include "Pattern10.h"
+//#include "Pattern10.h"
 
 
 #endif

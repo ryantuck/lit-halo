@@ -10,7 +10,7 @@
 
 SeqRainbowSnake::SeqRainbowSnake()
 {
-	clearElements();
+	//clearElements();
 	createElementsArray(1);
 	
 	elements[0] = new RainbowSnakeElement;

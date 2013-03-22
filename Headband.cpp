@@ -8,7 +8,7 @@
 
 Headband::Headband()
 {
-	patternIndex = 5;
+	patternIndex = 2;
 	updatePattern(patternIndex);
 
 	downButton		= Button(5);
@@ -76,22 +76,16 @@ void Headband::checkButtons()
 	{
 		if (upButton.pressed)
 		{
-            if(patternIndex == 3) patternIndex = 1;
+            if(patternIndex == 4) patternIndex = 1;
             else patternIndex++;
-            Serial.println();
-            Serial.print("Up button pressed. patternIndex is ");
-            Serial.println(patternIndex);
             
 			updatePattern(patternIndex);
 		}
 		
 		else if (downButton.pressed)
 		{			
-			if(patternIndex == 1) patternIndex = 3;
+			if(patternIndex == 1) patternIndex = 4;
             else patternIndex--;
-            Serial.println();
-            Serial.print("Down button pressed. patternIndex is ");
-            Serial.println(patternIndex);
 
 			updatePattern(patternIndex);
 		}
@@ -125,29 +119,33 @@ void Headband::updatePattern(int index)
 			linkUp();
 			break;
 		case 1:
-			pattern = new Pattern0;
+			pattern = new Pattern4;
 			linkUp();
 			break;
 		case 2:
-			pattern = new Pattern0;
+			pattern = new Pattern5;
 			linkUp();
 			break;
 		case 3:
-			pattern = new Pattern0;
+			pattern = new Pattern6;
 			linkUp();
 			break;
 		case 4:
-			pattern = new Pattern0;
+			pattern = new Pattern7;
 			linkUp();
 			break;
-		case 5:
-			pattern = new Pattern0;
-			linkUp();
-			break;
-		case 6:
-			pattern = new Pattern10;
-			linkUp();
-			break;
+//		case 4:
+//			pattern = new Pattern4;
+//			linkUp();
+//			break;
+//		case 5:
+//			pattern = new Pattern5;
+//			linkUp();
+//			break;
+//		case 6:
+//			pattern = new Pattern6;
+//			linkUp();
+//			break;
 	}
 }
 

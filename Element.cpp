@@ -8,9 +8,7 @@
 
 Element::Element()
 {
-	Serial.println("element constructor");
-	
-	clearSegments();
+	//clearSegments();
 	
 	createSegmentsArray(1);
 	
@@ -27,20 +25,15 @@ Element::Element()
 Element::~Element()
 {
 	//	Should include error checking for previously-freed objects.
-	
-	Serial.println("element destructor");
-	
 	for (int n=0;n<numSegments();n++)
 	{
 		delete segments[n];
-		Serial.print(n); Serial.println(" deleted segment");
 	}
 		
 	
 	for (int n=0;n<maxSegments;n++)
 	{
 		segments[n] = NULL;
-		Serial.print(n); Serial.println(" nulled segment ptr");
 	}
 		
 	

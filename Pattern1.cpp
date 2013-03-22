@@ -12,7 +12,7 @@
 
 Pattern1::Pattern1()
 {
-	clearSequences();
+	//clearSequences();
     createSequencesArray(1);
 	
 	sequences[0] = new SeqCentroidToColor;

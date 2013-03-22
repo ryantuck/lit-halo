@@ -8,7 +8,7 @@
 
 Pattern::Pattern()
 {
-	clearSequences();
+	//clearSequences();
 	createSequencesArray(1);
 	sequences[0] = new Sequence;
 }

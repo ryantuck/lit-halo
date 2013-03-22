@@ -8,7 +8,7 @@
 
 SeqMovingDot::SeqMovingDot()
 {
-	clearElements();
+	//clearElements();
 	createElementsArray(1);
 	
 	elements[0] = new DotElement;
@@ -16,7 +16,7 @@ SeqMovingDot::SeqMovingDot()
 
 SeqMovingDot::SeqMovingDot(Color myColor, int myStart)
 {
-	clearElements();
+	//clearElements();
 	createElementsArray(1);
 	
 	elements[0] = new DotElement(myColor,myStart);

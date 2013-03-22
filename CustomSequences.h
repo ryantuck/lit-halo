@@ -20,7 +20,7 @@
 #include "SeqMovingBlur.h"
 #include "SeqEphemeralSnake.h"
 #include "SeqRainbowSnake.h"
-#include "SeqGlitter.h"
+//#include "SeqGlitter.h"
 
 
 

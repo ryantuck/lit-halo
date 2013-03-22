@@ -8,7 +8,7 @@
 
 Sequence::Sequence()
 {
-	clearElements();
+	//clearElements();
 	createElementsArray(1);
 	
 	elements[0] = new Element;
@@ -18,12 +18,9 @@ Sequence::Sequence()
 
 Sequence::~Sequence()
 {
-	Serial.println("sequence destructor");
-	
 	for (int n=0;n<numElements();n++)
 	{
 		delete elements[n];
-		Serial.print(n); Serial.println(" deleted element");
 	}
 		
 	

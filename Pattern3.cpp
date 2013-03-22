@@ -11,7 +11,7 @@
 
 Pattern3::Pattern3()
 {
-	clearSequences();
+	//clearSequences();
 	createSequencesArray(1);
 	
 	sequences[0] = new SeqAltTest;

@@ -10,7 +10,7 @@
 
 Pattern4::Pattern4()
 {
-	clearSequences();
+	//clearSequences();
 	createSequencesArray(6);
 	
 	for (int n=0;n<maxSequences;n++)

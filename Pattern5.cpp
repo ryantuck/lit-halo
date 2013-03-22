@@ -10,7 +10,7 @@
 
 Pattern5::Pattern5()
 {
-	clearSequences();
+	//clearSequences();
 	createSequencesArray(3);
 	
 	//	don't need to create any sequences here.
