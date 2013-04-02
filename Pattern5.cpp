@@ -50,7 +50,6 @@ void Pattern5::update()
 	{
 		if (sequences[n]->io == 0)
 		{
-			Serial.println("deleted");
 			delete sequences[n];
 			sequences[n] = NULL;
 			rearrangeSequences();

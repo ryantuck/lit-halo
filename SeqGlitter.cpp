@@ -17,6 +17,7 @@ SeqGlitter :: SeqGlitter(Color newColor,int layer)
     {
         elements[n] = new DotElement(myColor, n);
         elements[n]->layer = layer;
+		elements[n]->rate = 5;
     }
     
     prob_on = 0;
@@ -39,10 +40,15 @@ void SeqGlitter :: update()
     {
         if(elements[n]->canUpdate())
         {
-            if(prob_on < rand()%100) elements[n]->segments[1]->color.setColor(0,0,0); //rand() expression needs to be revised to return num between 0-100
+            if(prob_on < rand()%100) elements[n]->segments[0]->color.setColor(0,0,0);
             else
             {
-                elements[n]->segments[1]->color.setColor(myColor);
+//				float ratio = 7/1023;
+//				float index = audio->eq.spectrum[0] * ratio;
+//				
+//				myColor.setColor(*LITColor.colorList[(int)index]);
+				
+                elements[n]->segments[0]->color.setColor(myColor);
                 elements[n]->brightness = rand()%100;
                 
             }

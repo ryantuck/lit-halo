@@ -5,6 +5,7 @@
 //  Created by Daniel Kern on 3/21/13.
 //  Copyright (c) 2013 Daniel Kern. All rights reserved.
 //
+//  created by Kern
 
 #ifndef __LITheadband__Pattern10__
 #define __LITheadband__Pattern10__

@@ -76,7 +76,7 @@ void Headband::checkButtons()
 	{
 		if (upButton.pressed)
 		{
-            if(patternIndex == 4) patternIndex = 1;
+            if(patternIndex == 5) patternIndex = 1;
             else patternIndex++;
             
 			updatePattern(patternIndex);
@@ -84,7 +84,7 @@ void Headband::checkButtons()
 		
 		else if (downButton.pressed)
 		{			
-			if(patternIndex == 1) patternIndex = 4;
+			if(patternIndex == 1) patternIndex = 5;
             else patternIndex--;
 
 			updatePattern(patternIndex);
@@ -131,13 +131,13 @@ void Headband::updatePattern(int index)
 			linkUp();
 			break;
 		case 4:
-			pattern = new Pattern7;
+			pattern = new Pattern9;
 			linkUp();
 			break;
-//		case 4:
-//			pattern = new Pattern4;
-//			linkUp();
-//			break;
+		case 5:
+			pattern = new Pattern8;
+			linkUp();
+			break;
 //		case 5:
 //			pattern = new Pattern5;
 //			linkUp();

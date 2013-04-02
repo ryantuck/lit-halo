@@ -17,8 +17,10 @@
 #include "Pattern5.h"
 #include "Pattern6.h"
 #include "Pattern7.h"
+#include "Pattern8.h"
+#include "Pattern9.h"
 
-//#include "Pattern10.h"
+#include "Pattern10.h"
 
 
 #endif

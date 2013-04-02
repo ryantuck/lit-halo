@@ -17,6 +17,9 @@ class Pattern7 : public Pattern
 public:
 	Pattern7();
 	void update();
+	
+	int counter;
+	bool direction;
 };
 
 

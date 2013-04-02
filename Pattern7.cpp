@@ -10,6 +10,9 @@
 
 Pattern7::Pattern7()
 {
+	counter = 1;
+	direction = 0;
+	
 	//clearSequences();
 	createSequencesArray(4);
 	
@@ -20,19 +23,38 @@ Pattern7::Pattern7()
 	
 	for (int n=0;n<maxSequences;n++)
 	{
-		sequences[n]->elements[n]->rate = 5;
+		sequences[n]->elements[n]->rate = 10;
 	}
 }
 
 void Pattern7::update()
 {
-	for (int n=0;n<maxSequences;n++)
+	if (!direction)
 	{
-		if (sequences[n]->elements[0]->canUpdate())
+		for (int n=0;n<maxSequences;n++)
 		{
-			sequences[n]->elements[0]->move((n+1)%2);
+			if (sequences[n]->elements[0]->canUpdate())
+			{
+				sequences[n]->elements[0]->move((n+1)%2);
+				counter++;
+			}
+			
+			sequences[n]->update();
 		}
-		
-		sequences[n]->update();
 	}
+	
+	else if (direction)
+	{
+		for (int n=0;n<maxSequences;n++)
+		{
+			if (sequences[n]->elements[0]->canUpdate())
+			{
+				sequences[n]->elements[0]->move(n%2);
+				counter++;
+			}
+			
+			sequences[n]->update();
+		}
+	}
+	
 }
