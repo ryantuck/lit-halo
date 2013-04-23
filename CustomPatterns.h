@@ -19,7 +19,6 @@
 #include "Pattern7.h"
 #include "Pattern8.h"
 #include "Pattern9.h"
-
 #include "Pattern10.h"
 
 

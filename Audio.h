@@ -25,6 +25,9 @@ public:
 	int			weightSpectrum[7];
 	byte		beatCounters[7];	//	tracks how many iterations
 									//	since last beat on each band.
+	
+	int averagedSpectrum[7];
+	
 	//	Constructor
 	Audio();
 	
@@ -50,8 +53,11 @@ public:
 	void adjustPot();
 	
 	//	For testing.
+	void gatherSpectrumAverages();
+	
 	void printBeatCounters();
 	void printSpectrum();
+	void printAvgSpectrum();
 	
 };
 
