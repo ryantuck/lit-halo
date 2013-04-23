@@ -35,6 +35,17 @@ void LED::adjustColor()
 	color.b *= ratio;
 }
 
+void LED::set(LED aLED)
+{
+	color.setColor(aLED.color);
+	brightness = aLED.brightness;
+}
+
+void LED::set(Color aColor,byte aBrightness)
+{
+	color.setColor(aColor);
+	brightness = aBrightness;
+}
 
 
 

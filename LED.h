@@ -26,6 +26,9 @@ public:
 	//	Adjusts color based on LED brightness.
 	void adjustColor();
 	
+	void set(LED aLED);
+	void set(Color aColor,byte aBrightness);
+	
 	//	For testing
 	void printVitals();
 };

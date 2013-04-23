@@ -22,8 +22,8 @@ public:
 	
 	LED leds[16];
 	
-	byte numLEDs; // crap
-	byte io;
+	byte numLEDs;	// include elsewhere?
+	bool io;
 	byte layer;
 	byte period;
 	byte brightness;

@@ -34,23 +34,14 @@ void Thing::setBlock(Color aColor, byte aBrightness, byte aStart, byte aEnd)
 	if (aStart <= aEnd)						//	doesn't wrap
 	{
 		for (int n=aStart;n<=aEnd;n++)
-		{
-			leds[n].color.setColor(aColor);
-			leds[n].brightness = aBrightness;
-		}
+			leds[n].set(aColor,aBrightness);
 	}
 	else									//	wraps
 	{
 		for (int n=aStart;n<numLEDs;n++)
-		{
-			leds[n].color.setColor(aColor);
-			leds[n].brightness = aBrightness;
-		}
+			leds[n].set(aColor,aBrightness);
 		for (int n=0;n<=aEnd;n++)
-		{
-			leds[n].color.setColor(aColor);
-			leds[n].brightness = aBrightness;
-		}
+			leds[n].set(aColor,aBrightness);
 	}
 }
 
@@ -62,31 +53,21 @@ void Thing::move(bool direction)
 	
 	if (direction)
 	{
-		tmpLED.color.setColor(leds[maxAddress].color);
-		tmpLED.brightness = leds[maxAddress].brightness;
+		tmpLED.set(leds[maxAddress]);
 		
 		for (int n=maxAddress;n>0;n++)
-		{
-			leds[n].color.setColor(leds[n-1].color);
-			leds[n].brightness = leds[n-1].brightness;
-		}
+			leds[n].set(leds[n-1]);
 		
-		leds[0].color.setColor(tmpLED.color);
-		leds[0].brightness = tmpLED.brightness;
+		leds[0].set(tmpLED);
 	}
 	else
 	{
-		tmpLED.color.setColor(leds[0].color);
-		tmpLED.brightness = leds[0].brightness;
+		tmpLED.set(leds[0]);
 		
 		for (int n=0;n<maxAddress;n++)
-		{
-			leds[n].color.setColor(leds[n+1].color);
-			leds[n].brightness = leds[n+1].brightness;
-		}
+			leds[n].set(leds[n+1]);
 		
-		leds[maxAddress].color.setColor(tmpLED.color);
-		leds[maxAddress].brightness = tmpLED.brightness;
+		leds[maxAddress].set(tmpLED);
 	}
 }
 
