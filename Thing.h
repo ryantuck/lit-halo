@@ -30,6 +30,8 @@ public:
 	
 	void setBlock(Color aColor, byte aBrightness, byte aStart, byte aEnd);
 	
+	virtual void update();
+	
 	void move(bool direction);
 	void move(bool direction,byte units);
 	
