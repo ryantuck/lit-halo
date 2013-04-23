@@ -14,6 +14,25 @@ Tester::Tester()
 }
 
 
+void Tester::things()
+{
+	Thing1 item;
+	
+	for (int n=0;n<item.numLEDs;n++)
+	{
+		Serial.println(n);
+		item.leds[n].printVitals();
+	}
+	
+	item.update();
+	for (int n=0;n<item.numLEDs;n++)
+	{
+		Serial.println(n);
+		item.leds[n].printVitals();
+	}
+}
+
+
 void Tester::colors()
 {
 	Serial.println("================================");

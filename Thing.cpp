@@ -45,6 +45,11 @@ void Thing::setBlock(Color aColor, byte aBrightness, byte aStart, byte aEnd)
 	}
 }
 
+void Thing::update()
+{
+	
+}
+
 
 void Thing::move(bool direction)
 {
@@ -55,7 +60,7 @@ void Thing::move(bool direction)
 	{
 		tmpLED.set(leds[maxAddress]);
 		
-		for (int n=maxAddress;n>0;n++)
+		for (int n=maxAddress;n>0;n--)
 			leds[n].set(leds[n-1]);
 		
 		leds[0].set(tmpLED);
