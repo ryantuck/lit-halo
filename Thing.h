@@ -31,9 +31,17 @@ public:
 	void setBlock(Color aColor, byte aBrightness, byte aStart, byte aEnd);
 	
 	void move(bool direction);
+	void move(bool direction,byte units);
+	
+	void fade(bool direction);
+	void fade(bool direction,byte units);
 	
 private:
-	
+	byte	updateValue(byte parameter,
+						bool direction,
+						byte minVal,
+						byte maxVal,
+						bool cycles);
 	
 };
 

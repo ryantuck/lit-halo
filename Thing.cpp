@@ -71,11 +71,61 @@ void Thing::move(bool direction)
 	}
 }
 
+void Thing::move(bool direction,byte units)
+{
+	if		(units < 0)			units = 0;
+	while	(units > numLEDs)	units -= numLEDs;
+	
+	for (int n=0;n<units;n++)
+		move(direction);
+}
+
+
+void Thing::fade(bool direction)
+{
+	brightness = updateValue(brightness, direction, 0, 100, 0);
+}
+
+void Thing::fade(bool direction, byte units)
+{
+	if		(units < 0)			units = 0;
+	while	(units > 100)		units -= 100;
+	
+	for (int n=0;n<units;n++)
+		fade(direction);
+}
 
 
 
 
 
+byte Thing::updateValue(byte parameter,
+						  bool direction,
+						  byte minVal,
+						  byte maxVal,
+						  bool cycles)
+{
+	if (direction)
+	{
+		if (parameter == maxVal)
+		{
+			if (cycles) parameter = minVal;
+			else		parameter = maxVal;
+		}
+		else parameter++;
+	}
+	else
+	{
+		if (parameter == minVal)
+		{
+			if (cycles)	parameter = maxVal;
+			else		parameter = minVal;
+		}
+		else parameter--;
+	}
+	
+	return parameter;
+}
 
 
 
