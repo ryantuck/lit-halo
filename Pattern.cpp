@@ -8,106 +8,83 @@
 
 Pattern::Pattern()
 {
-	//clearSequences();
-	createSequencesArray(1);
-	sequences[0] = new Sequence;
+	createThingsArray();
 }
 
 Pattern::~Pattern()
 {
-	for (int n=0;n<numSequences();n++)
-		delete sequences[n];
-	
-	for (int n=0;n<maxSequences;n++)
-		sequences[n] = NULL;
-		
-	
-	delete [] sequences;
-	sequences = NULL;
-}
-
-void Pattern::linkUp()
-{
-	for (int i=0;i<numSequences();i++)
-	{
-		sequences[i]->numLEDs	= numLEDs;
-		sequences[i]->leds		= leds;
-		sequences[i]->audio		= audio;
-		
-		sequences[i]->linkUp();
-	}
+	clearThings();
 }
 
 void Pattern::update()
 {
-	for (int i=0;i<numSequences();i++)
-		sequences[i]->update();
+	updateLEDs();
 }
 
-int Pattern::numSequences()
+void Pattern::updateLEDs()
+{
+	Serial.print("num things: "); Serial.println(numThings());
+	
+	for (int l=0;l<numLEDs;l++)
+	{
+		int tmpLayer = 0;
+		
+		for (int t=0;t<numThings();t++)
+		{
+			Serial.print(l); Serial.print(" "); Serial.println(t);
+			
+			if (!things[t]->tLEDs[l].color.isBlack())
+			{
+				if (things[t]->layer > tmpLayer)
+				{
+					tmpLayer = things[t]->layer;
+					
+					leds[l].set(things[t]->tLEDs[l]);
+				}
+				else if (things[t]->layer == tmpLayer)
+				{
+					//leds[l].set(things[t]->tLEDs[l]);
+					
+					//  mix colors
+					leds[l].color.mixWith(things[t]->tLEDs[l].color);
+					//leds[l].brightness = (leds[l].brightness + things[t]->tLEDs[l].brightness) / 2;	//ok?
+					//leds[l].adjustColor();
+				}
+			}
+		}
+	}
+}
+
+int Pattern::numThings()
 {
 	int count = 0;
-	
-	for (int n=0;n<maxSequences;n++)
-		if(sequences[n] != NULL)
+	for (int n=0;n<8;n++)
+		if (things[n] != NULL)
 			count++;
-
+	
 	return count;
 }
 
-void Pattern::rearrangeSequences()
+void Pattern::createThingsArray()
 {
-	int index = 0;
+	things = new Thing*[8];
 	
-	while (index < maxSequences)
-	{
-		if (sequences[index] != NULL)
-			index++;
-		else
-		{
-			if (sequences[index+1] != NULL && index != maxSequences - 1)
-			{
-				sequences[index]	= sequences[index+1];
-				sequences[index+1]	= NULL;
-				index = 0;
-			}
-			else
-				index++;
-		}
-	}
+	for (int n=0;n<8;n++) things[n] = NULL;
 }
 
-void Pattern::createSequencesArray(int number)
+void Pattern::clearThings()
 {
-	maxSequences = number;
-	sequences = new Sequence*[maxSequences];
-	
-	//	Not sure if this helps
-	for (int n=0;n<maxSequences;n++)
+	if (things != NULL)
 	{
-		sequences[n] = NULL;
-	}
-}
-
-void Pattern::clearSequences()
-{
-	if (sequences != NULL)
-	{
-		if (numSequences() != 0)
+		for (int n=0;n<8;n++)
 		{
-			for (int n=0;n<numSequences();n++)
-				delete sequences[n];
-			
-			for (int n=0;n<maxSequences;n++)
-				sequences[n] = NULL;
-			
-			
-			delete [] sequences;
-			sequences = NULL;
+			if (things[n] != NULL) delete things[n];
+			things[n] = NULL;
 		}
+		
+		delete [] things;
+		things = NULL;
 	}
 }
-
-
 
 

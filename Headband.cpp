@@ -8,15 +8,15 @@
 
 Headband::Headband()
 {
-	patternIndex = 1;
+	patternIndex = 0;
 	updatePattern(patternIndex);
 
-	downButton		= Button(5);
-	upButton		= Button(4);
+	downButton		= Button(8);
+	upButton		= Button(9);
 	
 	//	dat-3 / clk-2
-	strip = LPD8806(16,3,2);
-	strip.begin();
+	//strip = LPD8806(16,3,2);
+	//strip.begin();
 }
 
 void Headband::update()
@@ -24,25 +24,12 @@ void Headband::update()
 	checkButtons();
 	getAudio();
 	updateLEDs();
-	updateStrip();
-}
-
-void Headband::linkUp()
-{
-	Serial.println("hbLink up");
-
-	pattern->numLEDs	= sizeof(leds)/sizeof(LED);
-
-	pattern->leds		= leds;
-	pattern->audio		= &audio;
-
-	pattern->linkUp();
+	//updateStrip();
+	writeLights();
 }
 
 void Headband::updateLEDs()
 {
-	int numLEDs = sizeof(leds) / sizeof(LED);
-	
 	for (int n=0;n<numLEDs;n++)
 	{
 		leds[n].color.setColor(0, 0, 0);
@@ -54,8 +41,6 @@ void Headband::updateLEDs()
 
 void Headband::updateStrip()
 {
-	int numLEDs = sizeof(leds)/sizeof(LED);
-	
 	for (int n=0;n<numLEDs;n++)
 	{
 		strip.setPixelColor(n,
@@ -65,6 +50,14 @@ void Headband::updateStrip()
 	}
 	
 	strip.show();
+}
+
+void Headband::writeLights()
+{
+	for (int n=0;n<numLEDs;n++)
+		lights.setPixelColor(n, leds[n].color);
+	
+	lights.writeRegisters();
 }
 
 void Headband::checkButtons()
@@ -115,37 +108,8 @@ void Headband::updatePattern(int index)
 	switch (index)
 	{
 		case 0:
-			pattern = new Pattern0;
-			linkUp();
+			pattern = new PatternA;
 			break;
-		case 1:
-			pattern = new Pattern11;
-			linkUp();
-			break;
-		case 2:
-			pattern = new Pattern5;
-			linkUp();
-			break;
-		case 3:
-			pattern = new Pattern6;
-			linkUp();
-			break;
-		case 4:
-			pattern = new Pattern9;
-			linkUp();
-			break;
-		case 5:
-			pattern = new Pattern8;
-			linkUp();
-			break;
-//		case 5:
-//			pattern = new Pattern5;
-//			linkUp();
-//			break;
-//		case 6:
-//			pattern = new Pattern6;
-//			linkUp();
-//			break;
 	}
 }
 

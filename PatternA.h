@@ -1,25 +1,25 @@
 //	########################################################################
 
-//  Pattern11.h
+//  PatternA.h
 
-//	5/1/13
+//	5/2/13
 
 //	########################################################################
 
-#ifndef __Headband__Pattern11__
-#define __Headband__Pattern11__
+#ifndef __Headband__PatternA__
+#define __Headband__PatternA__
 
 #include "Pattern.h"
-#include "Thing1.h"
+#include "CustomThings.h"
 
-class Pattern11 : public Pattern
+class PatternA : public Pattern
 {
 public:
-	Pattern11();
-	void update();
+	PatternA();
 	
-	Thing1 myThing;
+	void update();
 };
+
 
 
 #endif

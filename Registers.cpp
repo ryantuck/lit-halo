@@ -27,9 +27,6 @@ void Registers::setPixelColor(byte address, Color newColor)
 	int tmpReg;
 	int regAddress = 0;
 	
-	Serial.print("address: ");
-	Serial.println(address);
-	
 	if (!(address % 2))	tmpReg = address/2;
 	else
 	{
@@ -38,16 +35,13 @@ void Registers::setPixelColor(byte address, Color newColor)
 		regAddress = 1;
 	}
 	
-	Serial.print("tmpReg: ");
-	Serial.println(tmpReg);
-	Serial.print("regAddress: ");
-	Serial.println(regAddress);
-	
 	myRegisters[tmpReg].colors[regAddress].setColor(newColor);
 }
 
 void Registers::writeRegisters()
 {
+	//printLEDs();
+	
 	digitalWrite(latchPin, 0);
 	
 	for (int n=7; n>=0; n--)
@@ -96,7 +90,22 @@ void Registers::update()
 	}
 }
 
-
+void Registers::printLEDs()
+{
+	Serial.println("LEDs (reg)");
+	Serial.println("----");
+	for (int n=0;n<8;n++)
+	{
+		for (int a=0;a<2;a++)
+		{
+			Serial.print(n*2+a);
+			Serial.print(" ");
+			if (n*2+a<10) Serial.print(" ");
+			myRegisters[n].colors[a].printVitals();
+		}
+		
+	}
+}
 
 
 

@@ -25,6 +25,8 @@ public:
 	
 	void update();
 	
+	void printLEDs();
+	
 private:
 	byte latchPin;
 	byte clockPin;

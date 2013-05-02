@@ -17,42 +17,29 @@
 
 #include "Audio.h"
 #include "LED.h"
-#include "Sequence.h"
-#include "CustomSequences.h"
+//#include "Sequence.h"
+//#include "CustomSequences.h"
 #include "Thing.h"
 
 class Pattern
 {
 public:
 	
-	Sequence**		sequences;
-	LED*			leds;
-	Audio*			audio;
-	byte			numLEDs;
-	byte			maxSequences;
+	Thing** things;
 	
-	//	Constructor
 	Pattern();
 	
-	//	Destructor deletes all sequences
-	virtual ~Pattern();
-	
-	//	Links vitals with sequences
-	void linkUp();
-	
-	//	Updates sequences
+	virtual ~Pattern();			// why virtual?
+
 	virtual void update();
 	
-	//	Returns number of actual sequences
-	int	numSequences();
-	
-	//	[ real sequences ... null pointers ]
-	void rearrangeSequences();
+	void updateLEDs();
+
+	int numThings();
 	
 protected:
-	
-	void createSequencesArray(int number);
-	void clearSequences();
+	void createThingsArray();
+	void clearThings();
 };
 
 #endif

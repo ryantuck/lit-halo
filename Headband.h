@@ -17,6 +17,7 @@
 #include "Pattern.h"
 #include "Hardware.h"
 #include "LITColor.h"
+#include "Registers.h"
 #include "CustomPatterns.h"
 
 class Headband
@@ -24,12 +25,14 @@ class Headband
 public:
 	
 	Pattern*	pattern;
-	Audio		audio;
-	LED			leds[16];
+	//Audio		audio;
+	//LED			leds[16];
 	
 	Battery		batt;
 	
 	LPD8806		strip;
+	
+	Registers	lights;
 	
 	Button		upButton;
 	Button		downButton;
@@ -39,9 +42,6 @@ public:
 	
 	//	Constructor
 	Headband();
-	
-	//	Links pattern with vitals
-	void		linkUp();
 	
 	//	Runs each iteration. Updates everything.
 	void		update();
@@ -54,6 +54,8 @@ public:
 	
 	//	Writes LED data to LPD8806.
 	void		updateStrip();
+	
+	void writeLights();
 	
 	//	Checks buttons for presses and updates counters accordingly.
 	void		checkButtons();

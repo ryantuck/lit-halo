@@ -37,6 +37,8 @@ public:
     //convert rgb color to equivalent rgb at specified brightness (0-127)
     void findRGB(byte brightness);
 	
+	bool isBlack();
+	
 	//	For testing
 	void printVitals();
 	

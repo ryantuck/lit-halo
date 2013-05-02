@@ -1,24 +1,13 @@
 //	########################################################################
 
-//  Pattern11.cpp
+//  LIT.cpp
 
-//	5/1/13
+//	5/2/13
 
 //	########################################################################
 
-#include "Pattern11.h"
+#include "LIT.h"
 
-Pattern11::Pattern11()
-{
-}
-
-void Pattern11::update()
-{
-	myThing.update();
-}
-
-
-
-
-
-
+int		numLEDs = 16;
+LED		leds[16];
+Audio	audio;

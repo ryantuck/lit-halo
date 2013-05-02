@@ -15,6 +15,7 @@
 
 #include "LED.h"
 #include "Color.h"
+#include "LIT.h"
 
 class Thing
 {
@@ -22,9 +23,8 @@ public:
 	
 	Thing();
 	
-	LED leds[16];
-	
-	byte numLEDs;	// include elsewhere?
+	LED tLEDs[16];
+
 	bool io;
 	byte layer;
 	byte period;
@@ -46,7 +46,6 @@ private:
 						byte minVal,
 						byte maxVal,
 						bool cycles);
-	
 };
 
 

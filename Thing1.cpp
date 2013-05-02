@@ -10,17 +10,12 @@
 
 
 Thing1::Thing1()
-{
-	Color red	= Color(1,0,0);
-	Color blue	= Color(0,0,1);
-	Color green	= Color(0,1,0);
-	Color off	= Color(0,0,0);
+{	
+	setBlock(LITColor.black, 0, 0, 15);
 	
-	setBlock(off, 0, 0, 15);
-	
-	setBlock(red, 100, 0, 5);
-	setBlock(green, 50, 6, 9);
-	setBlock(blue, 75, 12, 15);
+	setBlock(LITColor.red, 100, 0, 5);
+	setBlock(LITColor.green, 50, 6, 9);
+	setBlock(LITColor.blue, 75, 12, 15);
 }
 
 

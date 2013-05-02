@@ -1,18 +1,17 @@
 //	########################################################################
 
-//  Pattern3.cpp
+//  CustomThings.h
 
-//	3/16/13
+//	5/2/13
 
 //	########################################################################
 
-#include "Pattern3.h"
+#ifndef __Headband__CustomThings__
+#define __Headband__CustomThings__
+
+#include "Thing1.h"
+#include "Thing2.h"
+
+#endif
 
 
-Pattern3::Pattern3()
-{
-	//clearSequences();
-	createSequencesArray(1);
-	
-	sequences[0] = new SeqAltTest;
-}

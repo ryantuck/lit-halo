@@ -15,9 +15,6 @@ Thing::Thing()
 	layer		= 1;
 	period		= 1;
 	brightness	= 100;
-	
-	numLEDs = 16;			//	shouldn't be member
-	
 }
 
 
@@ -34,14 +31,14 @@ void Thing::setBlock(Color aColor, byte aBrightness, byte aStart, byte aEnd)
 	if (aStart <= aEnd)						//	doesn't wrap
 	{
 		for (int n=aStart;n<=aEnd;n++)
-			leds[n].set(aColor,aBrightness);
+			tLEDs[n].set(aColor,aBrightness);
 	}
 	else									//	wraps
 	{
 		for (int n=aStart;n<numLEDs;n++)
-			leds[n].set(aColor,aBrightness);
+			tLEDs[n].set(aColor,aBrightness);
 		for (int n=0;n<=aEnd;n++)
-			leds[n].set(aColor,aBrightness);
+			tLEDs[n].set(aColor,aBrightness);
 	}
 }
 
@@ -58,21 +55,21 @@ void Thing::move(bool direction)
 	
 	if (direction)
 	{
-		tmpLED.set(leds[maxAddress]);
+		tmpLED.set(tLEDs[maxAddress]);
 		
 		for (int n=maxAddress;n>0;n--)
-			leds[n].set(leds[n-1]);
+			tLEDs[n].set(tLEDs[n-1]);
 		
-		leds[0].set(tmpLED);
+		tLEDs[0].set(tmpLED);
 	}
 	else
 	{
-		tmpLED.set(leds[0]);
+		tmpLED.set(tLEDs[0]);
 		
 		for (int n=0;n<maxAddress;n++)
-			leds[n].set(leds[n+1]);
+			tLEDs[n].set(tLEDs[n+1]);
 		
-		leds[maxAddress].set(tmpLED);
+		tLEDs[maxAddress].set(tmpLED);
 	}
 }
 

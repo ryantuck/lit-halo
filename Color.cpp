@@ -131,6 +131,12 @@ void Color::expandNums()
 	b = check(tmpB);
 }
 
+bool Color::isBlack()
+{
+	if (r == 0 && b == 0 && g == 0) return 1;
+	else return 0;
+}
+
 void Color::findRGB(byte brightness)
 {
     double h,s,v;
