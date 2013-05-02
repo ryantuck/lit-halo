@@ -19,6 +19,7 @@
 #include "LED.h"
 #include "Sequence.h"
 #include "CustomSequences.h"
+#include "Thing.h"
 
 class Pattern
 {

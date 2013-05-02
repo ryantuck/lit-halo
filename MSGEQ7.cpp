@@ -37,6 +37,13 @@ void MSGEQ7::sample()
 		spectrum[n] = analogRead(analogPin);
 		digitalWrite(strobePin,HIGH);
 	}
+	
+	for (int n=0;n<7;n++)
+	{
+		Serial.print(spectrum[n]);
+		Serial.print(" ");
+	}
+	Serial.println();
 }
 
 int MSGEQ7::spectrumSum()

@@ -5,8 +5,19 @@
 Registers::Registers()
 {
 	latchPin	= 2;
-	dataPin		= 3;
-	clockPin	= 4;
+	dataPin		= 4;
+	clockPin	= 3;
+	
+	pinMode(latchPin, OUTPUT);
+	pinMode(clockPin,OUTPUT);
+	pinMode(dataPin, OUTPUT);
+	
+//	int pwmFrequency = 75;
+//	int maxBrightness = 100;
+//	ShiftPWM.SetAmountOfRegisters(8);
+//	ShiftPWM.SetPinGrouping(1);
+//	ShiftPWM.Start(pwmFrequency,maxBrightness);
+	
 }
 
 void Registers::setPixelColor(byte address, Color newColor)
@@ -16,21 +27,30 @@ void Registers::setPixelColor(byte address, Color newColor)
 	int tmpReg;
 	int regAddress = 0;
 	
-	if (address % 2)	tmpReg = address/2;
+	Serial.print("address: ");
+	Serial.println(address);
+	
+	if (!(address % 2))	tmpReg = address/2;
 	else
 	{
-		tmpReg = address/2 - 0.5;
+		address -= 1;
+		tmpReg = address/2;
 		regAddress = 1;
 	}
 	
-	myRegisters[address].colors[regAddress].setColor(newColor);
+	Serial.print("tmpReg: ");
+	Serial.println(tmpReg);
+	Serial.print("regAddress: ");
+	Serial.println(regAddress);
+	
+	myRegisters[tmpReg].colors[regAddress].setColor(newColor);
 }
 
 void Registers::writeRegisters()
 {
 	digitalWrite(latchPin, 0);
 	
-	for (int n=8; n>0; n--)
+	for (int n=7; n>=0; n--)
 	{
 		// write zero
 		digitalWrite(clockPin,	0);
@@ -42,13 +62,13 @@ void Registers::writeRegisters()
 		for (int a=1;a>=0;a--)
 		{
 			digitalWrite(clockPin, 0);
-			digitalWrite(dataPin,!myRegisters[n].colors[a].b);
+			digitalWrite(dataPin,!myRegisters[n].colors[a].r);
 			digitalWrite(clockPin, 1);
 			digitalWrite(clockPin, 0);
 			digitalWrite(dataPin,!myRegisters[n].colors[a].g);
 			digitalWrite(clockPin, 1);
 			digitalWrite(clockPin, 0);
-			digitalWrite(dataPin,!myRegisters[n].colors[a].r);
+			digitalWrite(dataPin,!myRegisters[n].colors[a].b);
 			digitalWrite(clockPin, 1);
 		}
 		
@@ -60,5 +80,28 @@ void Registers::writeRegisters()
 	
 	digitalWrite(latchPin, 1);
 }
+
+void Registers::update()
+{
+	for (int n=0;n<8;n++)
+	{
+		for (int a=0;a<2;a++)
+		{
+//			ShiftPWM.SetRGB(n*2+a,
+//							myRegisters[n].colors[a].r,
+//							myRegisters[n].colors[a].g,
+//							myRegisters[n].colors[a].b,
+//							n*2+1);
+		}
+	}
+}
+
+
+
+
+
+
+
+
 
 

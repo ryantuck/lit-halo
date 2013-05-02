@@ -6,6 +6,8 @@
 
 //	Equivalent of segment + element + sequence
 
+//	*	Need to implement led updating function (possibly in Pattern class)
+
 //	########################################################################
 
 #ifndef __Thing__

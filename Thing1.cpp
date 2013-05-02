@@ -14,6 +14,9 @@ Thing1::Thing1()
 	Color red	= Color(1,0,0);
 	Color blue	= Color(0,0,1);
 	Color green	= Color(0,1,0);
+	Color off	= Color(0,0,0);
+	
+	setBlock(off, 0, 0, 15);
 	
 	setBlock(red, 100, 0, 5);
 	setBlock(green, 50, 6, 9);
@@ -23,5 +26,5 @@ Thing1::Thing1()
 
 void Thing1::update()
 {
-	move(1, 2);
+	move(0, 1);
 }

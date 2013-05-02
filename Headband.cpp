@@ -8,7 +8,7 @@
 
 Headband::Headband()
 {
-	patternIndex = 2;
+	patternIndex = 1;
 	updatePattern(patternIndex);
 
 	downButton		= Button(5);
@@ -119,7 +119,7 @@ void Headband::updatePattern(int index)
 			linkUp();
 			break;
 		case 1:
-			pattern = new Pattern4;
+			pattern = new Pattern11;
 			linkUp();
 			break;
 		case 2:

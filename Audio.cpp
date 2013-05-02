@@ -25,7 +25,7 @@ void Audio::update()
 	getEQ();
 	weighEQ();
 	checkBeats();
-    pot.update(64);
+    pot.update(127);
 }
 
 void Audio::getEQ()
