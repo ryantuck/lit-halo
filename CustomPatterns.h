@@ -23,5 +23,6 @@
 //#include "Pattern11.h"
 
 #include "PatternA.h"
+#include "PatternB.h"
 
 #endif

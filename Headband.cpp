@@ -15,8 +15,11 @@ Headband::Headband()
 	upButton		= Button(9);
 	
 	//	dat-3 / clk-2
-	//strip = LPD8806(16,3,2);
-	//strip.begin();
+	
+	// dat and clk currently set for bisco staff
+	
+	strip = LPD8806(320,2,3);
+	strip.begin();
 }
 
 void Headband::update()
