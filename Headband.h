@@ -24,9 +24,9 @@ class Headband
 {
 public:
 	
-	Pattern*	pattern;
+	LITPattern*	pattern;
 	//Audio		audio;
-	//LED			leds[16];
+	//LED		leds[16];
 	
 	Battery		batt;
 	

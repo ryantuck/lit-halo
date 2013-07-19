@@ -45,7 +45,7 @@ public:
 	
 private:
 	
-	byte check(int newValue);
+	byte checkVals(int newValue);
 	
 	byte add(int currentValue,int newValue);
 	

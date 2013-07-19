@@ -12,11 +12,12 @@
 #include "Pattern.h"
 #include "CustomThings.h"
 
-class PatternB : public Pattern
+class PatternB : public LITPattern
 {
 public:
 	PatternB();
 
+	void update();
 };
 
 

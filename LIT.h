@@ -16,7 +16,7 @@
 #include "LITColor.h"
 
 extern int		numLEDs;
-extern LED		leds[16];
+extern LED		leds[32];
 extern Audio	audio;
 
 

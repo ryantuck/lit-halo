@@ -11,7 +11,7 @@
 
 Thing1::Thing1()
 {	
-	setBlock(LITColor.black, 0, 0, 15);
+	setBlock(LITColor.black, 0, 0, 31);
 	
 	setBlock(LITColor.red, 100, 0, 5);
 	setBlock(LITColor.green, 50, 6, 9);

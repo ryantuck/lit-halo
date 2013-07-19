@@ -28,7 +28,7 @@ void Headband::update()
 	getAudio();
 	updateLEDs();
 	//updateStrip();
-	writeLights();
+	//writeLights();
 }
 
 void Headband::updateLEDs()
@@ -65,26 +65,23 @@ void Headband::writeLights()
 
 void Headband::checkButtons()
 {
-	upButton.checkState();
-	downButton.checkState();
+	//upButton.checkState();
+	//downButton.checkState();
 	
-	if (patternIndex != 0)
+	if (upButton.pressed)
 	{
-		if (upButton.pressed)
-		{
-            if(patternIndex == 5) patternIndex = 1;
-            else patternIndex++;
-            
-			updatePattern(patternIndex);
-		}
+		if(patternIndex == 1) patternIndex = 0;
+		else patternIndex++;
 		
-		else if (downButton.pressed)
-		{			
-			if(patternIndex == 1) patternIndex = 5;
-            else patternIndex--;
+		updatePattern(patternIndex);
+	}
+	
+	else if (downButton.pressed)
+	{			
+		if(patternIndex == 0) patternIndex = 1;
+		else patternIndex--;
 
-			updatePattern(patternIndex);
-		}
+		updatePattern(patternIndex);
 	}
 }
 
@@ -112,6 +109,9 @@ void Headband::updatePattern(int index)
 	{
 		case 0:
 			pattern = new PatternA;
+			break;
+		case 1:
+			pattern = new PatternB;
 			break;
 	}
 }

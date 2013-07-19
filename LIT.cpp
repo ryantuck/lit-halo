@@ -8,6 +8,6 @@
 
 #include "LIT.h"
 
-int		numLEDs = 16;
-LED		leds[16];
+int		numLEDs = 32;
+LED		leds[32];
 Audio	audio;

@@ -12,7 +12,7 @@
 #include "Pattern.h"
 #include "CustomThings.h"
 
-class PatternA : public Pattern
+class PatternA : public LITPattern
 {
 public:
 	PatternA();

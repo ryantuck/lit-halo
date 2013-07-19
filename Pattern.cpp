@@ -1,27 +1,27 @@
 //	####################################################################
 //
-//	Pattern.cpp
+//	LITPattern.cpp
 //
 //	####################################################################
 
 #include "Pattern.h"
 
-Pattern::Pattern()
+LITPattern::LITPattern()
 {
 	createThingsArray();
 }
 
-Pattern::~Pattern()
+LITPattern::~LITPattern()
 {
 	clearThings();
 }
 
-void Pattern::update()
+void LITPattern::update()
 {
 	updateLEDs();
 }
 
-void Pattern::updateLEDs()
+void LITPattern::updateLEDs()
 {
 	Serial.print("num things: "); Serial.println(numThings());
 	
@@ -55,7 +55,7 @@ void Pattern::updateLEDs()
 	}
 }
 
-int Pattern::numThings()
+int LITPattern::numThings()
 {
 	int count = 0;
 	for (int n=0;n<8;n++)
@@ -65,14 +65,14 @@ int Pattern::numThings()
 	return count;
 }
 
-void Pattern::createThingsArray()
+void LITPattern::createThingsArray()
 {
 	things = new Thing*[8];
 	
 	for (int n=0;n<8;n++) things[n] = NULL;
 }
 
-void Pattern::clearThings()
+void LITPattern::clearThings()
 {
 	if (things != NULL)
 	{

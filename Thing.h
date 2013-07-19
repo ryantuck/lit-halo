@@ -23,7 +23,7 @@ public:
 	
 	Thing();
 	
-	LED tLEDs[16];
+	LED tLEDs[32];
 
 	bool io;
 	byte layer;

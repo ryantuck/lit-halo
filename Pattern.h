@@ -1,10 +1,10 @@
 //	####################################################################
 
-//	Pattern.h
+//	LITPattern.h
 
 //	*	Container for sequences.
 //	*	Owned by headband.
-//	*	Highest level of abstraction in pattern architecture.
+//	*	Highest level of abstraction in LITPattern architecture.
 
 //	TODO
 //	*	test destructor without delete[] operator
@@ -12,8 +12,8 @@
 
 //	####################################################################
 
-#ifndef ____Pattern__
-#define ____Pattern__
+#ifndef ____LITPattern__
+#define ____LITPattern__
 
 #include "Audio.h"
 #include "LED.h"
@@ -21,15 +21,15 @@
 //#include "CustomSequences.h"
 #include "Thing.h"
 
-class Pattern
+class LITPattern
 {
 public:
 	
 	Thing** things;
 	
-	Pattern();
+	LITPattern();
 	
-	virtual ~Pattern();			// why virtual?
+	virtual ~LITPattern();			// why virtual?
 
 	virtual void update();
 	

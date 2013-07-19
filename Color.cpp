@@ -15,27 +15,27 @@ Color::Color()
 
 Color::Color(byte red, byte green, byte blue)
 {
-	r = check(red);
-	g = check(green);
-	b = check(blue);
+	r = checkVals(red);
+	g = checkVals(green);
+	b = checkVals(blue);
 	
 	expandNums();
 }
 
 void Color::setColor(Color newColor)
 {
-	r = check(newColor.r);
-	g = check(newColor.g);
-	b = check(newColor.b);
+	r = checkVals(newColor.r);
+	g = checkVals(newColor.g);
+	b = checkVals(newColor.b);
 	
 	expandNums();
 }
 
 void Color::setColor(byte red,byte green,byte blue)
 {
-	r = check(red);
-	g = check(green);
-	b = check(blue);
+	r = checkVals(red);
+	g = checkVals(green);
+	b = checkVals(blue);
 	
 	expandNums();
 }
@@ -61,21 +61,21 @@ void Color::mixWith(Color otherColor)
 		tmpB *= ratio;
 	}
 	
-	r = check(tmpR);
-	g = check(tmpG);
-	b = check(tmpB);
+	r = checkVals(tmpR);
+	g = checkVals(tmpG);
+	b = checkVals(tmpB);
 }
 
 void Color::add(int dr, int dg, int db)
 {
 	expandNums();
 	
-	r = check(r+dr);
-	g = check(g+dg);
-	b = check(b+db);
+	r = checkVals(r+dr);
+	g = checkVals(g+dg);
+	b = checkVals(b+db);
 }
 
-byte Color::check(int newValue)
+byte Color::checkVals(int newValue)
 {
 	if (newValue > 127)	return 127;
 	if (newValue < 0)	return 0;
@@ -85,7 +85,7 @@ byte Color::check(int newValue)
 
 byte Color::add(int currentValue,int newValue)
 {
-	return check(currentValue+newValue);
+	return checkVals(currentValue+newValue);
 }
 
 byte Color::maxVal(Color newColor)
@@ -95,9 +95,9 @@ byte Color::maxVal(Color newColor)
 
 byte Color::maxVal(byte red, byte green, byte blue)
 {
-	byte max				= check(red);
-	if (green > max)	max = check(green);
-	if (blue  > max)	max = check(blue);
+	byte max				= checkVals(red);
+	if (green > max)	max = checkVals(green);
+	if (blue  > max)	max = checkVals(blue);
 	return max;
 }
 
@@ -108,9 +108,9 @@ byte Color::minVal(Color newColor)
 
 byte Color::minVal(byte red, byte green, byte blue)
 {
-	byte min				= check(red);
-	if (green < min)	min = check(green);
-	if (blue < min)		min = check(blue);
+	byte min				= checkVals(red);
+	if (green < min)	min = checkVals(green);
+	if (blue < min)		min = checkVals(blue);
 	return min;
 }
 
@@ -126,9 +126,9 @@ void Color::expandNums()
 	int tmpG = g*ratio;
 	int tmpB = b*ratio;
 	
-	r = check(tmpR);
-	g = check(tmpG);
-	b = check(tmpB);
+	r = checkVals(tmpR);
+	g = checkVals(tmpG);
+	b = checkVals(tmpB);
 }
 
 bool Color::isBlack()
