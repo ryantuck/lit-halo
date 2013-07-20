@@ -25,8 +25,6 @@ class Headband
 public:
 	
 	LITPattern*	pattern;
-	//Audio		audio;
-	//LED		leds[16];
 	
 	Battery		batt;
 	

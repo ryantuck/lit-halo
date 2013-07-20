@@ -38,12 +38,12 @@ void MSGEQ7::sample()
 		digitalWrite(strobePin,HIGH);
 	}
 	
-	for (int n=0;n<7;n++)
-	{
-		Serial.print(spectrum[n]);
-		Serial.print(" ");
-	}
-	Serial.println();
+//	for (int n=0;n<7;n++)
+//	{
+//		Serial.print(spectrum[n]);
+//		Serial.print(" ");
+//	}
+//	Serial.println();
 }
 
 int MSGEQ7::spectrumSum()

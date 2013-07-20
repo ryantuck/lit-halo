@@ -23,16 +23,12 @@ void LITPattern::update()
 
 void LITPattern::updateLEDs()
 {
-	Serial.print("num things: "); Serial.println(numThings());
-	
 	for (int l=0;l<numLEDs;l++)
 	{
 		int tmpLayer = 0;
 		
 		for (int t=0;t<numThings();t++)
 		{
-			Serial.print(l); Serial.print(" "); Serial.println(t);
-			
 			if (!things[t]->tLEDs[l].color.isBlack())
 			{
 				if (things[t]->layer > tmpLayer)

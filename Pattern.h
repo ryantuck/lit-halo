@@ -8,7 +8,6 @@
 
 //	TODO
 //	*	test destructor without delete[] operator
-//	*	what does rearrangeSequences() do? is it used?fg
 
 //	####################################################################
 
@@ -17,8 +16,6 @@
 
 #include "Audio.h"
 #include "LED.h"
-//#include "Sequence.h"
-//#include "CustomSequences.h"
 #include "Thing.h"
 
 class LITPattern
@@ -29,7 +26,7 @@ public:
 	
 	LITPattern();
 	
-	virtual ~LITPattern();			// why virtual?
+	virtual ~LITPattern();	// why virtual?
 
 	virtual void update();
 	
