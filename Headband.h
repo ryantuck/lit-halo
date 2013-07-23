@@ -12,13 +12,11 @@
 #ifndef ____Headband__
 #define ____Headband__
 
-#include "Audio.h"
-#include "LED.h"
+#include "LIT.h"
 #include "Pattern.h"
-#include "Hardware.h"
-#include "LITColor.h"
-#include "Registers.h"
 #include "CustomPatterns.h"
+#include "Hardware.h"
+
 
 class Headband
 {

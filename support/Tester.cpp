@@ -13,6 +13,21 @@ Tester::Tester()
 	
 }
 
+void Tester::ledColorMixingTest()
+{
+	LED brightRed;
+	brightRed.color.setColor(LITColor.red);
+	brightRed.brightness = 100;
+	
+	LED medBlue;
+	medBlue.color.setColor(LITColor.blue);
+	medBlue.brightness = 50;
+	
+	medBlue.mixWith(brightRed);
+	
+	medBlue.printVitals();
+}
+
 
 void Tester::things()
 {
@@ -97,7 +112,7 @@ void Tester::leds()
 	
 	myLED.color			= myColor;
 	myLED.brightness	= 75;
-	myLED.currentLayer	= 9;
+	//myLED.currentLayer	= 9;
 	
 	Serial.println();
 	Serial.println("** custom color, brightness, layer **");
@@ -158,7 +173,7 @@ void Tester::brightnessTest()
 		myLED.color.setColor(myColor);
 		
 		//	adjust rgb vals for brightness
-		myColor.findRGB(n);
+		//myColor.findRGB(n);
 		myLED.adjustColor();
 		
 		

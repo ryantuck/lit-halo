@@ -22,6 +22,8 @@ public:
 
 	Tester();
 
+	void ledColorMixingTest();
+	
 	void things();
 	
 	void colors();

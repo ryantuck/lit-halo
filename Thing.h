@@ -6,15 +6,11 @@
 
 //	Equivalent of segment + element + sequence
 
-//	*	Need to implement led updating function (possibly in Pattern class)
-
 //	########################################################################
 
 #ifndef __Thing__
 #define __Thing__
 
-#include "LED.h"
-#include "Color.h"
 #include "LIT.h"
 
 class Thing

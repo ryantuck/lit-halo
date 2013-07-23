@@ -14,8 +14,7 @@
 #ifndef ____LITPattern__
 #define ____LITPattern__
 
-#include "Audio.h"
-#include "LED.h"
+#include "LIT.h"
 #include "Thing.h"
 
 class LITPattern

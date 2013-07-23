@@ -13,11 +13,17 @@
 
 #include "LED.h"
 #include "Audio.h"
-#include "LITColor.h"
 
-extern int		numLEDs;
-extern LED		leds[32];
-extern Audio	audio;
+#include "Color.h"
+#include "LITColor.h"
+#include "Parameters.h"
+#include "Arduino.h"
+
+extern int			numLEDs;
+extern LayeredLED	leds[32];
+extern Audio		audio;
+
+
 
 
 #endif

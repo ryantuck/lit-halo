@@ -9,6 +9,7 @@
 #ifndef ____Color__
 #define ____Color__
 
+#include "Parameters.h"
 #include "Arduino.h"
 
 class Color

@@ -35,8 +35,8 @@ void Headband::updateLEDs()
 {
 	for (int n=0;n<numLEDs;n++)
 	{
-		leds[n].color.setColor(0, 0, 0);
-		leds[n].currentLayer = 1;
+		leds[n].color.setColor(LITColor.black);
+		leds[n].layer = 1;
 	}
 	
 	pattern->update();

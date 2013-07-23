@@ -35,16 +35,18 @@ void LITPattern::updateLEDs()
 				{
 					tmpLayer = things[t]->layer;
 					
-					leds[l].set(things[t]->tLEDs[l]);
+					leds[l].setAttributes(things[t]->tLEDs[l]);
+					leds[l].layer = tmpLayer;
 				}
 				else if (things[t]->layer == tmpLayer)
 				{
-					//leds[l].set(things[t]->tLEDs[l]);
+					leds[l].mixWith(things[t]->tLEDs[l]);
+					leds[l].layer = tmpLayer;
 					
 					//  mix colors
-					leds[l].color.mixWith(things[t]->tLEDs[l].color);
-					//leds[l].brightness = (leds[l].brightness + things[t]->tLEDs[l].brightness) / 2;	//ok?
-					//leds[l].adjustColor();
+					//leds[l].color.mixWith(things[t]->tLEDs[l].color);
+					
+					leds[l].adjustColor();
 				}
 			}
 		}

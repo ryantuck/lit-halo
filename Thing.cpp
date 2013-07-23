@@ -14,7 +14,7 @@ Thing::Thing()
 	io			= 1;
 	layer		= 1;
 	period		= 1;
-	brightness	= 100;
+	brightness	= maxBrightness;
 }
 
 
@@ -31,14 +31,14 @@ void Thing::setBlock(Color aColor, byte aBrightness, byte aStart, byte aEnd)
 	if (aStart <= aEnd)						//	doesn't wrap
 	{
 		for (int n=aStart;n<=aEnd;n++)
-			tLEDs[n].set(aColor,aBrightness);
+			tLEDs[n].setAttributes(aColor,aBrightness);
 	}
 	else									//	wraps
 	{
 		for (int n=aStart;n<numLEDs;n++)
-			tLEDs[n].set(aColor,aBrightness);
+			tLEDs[n].setAttributes(aColor,aBrightness);
 		for (int n=0;n<=aEnd;n++)
-			tLEDs[n].set(aColor,aBrightness);
+			tLEDs[n].setAttributes(aColor,aBrightness);
 	}
 }
 
@@ -55,21 +55,21 @@ void Thing::move(bool direction)
 	
 	if (direction)
 	{
-		tmpLED.set(tLEDs[maxAddress]);
+		tmpLED.setAttributes(tLEDs[maxAddress]);
 		
 		for (int n=maxAddress;n>0;n--)
-			tLEDs[n].set(tLEDs[n-1]);
+			tLEDs[n].setAttributes(tLEDs[n-1]);
 		
-		tLEDs[0].set(tmpLED);
+		tLEDs[0].setAttributes(tmpLED);
 	}
 	else
 	{
-		tmpLED.set(tLEDs[0]);
+		tmpLED.setAttributes(tLEDs[0]);
 		
 		for (int n=0;n<maxAddress;n++)
-			tLEDs[n].set(tLEDs[n+1]);
+			tLEDs[n].setAttributes(tLEDs[n+1]);
 		
-		tLEDs[maxAddress].set(tmpLED);
+		tLEDs[maxAddress].setAttributes(tmpLED);
 	}
 }
 
@@ -85,13 +85,13 @@ void Thing::move(bool direction,byte units)
 
 void Thing::fade(bool direction)
 {
-	brightness = updateValue(brightness, direction, 0, 100, 0);
+	brightness = updateValue(brightness, direction, 0, maxBrightness, 0);
 }
 
 void Thing::fade(bool direction, byte units)
 {
-	if		(units < 0)			units = 0;
-	while	(units > 100)		units -= 100;
+	if		(units < 0)					units = 0;
+	while	(units > maxBrightness)		units -= maxBrightness;
 	
 	for (int n=0;n<units;n++)
 		fade(direction);
