@@ -34,6 +34,8 @@ public:
 	
 	void updateLEDs();
 	
+	void clear();
+	
 	void move(bool direction);
 	void move(bool direction,byte units);
 	

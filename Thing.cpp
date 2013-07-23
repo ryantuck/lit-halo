@@ -85,6 +85,11 @@ void Thing::updateLEDs()
 	}
 }
 
+void Thing::clear()
+{
+	setBlock(LITColor.black, maxBrightness, 0, numLEDs-1);
+}
+
 
 void Thing::move(bool direction)
 {

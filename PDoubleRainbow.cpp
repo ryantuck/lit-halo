@@ -18,8 +18,6 @@ PDoubleRainbow::PDoubleRainbow()
 
 void PDoubleRainbow::update()
 {
-	things[0]->update();
-	things[1]->update();
-	updateLEDs();
+	genericUpdate();
 }
 

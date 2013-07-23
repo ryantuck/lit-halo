@@ -13,5 +13,7 @@
 #include "PatternA.h"
 #include "PatternB.h"
 #include "PDoubleRainbow.h"
+#include "PSparkle.h"
+#include "PEventTester.h"
 
 #endif

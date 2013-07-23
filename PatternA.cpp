@@ -23,8 +23,6 @@ PatternA::PatternA()
 
 void PatternA::update()
 {
-	things[0]->checkForUpdate();
-	things[1]->checkForUpdate();
-	things[2]->checkForUpdate();
-	updateLEDs();
+	genericUpdate();
 }
+

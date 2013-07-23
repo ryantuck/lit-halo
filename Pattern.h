@@ -36,6 +36,7 @@ public:
 protected:
 	void createThingsArray();
 	void clearThings();
+	void genericUpdate();
 };
 
 #endif

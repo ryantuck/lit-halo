@@ -18,7 +18,7 @@ LITPattern::~LITPattern()
 
 void LITPattern::update()
 {
-	updateLEDs();
+	genericUpdate();
 }
 
 void LITPattern::updateLEDs()
@@ -59,6 +59,12 @@ void LITPattern::clearThings()
 		delete [] things;
 		things = NULL;
 	}
+}
+
+void LITPattern::genericUpdate()
+{
+	for (int n=0;n<numThings();n++) things[n]->checkForUpdate();
+	updateLEDs();
 }
 
 

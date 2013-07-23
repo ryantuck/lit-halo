@@ -8,7 +8,7 @@
 
 Headband::Headband()
 {
-	maxIndex = 2;
+	maxIndex = 4;
 	
 	patternIndex = 0;
 	updatePattern(patternIndex);
@@ -117,6 +117,12 @@ void Headband::updatePattern(int index)
 			break;
 		case 2:
 			pattern = new PDoubleRainbow;
+			break;
+		case 3:
+			pattern = new PSparkle;
+			break;
+		case 4:
+			pattern = new PEventTester;
 			break;
 	}
 }

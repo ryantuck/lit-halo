@@ -1,21 +1,16 @@
 //	########################################################################
 
-//  PatternB.cpp
+//  PSparkle.cpp
 
-//	5/3/13
+//	7/23/13
 
 //	########################################################################
 
-#include "PatternB.h"
+#include "PSparkle.h"
 
-
-PatternB::PatternB()
+PSparkle::PSparkle()
 {
 	createThingsArray();
-	things[0] = new RainbowThing();
+	things[0] = new SparkleThing();
 }
 
-void PatternB::update()
-{
-	genericUpdate();
-}

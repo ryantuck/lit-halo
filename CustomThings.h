@@ -12,6 +12,8 @@
 #include "Thing1.h"
 #include "Thing2.h"
 #include "RainbowThing.h"
+#include "SparkleThing.h"
+#include "SingleRunDot.h"
 
 #endif
 
