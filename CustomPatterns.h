@@ -12,5 +12,6 @@
 
 #include "PatternA.h"
 #include "PatternB.h"
+#include "PDoubleRainbow.h"
 
 #endif

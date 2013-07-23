@@ -11,6 +11,7 @@
 
 #include "Thing1.h"
 #include "Thing2.h"
+#include "RainbowThing.h"
 
 #endif
 
