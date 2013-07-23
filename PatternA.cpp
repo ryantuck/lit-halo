@@ -12,15 +12,19 @@
 PatternA::PatternA()
 {
 	createThingsArray();
-	things[0] = new Thing2(LITColor.blue,1,5,0);
+	things[0] = new Thing2(LITColor.orange,1,5,0);
 	things[1] = new Thing2(LITColor.red,9,11,1);
+	things[2] = new Thing2(LITColor.green,14,19,0);
 	
-	things[0]->brightness = 50;
+	things[0]->period		= 10;
+	things[1]->period		= 3;
+	things[2]->io			= 1;
 }
 
 void PatternA::update()
 {
-	things[0]->update();
-	things[1]->update();
+	things[0]->checkForUpdate();
+	things[1]->checkForUpdate();
+	things[2]->checkForUpdate();
 	updateLEDs();
 }

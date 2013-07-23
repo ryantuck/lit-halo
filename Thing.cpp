@@ -11,10 +11,13 @@
 
 Thing::Thing()
 {
-	io			= 1;
-	layer		= 1;
-	period		= 1;
-	brightness	= maxBrightness;
+	io				= 1;
+	layer			= 1;
+	period			= 1;
+	brightness		= maxBrightness;
+	
+	periodCounter	= 0;
+
 }
 
 
@@ -45,6 +48,41 @@ void Thing::setBlock(Color aColor, byte aBrightness, byte aStart, byte aEnd)
 void Thing::update()
 {
 	
+}
+
+void Thing::checkForUpdate()
+{
+	periodCounter++;
+	
+	if (canUpdate())
+	{
+		update();
+		periodCounter = 0;
+	}
+}
+
+void Thing::updateLEDs()
+{
+	if (io)
+	{
+		for (int n=0;n<32;n++)
+		{
+			if (!tLEDs[n].color.isBlack())
+			{
+				if (layer > leds[n].layer)
+				{
+					leds[n].setAttributes(tLEDs[n].color,brightness);
+					leds[n].layer = layer;
+				}
+				else if (layer == leds[n].layer)
+				{
+					tLEDs->brightness = brightness;
+					leds[n].mixWith(tLEDs[n]);
+					leds[n].adjustColor();
+				}
+			}
+		}
+	}
 }
 
 
@@ -127,6 +165,12 @@ byte Thing::updateValue(byte parameter,
 	}
 	
 	return parameter;
+}
+
+bool Thing::canUpdate()
+{
+	if (periodCounter == period)	return 1;
+	else							return 0;
 }
 
 

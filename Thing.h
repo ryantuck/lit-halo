@@ -30,6 +30,10 @@ public:
 	
 	virtual void update();
 	
+	void checkForUpdate();
+	
+	void updateLEDs();
+	
 	void move(bool direction);
 	void move(bool direction,byte units);
 	
@@ -42,6 +46,10 @@ private:
 						byte minVal,
 						byte maxVal,
 						bool cycles);
+	
+	byte	periodCounter;
+	
+	bool canUpdate();
 };
 
 

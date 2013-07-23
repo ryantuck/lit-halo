@@ -23,34 +23,10 @@ void LITPattern::update()
 
 void LITPattern::updateLEDs()
 {
-	for (int l=0;l<numLEDs;l++)
+	for (int t=0;t<numThings();t++)
 	{
-		int tmpLayer = 0;
-		
-		for (int t=0;t<numThings();t++)
-		{
-			if (!things[t]->tLEDs[l].color.isBlack())
-			{
-				if (things[t]->layer > tmpLayer)
-				{
-					tmpLayer = things[t]->layer;
-					
-					leds[l].setAttributes(things[t]->tLEDs[l]);
-					leds[l].layer = tmpLayer;
-				}
-				else if (things[t]->layer == tmpLayer)
-				{
-					leds[l].mixWith(things[t]->tLEDs[l]);
-					leds[l].layer = tmpLayer;
-					
-					//  mix colors
-					//leds[l].color.mixWith(things[t]->tLEDs[l].color);
-					
-					leds[l].adjustColor();
-				}
-			}
-		}
-	}
+		things[t]->updateLEDs();
+	}	
 }
 
 int LITPattern::numThings()
