@@ -8,6 +8,8 @@
 
 Headband::Headband()
 {
+	maxIndex = 2;
+	
 	patternIndex = 0;
 	updatePattern(patternIndex);
 
@@ -70,7 +72,7 @@ void Headband::checkButtons()
 	
 	if (upButton.pressed)
 	{
-		if(patternIndex == 1) patternIndex = 0;
+		if(patternIndex == maxIndex) patternIndex = 0;
 		else patternIndex++;
 		
 		updatePattern(patternIndex);
@@ -78,7 +80,7 @@ void Headband::checkButtons()
 	
 	else if (downButton.pressed)
 	{			
-		if(patternIndex == 0) patternIndex = 1;
+		if(patternIndex == 0) patternIndex = maxIndex;
 		else patternIndex--;
 
 		updatePattern(patternIndex);
@@ -112,6 +114,9 @@ void Headband::updatePattern(int index)
 			break;
 		case 1:
 			pattern = new PatternB;
+			break;
+		case 2:
+			pattern = new PDoubleRainbow;
 			break;
 	}
 }

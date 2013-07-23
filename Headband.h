@@ -34,6 +34,7 @@ public:
 	Button		downButton;
 	
 	int patternIndex;				//	should go elsewhere?
+	int maxIndex;
 		
 	
 	//	Constructor
