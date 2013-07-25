@@ -13,14 +13,15 @@
 #include "LIT.h"
 #include "LinkedList.h"
 
-
-class Entity
+class Entity : public MetaEntity
 {
 public:
 	Entity();
-	
-	LinkedList leds;
 
+	LinkedList<LED> eLEDs;
+	
+	LinkedList<MetaEntity> entities;
+	
 	bool io;
 	byte layer;
 	byte period;

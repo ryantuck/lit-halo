@@ -14,6 +14,7 @@ using namespace std;
 #include "Thing1.h"
 #include "LIT.h"
 #include "LinkedList.h"
+#include "Entity.h"
 
 
 
@@ -23,6 +24,9 @@ public:
 
 	Tester();
 	
+	void entityWithinEntity();
+	
+	void templateTesting();
 	void linkedListTest();
 	
 	void ledColorMixingTest();

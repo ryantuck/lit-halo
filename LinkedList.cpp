@@ -9,28 +9,40 @@
 #include "LinkedList.h"
 
 
-LinkedList::LinkedList()
+
+
+template <class T>
+ListObject<T>::ListObject()
+{
+	next = NULL;
+}
+
+template <class T>
+LinkedList<T>::LinkedList()
 {
 	start = NULL;
 }
 
-int LinkedList::listLength()
+template <class T>
+int LinkedList<T>::length()
 {
+	Serial.println("== length()");
+	
 	int		counter		= 0;
 	bool	finished	= 0;
 	
-	ListedLED* currentLED;
-	currentLED = start;
+	ListObject<T>* tmp = start;
+	
 	
 	while (!finished)
 	{
-		if (currentLED != NULL)
+		if (tmp != NULL)
 		{
 			counter++;
-			Serial.println("current LED isn't null");
-			if (currentLED->next != NULL)
+			
+			if (tmp->next != NULL)
 			{
-				currentLED = currentLED->next;
+				tmp = tmp->next;
 			}
 			else
 			{
@@ -42,40 +54,61 @@ int LinkedList::listLength()
 			finished = 1;
 		}
 	}
-	
+
 	return counter;
 }
 
-void LinkedList::addToEnd(ListedLED* newLED)
+template <class T>
+ListObject<T>* LinkedList<T>::entry(int aEntry)
 {
-	if (listLength() == 0)
+	Serial.println("== entry()");
+	
+	ListObject<T>* tmp = start;
+	
+	for (int n=0;n<aEntry;n++)
+	{
+		tmp = tmp->next;
+	}
+	
+	return tmp;
+}
+
+template <class T>
+void LinkedList<T>::addToEnd(ListObject<T>* newItem)
+{
+	Serial.println("== addToEnd");
+	
+	if (length() == 0)
 	{
 		Serial.println("list length is zero");
-		start = newLED;
+		start = newItem;
 		
 	}
 	else
 	{
 		Serial.println("list length is NOT zero");
-		ListedLED* last = lastEntry();
-		last->next = newLED;
+		ListObject<T>* last = lastEntry();
+		last->next = newItem;
 	}
+	
 }
 
-ListedLED* LinkedList::lastEntry()
+template <class T>
+ListObject<T>* LinkedList<T>::lastEntry()
 {
+	Serial.println("== lastEntry");
+	
 	bool finished	= 0;
 	
-	ListedLED* currentLED;
-	currentLED = start;
+	ListObject<T>* tmpObject = start;
 	
 	while (!finished)
 	{
-		if (currentLED != NULL)
+		if (tmpObject != NULL)
 		{
-			if (currentLED->next != NULL)
+			if (tmpObject->next != NULL)
 			{
-				currentLED = currentLED->next;
+				tmpObject = tmpObject->next;
 			}
 			else
 			{
@@ -86,34 +119,22 @@ ListedLED* LinkedList::lastEntry()
 		{
 			finished = 1;
 		}
-		
-		
 	}
 	
-	return currentLED;
+	return tmpObject;
 }
 
-ListedLED* LinkedList::entry(int aEntry)
+template <class T>
+void LinkedList<T>::removeEntry(int aEntry)
 {
-	ListedLED* currentLED;
-	currentLED = start;
+	Serial.println("== removeEntry()");
 	
-	for (int n=0;n<aEntry;n++)
-	{
-		currentLED = currentLED->next;
-	}
-	
-	return currentLED;
-}
-
-void LinkedList::removeEntry(int aEntry)
-{
-	if (listLength() == 0)
+	if (length() == 0)
 	{
 		start = NULL;
 	}
 	
-	else if (aEntry == listLength())
+	else if (aEntry == length())
 	{
 		entry(aEntry-1)->next = NULL;
 	}
@@ -123,14 +144,27 @@ void LinkedList::removeEntry(int aEntry)
 	}
 	else
 	{
-		ListedLED* entryToRemove		= entry(aEntry);
-		ListedLED* pointerToTransfer	= entryToRemove->next;
-		entry(aEntry-1)->next			= pointerToTransfer;
+		ListObject<T>* entryToRemove		= entry(aEntry);
+		ListObject<T>* pointerToTransfer	= entryToRemove->next;
+		entry(aEntry-1)->next				= pointerToTransfer;
 	}
-	
-	
+}
+
+MetaEntity::MetaEntity()
+{
 	
 }
+
+template class LinkedList<LED>;
+template class ListObject<LED>;
+
+template class LinkedList<MetaEntity>;
+template class ListObject<MetaEntity>;
+
+
+
+
+
 
 
 

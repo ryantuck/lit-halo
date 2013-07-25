@@ -11,22 +11,44 @@
 
 #include "LIT.h"
 
+
+template <class T>
+class ListObject
+{
+public:
+	ListObject();
+	T	me;
+	ListObject<T>*	next;
+	
+public:
+};
+
+template <class T>
 class LinkedList
 {
 public:
 	LinkedList();
 	
-	ListedLED* start;
+	ListObject<T>* start;
 	
-	int listLength();
+	int length();
 	
-	void addToEnd(ListedLED* newLED);
+	ListObject<T>* lastEntry();
 	
-	ListedLED* lastEntry();
-	ListedLED* entry(int aEntry);
+	ListObject<T>* entry(int aEntry);
+	
+	void addToEnd(ListObject<T>* newItem);
 	
 	void removeEntry(int aEntry);
+	
 };
+
+class MetaEntity
+{
+public:
+	MetaEntity();
+};
+
 
 
 
