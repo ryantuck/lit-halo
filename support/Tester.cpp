@@ -13,6 +13,38 @@ Tester::Tester()
 	
 }
 
+void Tester::linkedListTest()
+{
+	LinkedList myList;
+	
+	ListedLED* aLED = new ListedLED;
+	ListedLED* bLED = new ListedLED;
+	ListedLED* cLED = new ListedLED;
+	ListedLED* dLED = new ListedLED;
+	
+	aLED->color.setColor(LITColor.red);
+	bLED->color.setColor(LITColor.yellow);
+	cLED->color.setColor(LITColor.green);
+	dLED->color.setColor(LITColor.cyan);
+	
+	myList.addToEnd(aLED);
+	myList.addToEnd(bLED);
+	myList.addToEnd(cLED);
+	myList.addToEnd(dLED);
+	
+	
+	Serial.println(myList.listLength());
+	
+	for (int n=0;n<myList.listLength();n++)
+	{
+		myList.entry(n)->color.printVitals();
+	}
+	
+	myList.removeEntry(3);
+	
+	Serial.println(myList.listLength());
+}
+
 void Tester::ledColorMixingTest()
 {
 	LED brightRed;

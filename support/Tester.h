@@ -13,6 +13,7 @@ using namespace std;
 #include "Arduino.h"
 #include "Thing1.h"
 #include "LIT.h"
+#include "LinkedList.h"
 
 
 
@@ -21,6 +22,8 @@ class Tester
 public:
 
 	Tester();
+	
+	void linkedListTest();
 	
 	void ledColorMixingTest();
 	
