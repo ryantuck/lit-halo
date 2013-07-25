@@ -12,7 +12,20 @@ SingleRunDot::SingleRunDot()
 {
 	clear();
 	currentAddress = 0;
-	setBlock(LITColor.green, maxBrightness, currentAddress, currentAddress);
+	setBlock(LITColor.green,
+			 maxBrightness,
+			 currentAddress,
+			 currentAddress);
+}
+
+SingleRunDot::SingleRunDot(Color aColor)
+{
+	clear();
+	currentAddress = 0;
+	setBlock(aColor,
+			 maxBrightness,
+			 currentAddress,
+			 currentAddress);
 }
 
 void SingleRunDot::update()
@@ -24,7 +37,7 @@ void SingleRunDot::update()
 	}
 	else
 	{
-		io = 0;
+		readyToDie = 1;
 	}
 }
 

@@ -23,10 +23,13 @@ void LITPattern::update()
 
 void LITPattern::updateLEDs()
 {
-	for (int t=0;t<numThings();t++)
+	for (int t=0;t<8;t++)
 	{
-		things[t]->updateLEDs();
-	}	
+		if (things[t] != NULL)
+		{
+			things[t]->updateLEDs();
+		}
+	}
 }
 
 int LITPattern::numThings()

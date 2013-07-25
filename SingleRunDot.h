@@ -15,6 +15,7 @@ class SingleRunDot : public Thing
 {
 public:
 	SingleRunDot();
+	SingleRunDot(Color aColor);
 	
 	int currentAddress;
 	

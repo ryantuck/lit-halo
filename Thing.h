@@ -26,6 +26,8 @@ public:
 	byte period;
 	byte brightness;
 	
+	bool readyToDie;
+	
 	void setBlock(Color aColor, byte aBrightness, byte aStart, byte aEnd);
 	
 	virtual void update();

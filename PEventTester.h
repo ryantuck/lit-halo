@@ -17,6 +17,9 @@ class PEventTester : public LITPattern
 public:
 	PEventTester();
 	
+	int addCounter;
+	int colorIndex;
+	
 	void update();
 };
 

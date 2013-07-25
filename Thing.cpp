@@ -15,6 +15,7 @@ Thing::Thing()
 	layer			= 1;
 	period			= 1;
 	brightness		= maxBrightness;
+	readyToDie		= 0;
 	
 	periodCounter	= 0;
 
