@@ -13,6 +13,25 @@ Tester::Tester()
 	
 }
 
+void Tester::fooTester()
+{
+	Foo aFoo;
+	
+	aFoo.createArray();
+	aFoo.addItem();
+	
+	aFoo.foos[0]->createArray();
+	aFoo.foos[0]->addItem();
+	
+	aFoo.buttplug = 10;
+	
+	aFoo.foos[0]->buttplug = 69;
+	
+	Serial.println(aFoo.foos[0]->buttplug);
+	
+	
+}
+
 void Tester::entityWithinEntity()
 {
 	ListObject<MetaEntity>* aEnt = new ListObject<MetaEntity>;

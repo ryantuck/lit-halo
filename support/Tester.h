@@ -15,6 +15,7 @@ using namespace std;
 #include "LIT.h"
 #include "LinkedList.h"
 #include "Entity.h"
+#include "Foo.h"
 
 
 
@@ -23,6 +24,8 @@ class Tester
 public:
 
 	Tester();
+	
+	void fooTester();
 	
 	void entityWithinEntity();
 	
