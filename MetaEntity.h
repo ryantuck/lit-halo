@@ -1,30 +1,20 @@
 //	########################################################################
 
-//  Entity.h
+//  MetaEntity.h
 
-//	7/25/13
+//	7/26/13
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__Entity__
-#define __LIT_Headband_Simulator__Entity__
-
+#ifndef __LIT_Headband_Simulator__MetaEntity__
+#define __LIT_Headband_Simulator__MetaEntity__
 
 #include "LIT.h"
-#include "LinkedList.h"
 
-
-
-class Entity : public MetaEntity
+class MetaEntity
 {
 public:
-	Entity();
-
-	LinkedList<AddressedLED> eLEDs;
-	
-	LinkedList<MetaEntity> entities;
-	
-	Entity** ents;
+	MetaEntity();
 	
 	bool io;
 	byte layer;
@@ -39,11 +29,7 @@ public:
 	
 	virtual void update();
 	
-	void updateListOfEntities();
-	
 	void checkForUpdate();
-	
-	void updateLEDs();
 	
 	void clear();
 	
@@ -60,12 +46,11 @@ private:
 	byte periodCounter;
 	
 	bool canUpdate();
+
 	
-	void createLEDsArray(int num);
 	
 	
 };
-
 
 
 #endif

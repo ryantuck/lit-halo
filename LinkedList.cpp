@@ -150,13 +150,14 @@ void LinkedList<T>::removeEntry(int aEntry)
 	}
 }
 
-MetaEntity::MetaEntity()
-{
-	
-}
+
 
 template class LinkedList<LED>;
 template class ListObject<LED>;
+
+template class LinkedList<AddressedLED>;
+template class ListObject<AddressedLED>;
+
 
 template class LinkedList<MetaEntity>;
 template class ListObject<MetaEntity>;

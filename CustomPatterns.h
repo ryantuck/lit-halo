@@ -15,5 +15,6 @@
 #include "PDoubleRainbow.h"
 #include "PSparkle.h"
 #include "PEventTester.h"
+#include "EntityTestPattern.h"
 
 #endif

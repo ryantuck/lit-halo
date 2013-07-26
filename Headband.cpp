@@ -122,7 +122,7 @@ void Headband::updatePattern(int index)
 			pattern = new PSparkle;
 			break;
 		case 4:
-			pattern = new PEventTester;
+			pattern = new EntityTestPattern;
 			break;
 	}
 }

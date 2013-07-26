@@ -14,6 +14,7 @@
 #include "RainbowThing.h"
 #include "SparkleThing.h"
 #include "SingleRunDot.h"
+#include "EntityTestThing.h"
 
 #endif
 
