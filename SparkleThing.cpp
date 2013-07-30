@@ -21,7 +21,7 @@ void SparkleThing::update()
 	{
 		int tmp = rand()%32;
 		
-		setBlock(LITColor.white, maxBrightness, tmp, tmp);
+		setBlock(LITColor.green, maxBrightness, tmp, tmp);
 	}
 }
 

@@ -29,7 +29,11 @@ void Tester::fooTester()
 	
 	Serial.println(aFoo.foos[0]->buttplug);
 	
+	//aFoo.createLEDArray(5);
 	
+	aFoo.setBlock(LITColor.orange, maxBrightness, 13, 19);
+	
+	Serial.println("end of fooTester");
 }
 
 void Tester::entityWithinEntity()
