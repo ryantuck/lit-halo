@@ -11,10 +11,26 @@
 
 Foo::Foo()
 {
-	foos = NULL;
+	foos			= NULL;
+	fLEDs			= NULL;
 	
-	arrayLength = 0;
-	numberOfFoos = 0;
+	arrayLength		= 0;
+	numberOfFoos	= 0;
+	numberOfLEDs	= 0;
+	
+	io				= 1;
+	period			= 1;
+	layer			= 1;
+	buttplug		= 0;
+	periodCounter	= 0;
+	readyToDie		= 0;
+	brightness		= maxBrightness;
+}
+
+Foo::~Foo()
+{
+	destroyArray();
+	destroyLEDArray();
 }
 
 void Foo::createArray()
@@ -37,12 +53,15 @@ void Foo::createArray(int num)
 
 void Foo::clearArray()
 {
-	for (int n=0;n<arrayLength;n++)
+	if (foos != NULL)
 	{
-		if (foos[n] != NULL)
+		for (int n=0;n<arrayLength;n++)
 		{
-			delete foos[n];
-			foos[n] = NULL;
+			if (foos[n] != NULL)
+			{
+				delete foos[n];
+				foos[n] = NULL;
+			}
 		}
 	}
 }
@@ -51,11 +70,31 @@ void Foo::destroyArray()
 {
 	clearArray();
 	
-	delete foos;
-	foos = NULL;
+	if (foos != NULL)
+	{
+		delete foos;
+		foos = NULL;
+	}
 	
 	arrayLength		= 0;
 	numberOfFoos	= 0;
+}
+
+void Foo::destroyLEDArray()
+{
+	if (fLEDs != NULL)
+	{
+		for (int n=0;n<numberOfLEDs;n++)
+		{
+			delete fLEDs[n];
+			fLEDs[n] = NULL;
+		}
+		
+		delete fLEDs;
+		fLEDs = NULL;
+	}
+	
+	numberOfLEDs = 0;
 }
 
 void Foo::resizeArray()
@@ -100,11 +139,22 @@ void Foo::addItem()
 	int  index = 0;
 	bool added = 0;
 	
-	if (numberOfFoos > 0)
+	if (foos == NULL)
 	{
-		while (index < numberOfFoos && added == 0)
+		createArray();
+		foos[0] = new Foo;
+		numberOfFoos++;
+		added = 1;			// ?
+	}
+	else if (foos != NULL)
+	{
+		for (int n=0;n<5;n++)
+			if (numberOfFoos == (2^n))
+				resizeArray();
+
+		while (!added)
 		{
-			if (foos[index] != NULL)
+			if (foos[index] != NULL && index < numberOfFoos)
 			{
 				index++;
 			}
@@ -115,19 +165,6 @@ void Foo::addItem()
 				added = 1;
 			}
 		}
-	}
-	else if (foos != NULL)
-	{
-		foos[0] = new Foo;
-		numberOfFoos++;
-	}
-	
-	if (added == 0)
-	{
-		int tmp = numberOfFoos;
-		resizeArray();
-		foos[tmp+1] = new Foo;
-		numberOfFoos++;
 	}
 }
 
@@ -141,13 +178,166 @@ void Foo::removeItem(int index)
 	}
 }
 
+void Foo::setBlock(Color aColor,
+				   int aBrightness,
+				   int aStart,
+				   int aEnd)
+{
+	// check values
+	if (aStart	< 0)			aStart	= 0;
+	if (aStart	>= numLEDs)		aStart	= numLEDs;
+	if (aEnd	< 0)			aEnd	= 0;
+	if (aEnd	>= numLEDs)		aEnd	= numLEDs;
+	
+	int length = aEnd-aStart;
+	
+	if (fLEDs == NULL)
+	{
+		createLEDArray(length);
+	}
+	else
+	{
+		AddressedLED** tmp = new AddressedLED*[numberOfLEDs];
+		
+		for (int n=0;n<numberOfLEDs;n++)
+			tmp[n] = fLEDs[n];
+		delete fLEDs;
+		fLEDs = NULL;
+		
+		createLEDArray(numberOfLEDs+length);
+		
+		for (int n=0;n<numberOfLEDs;n++)
+			fLEDs[n] = tmp[n];
+		delete tmp;
+		tmp = NULL;
+	}
+	
+	for (int n=0;n<length;n++)
+	{
+		AddressedLED* tmpLED = new AddressedLED;
+		tmpLED->color.setColor(aColor);
+		tmpLED->address = aStart+n;
+		
+		fLEDs[numberOfLEDs+n] = tmpLED;
+	}
+	
+	numberOfLEDs += length;
+}
 
+void Foo::createLEDArray(int num)
+{
+	if (fLEDs == NULL)
+	{
+		fLEDs = new AddressedLED*[num];
+		for (int n=0;n<num;n++)
+			fLEDs[n] = NULL;
+	}
+}
 
+void Foo::update()
+{
+	move(buttplug);
+	updateFoos();
+	updateLEDs();
+}
 
+void Foo::updateLEDs()
+{
+	if (io)
+	{
+		//	update LEDs
+		if (fLEDs != NULL)
+		{
+			for (int n=0;n<numberOfLEDs;n++)
+			{
+				int addr = fLEDs[n]->address;
+				
+				if (layer > leds[addr].layer)
+				{
+					leds[addr].setAttributes(*fLEDs[n]);
+					leds[addr].layer = layer;
+				}
+				else if (layer == leds[n].layer)
+				{
+					fLEDs[n]->brightness = brightness;
+					leds[addr].mixWith(*fLEDs[n]);
+					leds[addr].adjustColor();
+				}
+			}
+		}
+		
+		//	then send the sub-foos the updateLEDs function
+		if (foos != NULL)
+		{
+			for (int n=0;n<numberOfFoos;n++)
+			{
+				foos[n]->updateLEDs();
+			}
+		}
+	}
+}
 
+void Foo::updateFoos()
+{
+	if (foos != NULL)
+		for (int n=0;n<numberOfFoos;n++)
+			foos[n]->checkForUpdate();
+}
 
+void Foo::checkForUpdate()
+{
+	periodCounter++;
+	
+	if (canUpdate())
+	{
+		update();
+		periodCounter = 0;
+	}
+}
 
+void Foo::move(bool direction)
+{
+	for (int n=0;n<numberOfLEDs;n++)
+	{
+		byte addr = fLEDs[n]->address;
+		addr = updateValue(addr, direction, 0, 31, 1);
+		fLEDs[n]->address = addr;
+	}
+}
 
+byte Foo::updateValue(byte parameter,
+					  bool direction,
+					  byte minVal,
+					  byte maxVal,
+					  bool cycles)
+{
+	if (direction)
+	{
+		if (parameter == maxVal)
+		{
+			if (cycles) parameter = minVal;
+			else		parameter = maxVal;
+		}
+		else parameter++;
+	}
+	else
+	{
+		if (parameter == minVal)
+		{
+			if (cycles)	parameter = maxVal;
+			else		parameter = minVal;
+		}
+		else parameter--;
+	}
+	
+	return parameter;
+}
+
+bool Foo::canUpdate()
+{
+	if (periodCounter == period)	return 1;
+	else							return 0;
+}
 
 
 

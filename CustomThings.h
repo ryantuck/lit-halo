@@ -15,6 +15,7 @@
 #include "SparkleThing.h"
 #include "SingleRunDot.h"
 #include "EntityTestThing.h"
+#include "FooThing.h"
 
 #endif
 

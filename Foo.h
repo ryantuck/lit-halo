@@ -15,19 +15,28 @@ class Foo
 {
 public:
 	Foo();
+	~Foo();
 	
-	Foo** foos;
+	Foo**			foos;
+	AddressedLED**	fLEDs;
 	
-	int buttplug;
+	int		buttplug;
+	bool	io;
+	byte	period;
+	byte	layer;
+	byte	brightness;
+	bool	readyToDie;
+	int		numberOfLEDs;
+	int		arrayLength;
+	int		numberOfFoos;
 	
-	int arrayLength;
-	int numberOfFoos;
-	
+	//	--------------------------------
 	void createArray();
 	void createArray(int num);
 	
 	void clearArray();
 	void destroyArray();
+	void destroyLEDArray();
 	void resizeArray();
 	
 	int numItems();
@@ -35,6 +44,30 @@ public:
 	
 	void addItem();
 	void removeItem(int index);
+	//	--------------------------------
+	void createLEDArray(int num);
+	
+	void setBlock(Color aColor,
+				  int aBrightness,
+				  int aStart,
+				  int aEnd);
+	
+	void checkForUpdate();
+	virtual void update();
+	void updateLEDs();
+	void updateFoos();
+	
+	void move(bool direction);
+	
+private:
+	byte	updateValue(byte parameter,
+						bool direction,
+						byte minVal,
+						byte maxVal,
+						bool cycles);
+	
+	byte periodCounter;
+	bool canUpdate();
 };
 
 

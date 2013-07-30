@@ -16,5 +16,6 @@
 #include "PSparkle.h"
 #include "PEventTester.h"
 #include "EntityTestPattern.h"
+#include "FooPattern.h"
 
 #endif
