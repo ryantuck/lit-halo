@@ -16,6 +16,8 @@
 #include "Pattern.h"
 #include "CustomPatterns.h"
 #include "Hardware.h"
+#include "Foo.h"
+#include "CustomFoos.h"
 
 
 class Headband
@@ -23,6 +25,8 @@ class Headband
 public:
 	
 	LITPattern*	pattern;
+	
+	Foo*		foo;
 	
 	Battery		batt;
 	
@@ -35,6 +39,9 @@ public:
 	
 	int patternIndex;				//	should go elsewhere?
 	int maxIndex;
+	
+	int foodex;
+	int maxFoodex;
 		
 	
 	//	Constructor
@@ -65,6 +72,8 @@ public:
 	
 	//	Creates new instance of pattern object.
 	void updatePattern(int index);
+	
+	void updateFoo(int index);
 	
 	//	For testing.
 	void		printLEDs();
