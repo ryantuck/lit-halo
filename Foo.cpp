@@ -9,6 +9,7 @@
 #include "Foo.h"
 
 //	========================================================
+
 Foo::Foo()
 {
 	foos			= NULL;
@@ -20,7 +21,7 @@ Foo::Foo()
 	
 	io				= 1;
 	period			= 1;
-	layer			= 2;
+	layer			= 1;
 	buttplug		= 0;
 	periodCounter	= 0;
 	readyToDie		= 0;
@@ -32,7 +33,9 @@ Foo::~Foo()
 	destroyArray();
 	destroyLEDArray();
 }
+
 //	========================================================
+
 void Foo::createArray()
 {
 	createArray(1);
@@ -50,7 +53,9 @@ void Foo::createArray(int num)
 		arrayLength = num;
 	}
 }
+
 //	========================================================
+
 void Foo::resizeArray()
 {
 	int newLength = arrayLength*2;
@@ -260,49 +265,23 @@ void Foo::updateLEDs()
 	
 	if (io)
 	{
-		//	update LEDs
 		if (fLEDs != NULL)
 		{
 			for (int n=0;n<numberOfLEDs;n++)
 			{
-				Serial.print("n = ");
-				Serial.println(n);
-				
 				int addr = fLEDs[n]->address;
-				
-				Serial.print("address - ");
-				Serial.println(addr);
 				
 				if (layer > leds[addr].layer)
 				{
-					Serial.print("layer > led layer - ");
-					Serial.print(layer);
-					Serial.print(" > ");
-					Serial.println(leds[addr].layer);
 					leds[addr].setAttributes(*fLEDs[n]);
 					leds[addr].layer = layer;
 				}
-				else if (layer == leds[n].layer)
-				{
-					Serial.print("same layer - ");
-					Serial.println(layer);
+				else if (layer == leds[addr].layer)
+				{					
 					fLEDs[n]->brightness = brightness;
 					leds[addr].mixWith(*fLEDs[n]);
 					leds[addr].adjustColor();
 				}
-				else if (layer < leds[addr].layer)
-				{
-					Serial.println("asdfasdfasdf");
-				}
-			}
-		}
-		
-		//	then send the sub-foos the updateLEDs function
-		if (foos != NULL)
-		{
-			for (int n=0;n<numberOfFoos;n++)
-			{
-				foos[n]->updateLEDs();
 			}
 		}
 	}

@@ -9,7 +9,7 @@
 Headband::Headband()
 {
 	maxFoodex	= 3;
-	foodex		= 0;
+	foodex		= 2;
 	
 	downButton		= Button(8);
 	upButton		= Button(9);
