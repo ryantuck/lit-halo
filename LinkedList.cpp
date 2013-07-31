@@ -159,10 +159,6 @@ template class LinkedList<AddressedLED>;
 template class ListObject<AddressedLED>;
 
 
-template class LinkedList<MetaEntity>;
-template class ListObject<MetaEntity>;
-
-
 
 
 

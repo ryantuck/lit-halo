@@ -36,21 +36,6 @@ void Tester::fooTester()
 	Serial.println("end of fooTester");
 }
 
-void Tester::entityWithinEntity()
-{
-	ListObject<MetaEntity>* aEnt = new ListObject<MetaEntity>;
-	ListObject<MetaEntity>* bEnt = new ListObject<MetaEntity>;
-	
-	Entity myEntity;
-	
-	myEntity.entities.addToEnd(aEnt);
-	myEntity.entities.addToEnd(bEnt);
-	
-	Serial.println(myEntity.entities.length());
-	
-	
-}
-
 void Tester::templateTesting()
 {	
 	LinkedList<LED> myList;
@@ -117,26 +102,6 @@ void Tester::ledColorMixingTest()
 	
 	medBlue.printVitals();
 }
-
-
-void Tester::things()
-{
-	Thing1 item;
-	
-	for (int n=0;n<numLEDs;n++)
-	{
-		Serial.println(n);
-		//leds[n].printVitals();
-	}
-	
-	item.update();
-	for (int n=0;n<numLEDs;n++)
-	{
-		Serial.println(n);
-		//leds[n].printVitals();
-	}
-}
-
 
 void Tester::colors()
 {

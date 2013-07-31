@@ -13,8 +13,6 @@
 #define ____Headband__
 
 #include "LIT.h"
-#include "Pattern.h"
-#include "CustomPatterns.h"
 #include "Hardware.h"
 #include "Foo.h"
 #include "CustomFoos.h"

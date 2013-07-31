@@ -11,10 +11,8 @@
 using namespace std;
 #include "Headband.h"
 #include "Arduino.h"
-#include "Thing1.h"
 #include "LIT.h"
 #include "LinkedList.h"
-#include "Entity.h"
 #include "Foo.h"
 
 

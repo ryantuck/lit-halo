@@ -85,35 +85,6 @@ LayeredLED::LayeredLED(byte l)
 	layer = l;
 }
 
-ListedLED::ListedLED()
-{
-	next = NULL;
-}
-
-
-
-
-
-//void LayeredLED::setAttributes(Color aColor,
-//							   byte aBrightness,
-//							   byte aLayer)
-//{
-//	color.setColor(aColor);
-//	brightness	= aBrightness;
-//	layer		= aLayer;
-//}
-//
-//void AddressedLED::setAttributes(Color aColor,
-//								 byte aBrightness,
-//								 byte aAddress)
-//{
-//	color.setColor(aColor);
-//	brightness	= aBrightness;
-//	address		= aAddress;
-//}
-
-
-
 
 
 

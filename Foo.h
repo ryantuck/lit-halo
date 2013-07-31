@@ -14,9 +14,11 @@
 class Foo
 {
 public:
+	//	Constructor/Destructor ---------
 	Foo();
 	~Foo();
 	
+	//	Member Variables ---------------
 	Foo**			foos;
 	AddressedLED**	fLEDs;
 	
@@ -26,39 +28,44 @@ public:
 	byte	layer;
 	byte	brightness;
 	bool	readyToDie;
+	
 	int		numberOfLEDs;
 	int		arrayLength;
 	int		numberOfFoos;
 	
-	//	--------------------------------
+	//	Foo Array Functionality --------
 	void createArray();
 	void createArray(int num);
 	
+	void resizeArray();
 	void clearArray();
 	void destroyArray();
-	void destroyLEDArray();
-	void resizeArray();
+	
+	void addItem();
+	void removeItem(int index);
 	
 	int numItems();
 	int lengthOfArray();
 	
-	void addItem();
-	void removeItem(int index);
-	//	--------------------------------
-	void createLEDArray(int num);
-	
+	//	LED Array Functionality --------
 	void setBlock(Color aColor,
 				  int aBrightness,
 				  int aStart,
 				  int aEnd);
 	
+	void createLEDArray(int num);
+	void destroyLEDArray();
+	
+	//	Updating Functionality ---------
 	void checkForUpdate();
 	virtual void update();
 	void updateLEDs();
 	void updateFoos();
 	
+	//	Action Functionality -----------
 	void move(bool direction);
 	
+	//	--------------------------------
 private:
 	byte	updateValue(byte parameter,
 						bool direction,

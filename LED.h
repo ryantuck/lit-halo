@@ -53,12 +53,5 @@ public:
 	byte layer;
 };
 
-class ListedLED : public LED
-{
-public:
-	ListedLED();
-	ListedLED* next;
-};
-
 
 #endif

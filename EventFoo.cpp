@@ -25,13 +25,12 @@ void EventFoo::update()
 		killCounter++;
 		Serial.println(killCounter);
 		
-		if (killCounter > 60) foos[0]->readyToDie = 1;
+		if (killCounter > 60)
+			foos[0]->readyToDie = 1;
 		
 		
 		if (foos[0]->readyToDie)
-		{
 			destroyArray();
-		}
 	}
 	
 }
