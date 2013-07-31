@@ -8,7 +8,7 @@
 
 #include "Foo.h"
 
-
+//	========================================================
 Foo::Foo()
 {
 	foos			= NULL;
@@ -20,7 +20,7 @@ Foo::Foo()
 	
 	io				= 1;
 	period			= 1;
-	layer			= 1;
+	layer			= 2;
 	buttplug		= 0;
 	periodCounter	= 0;
 	readyToDie		= 0;
@@ -32,7 +32,7 @@ Foo::~Foo()
 	destroyArray();
 	destroyLEDArray();
 }
-
+//	========================================================
 void Foo::createArray()
 {
 	createArray(1);
@@ -49,6 +49,33 @@ void Foo::createArray(int num)
 		
 		arrayLength = num;
 	}
+}
+//	========================================================
+void Foo::resizeArray()
+{
+	int newLength = arrayLength*2;
+	
+	Foo** tmpArray;
+	tmpArray = new Foo*[newLength];
+	
+	for (int n=0;n<arrayLength;n++)
+	{
+		tmpArray[n] = foos[n];
+	}
+	
+	delete foos;
+	foos = NULL;
+	
+	createArray(newLength);
+	
+	for (int n=0;n<arrayLength;n++)
+	{
+		foos[n] = tmpArray[n];
+	}
+	
+	delete tmpArray;
+	
+	arrayLength = newLength;
 }
 
 void Foo::clearArray()
@@ -80,59 +107,7 @@ void Foo::destroyArray()
 	numberOfFoos	= 0;
 }
 
-void Foo::destroyLEDArray()
-{
-	if (fLEDs != NULL)
-	{
-		for (int n=0;n<numberOfLEDs;n++)
-		{
-			delete fLEDs[n];
-			fLEDs[n] = NULL;
-		}
-		
-		delete fLEDs;
-		fLEDs = NULL;
-	}
-	
-	numberOfLEDs = 0;
-}
-
-void Foo::resizeArray()
-{
-	int newLength = arrayLength*2;
-	
-	Foo** tmpArray;
-	tmpArray = new Foo*[newLength];
-	
-	for (int n=0;n<arrayLength;n++)
-	{
-		tmpArray[n] = foos[n];
-	}
-	
-	delete foos;
-	foos = NULL;
-	
-	createArray(newLength);
-	
-	for (int n=0;n<arrayLength;n++)
-	{
-		foos[n] = tmpArray[n];
-	}
-	
-	delete tmpArray;
-	
-	arrayLength = newLength;
-}
-
-int Foo::numItems()
-{
-	return numberOfFoos;
-}
-
-int Foo::lengthOfArray()
-{
-	return arrayLength;
-}
+//	========================================================
 
 void Foo::addItem()
 {
@@ -151,7 +126,7 @@ void Foo::addItem()
 		for (int n=0;n<5;n++)
 			if (numberOfFoos == (2^n))
 				resizeArray();
-
+		
 		while (!added)
 		{
 			if (foos[index] != NULL && index < numberOfFoos)
@@ -178,6 +153,8 @@ void Foo::removeItem(int index)
 	}
 }
 
+//	========================================================
+
 void Foo::setBlock(Color aColor,
 				   int aBrightness,
 				   int aStart,
@@ -189,7 +166,7 @@ void Foo::setBlock(Color aColor,
 	if (aEnd	< 0)			aEnd	= 0;
 	if (aEnd	>= numLEDs)		aEnd	= numLEDs;
 	
-	int length = aEnd-aStart;
+	int length = aEnd-aStart+1;
 	
 	if (fLEDs == NULL)
 	{
@@ -234,15 +211,53 @@ void Foo::createLEDArray(int num)
 	}
 }
 
-void Foo::update()
+void Foo::destroyLEDArray()
 {
-	move(buttplug);
+	if (fLEDs != NULL)
+	{
+		for (int n=0;n<numberOfLEDs;n++)
+		{
+			delete fLEDs[n];
+			fLEDs[n] = NULL;
+		}
+		
+		delete fLEDs;
+		fLEDs = NULL;
+	}
+	
+	numberOfLEDs = 0;
+}
+
+//	========================================================
+
+int Foo::numItems()
+{
+	return numberOfFoos;
+}
+
+int Foo::lengthOfArray()
+{
+	return arrayLength;
+}
+
+//	========================================================
+
+void Foo::iterate()
+{
+	checkForUpdate();
 	updateFoos();
 	updateLEDs();
 }
 
+void Foo::update()
+{
+	move(buttplug);
+}
+
 void Foo::updateLEDs()
 {
+	printVitals();
+	
 	if (io)
 	{
 		//	update LEDs
@@ -250,18 +265,34 @@ void Foo::updateLEDs()
 		{
 			for (int n=0;n<numberOfLEDs;n++)
 			{
+				Serial.print("n = ");
+				Serial.println(n);
+				
 				int addr = fLEDs[n]->address;
+				
+				Serial.print("address - ");
+				Serial.println(addr);
 				
 				if (layer > leds[addr].layer)
 				{
+					Serial.print("layer > led layer - ");
+					Serial.print(layer);
+					Serial.print(" > ");
+					Serial.println(leds[addr].layer);
 					leds[addr].setAttributes(*fLEDs[n]);
 					leds[addr].layer = layer;
 				}
 				else if (layer == leds[n].layer)
 				{
+					Serial.print("same layer - ");
+					Serial.println(layer);
 					fLEDs[n]->brightness = brightness;
 					leds[addr].mixWith(*fLEDs[n]);
 					leds[addr].adjustColor();
+				}
+				else if (layer < leds[addr].layer)
+				{
+					Serial.println("asdfasdfasdf");
 				}
 			}
 		}
@@ -281,7 +312,7 @@ void Foo::updateFoos()
 {
 	if (foos != NULL)
 		for (int n=0;n<numberOfFoos;n++)
-			foos[n]->checkForUpdate();
+			foos[n]->iterate();
 }
 
 void Foo::checkForUpdate()
@@ -295,6 +326,8 @@ void Foo::checkForUpdate()
 	}
 }
 
+//	========================================================
+
 void Foo::move(bool direction)
 {
 	for (int n=0;n<numberOfLEDs;n++)
@@ -304,6 +337,8 @@ void Foo::move(bool direction)
 		fLEDs[n]->address = addr;
 	}
 }
+
+//	========================================================
 
 byte Foo::updateValue(byte parameter,
 					  bool direction,
@@ -340,8 +375,13 @@ bool Foo::canUpdate()
 }
 
 
-
-
+void Foo::printVitals()
+{
+	Serial.println("Foo Vitals");
+	Serial.print("number of Foos: "); Serial.println(numberOfFoos);
+	Serial.print("number of LEDs: "); Serial.println(numberOfLEDs);
+	Serial.print("array length:   "); Serial.println(arrayLength);
+}
 
 
 

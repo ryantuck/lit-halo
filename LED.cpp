@@ -38,7 +38,16 @@ void LED::mixWith(LED aLED)
 	if (aLED.brightness > brightness)
 		brightness = aLED.brightness;
 	
+	Serial.println(" -----------");
+	Serial.println("1");
+	printVitals();
+	Serial.println("2");
+	aLED.printVitals();
+	
 	color.mixWith(aLED.color);
+	
+	Serial.println("after mixing");
+	printVitals();
 }
 
 void LED::setAttributes(LED aLED)

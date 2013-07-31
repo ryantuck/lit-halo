@@ -57,6 +57,7 @@ public:
 	void destroyLEDArray();
 	
 	//	Updating Functionality ---------
+	void iterate();
 	void checkForUpdate();
 	virtual void update();
 	void updateLEDs();
@@ -66,6 +67,8 @@ public:
 	void move(bool direction);
 	
 	//	--------------------------------
+	void printVitals();
+	
 private:
 	byte	updateValue(byte parameter,
 						bool direction,

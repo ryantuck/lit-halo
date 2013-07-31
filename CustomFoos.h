@@ -11,6 +11,7 @@
 
 #include "Foo1.h"
 #include "Foo2.h"
+#include "Foo3.h"
 #include "EventFoo.h"
 
 

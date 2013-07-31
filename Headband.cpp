@@ -8,7 +8,7 @@
 
 Headband::Headband()
 {
-	maxFoodex	= 2;
+	maxFoodex	= 3;
 	foodex		= 0;
 	
 	downButton		= Button(8);
@@ -39,7 +39,7 @@ void Headband::updateLEDs()
 		leds[n].layer = 0;
 	}
 	
-	foo->update();
+	foo->iterate();
 }
 
 void Headband::updateStrip()
@@ -113,6 +113,9 @@ void Headband::updateFoo(int index)
 			break;
 		case 2:
 			foo = new EventFoo;
+			break;
+		case 3:
+			foo = new Foo3;
 			break;
 	}
 }
