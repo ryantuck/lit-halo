@@ -19,64 +19,35 @@
 #include "Foo.h"
 #include "CustomFoos.h"
 
-
 class Headband
 {
 public:
 	
-	LITPattern*	pattern;
-	
-	Foo*		foo;
-	
+	Foo*		foo;	
 	Battery		batt;
-	
 	LPD8806		strip;
-	
 	Registers	lights;
-	
 	Button		upButton;
 	Button		downButton;
+	int			foodex;
+	int			maxFoodex;
 	
-	int patternIndex;				//	should go elsewhere?
-	int maxIndex;
-	
-	int foodex;
-	int maxFoodex;
-		
-	
-	//	Constructor
 	Headband();
 	
-	//	Runs each iteration. Updates everything.
-	void		update();
-	
-	//	Updates Pattern, etc, which updates LEDs.
-	void		updateLEDs();
-	
-	//	Changes current colors.
-	void		updateColors();
-	
-	//	Writes LED data to LPD8806.
-	void		updateStrip();
-	
-	void writeLights();
-	
-	//	Checks buttons for presses and updates counters accordingly.
-	void		checkButtons();
-	
-	//	Checks battery.
-	void		checkBattery();
-	
-	//	Updates audio object.
-	void		getAudio();
-	
-	//	Creates new instance of pattern object.
-	void updatePattern(int index);
-	
+	void update();
+	void updateLEDs();
 	void updateFoo(int index);
+	void updateStrip();
+	void getAudio();
+
+	void checkButtons();
+	void checkBattery();
+
+	void printLEDs();
 	
-	//	For testing.
-	void		printLEDs();
+	// in progress
+	void updateColors();
+	void writeLights();
 };
 
 

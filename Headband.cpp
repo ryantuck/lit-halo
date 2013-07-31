@@ -10,11 +10,7 @@ Headband::Headband()
 {
 	maxFoodex	= 2;
 	foodex		= 0;
-		
-	maxIndex		= 4;
-	patternIndex	= 0;
-	updatePattern(patternIndex);
-
+	
 	downButton		= Button(8);
 	upButton		= Button(9);
 	
@@ -44,8 +40,6 @@ void Headband::updateLEDs()
 	}
 	
 	foo->update();
-	
-	//pattern->update();
 }
 
 void Headband::updateStrip()
@@ -76,21 +70,13 @@ void Headband::checkButtons()
 	
 	if (upButton.pressed)
 	{
-		if(patternIndex == maxIndex) patternIndex = 0;
-		else patternIndex++;
-		updatePattern(patternIndex);
-		
 		if (foodex == maxFoodex) foodex = 0;
 		else foodex++;
 		updateFoo(foodex);
 	}
 	
 	else if (downButton.pressed)
-	{			
-		if(patternIndex == 0) patternIndex = maxIndex;
-		else patternIndex--;
-		updatePattern(patternIndex);
-		
+	{	
 		if (foodex == 0) foodex = maxFoodex;
 		else foodex--;
 		updateFoo(foodex);
@@ -110,31 +96,6 @@ void Headband::checkBattery()
 void Headband::getAudio()
 {
 	audio.update();
-}
-
-void Headband::updatePattern(int index)
-{
-	delete pattern;
-	pattern = NULL;
-	
-	switch (index)
-	{
-		case 0:
-			pattern = new PatternA;
-			break;
-		case 1:
-			pattern = new PatternB;
-			break;
-		case 2:
-			pattern = new PDoubleRainbow;
-			break;
-		case 3:
-			pattern = new PSparkle;
-			break;
-		case 4:
-			pattern = new FooPattern;
-			break;
-	}
 }
 
 void Headband::updateFoo(int index)
