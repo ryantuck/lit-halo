@@ -20,6 +20,7 @@
 #include "MultipleBouncingFoos.h"
 #include "OscillatingFoo.h"
 #include "KernFoo.h"
+#include "LinkedFoo.h"
 
 
 #endif

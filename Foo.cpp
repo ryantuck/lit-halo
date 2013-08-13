@@ -75,6 +75,15 @@ void Foo::addLEDs(Color aColor, int aBrightness, int aStart, int aEnd)
 	}
 }
 
+int Foo::countFoos()
+{
+	return myFooList.length();
+}
+
+int Foo::countLEDs()
+{
+	return myLEDList.length();
+}
 
 //	========================================================
 
@@ -279,7 +288,7 @@ void Foo::destroyLEDArray()
 
 int Foo::numItems()
 {
-	return numberOfFoos;
+	return myFooList.length();
 }
 
 int Foo::lengthOfArray()
@@ -327,6 +336,26 @@ void Foo::updateLEDs()
 			}
 		}
 	}
+	
+	if (io)
+	{
+		for (int n=0;n<countLEDs();n++)
+		{
+			int addr = myLEDList.entry(n)->me->address;
+			
+			if (layer > leds[addr].layer)
+			{
+				leds[addr].setAttributes(*myLEDList.entry(n)->me);
+				leds[addr].layer = layer;
+			}
+			else if (layer == leds[addr].layer)
+			{
+				myLEDList.entry(n)->me->brightness = brightness;
+				leds[addr].mixWith(*myLEDList.entry(n)->me);
+				leds[addr].adjustColor();
+			}
+		}
+	}
 }
 
 void Foo::updateFoos()
@@ -334,6 +363,8 @@ void Foo::updateFoos()
 	if (foos != NULL)
 		for (int n=0;n<numberOfFoos;n++)
 			foos[n]->iterate();
+	
+	for (int n=0;n<countFoos();n++) myFooList.entry(n)->me->iterate();
 }
 
 void Foo::checkForUpdate()
@@ -356,6 +387,13 @@ void Foo::move(bool direction)
 		byte addr = fLEDs[n]->address;
 		addr = updateValue(addr, direction, 0, 31, 1);
 		fLEDs[n]->address = addr;
+	}
+	
+	for (int n=0;n<countLEDs();n++)
+	{
+		byte addr = myLEDList.entry(n)->me->address;
+		addr = updateValue(addr, direction, 0, 31, 1);
+		myLEDList.entry(n)->me->address = addr;
 	}
 }
 
