@@ -49,6 +49,9 @@ public:
 	int	 countFoos();
 	int  countLEDs();
 	
+	bool hasFoos();
+	bool hasLEDs();
+	
 	//	Foo Array Functionality --------
 	void createArray();
 	void createArray(int num);

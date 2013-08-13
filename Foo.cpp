@@ -85,6 +85,18 @@ int Foo::countLEDs()
 	return myLEDList.length();
 }
 
+bool Foo::hasFoos()
+{
+	if (myFooList.length()) return 1;
+	else					return 0;
+}
+
+bool Foo::hasLEDs()
+{
+	if (myLEDList.length()) return 1;
+	else					return 0;
+}
+
 //	========================================================
 
 void Foo::createArray()
@@ -312,8 +324,6 @@ void Foo::update()
 
 void Foo::updateLEDs()
 {
-	//printVitals();
-	
 	if (io)
 	{
 		if (fLEDs != NULL)
@@ -339,20 +349,23 @@ void Foo::updateLEDs()
 	
 	if (io)
 	{
-		for (int n=0;n<countLEDs();n++)
+		if (hasLEDs())
 		{
-			int addr = myLEDList.entry(n)->me->address;
-			
-			if (layer > leds[addr].layer)
+			for (int n=0;n<countLEDs();n++)
 			{
-				leds[addr].setAttributes(*myLEDList.entry(n)->me);
-				leds[addr].layer = layer;
-			}
-			else if (layer == leds[addr].layer)
-			{
-				myLEDList.entry(n)->me->brightness = brightness;
-				leds[addr].mixWith(*myLEDList.entry(n)->me);
-				leds[addr].adjustColor();
+				int addr = myLEDList.entry(n)->me->address;
+				
+				if (layer > leds[addr].layer)
+				{
+					leds[addr].setAttributes(*myLEDList.entry(n)->me);
+					leds[addr].layer = layer;
+				}
+				else if (layer == leds[addr].layer)
+				{
+					myLEDList.entry(n)->me->brightness = brightness;
+					leds[addr].mixWith(*myLEDList.entry(n)->me);
+					leds[addr].adjustColor();
+				}
 			}
 		}
 	}
