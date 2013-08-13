@@ -10,26 +10,29 @@
 
 OscillatingFoo::OscillatingFoo()
 {
-	addItem();
-	foos[0]->setBlock(LITColor.babyBlue, maxBrightness, 0, 0);
-	foos[0]->direction	= 1;
-	foos[0]->period		= 8;
+	Foo* aFoo = new Foo;
+	aFoo->addLEDs(LITColor.babyBlue, maxBrightness, 0, 0);
+	aFoo->direction = 1;
+	aFoo->period	= 8;
+	addFoo(aFoo);
 }
 
 void OscillatingFoo::update()
 {
-	int addr = foos[0]->fLEDs[0]->address;
+	int addr = myFooList.entry(0)->me->myLEDList.entry(0)->me->address;
 	
 	if (addr < 16)
 	{
-		foos[0]->period = 4 - addr/4;
+		myFooList.entry(0)->me->period = 4 - addr/4;
 	}
 	else if (addr > 15)
 	{
-		foos[0]->period = addr/4 - 3;
+		myFooList.entry(0)->me->period = addr/4 - 3;
 	}
 	
-	if (addr == 0 && foos[0]->direction == 0)	foos[0]->direction = 1;
-	if (addr == 31 && foos[0]->direction == 1)	foos[0]->direction = 0;
+	if (addr == 0 && myFooList.entry(0)->me->direction == 0)
+		myFooList.entry(0)->me->direction = 1;
+	if (addr == 31 && myFooList.entry(0)->me->direction == 1)
+		myFooList.entry(0)->me->direction = 0;
 }
 
