@@ -19,6 +19,7 @@
 #include "BouncingFoo.h"
 #include "MultipleBouncingFoos.h"
 #include "OscillatingFoo.h"
+#include "KernFoo.h"
 
 
 #endif
