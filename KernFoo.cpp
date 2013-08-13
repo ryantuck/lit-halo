@@ -10,11 +10,16 @@
 
 KernFoo::KernFoo()
 {
-    setBlock(LITColor.red, maxBrightness, 2, 7);
+//    setBlock(LITColor.red, maxBrightness, 2, 7);
+//    
+//    addItem();
+//    foos[0]->setBlock(LITColor.pink, maxBrightness, 3, 10);
+//    foos[0]->direction = 1;
     
-    addItem();
-    foos[0]->setBlock(LITColor.pink, maxBrightness, 3, 10);
-    foos[0]->direction = 1;
-    
-    
+    addLEDs(LITColor.red, maxBrightness, 2, 7);
+	
+	Foo* aFoo = new Foo;
+	aFoo->setBlock(LITColor.pink, maxBrightness, 3, 10);
+	aFoo->direction = 1;
+	addFoo(aFoo);
 }

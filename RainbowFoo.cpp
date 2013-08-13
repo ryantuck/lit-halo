@@ -9,20 +9,20 @@
 #include "RainbowFoo.h"
 
 RainbowFoo::RainbowFoo()
-{
-	addItem();
-	addItem();
+{	
+	Foo* aFoo = new Foo;
+	Foo* bFoo = new Foo;
 	
 	for (int n=0;n<12;n++)
 	{
-		foos[0]->addItem();
-		foos[0]->setBlock(*LITColor.spectrum[n], maxBrightness, n, n);
-		
-		foos[1]->addItem();
-		foos[1]->setBlock(*LITColor.spectrum[n], maxBrightness, n+16,n+16);
-		
-		foos[0]->direction = 0;
-		foos[1]->direction = 1;
+		aFoo->addLEDs(*LITColor.spectrum[n], maxBrightness, n, n);
+		bFoo->addLEDs(*LITColor.spectrum[n], maxBrightness, n+16, n+16);
 	}
+	
+	aFoo->direction = 0;
+	bFoo->direction = 1;
+	
+	addFoo(aFoo);
+	addFoo(bFoo);
 }
 
