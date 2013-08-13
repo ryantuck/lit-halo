@@ -151,6 +151,15 @@ void LinkedList<T>::removeEntry(int aEntry)
 	}
 }
 
+template <class T>
+void LinkedList<T>::removeAllEntries()
+{
+	while (length() > 0)
+	{
+		removeEntry(0);
+	}
+}
+
 
 
 template class LinkedList<LED>;

@@ -37,6 +37,8 @@ public:
 	void addToEnd(ListObject<T>* newItem);
 	void removeEntry(int aEntry);
 	
+	void removeAllEntries();
+	
 };
 
 
