@@ -16,7 +16,7 @@ class ListObject
 {
 public:
 	ListObject();
-	T	me;
+	T*	me;
 	ListObject<T>*	next;
 	
 public:

@@ -14,6 +14,7 @@
 template <class T>
 ListObject<T>::ListObject()
 {
+	me   = NULL;
 	next = NULL;
 }
 
