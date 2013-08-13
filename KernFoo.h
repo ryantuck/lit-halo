@@ -11,7 +11,7 @@
 
 #include "Foo.h"
 
-class KernFoo:public Foo
+class KernFoo : public Foo
 {
 public:
     KernFoo();

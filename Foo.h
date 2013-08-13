@@ -20,9 +20,7 @@ public:
 	~Foo();
 	
 	//	Member Variables ---------------
-	Foo**			foos;
-	AddressedLED**	fLEDs;
-	
+
 	LinkedList<Foo>				myFooList;
 	LinkedList<AddressedLED>	myLEDList;
 	
@@ -32,15 +30,9 @@ public:
 	byte	layer;
 	byte	brightness;
 	bool	readyToDie;
-	
-	int		numberOfLEDs;
-	int		arrayLength;
-	int		numberOfFoos;
-	
-	byte periodCounter;
+	byte	periodCounter;
 	
 	//	Linked List Shit ---------------
-	
 	void addFoo(Foo* aFoo);
 	void addLED(AddressedLED* aLED);
 	void addFoos(int num);
@@ -51,29 +43,6 @@ public:
 	
 	bool hasFoos();
 	bool hasLEDs();
-	
-	//	Foo Array Functionality --------
-	void createArray();
-	void createArray(int num);
-	
-	void resizeArray();
-	void clearArray();
-	void destroyArray();
-	
-	void addItem();
-	void removeItem(int index);
-	
-	int numItems();
-	int lengthOfArray();
-	
-	//	LED Array Functionality --------
-	void setBlock(Color aColor,
-				  int aBrightness,
-				  int aStart,
-				  int aEnd);
-	
-	void createLEDArray(int num);
-	void destroyLEDArray();
 	
 	//	Updating Functionality ---------
 	void iterate();

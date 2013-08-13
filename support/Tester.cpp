@@ -110,25 +110,25 @@ void Tester::fooTest()
 
 void Tester::fooTester()
 {
-	Foo aFoo;
-	
-	aFoo.createArray();
-	aFoo.addItem();
-	
-	aFoo.foos[0]->createArray();
-	aFoo.foos[0]->addItem();
-	
-	aFoo.direction = 1;
-	
-	aFoo.foos[0]->direction = 1;
-	
-	Serial.println(aFoo.foos[0]->direction);
-	
-	//aFoo.createLEDArray(5);
-	
-	aFoo.setBlock(LITColor.orange, maxBrightness, 13, 19);
-	
-	Serial.println("end of fooTester");
+//	Foo aFoo;
+//	
+//	aFoo.createArray();
+//	aFoo.addItem();
+//	
+//	aFoo.foos[0]->createArray();
+//	aFoo.foos[0]->addItem();
+//	
+//	aFoo.direction = 1;
+//	
+//	aFoo.foos[0]->direction = 1;
+//	
+//	Serial.println(aFoo.foos[0]->direction);
+//	
+//	//aFoo.createLEDArray(5);
+//	
+//	aFoo.setBlock(LITColor.orange, maxBrightness, 13, 19);
+//	
+//	Serial.println("end of fooTester");
 }
 
 void Tester::templateTesting()
