@@ -25,7 +25,7 @@ void Audio::update()
 	getEQ();
 	weighEQ();
 	checkBeats();
-	//printSpectrum();
+    pot.update(100);
 }
 
 void Audio::getEQ()
@@ -85,9 +85,24 @@ void Audio::adjustPot()
 }
 
 
-
-
-
+void Audio::gatherSpectrumAverages()
+{
+	for (int n=0;n<7;n++)
+	{
+		averagedSpectrum[n] = 0;
+	}
+	
+	
+	for (int n=1;n<10000;n++)
+	{
+		eq.sample();
+		
+		for (int s=0;s<7;s++)
+		{
+			averagedSpectrum[s] = averagedSpectrum[s] + (eq.spectrum[s] - averagedSpectrum[s]) / n;
+		}
+	}
+}
 
 
 
@@ -109,6 +124,19 @@ void Audio::printSpectrum()
 		if (eq.spectrum[n] < 100)	Serial.print(" ");
 		if (eq.spectrum[n] < 1000)	Serial.print(" ");
 		Serial.print(eq.spectrum[n]);
+	}
+	Serial.println();
+}
+
+void Audio::printAvgSpectrum()
+{
+	for (int n=0;n<7;n++)
+	{
+		Serial.print(" ");
+		if (averagedSpectrum[n] < 10)	Serial.print(" ");
+		if (averagedSpectrum[n] < 100)	Serial.print(" ");
+		if (averagedSpectrum[n] < 1000)	Serial.print(" ");
+		Serial.print(averagedSpectrum[n]);
 	}
 	Serial.println();
 }

@@ -26,6 +26,9 @@
 
 typedef int byte;
 
+extern SerialClass Serial;
+extern SPIClass SPI;
+
 inline void	digitalWrite(int a, int b){};
 inline void	pinMode(int a, int b){};
 inline void	analogReference(int a){};
@@ -33,8 +36,13 @@ inline void	delayMicroseconds(int a){};
 inline int	analogRead(int a){return 0;};
 inline int	digitalRead(int a){return 1;};
 inline void shiftOut(int a,int b,int c, int d);
+inline int	millis(){return 1;};
+inline void delay(int a){};
 
-extern SPIClass SPI;
-extern SerialClass Serial;
+//inline void cli(){};
+//inline void sei(){};
+
+
+
 
 #endif

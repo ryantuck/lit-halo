@@ -14,10 +14,9 @@ class Battery
 {
 public:
 	Battery();
-	int voltage;
 	
-	void readVoltage();
-	int  percentage();
+	int	voltage();
+	int	percentage();
 	
 private:
 	byte pin;

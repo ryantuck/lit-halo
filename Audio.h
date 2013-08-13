@@ -5,6 +5,7 @@
 //	*	Handles MSGEQ7 and potentiometer interactions.
 //	*	Handles all audio processing.
 
+
 //	####################################################################
 
 #ifndef ____Audio__
@@ -24,10 +25,13 @@ public:
 	int			weightSpectrum[7];
 	byte		beatCounters[7];	//	tracks how many iterations
 									//	since last beat on each band.
+	
+	int averagedSpectrum[7];
+	
 	//	Constructor
 	Audio();
 	
-	//	Grabs eq, weighs it, and checks for beats
+	//	Grabs eq, weighs it, and checks for beats.
 	void update();
 	
 	//	Updates beatCounters.
@@ -49,8 +53,11 @@ public:
 	void adjustPot();
 	
 	//	For testing.
+	void gatherSpectrumAverages();
+	
 	void printBeatCounters();
 	void printSpectrum();
+	void printAvgSpectrum();
 	
 };
 

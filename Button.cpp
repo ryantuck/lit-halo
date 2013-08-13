@@ -9,7 +9,10 @@
 
 Button::Button()
 {
-	
+    lastButtonState = 1;
+    
+    pressed		= 0;
+    released	= 0;
 }
 
 Button::Button(int newPin)
@@ -17,33 +20,27 @@ Button::Button(int newPin)
 	pin = newPin;
 	pinMode(pin, INPUT);
 	digitalWrite(pin, HIGH);
+
+    lastButtonState = 1;
 }
 
 void Button::checkState()
 {
-	state	= digitalRead(pin);
-	pressed = 0;
-	
-	if (pressedCounter == 0)
-	{
-		if (state == LOW)
-		{
-			pressed = 1;
-			pressedCounter = 1;
-		}
-	}
-	else
-	{
-		pressedCounter++;
-		if (pressedCounter == 30)
-			pressedCounter = 0;
-	}
-	
-	lastState = state;
-	
+    
+    bool reading = digitalRead(pin);
+    
+    if(reading != lastButtonState)
+    {
+        if(!reading) pressed = 1;
+        if(reading) released = 1;
+    }
+    else
+    {
+        pressed		= 0;
+        released	= 0;
+    }
+    lastButtonState = reading;
+
 }
-
-
-
 
 
