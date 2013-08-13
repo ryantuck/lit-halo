@@ -121,17 +121,19 @@ void LinkedList<T>::removeEntry(int aEntry)
 	{
 		start = NULL;
 	}
-	
 	else if (aEntry == length())
 	{
+		delete entry(aEntry)->me;
 		entry(aEntry-1)->next = NULL;
 	}
 	else if (aEntry == 0)
 	{
+		delete entry(aEntry)->me;
 		start = entry(1);
 	}
-	else
+	else if (aEntry < length())
 	{
+		delete entry(aEntry)->me;
 		ListObject<T>* entryToRemove		= entry(aEntry);
 		ListObject<T>* pointerToTransfer	= entryToRemove->next;
 		entry(aEntry-1)->next				= pointerToTransfer;

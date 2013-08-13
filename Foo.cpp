@@ -32,6 +32,9 @@ Foo::~Foo()
 {
 	destroyArray();
 	destroyLEDArray();
+	
+	myFooList.removeAllEntries();
+	myLEDList.removeAllEntries();
 }
 
 //	========================================================
