@@ -10,6 +10,7 @@
 #define __LIT_Headband_Simulator__Foo__
 
 #include "LIT.h"
+#include "LinkedList.h"
 
 class Foo
 {
@@ -21,6 +22,9 @@ public:
 	//	Member Variables ---------------
 	Foo**			foos;
 	AddressedLED**	fLEDs;
+	
+	LinkedList<Foo> myFooList;
+	LinkedList<LED> myLEDList;
 	
 	bool	direction;
 	bool	io;

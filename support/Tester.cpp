@@ -18,6 +18,16 @@ void Tester::printThis(int a)
 	Serial.println(a);
 }
 
+void printSomething()
+{
+	Serial.println("butts");
+}
+
+void doSomething(void (*funcPtr)())
+{
+	(*funcPtr)();
+}
+
 void Tester::printALine()
 {
 	Serial.println("blah blah");
@@ -44,15 +54,30 @@ void Tester::funcPtrTest()
 	ptrToFunc2 = &Tester::printALine;
 	doAFunction(ptrToFunc2);
 	
+	// using casting to allow for array creation
 	typedef void (Tester::*genericFP)();
-	
 	typedef void (Tester::*intPointer)(int);
 	typedef void (Tester::*voidPointer)();
-	
 	genericFP fnPtrs[2] = {(genericFP)pointerToFunction,(genericFP)ptrToFunc2};
-	
 	doAFunction((intPointer)fnPtrs[0],6);
 	doAFunction((voidPointer)fnPtrs[1]);
+	
+	Step<Tester> myStep;
+	myStep.fnPtr = &Tester::printALine;
+	doAFunction(myStep.fnPtr);
+}
+
+void Tester::linkedListFoo()
+{
+	ListObject<Foo>* ptrToLO = new ListObject<Foo>;
+	Foo aFoo;
+	aFoo.myFooList.addToEnd(ptrToLO);
+	
+	ListObject<Foo>* ptrToLO2 = new ListObject<Foo>;
+	aFoo.myFooList.addToEnd(ptrToLO2);
+	
+	Serial.print("length is: ");
+	Serial.println(aFoo.myFooList.length());
 	
 }
 

@@ -7,9 +7,12 @@
 //	########################################################################
 
 #include "Step.h"
+#include "Tester.h"
 
-
-Step::Step()
+template <class T>
+Step<T>::Step()
 {
 	count = 0;
 }
+
+template class Step<Tester>;

@@ -28,16 +28,13 @@ class LinkedList
 public:
 	LinkedList();
 	
-	ListObject<T>* start;
-	
 	int length();
 	
+	ListObject<T>* start;
 	ListObject<T>* lastEntry();
-	
 	ListObject<T>* entry(int aEntry);
 	
 	void addToEnd(ListObject<T>* newItem);
-	
 	void removeEntry(int aEntry);
 	
 };

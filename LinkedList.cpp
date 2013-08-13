@@ -7,7 +7,7 @@
 //	########################################################################
 
 #include "LinkedList.h"
-
+#include "Foo.h"
 
 
 
@@ -158,6 +158,8 @@ template class ListObject<LED>;
 template class LinkedList<AddressedLED>;
 template class ListObject<AddressedLED>;
 
+template class LinkedList<Foo>;
+template class ListObject<Foo>;
 
 
 
