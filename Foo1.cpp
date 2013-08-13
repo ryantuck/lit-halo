@@ -18,7 +18,7 @@ Foo1::Foo1()
 	
 	foos[0]->setBlock(LITColor.blue, maxBrightness, 19, 24);
 	
-	buttplug = 0;
+	direction = 0;
 	
-	foos[0]->buttplug = 1;
+	foos[0]->direction = 1;
 }

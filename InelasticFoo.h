@@ -1,24 +1,20 @@
 //	########################################################################
 
-//  EventFoo.h
+//  InelasticFoo.h
 
-//	7/30/13
+//	8/8/13
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__EventFoo__
-#define __LIT_Headband_Simulator__EventFoo__
+#ifndef __LIT_Headband_Simulator__InelasticFoo__
+#define __LIT_Headband_Simulator__InelasticFoo__
 
 #include "Foo.h"
 
-class EventFoo : public Foo
+class InelasticFoo : public Foo
 {
 public:
-	EventFoo();
-	
-	int killCounter;
-	
-	void ** steps;
+	InelasticFoo();
 	
 	void update();
 };

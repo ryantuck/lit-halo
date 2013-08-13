@@ -13,6 +13,51 @@ Tester::Tester()
 	
 }
 
+void Tester::printThis(int a)
+{
+	Serial.println(a);
+}
+
+void Tester::printALine()
+{
+	Serial.println("blah blah");
+}
+
+void Tester::doAFunction(void (Tester::*func)())
+{
+	(tester.*func)();
+}
+
+void Tester::doAFunction(void (Tester::*func)(int),int b)
+{
+	(tester.*func)(b);
+}
+
+void Tester::funcPtrTest()
+{
+	void (Tester::*pointerToFunction)(int);	// creates a pointer to a function
+	pointerToFunction = &Tester::printThis;	// assigns a function to the ptr
+	(tester.*pointerToFunction)(1);	//	passes 1 as an argument to the ptr
+	doAFunction(pointerToFunction,4);	//	passes the ptr to a function
+	
+	void (Tester::*ptrToFunc2)();
+	ptrToFunc2 = &Tester::printALine;
+	doAFunction(ptrToFunc2);
+	
+	typedef void (Tester::*genericFP)();
+	
+	typedef void (Tester::*intPointer)(int);
+	typedef void (Tester::*voidPointer)();
+	
+	genericFP fnPtrs[2] = {(genericFP)pointerToFunction,(genericFP)ptrToFunc2};
+	
+	doAFunction((intPointer)fnPtrs[0],6);
+	doAFunction((voidPointer)fnPtrs[1]);
+	
+}
+
+
+
 void Tester::fooTester()
 {
 	Foo aFoo;
@@ -23,11 +68,11 @@ void Tester::fooTester()
 	aFoo.foos[0]->createArray();
 	aFoo.foos[0]->addItem();
 	
-	aFoo.buttplug = 10;
+	aFoo.direction = 1;
 	
-	aFoo.foos[0]->buttplug = 69;
+	aFoo.foos[0]->direction = 1;
 	
-	Serial.println(aFoo.foos[0]->buttplug);
+	Serial.println(aFoo.foos[0]->direction);
 	
 	//aFoo.createLEDArray(5);
 	

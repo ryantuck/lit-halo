@@ -1,24 +1,22 @@
 //	########################################################################
 
-//  EventFoo.h
+//  BounceFoo.h
 
-//	7/30/13
+//	7/31/13
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__EventFoo__
-#define __LIT_Headband_Simulator__EventFoo__
+#ifndef __LIT_Headband_Simulator__BounceFoo__
+#define __LIT_Headband_Simulator__BounceFoo__
 
 #include "Foo.h"
 
-class EventFoo : public Foo
+class BounceFoo : public Foo
 {
 public:
-	EventFoo();
+	BounceFoo();
 	
-	int killCounter;
-	
-	void ** steps;
+	int counter;
 	
 	void update();
 };

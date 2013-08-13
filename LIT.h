@@ -13,6 +13,7 @@
 
 #include "LED.h"
 #include "Audio.h"
+#include "Step.h"
 
 #include "Color.h"
 #include "LITColor.h"

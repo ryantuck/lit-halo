@@ -1,24 +1,20 @@
 //	########################################################################
 
-//  EventFoo.h
+//  OscillatingFoo.h
 
-//	7/30/13
+//	8/7/13
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__EventFoo__
-#define __LIT_Headband_Simulator__EventFoo__
+#ifndef __LIT_Headband_Simulator__OscillatingFoo__
+#define __LIT_Headband_Simulator__OscillatingFoo__
 
 #include "Foo.h"
 
-class EventFoo : public Foo
+class OscillatingFoo : public Foo
 {
 public:
-	EventFoo();
-	
-	int killCounter;
-	
-	void ** steps;
+	OscillatingFoo();
 	
 	void update();
 };

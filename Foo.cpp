@@ -22,7 +22,7 @@ Foo::Foo()
 	io				= 1;
 	period			= 1;
 	layer			= 1;
-	buttplug		= 0;
+	direction		= 0;
 	periodCounter	= 0;
 	readyToDie		= 0;
 	brightness		= maxBrightness;
@@ -87,7 +87,7 @@ void Foo::clearArray()
 {
 	if (foos != NULL)
 	{
-		for (int n=0;n<arrayLength;n++)
+		for (int n=0;n<numberOfFoos;n++)
 		{
 			if (foos[n] != NULL)
 			{
@@ -132,7 +132,7 @@ void Foo::addItem()
 			if (numberOfFoos == (2^n))
 				resizeArray();
 		
-		while (!added)
+		while (!added)	// logic issue here - fix
 		{
 			if (foos[index] != NULL && index < numberOfFoos)
 			{
@@ -256,12 +256,12 @@ void Foo::iterate()
 
 void Foo::update()
 {
-	move(buttplug);
+	move(direction);
 }
 
 void Foo::updateLEDs()
 {
-	printVitals();
+	//printVitals();
 	
 	if (io)
 	{
@@ -349,7 +349,7 @@ byte Foo::updateValue(byte parameter,
 
 bool Foo::canUpdate()
 {
-	if (periodCounter == period)	return 1;
+	if (periodCounter >= period)	return 1;
 	else							return 0;
 }
 
@@ -362,6 +362,37 @@ void Foo::printVitals()
 	Serial.print("array length:   "); Serial.println(arrayLength);
 }
 
+void Foo::switchDirection()
+{
+	if (direction)	direction = 0;
+	else			direction = 1;
+}
+
+void Foo::merge(Foo *aFoo)
+{
+	for (int n=0;n<aFoo->numberOfLEDs;n++)
+	{
+		setBlock(aFoo->fLEDs[n]->color,
+				 maxBrightness,
+				 aFoo->fLEDs[n]->address,
+				 aFoo->fLEDs[n]->address);
+	}
+	
+	for (int n=0;n<numberOfFoos;n++)
+	{
+		addItem();
+		foos[n]->addItem();
+		foos[n]->merge(aFoo->foos[n]);
+	}
+	
+	if (aFoo->direction != direction)
+	{
+		if (aFoo->period < period)
+		{
+			direction = aFoo->direction;
+		}
+	}
+}
 
 
 

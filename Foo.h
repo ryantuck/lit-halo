@@ -22,7 +22,7 @@ public:
 	Foo**			foos;
 	AddressedLED**	fLEDs;
 	
-	int		buttplug;
+	bool	direction;
 	bool	io;
 	byte	period;
 	byte	layer;
@@ -32,6 +32,8 @@ public:
 	int		numberOfLEDs;
 	int		arrayLength;
 	int		numberOfFoos;
+	
+	byte periodCounter;
 	
 	//	Foo Array Functionality --------
 	void createArray();
@@ -69,6 +71,12 @@ public:
 	//	--------------------------------
 	void printVitals();
 	
+	bool canUpdate();
+	void switchDirection();
+	
+	void merge(Foo* aFoo);
+
+	
 private:
 	byte	updateValue(byte parameter,
 						bool direction,
@@ -76,8 +84,8 @@ private:
 						byte maxVal,
 						bool cycles);
 	
-	byte periodCounter;
-	bool canUpdate();
+	
+	
 };
 
 
