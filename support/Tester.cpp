@@ -71,39 +71,64 @@ void Tester::linkedListFoo()
 {
 	ListObject<Foo>* ptrToLO = new ListObject<Foo>;
 	Foo aFoo;
-	aFoo.myFooList.addToEnd(ptrToLO);
+	aFoo.foos.addToEnd(ptrToLO);
 	
 	ListObject<Foo>* ptrToLO2 = new ListObject<Foo>;
-	aFoo.myFooList.addToEnd(ptrToLO2);
+	aFoo.foos.addToEnd(ptrToLO2);
 	
 	Serial.print("length is: ");
-	Serial.println(aFoo.myFooList.length());
-	
+	Serial.println(aFoo.foos.length());
 }
+
+void Tester::fooTest()
+{
+	Foo aFoo;
+	Foo bFoo;
+	Foo cFoo;
+	
+	Foo* bPtr = &bFoo;
+	
+	aFoo.addFoo(bPtr);
+	aFoo.addFoo(&cFoo);
+	
+	Serial.print("foo list length: ");
+	Serial.println(aFoo.foos.length());
+	
+	bFoo.addLEDs(LITColor.green, maxBrightness, 4, 19);
+	
+	Serial.print("bFoo contains x LEDs: ");
+	Serial.println(aFoo.foos.entry(0)->me->fLEDs.length());
+	
+	cFoo.addLEDs(LITColor.pink, maxBrightness, 1, 25);
+	
+	Serial.print("cFoo contains x LEDs: ");
+	Serial.println(aFoo.foos.entry(1)->me->fLEDs.length());
+}
+
 
 
 
 void Tester::fooTester()
 {
-	Foo aFoo;
-	
-	aFoo.createArray();
-	aFoo.addItem();
-	
-	aFoo.foos[0]->createArray();
-	aFoo.foos[0]->addItem();
-	
-	aFoo.direction = 1;
-	
-	aFoo.foos[0]->direction = 1;
-	
-	Serial.println(aFoo.foos[0]->direction);
-	
-	//aFoo.createLEDArray(5);
-	
-	aFoo.setBlock(LITColor.orange, maxBrightness, 13, 19);
-	
-	Serial.println("end of fooTester");
+//	Foo aFoo;
+//	
+//	aFoo.createArray();
+//	aFoo.addItem();
+//	
+//	aFoo.foos[0]->createArray();
+//	aFoo.foos[0]->addItem();
+//	
+//	aFoo.direction = 1;
+//	
+//	aFoo.foos[0]->direction = 1;
+//	
+//	Serial.println(aFoo.foos[0]->direction);
+//	
+//	//aFoo.createLEDArray(5);
+//	
+//	aFoo.setBlock(LITColor.orange, maxBrightness, 13, 19);
+//	
+//	Serial.println("end of fooTester");
 }
 
 void Tester::templateTesting()

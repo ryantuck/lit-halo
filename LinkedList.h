@@ -16,7 +16,7 @@ class ListObject
 {
 public:
 	ListObject();
-	T	me;
+	T*	me;
 	ListObject<T>*	next;
 	
 public:
@@ -36,6 +36,8 @@ public:
 	
 	void addToEnd(ListObject<T>* newItem);
 	void removeEntry(int aEntry);
+	
+	void removeAllEntries();
 	
 };
 

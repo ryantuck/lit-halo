@@ -10,7 +10,6 @@
 #define __LIT_Headband_Simulator__MultipleBouncingFoos__
 
 #include "Foo.h"
-#include "BouncingFoo.h"
 
 class MultipleBouncingFoo : public Foo
 {

@@ -14,6 +14,7 @@
 template <class T>
 ListObject<T>::ListObject()
 {
+	me   = NULL;
 	next = NULL;
 }
 
@@ -26,8 +27,6 @@ LinkedList<T>::LinkedList()
 template <class T>
 int LinkedList<T>::length()
 {
-	Serial.println("== length()");
-	
 	int		counter		= 0;
 	bool	finished	= 0;
 	
@@ -61,8 +60,6 @@ int LinkedList<T>::length()
 template <class T>
 ListObject<T>* LinkedList<T>::entry(int aEntry)
 {
-	Serial.println("== entry()");
-	
 	ListObject<T>* tmp = start;
 	
 	for (int n=0;n<aEntry;n++)
@@ -76,17 +73,12 @@ ListObject<T>* LinkedList<T>::entry(int aEntry)
 template <class T>
 void LinkedList<T>::addToEnd(ListObject<T>* newItem)
 {
-	Serial.println("== addToEnd");
-	
 	if (length() == 0)
 	{
-		Serial.println("list length is zero");
 		start = newItem;
-		
 	}
 	else
 	{
-		Serial.println("list length is NOT zero");
 		ListObject<T>* last = lastEntry();
 		last->next = newItem;
 	}
@@ -96,8 +88,6 @@ void LinkedList<T>::addToEnd(ListObject<T>* newItem)
 template <class T>
 ListObject<T>* LinkedList<T>::lastEntry()
 {
-	Serial.println("== lastEntry");
-	
 	bool finished	= 0;
 	
 	ListObject<T>* tmpObject = start;
@@ -127,26 +117,35 @@ ListObject<T>* LinkedList<T>::lastEntry()
 template <class T>
 void LinkedList<T>::removeEntry(int aEntry)
 {
-	Serial.println("== removeEntry()");
-	
 	if (length() == 0)
 	{
 		start = NULL;
 	}
-	
 	else if (aEntry == length())
 	{
+		delete entry(aEntry)->me;
 		entry(aEntry-1)->next = NULL;
 	}
 	else if (aEntry == 0)
 	{
+		delete entry(aEntry)->me;
 		start = entry(1);
 	}
-	else
+	else if (aEntry < length())
 	{
+		delete entry(aEntry)->me;
 		ListObject<T>* entryToRemove		= entry(aEntry);
 		ListObject<T>* pointerToTransfer	= entryToRemove->next;
 		entry(aEntry-1)->next				= pointerToTransfer;
+	}
+}
+
+template <class T>
+void LinkedList<T>::removeAllEntries()
+{
+	while (length() > 0)
+	{
+		removeEntry(0);
 	}
 }
 
