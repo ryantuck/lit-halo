@@ -24,6 +24,7 @@ public:
 	LinkedList<Foo>				foos;
 	LinkedList<AddressedLED>	fLEDs;
 	
+	
 	bool	direction;
 	bool	io;
 	byte	period;
@@ -56,6 +57,8 @@ public:
 	
 	//	--------------------------------
 	void printVitals();
+	
+	void printTest();
 	
 	bool canUpdate();
 	void switchDirection();

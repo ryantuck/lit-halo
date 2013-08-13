@@ -16,11 +16,13 @@ class ArrayOfFunctionsFoo : public Foo
 public:
 	ArrayOfFunctionsFoo();
 	
+	LinkedList<Step<Foo>> steps;
+	
 	void update();
+	int countSteps();
 	
-	void ** steps;
-	
-	void (*pointerToFunction)(int);
+	void doAFunction(ListObject<Step<Foo>>* obj);
+	void printALine();
 	
 };
 

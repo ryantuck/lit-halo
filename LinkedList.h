@@ -10,6 +10,7 @@
 #define __LIT_Headband_Simulator__LinkedList__
 
 #include "LIT.h"
+#include "Step.h"
 
 template <class T>
 class ListObject

@@ -207,6 +207,8 @@ void Foo::switchDirection()
 {
 	if (direction)	direction = 0;
 	else			direction = 1;
+	Serial.print("direction: ");
+	Serial.println(direction);
 }
 
 void Foo::merge(Foo *aFoo)
@@ -235,8 +237,10 @@ void Foo::merge(Foo *aFoo)
 //	}
 }
 
-
-
+void Foo::printTest()
+{
+	Serial.println("printing");
+}
 
 
 

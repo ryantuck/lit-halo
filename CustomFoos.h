@@ -17,6 +17,7 @@
 #include "OscillatingFoo.h"
 #include "KernFoo.h"
 #include "LinkedFoo.h"
+#include "ArrayOfFunctionsFoo.h"
 
 
 #endif

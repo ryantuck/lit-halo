@@ -160,6 +160,8 @@ template class ListObject<AddressedLED>;
 template class LinkedList<Foo>;
 template class ListObject<Foo>;
 
+template class LinkedList<Step<Foo>>;
+template class ListObject<Step<Foo>>;
 
 
 
