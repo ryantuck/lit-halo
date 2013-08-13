@@ -78,8 +78,33 @@ void Tester::linkedListFoo()
 	
 	Serial.print("length is: ");
 	Serial.println(aFoo.myFooList.length());
-	
 }
+
+void Tester::fooTest()
+{
+	Foo aFoo;
+	Foo bFoo;
+	Foo cFoo;
+	
+	Foo* bPtr = &bFoo;
+	
+	aFoo.addFoo(bPtr);
+	aFoo.addFoo(&cFoo);
+	
+	Serial.print("foo list length: ");
+	Serial.println(aFoo.myFooList.length());
+	
+	bFoo.addLEDs(LITColor.green, maxBrightness, 4, 19);
+	
+	Serial.print("bFoo contains x LEDs: ");
+	Serial.println(aFoo.myFooList.entry(0)->me->myLEDList.length());
+	
+	cFoo.addLEDs(LITColor.pink, maxBrightness, 1, 25);
+	
+	Serial.print("cFoo contains x LEDs: ");
+	Serial.println(aFoo.myFooList.entry(1)->me->myLEDList.length());
+}
+
 
 
 

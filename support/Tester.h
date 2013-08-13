@@ -30,6 +30,7 @@ public:
 	void printALine();
 	
 	void linkedListFoo();
+	void fooTest();
 	
 	void fooTester();
 	

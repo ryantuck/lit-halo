@@ -24,7 +24,7 @@ public:
 	AddressedLED**	fLEDs;
 	
 	LinkedList<Foo> myFooList;
-	LinkedList<LED> myLEDList;
+	LinkedList<AddressedLED> myLEDList;
 	
 	bool	direction;
 	bool	io;
@@ -38,6 +38,13 @@ public:
 	int		numberOfFoos;
 	
 	byte periodCounter;
+	
+	//	Linked List Shit ---------------
+	
+	void addFoo(Foo* aFoo);
+	void addLED(AddressedLED* aLED);
+	void addFoos(int num);
+	void addLEDs(Color aColor, int aBrightness, int aStart, int aEnd);
 	
 	//	Foo Array Functionality --------
 	void createArray();

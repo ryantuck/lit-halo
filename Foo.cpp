@@ -36,6 +36,48 @@ Foo::~Foo()
 
 //	========================================================
 
+void Foo::addFoo(Foo *aFoo)
+{
+	ListObject<Foo>* entry = new ListObject<Foo>;
+	
+	entry->me = aFoo;
+	
+	myFooList.addToEnd(entry);
+}
+
+void Foo::addLED(AddressedLED *aLED)
+{
+	ListObject<AddressedLED>* entry = new ListObject<AddressedLED>;
+	
+	entry->me = aLED;
+	
+	myLEDList.addToEnd(entry);
+}
+
+void Foo::addLEDs(Color aColor, int aBrightness, int aStart, int aEnd)
+{
+	// check values
+	if (aStart	< 0)			aStart	= 0;
+	if (aStart	>= numLEDs)		aStart	= numLEDs;
+	if (aEnd	< 0)			aEnd	= 0;
+	if (aEnd	>= numLEDs)		aEnd	= numLEDs;
+	
+	int length = aEnd-aStart+1;
+	
+	for (int n=0;n<length;n++)
+	{
+		AddressedLED* aLED = new AddressedLED;
+		aLED->color.setColor(aColor);
+		aLED->brightness = aBrightness;
+		aLED->address = aStart + n;
+		
+		addLED(aLED);
+	}
+}
+
+
+//	========================================================
+
 void Foo::createArray()
 {
 	createArray(1);
