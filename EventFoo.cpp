@@ -32,5 +32,8 @@ void EventFoo::update()
 		if (myFooList.entry(0)->me->readyToDie)
 			myFooList.removeAllEntries();
 	}
+	
+	Serial.print("number of Foos: ");
+	Serial.println(countFoos());
 }
 

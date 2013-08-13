@@ -27,8 +27,6 @@ LinkedList<T>::LinkedList()
 template <class T>
 int LinkedList<T>::length()
 {
-	Serial.println("== length()");
-	
 	int		counter		= 0;
 	bool	finished	= 0;
 	
@@ -62,8 +60,6 @@ int LinkedList<T>::length()
 template <class T>
 ListObject<T>* LinkedList<T>::entry(int aEntry)
 {
-	Serial.println("== entry()");
-	
 	ListObject<T>* tmp = start;
 	
 	for (int n=0;n<aEntry;n++)
@@ -77,17 +73,12 @@ ListObject<T>* LinkedList<T>::entry(int aEntry)
 template <class T>
 void LinkedList<T>::addToEnd(ListObject<T>* newItem)
 {
-	Serial.println("== addToEnd");
-	
 	if (length() == 0)
 	{
-		Serial.println("list length is zero");
 		start = newItem;
-		
 	}
 	else
 	{
-		Serial.println("list length is NOT zero");
 		ListObject<T>* last = lastEntry();
 		last->next = newItem;
 	}
@@ -97,8 +88,6 @@ void LinkedList<T>::addToEnd(ListObject<T>* newItem)
 template <class T>
 ListObject<T>* LinkedList<T>::lastEntry()
 {
-	Serial.println("== lastEntry");
-	
 	bool finished	= 0;
 	
 	ListObject<T>* tmpObject = start;
@@ -128,8 +117,6 @@ ListObject<T>* LinkedList<T>::lastEntry()
 template <class T>
 void LinkedList<T>::removeEntry(int aEntry)
 {
-	Serial.println("== removeEntry()");
-	
 	if (length() == 0)
 	{
 		start = NULL;
