@@ -71,13 +71,13 @@ void Tester::linkedListFoo()
 {
 	ListObject<Foo>* ptrToLO = new ListObject<Foo>;
 	Foo aFoo;
-	aFoo.myFooList.addToEnd(ptrToLO);
+	aFoo.foos.addToEnd(ptrToLO);
 	
 	ListObject<Foo>* ptrToLO2 = new ListObject<Foo>;
-	aFoo.myFooList.addToEnd(ptrToLO2);
+	aFoo.foos.addToEnd(ptrToLO2);
 	
 	Serial.print("length is: ");
-	Serial.println(aFoo.myFooList.length());
+	Serial.println(aFoo.foos.length());
 }
 
 void Tester::fooTest()
@@ -92,17 +92,17 @@ void Tester::fooTest()
 	aFoo.addFoo(&cFoo);
 	
 	Serial.print("foo list length: ");
-	Serial.println(aFoo.myFooList.length());
+	Serial.println(aFoo.foos.length());
 	
 	bFoo.addLEDs(LITColor.green, maxBrightness, 4, 19);
 	
 	Serial.print("bFoo contains x LEDs: ");
-	Serial.println(aFoo.myFooList.entry(0)->me->myLEDList.length());
+	Serial.println(aFoo.foos.entry(0)->me->fLEDs.length());
 	
 	cFoo.addLEDs(LITColor.pink, maxBrightness, 1, 25);
 	
 	Serial.print("cFoo contains x LEDs: ");
-	Serial.println(aFoo.myFooList.entry(1)->me->myLEDList.length());
+	Serial.println(aFoo.foos.entry(1)->me->fLEDs.length());
 }
 
 

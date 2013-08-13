@@ -28,9 +28,9 @@ void EventFoo::update()
 		Serial.println(killCounter);
 		
 		if (killCounter > 60)
-			myFooList.entry(0)->me->readyToDie = 1;
-		if (myFooList.entry(0)->me->readyToDie)
-			myFooList.removeAllEntries();
+			foos.entry(0)->me->readyToDie = 1;
+		if (foos.entry(0)->me->readyToDie)
+			foos.removeAllEntries();
 	}
 	
 	Serial.print("number of Foos: ");

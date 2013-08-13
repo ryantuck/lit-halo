@@ -21,8 +21,8 @@ public:
 	
 	//	Member Variables ---------------
 
-	LinkedList<Foo>				myFooList;
-	LinkedList<AddressedLED>	myLEDList;
+	LinkedList<Foo>				foos;
+	LinkedList<AddressedLED>	fLEDs;
 	
 	bool	direction;
 	bool	io;

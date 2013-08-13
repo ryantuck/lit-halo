@@ -19,20 +19,20 @@ OscillatingFoo::OscillatingFoo()
 
 void OscillatingFoo::update()
 {
-	int addr = myFooList.entry(0)->me->myLEDList.entry(0)->me->address;
+	int addr = foos.entry(0)->me->fLEDs.entry(0)->me->address;
 	
 	if (addr < 16)
 	{
-		myFooList.entry(0)->me->period = 4 - addr/4;
+		foos.entry(0)->me->period = 4 - addr/4;
 	}
 	else if (addr > 15)
 	{
-		myFooList.entry(0)->me->period = addr/4 - 3;
+		foos.entry(0)->me->period = addr/4 - 3;
 	}
 	
-	if (addr == 0 && myFooList.entry(0)->me->direction == 0)
-		myFooList.entry(0)->me->direction = 1;
-	if (addr == 31 && myFooList.entry(0)->me->direction == 1)
-		myFooList.entry(0)->me->direction = 0;
+	if (addr == 0 && foos.entry(0)->me->direction == 0)
+		foos.entry(0)->me->direction = 1;
+	if (addr == 31 && foos.entry(0)->me->direction == 1)
+		foos.entry(0)->me->direction = 0;
 }
 

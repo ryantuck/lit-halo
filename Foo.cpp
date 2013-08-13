@@ -23,8 +23,8 @@ Foo::Foo()
 
 Foo::~Foo()
 {	
-	myFooList.removeAllEntries();
-	myLEDList.removeAllEntries();
+	foos.removeAllEntries();
+	fLEDs.removeAllEntries();
 }
 
 //	========================================================
@@ -35,7 +35,7 @@ void Foo::addFoo(Foo *aFoo)
 	
 	entry->me = aFoo;
 	
-	myFooList.addToEnd(entry);
+	foos.addToEnd(entry);
 }
 
 void Foo::addLED(AddressedLED *aLED)
@@ -44,7 +44,7 @@ void Foo::addLED(AddressedLED *aLED)
 	
 	entry->me = aLED;
 	
-	myLEDList.addToEnd(entry);
+	fLEDs.addToEnd(entry);
 }
 
 void Foo::addLEDs(Color aColor, int aBrightness, int aStart, int aEnd)
@@ -70,23 +70,23 @@ void Foo::addLEDs(Color aColor, int aBrightness, int aStart, int aEnd)
 
 int Foo::countFoos()
 {
-	return myFooList.length();
+	return foos.length();
 }
 
 int Foo::countLEDs()
 {
-	return myLEDList.length();
+	return fLEDs.length();
 }
 
 bool Foo::hasFoos()
 {
-	if (myFooList.length()) return 1;
+	if (foos.length()) return 1;
 	else					return 0;
 }
 
 bool Foo::hasLEDs()
 {
-	if (myLEDList.length()) return 1;
+	if (fLEDs.length()) return 1;
 	else					return 0;
 }
 
@@ -112,17 +112,17 @@ void Foo::updateLEDs()
 		{
 			for (int n=0;n<countLEDs();n++)
 			{
-				int addr = myLEDList.entry(n)->me->address;
+				int addr = fLEDs.entry(n)->me->address;
 				
 				if (layer > leds[addr].layer)
 				{
-					leds[addr].setAttributes(*myLEDList.entry(n)->me);
+					leds[addr].setAttributes(*fLEDs.entry(n)->me);
 					leds[addr].layer = layer;
 				}
 				else if (layer == leds[addr].layer)
 				{
-					myLEDList.entry(n)->me->brightness = brightness;
-					leds[addr].mixWith(*myLEDList.entry(n)->me);
+					fLEDs.entry(n)->me->brightness = brightness;
+					leds[addr].mixWith(*fLEDs.entry(n)->me);
 					leds[addr].adjustColor();
 				}
 			}
@@ -132,7 +132,7 @@ void Foo::updateLEDs()
 
 void Foo::updateFoos()
 {
-	for (int n=0;n<countFoos();n++) myFooList.entry(n)->me->iterate();
+	for (int n=0;n<countFoos();n++) foos.entry(n)->me->iterate();
 }
 
 void Foo::checkForUpdate()
@@ -152,9 +152,9 @@ void Foo::move(bool direction)
 {
 	for (int n=0;n<countLEDs();n++)
 	{
-		byte addr = myLEDList.entry(n)->me->address;
+		byte addr = fLEDs.entry(n)->me->address;
 		addr = updateValue(addr, direction, 0, 31, 1);
-		myLEDList.entry(n)->me->address = addr;
+		fLEDs.entry(n)->me->address = addr;
 	}
 }
 
