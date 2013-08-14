@@ -9,8 +9,8 @@
 MSGEQ7::MSGEQ7()
 {
 	analogPin	= 0;
-	strobePin	= 7;
-	resetPin	= 6;
+	strobePin	= 8;
+	resetPin	= 7;
 	
 	pinMode(analogPin,	INPUT);
 	pinMode(strobePin,	OUTPUT);
@@ -37,6 +37,13 @@ void MSGEQ7::sample()
 		spectrum[n] = analogRead(analogPin);
 		digitalWrite(strobePin,HIGH);
 	}
+	
+//	for (int n=0;n<7;n++)
+//	{
+//		Serial.print(spectrum[n]);
+//		Serial.print(" ");
+//	}
+//	Serial.println();
 }
 
 int MSGEQ7::spectrumSum()
@@ -110,8 +117,17 @@ byte MSGEQ7::minBand()
 	return tmpMinBand;
 }
 
-
-
+float MSGEQ7::centroid()
+{
+	float tmpSum = 0;
+	
+	for (int n=0;n<7;n++)
+	{
+		tmpSum += n * spectrum[n];
+	}
+	
+	return tmpSum / spectrumSum();
+}
 
 
 
