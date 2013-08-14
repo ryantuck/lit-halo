@@ -55,7 +55,7 @@ public:
 	void checkSteps();
 	void resetSteps();
 	
-	void doAFunction(ListObject<Step<Foo>>* obj);
+	void execute(ListObject<Step<Foo>>* obj);
 	
 	void updateSteps();
 	

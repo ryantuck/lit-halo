@@ -132,7 +132,7 @@ void Foo::resetSteps()
 	}
 }
 
-void Foo::doAFunction(ListObject<Step<Foo> > *obj)
+void Foo::execute(ListObject<Step<Foo> > *obj)
 {
 	(*this.*obj->me->fnPtr)();
 }
@@ -147,7 +147,7 @@ void Foo::updateSteps()
 			
 			if (steps.entry(currentStep)->me->canUpdate())
 			{
-				doAFunction(steps.entry(currentStep));
+				execute(steps.entry(currentStep));
 				steps.entry(currentStep)->me->iterate();
 				checkSteps();
 			}
@@ -326,6 +326,7 @@ template void Foo::addStep<RainbowFoo>(Step<RainbowFoo>*);
 template void Foo::addStep<LinkedFoo>(Step<LinkedFoo>*);
 template void Foo::addStep<KernFoo>(Step<KernFoo>*);
 template void Foo::addStep<Foo2>(Step<Foo2>*);
+template void Foo::addStep<EventFoo>(Step<EventFoo>*);
 
 
 
