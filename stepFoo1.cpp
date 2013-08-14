@@ -28,12 +28,3 @@ StepFoo1::StepFoo1()
 	addStep(stepB);
 }
 
-void StepFoo1::moveLeft()
-{
-	move(1);
-}
-
-void StepFoo1::moveRight()
-{
-	move(0);
-}

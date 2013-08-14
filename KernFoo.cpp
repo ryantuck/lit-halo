@@ -19,7 +19,7 @@ KernFoo::KernFoo()
 	
 	Step<KernFoo>* aStep = new Step<KernFoo>;
 	
-	aStep->fnPtr = &KernFoo::moveLeft;
+	aStep->fnPtr = &MovingFoo::moveLeft;
 	
 	addStep(aStep);
 	aFoo->addStep(aStep);
@@ -27,7 +27,8 @@ KernFoo::KernFoo()
 	aStep->period = 5;
 }
 
-void KernFoo::moveLeft()
-{
-	move(1);
-}
+//void KernFoo::moveLeft()
+//{
+//	move(1);
+//}
+

@@ -65,16 +65,13 @@ public:
 	void updateFoos();
 	void updateSteps();
 	
-	//	Action Functionality -----------
-	void move(bool direction);
-	
 	//	--------------------------------
 	void printVitals();
 	void switchDirection();
 	void merge(Foo* aFoo);
 
 	
-private:
+protected:
 	byte	updateValue(byte parameter,
 						bool direction,
 						byte minVal,

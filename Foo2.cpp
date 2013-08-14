@@ -24,8 +24,8 @@ Foo2::Foo2()
 	Step<Foo2>* aStep = new Step<Foo2>;
 	Step<Foo2>* bStep = new Step<Foo2>;
 	
-	aStep->fnPtr = &Foo2::moveRight;
-	bStep->fnPtr = &Foo2::moveLeft;
+	aStep->fnPtr = &MovingFoo::moveRight;
+	bStep->fnPtr = &MovingFoo::moveLeft;
 	
 	aFoo->addStep(aStep);
 	bFoo->addStep(bStep);
@@ -34,12 +34,3 @@ Foo2::Foo2()
 	bStep->period = 8;
 }
 
-void Foo2::moveLeft()
-{
-	move(0);
-}
-
-void Foo2::moveRight()
-{
-	move(1);
-}

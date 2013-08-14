@@ -9,15 +9,13 @@
 #ifndef __LIT_Headband_Simulator__stepFoo1__
 #define __LIT_Headband_Simulator__stepFoo1__
 
-#include "Foo.h"
+#include "MovingFoo.h"
 
-class StepFoo1 : public Foo
+class StepFoo1 : public MovingFoo
 {
 public:
 	StepFoo1();
 	
-	void moveLeft();
-	void moveRight();
 };
 
 

@@ -215,18 +215,6 @@ void Foo::updateFoos()
 
 //	========================================================
 
-void Foo::move(bool direction)
-{
-	for (int n=0;n<countLEDs();n++)
-	{
-		byte addr = fLEDs.entry(n)->me->address;
-		addr = updateValue(addr, direction, 0, 31, 1);
-		fLEDs.entry(n)->me->address = addr;
-	}
-}
-
-//	========================================================
-
 byte Foo::updateValue(byte parameter,
 					  bool direction,
 					  byte minVal,

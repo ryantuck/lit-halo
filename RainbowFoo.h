@@ -9,15 +9,13 @@
 #ifndef __LIT_Headband_Simulator__RainbowFoo__
 #define __LIT_Headband_Simulator__RainbowFoo__
 
-#include "Foo.h"
+#include "MovingFoo.h"
 
-class RainbowFoo : public Foo
+class RainbowFoo : public MovingFoo
 {
 public:
 	RainbowFoo();
 	
-	void moveLeft();
-	void moveRight();
 };
 
 

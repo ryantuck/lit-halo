@@ -9,16 +9,14 @@
 #ifndef __LIT_Headband_Simulator__EventFoo__
 #define __LIT_Headband_Simulator__EventFoo__
 
-#include "Foo.h"
+#include "MovingFoo.h"
 
-class EventFoo : public Foo
+class EventFoo : public MovingFoo
 {
 public:
 	EventFoo();
 	
 	int killCounter;
-	
-	void moveLeft();
 };
 
 

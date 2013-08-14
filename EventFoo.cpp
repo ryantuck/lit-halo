@@ -25,8 +25,3 @@ EventFoo::EventFoo()
 	
 	aFoo->repeats = false;
 }
-
-void EventFoo::moveLeft()
-{
-	move(1);
-}

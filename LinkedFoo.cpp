@@ -37,12 +37,3 @@ LinkedFoo::LinkedFoo()
 	
 }
 
-void LinkedFoo::moveLeft()
-{
-	move(1);
-}
-
-void LinkedFoo::moveRight()
-{
-	move(0);
-}

@@ -32,12 +32,3 @@ RainbowFoo::RainbowFoo()
 	bFoo->addStep(bStep);
 }
 
-void RainbowFoo::moveLeft()
-{
-	move(1);
-}
-
-void RainbowFoo::moveRight()
-{
-	move(0);
-}

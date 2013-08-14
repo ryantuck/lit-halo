@@ -9,14 +9,12 @@
 #ifndef __LIT_Headband_Simulator__KernFoo__
 #define __LIT_Headband_Simulator__KernFoo__
 
-#include "Foo.h"
+#include "MovingFoo.h"
 
-class KernFoo : public Foo
+class KernFoo : public MovingFoo
 {
 public:
     KernFoo();
-	
-	void moveLeft();
 };
 
 #endif /* defined(__LIT_Headband_Simulator__KernFoo__) */
