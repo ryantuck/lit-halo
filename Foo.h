@@ -57,11 +57,10 @@ public:
 	
 	void doAFunction(ListObject<Step<Foo>>* obj);
 	
-	template <class T>
-	Step<T>* createStep();
-	
 	void updateSteps();
 	
+	template <class T>
+	void addStep(Step<T>* aStep);
 	
 	//	Updating Functionality ---------
 	void iterate();

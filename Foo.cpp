@@ -137,16 +137,6 @@ void Foo::doAFunction(ListObject<Step<Foo> > *obj)
 	(*this.*obj->me->fnPtr)();
 }
 
-template <class T>
-Step<T>* Foo::createStep()
-{
-	ListObject<Step<Foo>>* lo1 = new ListObject<Step<Foo>>;
-	Step<T>* step1 = new Step<T>;
-	lo1->me = (Step<Foo>*)step1;
-	steps.addToEnd(lo1);
-	return step1;
-}
-
 void Foo::updateSteps()
 {
 	if (isRunning)
@@ -158,6 +148,16 @@ void Foo::updateSteps()
 			checkSteps();
 		}
 	}
+}
+
+template <class T>
+void Foo::addStep(Step<T>* aStep)
+{
+	ListObject<Step<Foo>>* entry = new ListObject<Step<Foo>>;
+	
+	entry->me = (Step<Foo>*)aStep;
+	
+	steps.addToEnd(entry);
 }
 
 //	========================================================
@@ -313,7 +313,10 @@ void Foo::printTest()
 	Serial.println("printing");
 }
 
-template Step<StepFoo1>* Foo::createStep<StepFoo1>();
+//	list of possible templates for the createStep function
+//template Step<StepFoo1>* Foo::createStep<StepFoo1>();
+
+template void Foo::addStep<StepFoo1>(Step<StepFoo1>*);
 
 
 
