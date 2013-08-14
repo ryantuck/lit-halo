@@ -11,10 +11,13 @@
 
 #include "ArrayOfFunctionsFoo.h"
 
-class StepFoo1 : public ArrayOfFunctionsFoo
+class StepFoo1 : public Foo
 {
 public:
-	StepFoo1();	
+	StepFoo1();
+	
+	void moveLeft();
+	void moveRight();
 };
 
 

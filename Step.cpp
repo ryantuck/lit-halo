@@ -33,4 +33,4 @@ void Step<T>::iterate()
 
 template class Step<Tester>;
 template class Step<Foo>;
-template class Step<ArrayOfFunctionsFoo>;
+template class Step<StepFoo1>;

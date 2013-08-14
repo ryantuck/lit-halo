@@ -23,6 +23,7 @@ public:
 
 	LinkedList<Foo>				foos;
 	LinkedList<AddressedLED>	fLEDs;
+	LinkedList<Step<Foo>>		steps;
 	
 	
 	bool	direction;
@@ -33,6 +34,10 @@ public:
 	bool	readyToDie;
 	byte	periodCounter;
 	
+	int currentStep;
+	bool isRecurring;
+	bool isRunning;
+	
 	//	Linked List Shit ---------------
 	void addFoo(Foo* aFoo);
 	void addLED(AddressedLED* aLED);
@@ -41,9 +46,22 @@ public:
 	
 	int	 countFoos();
 	int  countLEDs();
+	int  countSteps();
 	
 	bool hasFoos();
 	bool hasLEDs();
+	bool hasSteps();
+	
+	void checkSteps();
+	void resetSteps();
+	
+	void doAFunction(ListObject<Step<Foo>>* obj);
+	
+	template <class T>
+	Step<T>* createStep();
+	
+	void updateSteps();
+	
 	
 	//	Updating Functionality ---------
 	void iterate();

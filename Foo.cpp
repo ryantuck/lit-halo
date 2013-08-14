@@ -7,6 +7,7 @@
 //	########################################################################
 
 #include "Foo.h"
+#include "CustomFoos.h"
 
 //	========================================================
 
@@ -17,8 +18,11 @@ Foo::Foo()
 	layer			= 1;
 	direction		= 0;
 	periodCounter	= 0;
-	readyToDie		= 0;
+	readyToDie		= false;
 	brightness		= maxBrightness;
+	currentStep		= 0;
+	isRecurring		= true;
+	isRunning		= true;
 }
 
 Foo::~Foo()
@@ -92,9 +96,76 @@ bool Foo::hasLEDs()
 
 //	========================================================
 
+int Foo::countSteps()
+{
+	return steps.length();
+}
+
+bool Foo::hasSteps()
+{
+	if (countSteps())	return 1;
+	else				return 0;
+}
+
+void Foo::checkSteps()
+{
+	if (steps.entry(currentStep)->me->isFinished)
+	{
+		currentStep++;
+		
+		if (currentStep == countSteps())
+		{
+			if (isRecurring)	resetSteps();
+			else				isRunning = false;
+		}
+	}
+}
+
+void Foo::resetSteps()
+{
+	currentStep = 0;
+	
+	for (int n=0;n<countSteps();n++)
+	{
+		steps.entry(n)->me->currentCount	= 0;
+		steps.entry(n)->me->isFinished		= false;
+	}
+}
+
+void Foo::doAFunction(ListObject<Step<Foo> > *obj)
+{
+	(*this.*obj->me->fnPtr)();
+}
+
+template <class T>
+Step<T>* Foo::createStep()
+{
+	ListObject<Step<Foo>>* lo1 = new ListObject<Step<Foo>>;
+	Step<T>* step1 = new Step<T>;
+	lo1->me = (Step<Foo>*)step1;
+	steps.addToEnd(lo1);
+	return step1;
+}
+
+void Foo::updateSteps()
+{
+	if (isRunning)
+	{
+		if (hasSteps())
+		{
+			doAFunction(steps.entry(currentStep));
+			steps.entry(currentStep)->me->iterate();
+			checkSteps();
+		}
+	}
+}
+
+//	========================================================
+
 void Foo::iterate()
 {
-	checkForUpdate();
+	//checkForUpdate();
+	updateSteps();
 	updateFoos();
 	updateLEDs();
 }
@@ -242,9 +313,7 @@ void Foo::printTest()
 	Serial.println("printing");
 }
 
-
-
-
+template Step<StepFoo1>* Foo::createStep<StepFoo1>();
 
 
 

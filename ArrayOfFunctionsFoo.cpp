@@ -84,14 +84,14 @@ bool ArrayOfFunctionsFoo::hasSteps()
 	else				return 0;
 }
 
-Step<ArrayOfFunctionsFoo>* ArrayOfFunctionsFoo::createStep()
-{
-	ListObject<Step<Foo>>* lo1 = new ListObject<Step<Foo>>;
-	Step<ArrayOfFunctionsFoo>* step1 = new Step<ArrayOfFunctionsFoo>;
-	lo1->me = (Step<Foo>*)step1;
-	steps.addToEnd(lo1);
-	return step1;
-}
+//Step<ArrayOfFunctionsFoo>* ArrayOfFunctionsFoo::createStep()
+//{
+//	ListObject<Step<Foo>>* lo1 = new ListObject<Step<Foo>>;
+//	Step<ArrayOfFunctionsFoo>* step1 = new Step<ArrayOfFunctionsFoo>;
+//	lo1->me = (Step<Foo>*)step1;
+//	steps.addToEnd(lo1);
+//	return step1;
+//}
 
 
 
