@@ -143,9 +143,14 @@ void Foo::updateSteps()
 	{
 		if (hasSteps())
 		{
-			doAFunction(steps.entry(currentStep));
-			steps.entry(currentStep)->me->iterate();
-			checkSteps();
+			steps.entry(currentStep)->me->periodCounter++;
+			
+			if (steps.entry(currentStep)->me->canUpdate())
+			{
+				doAFunction(steps.entry(currentStep));
+				steps.entry(currentStep)->me->iterate();
+				checkSteps();
+			}
 		}
 	}
 }

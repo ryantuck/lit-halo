@@ -27,6 +27,8 @@ StepFoo1::StepFoo1()
 	stepA->count = 10;
 	stepB->count = 4;
 	
+	stepA->period = 4;
+	
 	addStep(stepA);
 	addStep(stepB);
 	

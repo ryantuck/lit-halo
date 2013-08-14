@@ -18,11 +18,17 @@ public:
 	Step();
 	
 	void	(T::*fnPtr)();
+	
 	int		count;
 	int		currentCount;
+	
+	int		period;
+	int		periodCounter;
+	
 	bool	isFinished;
 	
 	void iterate();
+	bool canUpdate();
 };
 
 
