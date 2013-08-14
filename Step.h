@@ -19,6 +19,10 @@ public:
 	
 	void	(T::*fnPtr)();
 	int		count;
+	int		currentCount;
+	bool	isFinished;
+	
+	void iterate();
 };
 
 

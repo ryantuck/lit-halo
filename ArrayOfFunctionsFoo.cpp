@@ -29,12 +29,15 @@ ArrayOfFunctionsFoo::ArrayOfFunctionsFoo()
 	//	assign the step to the list object
 	stepLO1->me = aStep;
 	
-	ListObject<Step<Foo>>* stepLO2 = new ListObject<Step<Foo>>;
-	Step<ArrayOfFunctionsFoo>* bStep = new Step<ArrayOfFunctionsFoo>;
-	bStep->fnPtr = &ArrayOfFunctionsFoo::printALine;
-	bStep->count = 5;
-	stepLO2->me = (Step<Foo>*)bStep;
+	ListObject<Step<Foo>>*		stepLO2	= new ListObject<Step<Foo>>;
+	Step<ArrayOfFunctionsFoo>*	bStep	= new Step<ArrayOfFunctionsFoo>;
+	stepLO2->me		= (Step<Foo>*)bStep;
+	bStep->fnPtr	= &ArrayOfFunctionsFoo::printALine;
+	bStep->count	= 5;
 	steps.addToEnd(stepLO2);
+	
+	currentStep = 0;
+	isRecurring = 1;
 }
 
 int ArrayOfFunctionsFoo::countSteps()
@@ -44,12 +47,11 @@ int ArrayOfFunctionsFoo::countSteps()
 
 void ArrayOfFunctionsFoo::update()
 {
-	for (int n=0;n<countSteps();n++)
+	if (isRunning)
 	{
-		for (int c=0;c<steps.entry(n)->me->count;c++)
-		{
-			doAFunction(steps.entry(n));
-		}
+		doAFunction(steps.entry(currentStep));
+		steps.entry(currentStep)->me->iterate();
+		checkSteps();
 	}
 }
 
@@ -58,14 +60,29 @@ void ArrayOfFunctionsFoo::doAFunction(ListObject<Step<Foo> > * obj)
 	(*this.*obj->me->fnPtr)();
 }
 
-void ArrayOfFunctionsFoo::doAFunction(void (*func)())
+void ArrayOfFunctionsFoo::checkSteps()
 {
-	(*func)();
+	if (steps.entry(currentStep)->me->isFinished)
+	{
+		currentStep++;
+		
+		if (currentStep == countSteps())
+		{
+			if (isRecurring)	resetSteps();
+			else				isRunning	= false;
+		}
+	}
 }
 
-void ArrayOfFunctionsFoo::doAFunction(void (*func)(int), int a)
+void ArrayOfFunctionsFoo::resetSteps()
 {
-	(*func)(a);
+	currentStep = 0;
+	
+	for (int n=0;n<countSteps();n++)
+	{
+		steps.entry(n)->me->currentCount	= 0;
+		steps.entry(n)->me->isFinished		= false;
+	}
 }
 
 void ArrayOfFunctionsFoo::printALine()

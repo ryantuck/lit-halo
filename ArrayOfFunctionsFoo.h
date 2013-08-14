@@ -18,8 +18,14 @@ public:
 	
 	LinkedList<Step<Foo>> steps;
 	
+	int currentStep;
+	bool isRecurring;
+	bool isRunning;
+	
 	void update();
 	int countSteps();
+	void checkSteps();
+	void resetSteps();
 	
 	void doAFunction(ListObject<Step<Foo>>* obj);
 	void printALine();

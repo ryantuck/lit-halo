@@ -14,7 +14,21 @@
 template <class T>
 Step<T>::Step()
 {
-	count = 0;
+	count			= 0;
+	currentCount	= 0;
+	isFinished		= false;
+}
+
+template <class T>
+void Step<T>::iterate()
+{
+	currentCount++;
+	
+	if (currentCount == count)
+	{
+		isFinished = true;
+		currentCount = 0;
+	}
 }
 
 template class Step<Tester>;
