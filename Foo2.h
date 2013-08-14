@@ -15,6 +15,9 @@ class Foo2 : public Foo
 {
 public:
 	Foo2();
+	
+	void moveLeft();
+	void moveRight();
 };
 
 

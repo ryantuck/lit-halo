@@ -14,6 +14,20 @@ KernFoo::KernFoo()
 	
 	Foo* aFoo = new Foo;
 	aFoo->addLEDs(LITColor.pink, maxBrightness, 3, 10);
-	aFoo->direction = 1;
+	//aFoo->direction = 1;
 	addFoo(aFoo);
+	
+	Step<KernFoo>* aStep = new Step<KernFoo>;
+	
+	aStep->fnPtr = &KernFoo::moveLeft;
+	
+	addStep(aStep);
+	aFoo->addStep(aStep);
+	
+	aStep->period = 5;
+}
+
+void KernFoo::moveLeft()
+{
+	move(1);
 }

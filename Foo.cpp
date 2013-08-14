@@ -322,7 +322,10 @@ void Foo::printTest()
 //template Step<StepFoo1>* Foo::createStep<StepFoo1>();
 
 template void Foo::addStep<StepFoo1>(Step<StepFoo1>*);
-
+template void Foo::addStep<RainbowFoo>(Step<RainbowFoo>*);
+template void Foo::addStep<LinkedFoo>(Step<LinkedFoo>*);
+template void Foo::addStep<KernFoo>(Step<KernFoo>*);
+template void Foo::addStep<Foo2>(Step<Foo2>*);
 
 
 

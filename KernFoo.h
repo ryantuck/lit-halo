@@ -15,7 +15,8 @@ class KernFoo : public Foo
 {
 public:
     KernFoo();
-    
+	
+	void moveLeft();
 };
 
 #endif /* defined(__LIT_Headband_Simulator__KernFoo__) */

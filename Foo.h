@@ -25,14 +25,14 @@ public:
 	LinkedList<AddressedLED>	fLEDs;
 	LinkedList<Step<Foo>>		steps;
 	
-	
+	byte	period;
+	byte	periodCounter;
 	bool	direction;
 	bool	io;
-	byte	period;
+	bool	readyToDie;
+	
 	byte	layer;
 	byte	brightness;
-	bool	readyToDie;
-	byte	periodCounter;
 	
 	int currentStep;
 	bool isRecurring;

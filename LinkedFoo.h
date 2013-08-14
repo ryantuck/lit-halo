@@ -15,6 +15,9 @@ class LinkedFoo : public Foo
 {
 public:
 	LinkedFoo();
+	
+	void moveLeft();
+	void moveRight();
 };
 
 

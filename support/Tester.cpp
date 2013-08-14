@@ -13,16 +13,6 @@ Tester::Tester()
 	
 }
 
-void Tester::arrayOfFunctionsFooTest()
-{
-	ArrayOfFunctionsFoo myFoo;
-	
-	for (int n=0;n<20;n++)
-	{
-		myFoo.update();
-	}
-}
-
 void Tester::printThis(int a)
 {
 	Serial.println(a);

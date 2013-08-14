@@ -9,7 +9,7 @@
 #ifndef __LIT_Headband_Simulator__stepFoo1__
 #define __LIT_Headband_Simulator__stepFoo1__
 
-#include "ArrayOfFunctionsFoo.h"
+#include "Foo.h"
 
 class StepFoo1 : public Foo
 {

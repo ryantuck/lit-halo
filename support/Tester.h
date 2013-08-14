@@ -23,8 +23,6 @@ public:
 
 	Tester();
 	
-	void arrayOfFunctionsFooTest();
-	
 	void funcPtrTest();
 	void doAFunction(void (Tester::*func)());
 	void doAFunction(void (Tester::*func)(int),int b);

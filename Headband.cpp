@@ -8,7 +8,7 @@
 
 Headband::Headband()
 {
-	maxFoodex	= 8;
+	maxFoodex	= 4;
 	foodex		= 0;
 	
 	downButton		= Button(8);
@@ -106,10 +106,10 @@ void Headband::updateFoo(int index)
 	switch (index)
 	{
 		case 0:
-			foo = new OscillatingFoo;
+			foo = new KernFoo;
 			break;
 		case 1:
-			foo = new Foo1;
+			foo = new StepFoo1;
 			break;
 		case 2:
 			foo = new Foo2;
@@ -119,18 +119,6 @@ void Headband::updateFoo(int index)
 			break;
 		case 4:
 			foo = new RainbowFoo;
-			break;
-		case 5:
-			foo = new EventFoo;
-			break;
-		case 6:
-			foo = new MultipleBouncingFoo;
-			break;
-        case 7:
-            foo = new KernFoo;
-            break;
-		case 8:
-			foo = new StepFoo1;
 			break;
 	}
 }

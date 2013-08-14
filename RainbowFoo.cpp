@@ -19,10 +19,25 @@ RainbowFoo::RainbowFoo()
 		bFoo->addLEDs(*LITColor.spectrum[n], maxBrightness, n+16, n+16);
 	}
 	
-	aFoo->direction = 0;
-	bFoo->direction = 1;
-	
 	addFoo(aFoo);
 	addFoo(bFoo);
+	
+	Step<RainbowFoo>* aStep = new Step<RainbowFoo>;
+	Step<RainbowFoo>* bStep = new Step<RainbowFoo>;
+
+	aStep->fnPtr = &RainbowFoo::moveLeft;
+	bStep->fnPtr = &RainbowFoo::moveRight;
+	
+	aFoo->addStep(aStep);
+	bFoo->addStep(bStep);
 }
 
+void RainbowFoo::moveLeft()
+{
+	move(1);
+}
+
+void RainbowFoo::moveRight()
+{
+	move(0);
+}

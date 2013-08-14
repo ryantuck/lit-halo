@@ -45,3 +45,7 @@ bool Step<T>::canUpdate()
 template class Step<Tester>;
 template class Step<Foo>;
 template class Step<StepFoo1>;
+template class Step<RainbowFoo>;
+template class Step<LinkedFoo>;
+template class Step<KernFoo>;
+template class Step<Foo2>;

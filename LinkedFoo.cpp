@@ -23,7 +23,26 @@ LinkedFoo::LinkedFoo()
 	cFoo->addLEDs(LITColor.babyBlue, maxBrightness, 14, 24);
 	bFoo->addFoo(cFoo);
 	
-	//	change parameters after adding - everything still works
-	cFoo->period	= 4;
-	bFoo->direction = 1;
+	Step<LinkedFoo>* aStep = new Step<LinkedFoo>;
+	Step<LinkedFoo>* bStep = new Step<LinkedFoo>;
+	Step<LinkedFoo>* cStep = new Step<LinkedFoo>;
+	
+	aStep->fnPtr = &LinkedFoo::moveRight;
+	bStep->fnPtr = &LinkedFoo::moveLeft;
+	cStep->fnPtr = &LinkedFoo::moveRight;
+	
+	addStep(aStep);
+	bFoo->addStep(bStep);
+	cFoo->addStep(cStep);
+	
+}
+
+void LinkedFoo::moveLeft()
+{
+	move(1);
+}
+
+void LinkedFoo::moveRight()
+{
+	move(0);
 }

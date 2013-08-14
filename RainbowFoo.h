@@ -15,6 +15,9 @@ class RainbowFoo : public Foo
 {
 public:
 	RainbowFoo();
+	
+	void moveLeft();
+	void moveRight();
 };
 
 
