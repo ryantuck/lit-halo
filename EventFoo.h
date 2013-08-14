@@ -18,9 +18,7 @@ public:
 	
 	int killCounter;
 	
-	void ** steps;
-	
-	void update();
+	void moveLeft();
 };
 
 
