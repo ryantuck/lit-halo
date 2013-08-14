@@ -23,25 +23,8 @@ EventFoo::EventFoo()
 	
 	aStep->count = 50;
 	
-	aFoo->isRecurring = false;
+	aFoo->repeats = false;
 }
-
-//void EventFoo::update()
-//{
-//	if (hasFoos())
-//	{
-//		killCounter++;
-//		Serial.println(killCounter);
-//		
-//		if (killCounter > 60)
-//			foos.entry(0)->me->readyToDie = 1;
-//		if (foos.entry(0)->me->readyToDie)
-//			foos.removeAllEntries();
-//	}
-//	
-//	Serial.print("number of Foos: ");
-//	Serial.println(countFoos());
-//}
 
 void EventFoo::moveLeft()
 {

@@ -25,27 +25,27 @@ public:
 	LinkedList<AddressedLED>	fLEDs;
 	LinkedList<Step<Foo>>		steps;
 	
-	byte	period;
-	byte	periodCounter;
-	bool	direction;
-	bool	io;
-	bool	readyToDie;
+	byte		layer;
+	byte		brightness;
 	
-	byte	layer;
-	byte	brightness;
+	int			stepIndex;
+	bool		repeats;
 	
-	int stepIndex;
-	bool isRecurring;
-	bool isRunning;
+	bool		isRunning;
 	
-	Step<Foo>* theCurrentStep;
+	Step<Foo>*	theCurrentStep;
 	
-	//	Linked List Shit ---------------
+	//	Adding -------------------------
 	void addFoo(Foo* aFoo);
-	void addLED(AddressedLED* aLED);
 	void addFoos(int num);
+	
+	void addLED(AddressedLED* aLED);
 	void addLEDs(Color aColor, int aBrightness, int aStart, int aEnd);
 	
+	template <class T>
+	void addStep(Step<T>* aStep);
+	
+	//	Counting -----------------------
 	int	 countFoos();
 	int  countLEDs();
 	int  countSteps();
@@ -54,34 +54,23 @@ public:
 	bool hasLEDs();
 	bool hasSteps();
 	
+	//	Step Stuff ---------------------
 	void checkSteps();
 	void resetSteps();
-	
 	void execute(ListObject<Step<Foo>>* obj);
 	
-	void updateSteps();
-	
-	template <class T>
-	void addStep(Step<T>* aStep);
-	
 	//	Updating Functionality ---------
-	void iterate();
-	void checkForUpdate();
-	virtual void update();
+	void update();
 	void updateLEDs();
 	void updateFoos();
+	void updateSteps();
 	
 	//	Action Functionality -----------
 	void move(bool direction);
 	
 	//	--------------------------------
 	void printVitals();
-	
-	void printTest();
-	
-	bool canUpdate();
 	void switchDirection();
-	
 	void merge(Foo* aFoo);
 
 	

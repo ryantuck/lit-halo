@@ -39,7 +39,7 @@ void Headband::updateLEDs()
 		leds[n].layer = 0;
 	}
 	
-	foo->iterate();
+	foo->update();
 }
 
 void Headband::updateStrip()

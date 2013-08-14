@@ -12,16 +12,11 @@
 //	========================================================
 
 Foo::Foo()
-{	
-	io				= 1;
-	period			= 1;
+{
 	layer			= 1;
-	direction		= 0;
-	periodCounter	= 0;
-	readyToDie		= false;
 	brightness		= maxBrightness;
 	stepIndex		= 0;
-	isRecurring		= true;
+	repeats			= true;
 	isRunning		= true;
 	
 	theCurrentStep	= NULL;
@@ -74,6 +69,18 @@ void Foo::addLEDs(Color aColor, int aBrightness, int aStart, int aEnd)
 	}
 }
 
+template <class T>
+void Foo::addStep(Step<T>* aStep)
+{
+	ListObject<Step<Foo>>* entry = new ListObject<Step<Foo>>;
+	
+	entry->me = (Step<Foo>*)aStep;
+	
+	steps.addToEnd(entry);
+}
+
+//	========================================================
+
 int Foo::countFoos()
 {
 	return foos.length();
@@ -82,6 +89,11 @@ int Foo::countFoos()
 int Foo::countLEDs()
 {
 	return fLEDs.length();
+}
+
+int Foo::countSteps()
+{
+	return steps.length();
 }
 
 bool Foo::hasFoos()
@@ -96,18 +108,13 @@ bool Foo::hasLEDs()
 	else					return 0;
 }
 
-//	========================================================
-
-int Foo::countSteps()
-{
-	return steps.length();
-}
-
 bool Foo::hasSteps()
 {
 	if (countSteps())	return 1;
 	else				return 0;
 }
+
+//	========================================================
 
 void Foo::checkSteps()
 {
@@ -119,7 +126,7 @@ void Foo::checkSteps()
 		
 		if (stepIndex == countSteps())
 		{
-			if (isRecurring)	resetSteps();
+			if (repeats)		resetSteps();
 			else				isRunning = false;
 		}
 		else
@@ -146,6 +153,15 @@ void Foo::execute(ListObject<Step<Foo> > *obj)
 	(*this.*obj->me->fnPtr)();
 }
 
+//	========================================================
+
+void Foo::update()
+{
+	updateSteps();
+	updateFoos();
+	updateLEDs();
+}
+
 void Foo::updateSteps()
 {
 	if (isRunning)
@@ -165,52 +181,24 @@ void Foo::updateSteps()
 	}
 }
 
-template <class T>
-void Foo::addStep(Step<T>* aStep)
-{
-	ListObject<Step<Foo>>* entry = new ListObject<Step<Foo>>;
-	
-	entry->me = (Step<Foo>*)aStep;
-	
-	steps.addToEnd(entry);
-}
-
-//	========================================================
-
-void Foo::iterate()
-{
-	//checkForUpdate();
-	updateSteps();
-	updateFoos();
-	updateLEDs();
-}
-
-void Foo::update()
-{
-	move(direction);
-}
-
 void Foo::updateLEDs()
 {
-	if (io)
+	if (hasLEDs())
 	{
-		if (hasLEDs())
+		for (int n=0;n<countLEDs();n++)
 		{
-			for (int n=0;n<countLEDs();n++)
+			int addr = fLEDs.entry(n)->me->address;
+			
+			if (layer > leds[addr].layer)
 			{
-				int addr = fLEDs.entry(n)->me->address;
-				
-				if (layer > leds[addr].layer)
-				{
-					leds[addr].setAttributes(*fLEDs.entry(n)->me);
-					leds[addr].layer = layer;
-				}
-				else if (layer == leds[addr].layer)
-				{
-					fLEDs.entry(n)->me->brightness = brightness;
-					leds[addr].mixWith(*fLEDs.entry(n)->me);
-					leds[addr].adjustColor();
-				}
+				leds[addr].setAttributes(*fLEDs.entry(n)->me);
+				leds[addr].layer = layer;
+			}
+			else if (layer == leds[addr].layer)
+			{
+				fLEDs.entry(n)->me->brightness = brightness;
+				leds[addr].mixWith(*fLEDs.entry(n)->me);
+				leds[addr].adjustColor();
 			}
 		}
 	}
@@ -218,17 +206,10 @@ void Foo::updateLEDs()
 
 void Foo::updateFoos()
 {
-	for (int n=0;n<countFoos();n++) foos.entry(n)->me->iterate();
-}
-
-void Foo::checkForUpdate()
-{
-	periodCounter++;
-	
-	if (canUpdate())
+	if (hasFoos())
 	{
-		update();
-		periodCounter = 0;
+		for (int n=0;n<countFoos();n++)
+			foos.entry(n)->me->update();
 	}
 }
 
@@ -274,12 +255,7 @@ byte Foo::updateValue(byte parameter,
 	return parameter;
 }
 
-bool Foo::canUpdate()
-{
-	if (periodCounter >= period)	return 1;
-	else							return 0;
-}
-
+//	========================================================
 
 void Foo::printVitals()
 {
@@ -291,10 +267,10 @@ void Foo::printVitals()
 
 void Foo::switchDirection()
 {
-	if (direction)	direction = 0;
-	else			direction = 1;
-	Serial.print("direction: ");
-	Serial.println(direction);
+//	if (direction)	direction = 0;
+//	else			direction = 1;
+//	Serial.print("direction: ");
+//	Serial.println(direction);
 }
 
 void Foo::merge(Foo *aFoo)
@@ -323,18 +299,15 @@ void Foo::merge(Foo *aFoo)
 //	}
 }
 
-void Foo::printTest()
-{
-	Serial.println("printing");
-}
+//	========================================================
 
 //	list of possible templates for the addStep function
-template void Foo::addStep<StepFoo1>(Step<StepFoo1>*);
-template void Foo::addStep<RainbowFoo>(Step<RainbowFoo>*);
-template void Foo::addStep<LinkedFoo>(Step<LinkedFoo>*);
-template void Foo::addStep<KernFoo>(Step<KernFoo>*);
-template void Foo::addStep<Foo2>(Step<Foo2>*);
-template void Foo::addStep<EventFoo>(Step<EventFoo>*);
+template void Foo::addStep<StepFoo1>	(Step<StepFoo1>*);
+template void Foo::addStep<RainbowFoo>	(Step<RainbowFoo>*);
+template void Foo::addStep<LinkedFoo>	(Step<LinkedFoo>*);
+template void Foo::addStep<KernFoo>		(Step<KernFoo>*);
+template void Foo::addStep<Foo2>		(Step<Foo2>*);
+template void Foo::addStep<EventFoo>	(Step<EventFoo>*);
 
 
 
