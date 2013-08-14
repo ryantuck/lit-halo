@@ -9,33 +9,7 @@
 #include "ArrayOfFunctionsFoo.h"
 
 ArrayOfFunctionsFoo::ArrayOfFunctionsFoo()
-{
-//	//	create a list object shell for a step
-//	ListObject<Step<Foo>>* stepLO1 = new ListObject<Step<Foo>>;
-//	
-//	//	create a step
-//	Step<Foo>* aStep = new Step<Foo>;
-//
-//	//	generally, the following lines can happen in any order.
-//	//	that's why pointers are great. 
-//	
-//	//	assign a function and count to the step
-//	aStep->fnPtr = &Foo::switchDirection;
-//	aStep->count = 10;
-//	
-//	//	add the step list object to the steps list
-//	steps.addToEnd(stepLO1);
-//	
-//	//	assign the step to the list object
-//	stepLO1->me = aStep;
-//	
-//	ListObject<Step<Foo>>*		stepLO2	= new ListObject<Step<Foo>>;
-//	Step<ArrayOfFunctionsFoo>*	bStep	= new Step<ArrayOfFunctionsFoo>;
-//	stepLO2->me		= (Step<Foo>*)bStep;
-//	bStep->fnPtr	= &ArrayOfFunctionsFoo::printALine;
-//	bStep->count	= 5;
-//	steps.addToEnd(stepLO2);
-	
+{	
 	currentStep = 0;
 	isRecurring = true;
 	isRunning	= true;
@@ -50,9 +24,12 @@ void ArrayOfFunctionsFoo::update()
 {
 	if (isRunning)
 	{
-		doAFunction(steps.entry(currentStep));
-		steps.entry(currentStep)->me->iterate();
-		checkSteps();
+		if (hasSteps())
+		{
+			doAFunction(steps.entry(currentStep));
+			steps.entry(currentStep)->me->iterate();
+			checkSteps();
+		}
 	}
 }
 
@@ -70,7 +47,7 @@ void ArrayOfFunctionsFoo::checkSteps()
 		if (currentStep == countSteps())
 		{
 			if (isRecurring)	resetSteps();
-			else				isRunning	= false;
+			else				isRunning = false;
 		}
 	}
 }
@@ -101,7 +78,20 @@ void ArrayOfFunctionsFoo::moveRight()
 	move(0);
 }
 
+bool ArrayOfFunctionsFoo::hasSteps()
+{
+	if (countSteps())	return 1;
+	else				return 0;
+}
 
+Step<ArrayOfFunctionsFoo>* ArrayOfFunctionsFoo::createStep()
+{
+	ListObject<Step<Foo>>* lo1 = new ListObject<Step<Foo>>;
+	Step<ArrayOfFunctionsFoo>* step1 = new Step<ArrayOfFunctionsFoo>;
+	lo1->me = (Step<Foo>*)step1;
+	steps.addToEnd(lo1);
+	return step1;
+}
 
 
 

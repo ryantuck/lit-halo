@@ -26,12 +26,15 @@ public:
 	int countSteps();
 	void checkSteps();
 	void resetSteps();
+	bool hasSteps();
 	
 	void doAFunction(ListObject<Step<Foo>>* obj);
 	void printALine();
 	
 	void moveLeft();
 	void moveRight();
+	
+	Step<ArrayOfFunctionsFoo>* createStep();
 	
 };
 
