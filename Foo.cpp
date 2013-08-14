@@ -20,9 +20,11 @@ Foo::Foo()
 	periodCounter	= 0;
 	readyToDie		= false;
 	brightness		= maxBrightness;
-	currentStep		= 0;
+	stepIndex		= 0;
 	isRecurring		= true;
 	isRunning		= true;
+	
+	theCurrentStep	= NULL;
 }
 
 Foo::~Foo()
@@ -109,22 +111,29 @@ bool Foo::hasSteps()
 
 void Foo::checkSteps()
 {
-	if (steps.entry(currentStep)->me->isFinished)
+	theCurrentStep = steps.entry(stepIndex)->me;
+	
+	if (theCurrentStep->isFinished)
 	{
-		currentStep++;
+		stepIndex++;
 		
-		if (currentStep == countSteps())
+		if (stepIndex == countSteps())
 		{
 			if (isRecurring)	resetSteps();
 			else				isRunning = false;
 		}
+		else
+		{
+			theCurrentStep = steps.entry(stepIndex)->me;
+		}
+		
 	}
 }
 
 void Foo::resetSteps()
 {
-	currentStep = 0;
-	
+	stepIndex = 0;
+	theCurrentStep = steps.entry(stepIndex)->me;
 	for (int n=0;n<countSteps();n++)
 	{
 		steps.entry(n)->me->currentCount	= 0;
@@ -143,12 +152,13 @@ void Foo::updateSteps()
 	{
 		if (hasSteps())
 		{
-			steps.entry(currentStep)->me->periodCounter++;
+			theCurrentStep = steps.entry(stepIndex)->me;
+			theCurrentStep->periodCounter++;
 			
-			if (steps.entry(currentStep)->me->canUpdate())
+			if (theCurrentStep->canUpdate())
 			{
-				execute(steps.entry(currentStep));
-				steps.entry(currentStep)->me->iterate();
+				execute(steps.entry(stepIndex));
+				theCurrentStep->iterate();
 				checkSteps();
 			}
 		}
@@ -318,9 +328,7 @@ void Foo::printTest()
 	Serial.println("printing");
 }
 
-//	list of possible templates for the createStep function
-//template Step<StepFoo1>* Foo::createStep<StepFoo1>();
-
+//	list of possible templates for the addStep function
 template void Foo::addStep<StepFoo1>(Step<StepFoo1>*);
 template void Foo::addStep<RainbowFoo>(Step<RainbowFoo>*);
 template void Foo::addStep<LinkedFoo>(Step<LinkedFoo>*);

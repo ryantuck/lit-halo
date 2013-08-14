@@ -34,9 +34,11 @@ public:
 	byte	layer;
 	byte	brightness;
 	
-	int currentStep;
+	int stepIndex;
 	bool isRecurring;
 	bool isRunning;
+	
+	Step<Foo>* theCurrentStep;
 	
 	//	Linked List Shit ---------------
 	void addFoo(Foo* aFoo);
