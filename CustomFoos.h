@@ -18,6 +18,7 @@
 #include "KernFoo.h"
 #include "LinkedFoo.h"
 #include "ArrayOfFunctionsFoo.h"
+#include "stepFoo1.h"
 
 
 #endif

@@ -30,6 +30,9 @@ public:
 	void doAFunction(ListObject<Step<Foo>>* obj);
 	void printALine();
 	
+	void moveLeft();
+	void moveRight();
+	
 };
 
 
