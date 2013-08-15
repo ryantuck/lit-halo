@@ -290,7 +290,7 @@ template void Foo::addStep<Foo2>		(Step<Foo2>*);
 template void Foo::addStep<EventFoo>	(Step<EventFoo>*);
 template void Foo::addStep<MovingFoo>	(Step<MovingFoo>*);
 template void Foo::addStep<MultipleBouncingFoo> (Step<MultipleBouncingFoo>*);
-
+template void Foo::addStep<OscillatingFoo> (Step<OscillatingFoo>*);
 
 
 

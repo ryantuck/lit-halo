@@ -10,13 +10,14 @@
 #define __LIT_Headband_Simulator__OscillatingFoo__
 
 #include "Foo.h"
+#include "MovingFoo.h"
 
 class OscillatingFoo : public Foo
 {
 public:
 	OscillatingFoo();
 	
-	void update();
+	void changeSpeed();
 };
 
 

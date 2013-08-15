@@ -124,7 +124,7 @@ void Headband::updateFoo(int index)
 			foo = new EventFoo;
 			break;
 		case 6:
-			foo = new MultipleBouncingFoo;
+			foo = new OscillatingFoo;
 			break;
 	}
 }
