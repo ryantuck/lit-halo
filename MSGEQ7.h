@@ -34,9 +34,6 @@ public:
 	byte	maxBand();
 	byte	minBand();
 	
-	//	Find centroid.
-	float centroid();
-	
 private:
 	
 	int analogPin;

@@ -19,7 +19,7 @@ private:
 	
 public:
 	
-	//	Constructor
+	//	Constructro
 	MCP4131();
 	
 	//	Current pot value.

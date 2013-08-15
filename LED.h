@@ -2,14 +2,13 @@
 
 //	LED.h
 
-//	Contains LED, LayeredLED, and AddressedLED
+//	*	Contains all relevant information for LEDs.
 
 //	####################################################################
 
 #ifndef ____LED__
 #define ____LED__
 
-#include "Parameters.h"
 #include "Color.h"
 
 class LED
@@ -17,40 +16,15 @@ class LED
 public:
 	
 	Color	color;
-	byte	brightness;
+	byte	brightness;		//	0 - 100
+	byte	currentLayer;	//	1 - 127
 	
 	//	Constructors
 	LED();
-	LED(Color newColor, byte newBrightness);
-	
-	//	Adjusts color based on LED brightness.
-	void adjustColor();
-	
-	void mixWith(LED aLED);
-	
-	void setAttributes(LED aLED);
-	void setAttributes(Color aColor,byte aBrightness);
+	LED(Color newColor, byte newBrightness, byte newLayer);
 	
 	//	For testing
 	void printVitals();
-};
-
-
-
-class AddressedLED : public LED
-{
-public:
-	AddressedLED();
-	AddressedLED(byte a);
-	byte address;
-};
-
-class LayeredLED : public LED
-{
-public:
-	LayeredLED();
-	LayeredLED(byte l);
-	byte layer;
 };
 
 

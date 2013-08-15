@@ -19,12 +19,10 @@ public:
 	
 	void print(int integer);
 	void print(std::string myString);
-	void print(float myFloat);
 	
 	void println();
 	void println(int myInt);
 	void println(std::string myString);
-	void println(float myFloat);
 };
 
 #endif

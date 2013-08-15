@@ -8,54 +8,43 @@
 
 LITColorClass::LITColorClass()
 {
-	white.setColor		(1,1,1);
-	black.setColor		(0,0,0);
+	red.setColor	(1,0,0);
+	green.setColor	(0,1,0);
+	blue.setColor	(0,0,1);
+	yellow.setColor	(1,1,0);
+	cyan.setColor	(0,1,1);
+	magenta.setColor(1,0,1);
+	white.setColor	(1,1,1);
+	black.setColor	(0,0,0);
 	
-	red.setColor		(1,0,0);
-	green.setColor		(0,1,0);
-	blue.setColor		(0,0,1);
+	colorList[0] = &red;
+	colorList[1] = &green;
+	colorList[2] = &blue;
+	colorList[3] = &yellow;
+	colorList[4] = &cyan;
+	colorList[5] = &magenta;
+	colorList[6] = &white;
+	colorList[7] = &black;
 	
-	yellow.setColor		(1,1,0);
-	cyan.setColor		(0,1,1);
-	magenta.setColor	(1,0,1);
+	rc [0]	= 0;	rc [1]	= 4;	rc [2]	= 7;
+	gm [0]	= 1;	gm [1]	= 5;	gm [2]	= 7;
+	by [0]	= 2;	by [1]	= 3;	by [2]	= 7;
+	rgb[0]	= 0;	rgb[1]	= 1;	rgb[2]	= 2;
+	cmy[0]	= 3;	cmy[1]	= 4;	cmy[2]	= 5;
+	rgy[0]	= 0;	rgy[1]	= 1;	rgy[2]	= 3;
+	gbc[0]	= 1;	gbc[1]	= 2;	gbc[2]	= 4;
+	rbm[0]	= 1;	rbm[1]	= 3;	rbm[2]	= 5;
 	
-	orange.setColor		(2,1,0);
-	pink.setColor		(2,0,1);
-	lime.setColor		(1,2,0);
-	lavender.setColor	(1,0,2);
-	seaGreen.setColor	(0,2,1);
-	babyBlue.setColor	(0,1,2);
+	colorCombos[0] = rc;
+	colorCombos[1] = gm;
+	colorCombos[2] = by;
+	colorCombos[3] = rgb;
+	colorCombos[4] = cmy;
+	colorCombos[5] = rgy;
+	colorCombos[6] = gbc;
+	colorCombos[7] = rbm;
 	
-	
-	colorList[0]	= &red;
-	colorList[2]	= &green;
-	colorList[4]	= &blue;
-	colorList[1]	= &yellow;
-	colorList[3]	= &cyan;
-	colorList[5]	= &magenta;
-	colorList[6]	= &white;
-	colorList[7]	= &black;
-	
-	spectrum[0]		= &red;
-	spectrum[1]		= &orange;
-	spectrum[2]		= &yellow;
-	spectrum[3]		= &lime;
-	spectrum[4]		= &green;
-	spectrum[5]		= &seaGreen;
-	spectrum[6]		= &cyan;
-	spectrum[7]		= &babyBlue;
-	spectrum[8]		= &blue;
-	spectrum[9]		= &lavender;
-	spectrum[10]	= &magenta;
-	spectrum[11]	= &pink;
-	
-	rgb[0]			= &red;
-	rgb[1]			= &green;
-	rgb[2]			= &blue;
-	
-	cmy[0]			= &cyan;
-	cmy[1]			= &magenta;
-	cmy[2]			= &yellow;
+	colorIndex = 4;
 }
 
 LITColorClass LITColor;

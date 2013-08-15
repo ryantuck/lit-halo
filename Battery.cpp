@@ -12,19 +12,19 @@ Battery::Battery()
 	pin = 1;
 }
 
-int Battery::voltage()
+void Battery::readVoltage()
 {
-	return analogRead(pin);
+	voltage = analogRead(pin);
 }
 
 int Battery::percentage()
 {
 	int maxVoltage = 860;		//	4.2 V ?
-	int minVoltage = 696;		//	3.397385391181 V ?
+	int minVoltage = 675;		//	3.3 V ?
 	
 	float ratio = 100 / (maxVoltage - minVoltage);
 	
-	int pct = (voltage() - minVoltage) * ratio;
+	int pct = (voltage - minVoltage) * ratio;
 	
 	return pct;
 }

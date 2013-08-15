@@ -12,11 +12,6 @@ void SerialClass::print(int integer)
 	std::cout << integer;
 }
 
-void SerialClass::print(float myFloat)
-{
-	std::cout << myFloat;
-}
-
 void SerialClass::print(std::string myString)
 {
 	std::cout << myString;
@@ -37,7 +32,3 @@ void SerialClass::println(std::string myString)
 	std::cout << myString << std::endl;
 }
 
-void SerialClass::println(float myFloat)
-{
-	std::cout << myFloat << std::endl;
-}

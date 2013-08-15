@@ -8,17 +8,19 @@
 
 Headband::Headband()
 {
-	maxFoodex	= 7;
-	foodex		= 0;
+	//	initial value for pattern index.
+
+	patternIndex = 0;
+	pattern = createPattern(patternIndex);
+
+	//	Button initialization
+	colorButton		= Button(5);
+	patternButton	= Button(4);
 	
-	downButton		= Button(8);
-	upButton		= Button(9);
-	
-	//	dat-3 / clk-2
-	
-	// dat and clk currently set for bisco staff
-	
-	strip = LPD8806(320,2,3);
+	//	Strip needs initialization bc of non-default constructor.
+	//	DAT - D3
+	//	CLK - D2
+	strip = LPD8806(16,3,2);
 	strip.begin();
 }
 
@@ -26,71 +28,95 @@ void Headband::update()
 {
 	checkButtons();
 	getAudio();
+	updateColors();
 	updateLEDs();
-	//updateStrip();
-	//writeLights();
+	updateStrip();	
+}
+
+void Headband::linkUp()
+{
+	pattern->numLEDs	= sizeof(leds)/sizeof(LED);
+	
+	Serial.println(pattern->numLEDs);
+	pattern->leds		= leds;
+	pattern->audio		= &audio;
+	pattern->colors		= LITColor.currentColors;
+	
+	pattern->linkUp();
 }
 
 void Headband::updateLEDs()
 {
+	int numLEDs = sizeof(leds) / sizeof(LED);
 	for (int n=0;n<numLEDs;n++)
 	{
-		leds[n].color.setColor(LITColor.black);
-		leds[n].layer = 0;
+		leds[n].color.setColor(0, 0, 0);
+		leds[n].currentLayer = 1;
 	}
 	
-	foo->iterate();
+	pattern->update();
+}
+
+void Headband::updateColors()
+{	
+	for (int n=0;n<3;n++)
+		LITColor.currentColors[n] = *LITColor.colorList[LITColor.colorCombos[LITColor.colorIndex][n]];
 }
 
 void Headband::updateStrip()
 {
+	int numLEDs = sizeof(leds)/sizeof(LED);
+	
 	for (int n=0;n<numLEDs;n++)
 	{
+		//	adjust r,g,b values based on led brightness and write to strip.
+		
+		Serial.print(leds[n].color.r); Serial.print(" ");
+		Serial.print(leds[n].color.g); Serial.print(" ");
+		Serial.print(leds[n].color.b); Serial.print(" ");
+		Serial.println();
+		
+		float ratio = leds[n].brightness / 100;
+		
+		int tmpR = leds[n].color.r * ratio;
+		int tmpG = leds[n].color.g * ratio;
+		int tmpB = leds[n].color.b * ratio;
+		
+		
+		
 		strip.setPixelColor(n,
 							leds[n].color.r,
-							leds[n].color.b,
-							leds[n].color.g);
+							leds[n].color.g,
+							leds[n].color.b);
 	}
 	
 	strip.show();
 }
 
-void Headband::writeLights()
-{
-	for (int n=0;n<numLEDs;n++)
-		lights.setPixelColor(n, leds[n].color);
-	
-	lights.writeRegisters();
-}
-
 void Headband::checkButtons()
 {
-	//upButton.checkState();
-	//downButton.checkState();
-	
-	if (upButton.pressed)
+	colorButton.checkState();
+	if (colorButton.pressed)
 	{
-		if (foodex == maxFoodex) foodex = 0;
-		else foodex++;
-		updateFoo(foodex);
+		Serial.println("pressed");
+		if (LITColor.colorIndex == 7)	LITColor.colorIndex = 0;
+		else							LITColor.colorIndex++;
 	}
 	
-	else if (downButton.pressed)
-	{	
-		if (foodex == 0) foodex = maxFoodex;
-		else foodex--;
-		updateFoo(foodex);
+	patternButton.checkState();
+	if (patternButton.pressed)
+	{
+		Serial.println("pressed");
+		delete pattern;
+		pattern = NULL;
+		pattern = createPattern(patternIndex);
+		linkUp();
+		if (patternIndex == 10)		patternIndex = 0;
+		else						patternIndex++;
 	}
-}
-
-void Headband::checkBattery()
-{
-//	if (batt.voltage() < 696)
-//	{
-//		patternIndex = 0;
-//		
-//		pattern = updatePattern(patternIndex);
-//	}
+	
+	
+	
 }
 
 void Headband::getAudio()
@@ -98,38 +124,24 @@ void Headband::getAudio()
 	audio.update();
 }
 
-void Headband::updateFoo(int index)
+Pattern* Headband::createPattern(int index)
 {
-	delete foo;
-	foo = NULL;
-	
 	switch (index)
 	{
 		case 0:
-			foo = new OscillatingFoo;
+			return new MovingDotPattern;
 			break;
 		case 1:
-			foo = new Foo1;
+			return new kernPattern;
 			break;
 		case 2:
-			foo = new Foo2;
+			return new Pattern0;
 			break;
 		case 3:
-			foo = new LinkedFoo;
+			return new Pattern1;
 			break;
-		case 4:
-			foo = new RainbowFoo;
-			break;
-		case 5:
-			foo = new EventFoo;
-			break;
-		case 6:
-			foo = new MultipleBouncingFoo;
-			break;
-        case 7:
-            foo = new KernFoo;
-            break;
 	}
+	return NULL;
 }
 
 

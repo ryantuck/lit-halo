@@ -17,14 +17,12 @@ private:
 public:
 	Button();
 	Button(int pin);
-    
+	bool state;
+	bool lastState;
 	bool pressed;
-    bool released;
-    bool lastButtonState;
+	byte pressedCounter;
 	
 	void checkState();
-    
-    
 };
 
 

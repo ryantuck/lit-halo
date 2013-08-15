@@ -9,7 +9,6 @@
 #ifndef ____Color__
 #define ____Color__
 
-#include "Parameters.h"
 #include "Arduino.h"
 
 class Color
@@ -38,15 +37,13 @@ public:
     //convert rgb color to equivalent rgb at specified brightness (0-127)
     void findRGB(byte brightness);
 	
-	bool isBlack();
-	
 	//	For testing
 	void printVitals();
 	
 	
 private:
 	
-	byte checkVals(int newValue);
+	byte check(int newValue);
 	
 	byte add(int currentValue,int newValue);
 	
