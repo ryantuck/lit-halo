@@ -67,7 +67,6 @@ public:
 	
 	//	--------------------------------
 	void printVitals();
-	void switchDirection();
 	void merge(Foo* aFoo);
 
 	

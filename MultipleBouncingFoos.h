@@ -9,14 +9,14 @@
 #ifndef __LIT_Headband_Simulator__MultipleBouncingFoos__
 #define __LIT_Headband_Simulator__MultipleBouncingFoos__
 
-#include "Foo.h"
+#include "MovingFoo.h"
 
 class MultipleBouncingFoo : public Foo
 {
 public:
 	MultipleBouncingFoo();
 	
-	void update();
+	void checkForBounces();
 	
 private:
 	bool isNextTo();

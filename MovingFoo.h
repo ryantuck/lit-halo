@@ -16,10 +16,16 @@ class MovingFoo : public Foo
 public:
 	MovingFoo();
 	
+	bool direction;
+	
+	void move();
+	
 	void move(bool direction);
 	
 	void moveLeft();
 	void moveRight();
+	
+	void switchDirection();
 };
 
 

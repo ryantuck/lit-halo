@@ -8,7 +8,7 @@
 
 Headband::Headband()
 {
-	maxFoodex	= 5;
+	maxFoodex	= 6;
 	foodex		= 0;
 	
 	downButton		= Button(8);
@@ -122,6 +122,9 @@ void Headband::updateFoo(int index)
 			break;
 		case 5:
 			foo = new EventFoo;
+			break;
+		case 6:
+			foo = new MultipleBouncingFoo;
 			break;
 	}
 }

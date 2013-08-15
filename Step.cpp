@@ -50,3 +50,5 @@ template class Step<LinkedFoo>;
 template class Step<KernFoo>;
 template class Step<Foo2>;
 template class Step<EventFoo>;
+template class Step<MovingFoo>;
+template class Step<MultipleBouncingFoo>;

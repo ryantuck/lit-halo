@@ -253,14 +253,6 @@ void Foo::printVitals()
 //	Serial.print("array length:   "); Serial.println(arrayLength);
 }
 
-void Foo::switchDirection()
-{
-//	if (direction)	direction = 0;
-//	else			direction = 1;
-//	Serial.print("direction: ");
-//	Serial.println(direction);
-}
-
 void Foo::merge(Foo *aFoo)
 {
 //	for (int n=0;n<aFoo->numberOfLEDs;n++)
@@ -296,7 +288,8 @@ template void Foo::addStep<LinkedFoo>	(Step<LinkedFoo>*);
 template void Foo::addStep<KernFoo>		(Step<KernFoo>*);
 template void Foo::addStep<Foo2>		(Step<Foo2>*);
 template void Foo::addStep<EventFoo>	(Step<EventFoo>*);
-
+template void Foo::addStep<MovingFoo>	(Step<MovingFoo>*);
+template void Foo::addStep<MultipleBouncingFoo> (Step<MultipleBouncingFoo>*);
 
 
 

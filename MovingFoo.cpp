@@ -10,7 +10,12 @@
 
 MovingFoo::MovingFoo()
 {
-	
+	direction = 0;
+}
+
+void MovingFoo::move()
+{
+	move(direction);
 }
 
 void MovingFoo::move(bool direction)
@@ -34,4 +39,10 @@ void MovingFoo::moveLeft()
 void MovingFoo::moveRight()
 {
 	move(1);
+}
+
+void MovingFoo::switchDirection()
+{
+	if (direction)	direction = 0;
+	else			direction = 1;
 }
