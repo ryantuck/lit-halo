@@ -17,7 +17,7 @@ class EMFoo : public Foo
 public:
 	EMFoo();
 	
-	int k;
+	double k;
 	
 	Force calculateForceOnFoo(Foo* aFoo);
 	

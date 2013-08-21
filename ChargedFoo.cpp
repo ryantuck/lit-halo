@@ -14,26 +14,39 @@ ChargedFoo::ChargedFoo()
 	isPositive	= 1;
 	
 	Step<MovingFoo>* aStep = new Step<MovingFoo>;
-	
 	aStep->fnPtr = &MovingFoo::move;
-	
+	aStep->period = 100;
 	addStep(aStep);
 }
 
 void ChargedFoo::reactToForce(Force aForce)
 {
-	// force / charge = acceleration
-	//	given an acceleration and current velocity, calculate what velocity should change to?
+	//	force comes in as magnitude in certain direction.
 	
-	//	we know that the time has changed by 1. Can we just punch this into vf = vi + at? Why not try it.
+	//	if this foo is an electron, reverse the direction of the force.
+	
+	//	if the acceleration is in the same direction as the motion,
+	//		vf = vi + at
+	//	else
+	//		vf = vi - at
+	
+	//	if vf < 0
+	//		vf = 0-vf
+	//		switchDirection
+	
+	if (!isPositive) aForce.direction = !aForce.direction;
 	
 	double acceleration = aForce.magnitude / charge;
+	bool accelDirection = aForce.direction;
 	
 	double period = steps.entry(0)->me->period;
 	
 	double vi = 1/period;
 	
-	double vf = vi + acceleration;		// vf = vi + at (t = 1)
+	double vf;
+	
+	if (accelDirection == direction)	vf = vi + acceleration;
+	else								vf = vi - acceleration;
 	
 	if (vf < 0)
 	{

@@ -13,6 +13,29 @@ Tester::Tester()
 	
 }
 
+void Tester::functionTesting()
+{
+	int a = shortDistance(0, 16);
+	int b = longDistance(0, 16);
+	
+	Serial.println(a);
+	Serial.println(b);
+	
+	Force aForce;
+	Force bForce;
+	
+	aForce.magnitude = 10;
+	aForce.direction = 1;
+
+	bForce.magnitude = 5;
+	bForce.direction = 0;
+	
+	bForce.addForce(aForce);
+	
+	Serial.println((int)bForce.magnitude);
+	Serial.println(bForce.direction);
+}
+
 void Tester::sizeTest()
 {
 	Foo* aFoo = new Foo;

@@ -23,6 +23,8 @@ public:
 
 	Tester();
 	
+	void functionTesting();
+	
 	void sizeTest();
 	
 	void funcPtrTest();
