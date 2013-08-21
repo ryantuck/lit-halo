@@ -338,16 +338,16 @@ void Tester::headband()
 	//emyHeadband.linkUp();
 	
 	myHeadband.update();
-	myHeadband.printLEDs();
-	myHeadband.lights.printLEDs();
+	//myHeadband.printLEDs();
+	//myHeadband.lights.printLEDs();
 	
 	
 	
 	for (int n=0;n<200;n++)
 	{
 		myHeadband.update();
-		myHeadband.printLEDs();
-		myHeadband.lights.printLEDs();
+		//myHeadband.printLEDs();
+		//myHeadband.lights.printLEDs();
 	}
 }
 

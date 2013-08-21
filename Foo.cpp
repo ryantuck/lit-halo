@@ -224,14 +224,14 @@ extern byte updateValue(byte parameter,
 					  bool direction,
 					  byte minVal,
 					  byte maxVal,
-					  bool cycles)
+					  bool doesCycle)
 {
 	if (direction)
 	{
 		if (parameter == maxVal)
 		{
-			if (cycles) parameter = minVal;
-			else		parameter = maxVal;
+			if (doesCycle)	parameter = minVal;
+			else			parameter = maxVal;
 		}
 		else parameter++;
 	}
@@ -239,8 +239,8 @@ extern byte updateValue(byte parameter,
 	{
 		if (parameter == minVal)
 		{
-			if (cycles)	parameter = maxVal;
-			else		parameter = minVal;
+			if (doesCycle)	parameter = maxVal;
+			else			parameter = minVal;
 		}
 		else parameter--;
 	}

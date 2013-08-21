@@ -85,7 +85,7 @@ extern byte	updateValue(byte parameter,
 						bool direction,
 						byte minVal,
 						byte maxVal,
-						bool cycles);
+						bool doesCycle);
 
 extern byte shortDistance(byte x, byte y);
 extern byte longDistance(byte x, byte y);
