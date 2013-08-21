@@ -13,6 +13,8 @@ Headband::Headband()
 	
 	strip = LPD8806(numLEDs,2,3);
 	strip.begin();
+	
+	fooManager = new DevFooManager();
 }
 
 void Headband::update()
@@ -29,21 +31,21 @@ void Headband::checkButtons()
 	
 	if (upButton.pressed)
 	{
-		fooManager.foodex = updateValue(fooManager.foodex,
+		fooManager->foodex = updateValue(fooManager->foodex,
 										up,
 										0,
-										fooManager.maxFoodex,
+										fooManager->maxFoodex,
 										cycles);
-		fooManager.update();
+		fooManager->update();
 	}
 	else if (downButton.pressed)
 	{
-		fooManager.foodex = updateValue(fooManager.foodex,
+		fooManager->foodex = updateValue(fooManager->foodex,
 										down,
 										0,
-										fooManager.maxFoodex,
+										fooManager->maxFoodex,
 										cycles);
-		fooManager.update();
+		fooManager->update();
 	}
 	
 }
@@ -61,7 +63,7 @@ void Headband::updateLEDs()
 		leds[n].layer = 0;
 	}
 
-	fooManager.foo->update();
+	fooManager->foo->update();
 }
 
 void Headband::updateStrip()

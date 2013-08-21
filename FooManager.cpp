@@ -28,6 +28,11 @@ void FooManager::updateFoo(int index)
 		foo = NULL;
 	}
 	
+	createNewFoo(index);
+}
+
+void FooManager::createNewFoo(int index)
+{
 	switch (index)
 	{
 		case 0:
@@ -58,5 +63,45 @@ void FooManager::updateFoo(int index)
 			foo = new CirclesFoo;
 			break;
 	}
-
 }
+
+DevFooManager::DevFooManager()
+{
+	maxFoodex = 2;
+}
+
+void DevFooManager::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new MultipleBouncingFoo;
+			break;
+		case 1:
+			foo = new RainbowFoo;
+			break;
+		case 2:
+			foo = new CirclesFoo;
+			break;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

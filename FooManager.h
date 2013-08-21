@@ -23,8 +23,15 @@ public:
 	
 	void update();
 	void updateFoo(int index);
+	virtual void createNewFoo(int index);
 };
 
+class DevFooManager : public FooManager
+{
+public:
+	DevFooManager();
+	void createNewFoo(int index);
+};
 
 
 #endif

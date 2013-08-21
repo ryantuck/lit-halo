@@ -17,7 +17,7 @@ class Headband
 {
 public:
 
-	FooManager	fooManager;
+	FooManager*	fooManager;
 	Battery		batt;
 	LPD8806		strip;
 	Button		upButton;
