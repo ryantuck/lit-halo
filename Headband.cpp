@@ -67,8 +67,8 @@ void Headband::updateStrip()
 
 void Headband::checkButtons()
 {
-	upButton.checkState();
-	downButton.checkState();
+	//upButton.checkState();
+	//downButton.checkState();
 	
 	if (upButton.pressed)
 	{
@@ -149,7 +149,7 @@ void Headband::updateFoo(int index)
 			foo = new MultipleBouncingFoo;
 			break;
 		case 8:
-			foo = new MemTestingFoo;
+			foo = new CirclesFoo;
 			break;
 	}
 }

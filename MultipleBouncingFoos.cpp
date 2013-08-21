@@ -10,15 +10,6 @@
 
 MultipleBouncingFoo::MultipleBouncingFoo()
 {	
-//	for (int n=0;n<4;n++)
-//	{
-//		Foo* aFoo = new Foo;
-//		aFoo->addLEDs(*LITColor.colorList[n], maxBrightness, n*8, n*8);
-//		aFoo->direction = rand()%2;
-//		aFoo->period = n+1;
-//		addFoo(aFoo);
-//	}
-	
 	for (int n=0;n<4;n++)
 	{
 		MovingFoo* aFoo = new MovingFoo;

@@ -24,7 +24,7 @@ public:
 	Foo*		foo;	
 	Battery		batt;
 	LPD8806		strip;
-	//Registers	lights;
+	Registers	lights;
 	Button		upButton;
 	Button		downButton;
 	int			foodex;

@@ -7,7 +7,7 @@
 //	########################################################################
 
 #include "Step.h"
-//#include "Tester.h"
+#include "Tester.h"
 #include "Foo.h"
 #include "CustomFoos.h"
 
@@ -42,7 +42,7 @@ bool Step<T>::canUpdate()
 }
 
 
-//template class Step<Tester>;
+template class Step<Tester>;
 template class Step<Foo>;
 template class Step<StepFoo1>;
 template class Step<RainbowFoo>;

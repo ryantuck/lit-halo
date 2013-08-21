@@ -255,22 +255,36 @@ extern byte shortDistance(byte x, byte y)
 	if (difference < 0) difference += 32;
 	
 	if (difference <= 15)	return difference;
-	else					return 31 - difference;
+	else					return 32 - difference;
 }
 
 extern byte longDistance(byte x, byte y)
 {
-	return 31 - shortDistance(x, y);
+	return 32 - shortDistance(x, y);
 }
 
-extern bool shortDirection(byte x, byte y)
+extern bool shortDirection(byte start, byte end)
 {
-	return 0;
+	int diff = end - start;
+	int longDist = longDistance(start, end);
+	
+	if (diff > 0)
+	{
+		if (diff == longDist)	return 0;
+		else					return 1;
+	}
+	else
+	{
+		diff = 0-diff;
+		if (diff == longDist)	return 1;
+		else					return 0;
+	}
+	
 }
 
-extern bool longDirection(byte x, byte y)
+extern bool longDirection(byte start, byte end)
 {
-	return 0;
+	return !shortDirection(start, end);
 }
 
 //	========================================================

@@ -20,6 +20,7 @@
 #include "EMFoo.h"
 #include "ChargedFoo.h"
 #include "MemTestingFoo.h"
+#include "CirclesFoo.h"
 
 
 #endif

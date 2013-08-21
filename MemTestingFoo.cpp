@@ -21,25 +21,4 @@ MemTestingFoo::MemTestingFoo()
 		aStep->fnPtr = &MovingFoo::moveLeft;
 		addStep(aStep);
 	}
-	
-//	Foo* aFoo = new Foo;
-//	addFoo(aFoo);
-//
-//	Foo* bFoo = new Foo;
-//	addFoo(bFoo);
-//	
-//	Foo* cFoo = new Foo;
-//	addFoo(cFoo);
-//	
-//	Foo* dFoo = new Foo;
-//	addFoo(dFoo);
-//	
-//	Step<MovingFoo>* aStep = new Step<MovingFoo>;
-//	aStep->fnPtr = &MovingFoo::moveLeft;
-//	addStep(aStep);
-//	
-//	Step<MovingFoo>* bStep = new Step<MovingFoo>;
-//	bStep->fnPtr = &MovingFoo::moveLeft;
-//	addStep(bStep);
-	
 }
