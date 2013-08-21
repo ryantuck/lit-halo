@@ -13,6 +13,8 @@
 
 Foo::Foo()
 {
+	Serial.println("foo constructor");
+	
 	layer			= 1;
 	brightness		= maxBrightness;
 	stepIndex		= 0;
@@ -23,7 +25,10 @@ Foo::Foo()
 }
 
 Foo::~Foo()
-{	
+{
+	Serial.println("foo destructor");
+	
+	steps.removeAllEntries();
 	foos.removeAllEntries();
 	fLEDs.removeAllEntries();
 }
@@ -72,7 +77,7 @@ void Foo::addLEDs(Color aColor, int aBrightness, int aStart, int aEnd)
 template <class T>
 void Foo::addStep(Step<T>* aStep)
 {
-	ListObject<Step<Foo>>* entry = new ListObject<Step<Foo>>;
+	ListObject<Step<Foo> >* entry = new ListObject<Step<Foo> >;
 	
 	entry->me = (Step<Foo>*)aStep;
 	
@@ -215,7 +220,7 @@ void Foo::updateFoos()
 
 //	========================================================
 
-byte Foo::updateValue(byte parameter,
+extern byte updateValue(byte parameter,
 					  bool direction,
 					  byte minVal,
 					  byte maxVal,
@@ -241,6 +246,31 @@ byte Foo::updateValue(byte parameter,
 	}
 	
 	return parameter;
+}
+
+extern byte shortDistance(byte x, byte y)
+{
+	int difference = x-y;
+	
+	if (difference < 0) difference += 32;
+	
+	if (difference <= 15)	return difference;
+	else					return 31 - difference;
+}
+
+extern byte longDistance(byte x, byte y)
+{
+	return 31 - shortDistance(x, y);
+}
+
+extern bool shortDirection(byte x, byte y)
+{
+	return 0;
+}
+
+extern bool longDirection(byte x, byte y)
+{
+	return 0;
 }
 
 //	========================================================
@@ -291,8 +321,8 @@ template void Foo::addStep<EventFoo>	(Step<EventFoo>*);
 template void Foo::addStep<MovingFoo>	(Step<MovingFoo>*);
 template void Foo::addStep<MultipleBouncingFoo> (Step<MultipleBouncingFoo>*);
 template void Foo::addStep<OscillatingFoo> (Step<OscillatingFoo>*);
-
-
+template void Foo::addStep<EMFoo>		(Step<EMFoo>*);
+template void Foo::addStep<ChargedFoo>	(Step<ChargedFoo>*);
 
 
 

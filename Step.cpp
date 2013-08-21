@@ -7,7 +7,7 @@
 //	########################################################################
 
 #include "Step.h"
-#include "Tester.h"
+//#include "Tester.h"
 #include "Foo.h"
 #include "CustomFoos.h"
 
@@ -42,7 +42,7 @@ bool Step<T>::canUpdate()
 }
 
 
-template class Step<Tester>;
+//template class Step<Tester>;
 template class Step<Foo>;
 template class Step<StepFoo1>;
 template class Step<RainbowFoo>;
@@ -53,8 +53,7 @@ template class Step<EventFoo>;
 template class Step<MovingFoo>;
 template class Step<MultipleBouncingFoo>;
 template class Step<OscillatingFoo>;
-
-
-
+template class Step<EMFoo>;
+template class Step<ChargedFoo>;
 
 

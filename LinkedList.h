@@ -19,8 +19,6 @@ public:
 	ListObject();
 	T*	me;
 	ListObject<T>*	next;
-	
-public:
 };
 
 template <class T>

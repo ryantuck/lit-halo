@@ -23,7 +23,7 @@ public:
 
 	LinkedList<Foo>				foos;
 	LinkedList<AddressedLED>	fLEDs;
-	LinkedList<Step<Foo>>		steps;
+	LinkedList<Step<Foo> >		steps;
 	
 	byte		layer;
 	byte		brightness;
@@ -57,7 +57,7 @@ public:
 	//	Step Stuff ---------------------
 	void checkSteps();
 	void resetSteps();
-	void execute(ListObject<Step<Foo>>* obj);
+	void execute(ListObject<Step<Foo> >* obj);
 	
 	//	Updating Functionality ---------
 	void update();
@@ -71,16 +71,26 @@ public:
 
 	
 protected:
-	byte	updateValue(byte parameter,
-						bool direction,
-						byte minVal,
-						byte maxVal,
-						bool cycles);
+//	byte	updateValue(byte parameter,
+//						bool direction,
+//						byte minVal,
+//						byte maxVal,
+//						bool cycles);
 	
 	
 	
 };
 
+extern byte	updateValue(byte parameter,
+						bool direction,
+						byte minVal,
+						byte maxVal,
+						bool cycles);
+
+extern byte shortDistance(byte x, byte y);
+extern byte longDistance(byte x, byte y);
+extern bool shortDirection(byte x, byte y);
+extern bool longDirection(byte x, byte y);
 
 
 #endif

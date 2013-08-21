@@ -17,6 +17,9 @@
 #include "KernFoo.h"
 #include "LinkedFoo.h"
 #include "stepFoo1.h"
+#include "EMFoo.h"
+#include "ChargedFoo.h"
+#include "MemTestingFoo.h"
 
 
 #endif

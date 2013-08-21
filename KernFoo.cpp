@@ -22,7 +22,7 @@ KernFoo::KernFoo()
 	aStep->fnPtr = &MovingFoo::moveLeft;
 	
 	addStep(aStep);
-	aFoo->addStep(aStep);
+	//aFoo->addStep(aStep);
 	
 	aStep->period = 5;
 }

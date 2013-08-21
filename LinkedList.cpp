@@ -45,12 +45,12 @@ int LinkedList<T>::length()
 			}
 			else
 			{
-				finished = 1;
+				finished = true;
 			}
 		}
 		else
 		{
-			finished = 1;
+			finished = true;
 		}
 	}
 
@@ -121,23 +121,54 @@ void LinkedList<T>::removeEntry(int aEntry)
 	{
 		start = NULL;
 	}
-	else if (aEntry == length())
+	else if (aEntry >= length())
 	{
-		delete entry(aEntry)->me;
-		entry(aEntry-1)->next = NULL;
+		Serial.println("aEntry too large");
 	}
-	else if (aEntry == 0)
+	else
 	{
-		delete entry(aEntry)->me;
-		start = entry(1);
+		if (aEntry == 0)
+		{
+			delete entry(aEntry)->me;
+			ListObject<T>* ptrToPass = entry(aEntry)->next;
+			delete entry(aEntry);
+			start = ptrToPass;
+		}
+		else if (aEntry == length() - 1)
+		{
+			delete entry(aEntry)->me;
+			ListObject<T>* ptrToPass = entry(aEntry)->next;
+			delete entry(aEntry);
+			entry(aEntry-1)->next = ptrToPass;
+		}
+		else
+		{
+			delete entry(aEntry)->me;
+			ListObject<T>* entryToRemove = entry(aEntry);
+			ListObject<T>* ptrToPass = entryToRemove->next;
+			delete entry(aEntry);
+			entry(aEntry-1)->next = ptrToPass;
+		}
 	}
-	else if (aEntry < length())
-	{
-		delete entry(aEntry)->me;
-		ListObject<T>* entryToRemove		= entry(aEntry);
-		ListObject<T>* pointerToTransfer	= entryToRemove->next;
-		entry(aEntry-1)->next				= pointerToTransfer;
-	}
+	
+	
+//	else if (aEntry == 0)
+//	{
+//		delete entry(aEntry)->me;
+//		start = entry(1);
+//	}
+//	else if (aEntry == length()-1)
+//	{
+//		delete entry(aEntry)->me;
+//		entry(aEntry-1)->next = NULL;
+//	}
+//	else if (aEntry < length()-1)
+//	{
+//		delete entry(aEntry)->me;
+//		ListObject<T>* entryToRemove		= entry(aEntry);
+//		ListObject<T>* pointerToTransfer	= entryToRemove->next;
+//		entry(aEntry-1)->next				= pointerToTransfer;
+//	}
 }
 
 template <class T>
@@ -160,8 +191,8 @@ template class ListObject<AddressedLED>;
 template class LinkedList<Foo>;
 template class ListObject<Foo>;
 
-template class LinkedList<Step<Foo>>;
-template class ListObject<Step<Foo>>;
+template class LinkedList<Step<Foo> >;
+template class ListObject<Step<Foo> >;
 
 
 

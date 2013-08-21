@@ -19,6 +19,7 @@
 #include "LITColor.h"
 #include "Parameters.h"
 #include "Arduino.h"
+#include "Force.h"
 
 extern int			numLEDs;
 extern LayeredLED	leds[32];

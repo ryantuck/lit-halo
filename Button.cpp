@@ -9,7 +9,7 @@
 
 Button::Button()
 {
-    lastButtonState = 1;
+    lastButtonState = 0;
     
     pressed		= 0;
     released	= 0;
@@ -21,7 +21,7 @@ Button::Button(int newPin)
 	pinMode(pin, INPUT);
 	digitalWrite(pin, HIGH);
 
-    lastButtonState = 1;
+    lastButtonState = 0;
 }
 
 void Button::checkState()

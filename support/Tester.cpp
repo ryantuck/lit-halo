@@ -13,6 +13,31 @@ Tester::Tester()
 	
 }
 
+void Tester::sizeTest()
+{
+	Foo* aFoo = new Foo;
+	Foo* bFoo = new Foo;
+	
+	aFoo->addFoo(bFoo);
+
+	LinkedList<Foo> myList;
+	ListObject<Foo> aListObject;
+	
+	int ptrSize			= sizeof(aFoo);
+	int fooSize			= sizeof(*aFoo);
+	int fooListSize		= sizeof(aFoo->foos);
+	int listSize		= sizeof(myList);
+	int listObjectSize	= sizeof(aListObject);
+	int boolSize		= sizeof(aFoo->repeats);
+	
+	Serial.print("ptr: ");			Serial.println(ptrSize);
+	Serial.print("foo: ");			Serial.println(fooSize);
+	Serial.print("list: ");			Serial.println(listSize);
+	Serial.print("foo list: ");		Serial.println(fooListSize);
+	Serial.print("list object: ");	Serial.println(listObjectSize);
+	Serial.print("bool: ");			Serial.println(boolSize);
+}
+
 void Tester::printThis(int a)
 {
 	Serial.println(a);

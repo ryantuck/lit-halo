@@ -10,6 +10,7 @@
 #define __LIT_Headband_Simulator__EMFoo__
 
 #include "Foo.h"
+#include "ChargedFoo.h"
 
 class EMFoo : public Foo
 {
@@ -18,7 +19,9 @@ public:
 	
 	int k;
 	
-	int calculateForceOnFoo();
+	Force calculateForceOnFoo(Foo* aFoo);
+	
+	void applyForces();
 };
 
 

@@ -8,17 +8,19 @@
 
 Headband::Headband()
 {
-	maxFoodex	= 6;
-	foodex		= 0;
+	maxFoodex	= 8;
+	foodex		= 4;
 	
 	downButton		= Button(8);
 	upButton		= Button(9);
+	
+	foo = NULL;
 	
 	//	dat-3 / clk-2
 	
 	// dat and clk currently set for bisco staff
 	
-	strip = LPD8806(320,2,3);
+	strip = LPD8806(numLEDs,2,3);
 	strip.begin();
 }
 
@@ -55,18 +57,18 @@ void Headband::updateStrip()
 	strip.show();
 }
 
-void Headband::writeLights()
-{
-	for (int n=0;n<numLEDs;n++)
-		lights.setPixelColor(n, leds[n].color);
-	
-	lights.writeRegisters();
-}
+//void Headband::writeLights()
+//{
+//	for (int n=0;n<numLEDs;n++)
+//		lights.setPixelColor(n, leds[n].color);
+//	
+//	lights.writeRegisters();
+//}
 
 void Headband::checkButtons()
 {
-	//upButton.checkState();
-	//downButton.checkState();
+	upButton.checkState();
+	downButton.checkState();
 	
 	if (upButton.pressed)
 	{
@@ -100,11 +102,28 @@ void Headband::getAudio()
 
 void Headband::updateFoo(int index)
 {
-	delete foo;
-	foo = NULL;
+	if (foo)
+	{
+		delete foo;
+		foo = NULL;
+	}
 	
 	switch (index)
 	{
+//		case 0:
+//			foo = new KernFoo;
+//			break;
+//		case 1:
+//			foo = new StepFoo1;
+//			break;
+//		case 2:
+//			foo = new Foo2;
+//			break;
+//		case 3:
+//			foo = new LinkedFoo;
+//			break;
+		
+		
 		case 0:
 			foo = new KernFoo;
 			break;
@@ -125,6 +144,12 @@ void Headband::updateFoo(int index)
 			break;
 		case 6:
 			foo = new OscillatingFoo;
+			break;
+		case 7:
+			foo = new MultipleBouncingFoo;
+			break;
+		case 8:
+			foo = new MemTestingFoo;
 			break;
 	}
 }
