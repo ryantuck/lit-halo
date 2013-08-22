@@ -16,9 +16,6 @@ RainbowLine::RainbowLine(int length,int start)
 		aColor.calculateRGB(length, n);
 		
 		addLEDs(aColor, maxBrightness, checkAddress(start + n), checkAddress(start + n));
-		
-		Serial.println(n);
-		aColor.printVitals();
 	}
 	
 	Step<MovingFoo>* aStep = new Step<MovingFoo>;
