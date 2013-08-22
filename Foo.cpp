@@ -213,17 +213,33 @@ void Foo::updateFoos()
 {
 	if (hasFoos())
 	{
-		for (int n=0;n<countFoos();n++)
+		int index = 0;
+		
+		while (index < countFoos())
 		{
-			if (foos.entry(n)->me->isRunning)
+			if (foos.entry(index)->me->isRunning)
 			{
-				foos.entry(n)->me->update();
+				foos.entry(index)->me->update();
+				index++;
 			}
 			else
 			{
-				foos.removeEntry(n);
+				foos.removeEntry(index);
 			}
 		}
+		
+//		
+//		for (int n=0;n<countFoos();n++)
+//		{
+//			if (foos.entry(n)->me->isRunning)
+//			{
+//				foos.entry(n)->me->update();
+//			}
+//			else
+//			{
+//				foos.removeEntry(n);
+//			}
+//		}
 			
 	}
 }

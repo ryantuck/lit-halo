@@ -10,7 +10,7 @@
 
 EphemeralSnakesFoo::EphemeralSnakesFoo()
 {
-	maxFoos = 2;
+	maxFoos = 8;
 	
 	Step<EphemeralSnakesFoo>* aStep = new Step<EphemeralSnakesFoo>;
 	aStep->fnPtr = &EphemeralSnakesFoo::doStuff;
@@ -21,10 +21,7 @@ void EphemeralSnakesFoo::doStuff()
 {
 	if (foos.length() < maxFoos)
 	{
-		if (rand()%8 % 3 == 0)
-		{
-			createNewSnake();
-		}
+		createNewSnake();
 	}
 }
 
@@ -39,12 +36,13 @@ void EphemeralSnakesFoo::createNewSnake()
 EphemeralSnake::EphemeralSnake()
 {
 	relevantAddress = rand()%32;
-	int length = 5;
+	int length = rand()%5 + 5;
 	direction = rand()%2;
 	repeats = false;
 	color = LITColor.spectrum[rand()%12];
+	layer = rand()%5+1;
 	
-	addLEDs(*color, maxBrightness, relevantAddress,relevantAddress);
+	//addLEDs(*color, maxBrightness, relevantAddress,relevantAddress);
 	
 	Step<EphemeralSnake>* growStep = new Step<EphemeralSnake>;
 	growStep->fnPtr = &EphemeralSnake::grow;
@@ -59,7 +57,7 @@ EphemeralSnake::EphemeralSnake()
 
 void EphemeralSnake::grow()
 {
-	relevantAddress = updateValue(relevantAddress, up, 0, 31, cycles);
+	relevantAddress = updateValue(relevantAddress, direction, 0, 31, cycles);
 	
 	addLEDs(*color, maxBrightness, relevantAddress, relevantAddress);
 }
