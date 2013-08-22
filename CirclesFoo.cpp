@@ -10,7 +10,7 @@
 
 CirclesFoo::CirclesFoo()
 {
-	for (int n=0;n<6;n++)
+	for (int n=0;n<5;n++)
 	{
 		MovingFoo* aFoo = new MovingFoo;
 		aFoo->addLEDs(*LITColor.colorList[n], maxBrightness, 0, 0);
