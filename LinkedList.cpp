@@ -150,25 +150,6 @@ void LinkedList<T>::removeEntry(int aEntry)
 			entry(aEntry-1)->next = ptrToPass;
 		}
 	}
-	
-	
-//	else if (aEntry == 0)
-//	{
-//		delete entry(aEntry)->me;
-//		start = entry(1);
-//	}
-//	else if (aEntry == length()-1)
-//	{
-//		delete entry(aEntry)->me;
-//		entry(aEntry-1)->next = NULL;
-//	}
-//	else if (aEntry < length()-1)
-//	{
-//		delete entry(aEntry)->me;
-//		ListObject<T>* entryToRemove		= entry(aEntry);
-//		ListObject<T>* pointerToTransfer	= entryToRemove->next;
-//		entry(aEntry-1)->next				= pointerToTransfer;
-//	}
 }
 
 template <class T>

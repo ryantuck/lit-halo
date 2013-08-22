@@ -66,18 +66,7 @@ public:
 	void updateSteps();
 	
 	//	--------------------------------
-	void printVitals();
 	void merge(Foo* aFoo);
-
-	
-protected:
-//	byte	updateValue(byte parameter,
-//						bool direction,
-//						byte minVal,
-//						byte maxVal,
-//						bool cycles);
-	
-	
 	
 };
 

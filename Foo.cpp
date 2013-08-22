@@ -13,8 +13,6 @@
 
 Foo::Foo()
 {
-	Serial.println("foo constructor");
-	
 	layer			= 1;
 	brightness		= maxBrightness;
 	stepIndex		= 0;
@@ -26,8 +24,6 @@ Foo::Foo()
 
 Foo::~Foo()
 {
-	Serial.println("foo destructor");
-	
 	steps.removeAllEntries();
 	foos.removeAllEntries();
 	fLEDs.removeAllEntries();
@@ -38,18 +34,14 @@ Foo::~Foo()
 void Foo::addFoo(Foo *aFoo)
 {
 	ListObject<Foo>* entry = new ListObject<Foo>;
-	
 	entry->me = aFoo;
-	
 	foos.addToEnd(entry);
 }
 
 void Foo::addLED(AddressedLED *aLED)
 {
 	ListObject<AddressedLED>* entry = new ListObject<AddressedLED>;
-	
 	entry->me = aLED;
-	
 	fLEDs.addToEnd(entry);
 }
 
@@ -78,9 +70,7 @@ template <class T>
 void Foo::addStep(Step<T>* aStep)
 {
 	ListObject<Step<Foo> >* entry = new ListObject<Step<Foo> >;
-	
 	entry->me = (Step<Foo>*)aStep;
-	
 	steps.addToEnd(entry);
 }
 
@@ -103,14 +93,14 @@ int Foo::countSteps()
 
 bool Foo::hasFoos()
 {
-	if (foos.length()) return 1;
-	else					return 0;
+	if (foos.length())	return 1;
+	else				return 0;
 }
 
 bool Foo::hasLEDs()
 {
 	if (fLEDs.length()) return 1;
-	else					return 0;
+	else				return 0;
 }
 
 bool Foo::hasSteps()
@@ -131,8 +121,8 @@ void Foo::checkSteps()
 		
 		if (stepIndex == countSteps())
 		{
-			if (repeats)		resetSteps();
-			else				isRunning = false;
+			if (repeats)	resetSteps();
+			else			isRunning = false;
 		}
 		else
 		{
@@ -227,60 +217,14 @@ void Foo::updateFoos()
 				foos.removeEntry(index);
 			}
 		}
-		
-//		
-//		for (int n=0;n<countFoos();n++)
-//		{
-//			if (foos.entry(n)->me->isRunning)
-//			{
-//				foos.entry(n)->me->update();
-//			}
-//			else
-//			{
-//				foos.removeEntry(n);
-//			}
-//		}
-			
 	}
 }
 
 //	========================================================
 
-
-//	========================================================
-
-void Foo::printVitals()
-{
-//	Serial.println("Foo Vitals");
-//	Serial.print("number of Foos: "); Serial.println(numberOfFoos);
-//	Serial.print("number of LEDs: "); Serial.println(numberOfLEDs);
-//	Serial.print("array length:   "); Serial.println(arrayLength);
-}
-
 void Foo::merge(Foo *aFoo)
 {
-//	for (int n=0;n<aFoo->numberOfLEDs;n++)
-//	{
-//		setBlock(aFoo->fLEDs[n]->color,
-//				 maxBrightness,
-//				 aFoo->fLEDs[n]->address,
-//				 aFoo->fLEDs[n]->address);
-//	}
-//	
-//	for (int n=0;n<numberOfFoos;n++)
-//	{
-//		addItem();
-//		foos[n]->addItem();
-//		foos[n]->merge(aFoo->foos[n]);
-//	}
-//	
-//	if (aFoo->direction != direction)
-//	{
-//		if (aFoo->period < period)
-//		{
-//			direction = aFoo->direction;
-//		}
-//	}
+	
 }
 
 //	========================================================
@@ -299,6 +243,8 @@ template void Foo::addStep<EMFoo>		(Step<EMFoo>*);
 template void Foo::addStep<ChargedFoo>	(Step<ChargedFoo>*);
 template void Foo::addStep<EphemeralSnake> (Step<EphemeralSnake>*);
 template void Foo::addStep<EphemeralSnakesFoo> (Step<EphemeralSnakesFoo>*);
+template void Foo::addStep<EvenEphemSnakes> (Step<EvenEphemSnakes>*);
+template void Foo::addStep<RainbowPulser> (Step<RainbowPulser>*);
 
 
 

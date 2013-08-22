@@ -19,7 +19,6 @@ public:
 	Color	color;
 	byte	brightness;
 	
-	//	Constructors
 	LED();
 	LED(Color newColor, byte newBrightness);
 	
