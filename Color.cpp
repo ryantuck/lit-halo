@@ -95,7 +95,7 @@ byte Color::maxVal(Color newColor)
 
 byte Color::maxVal(byte red, byte green, byte blue)
 {
-	byte max				= checkVals(red);
+	byte				max = checkVals(red);
 	if (green > max)	max = checkVals(green);
 	if (blue  > max)	max = checkVals(blue);
 	return max;
@@ -112,6 +112,28 @@ byte Color::minVal(byte red, byte green, byte blue)
 	if (green < min)	min = checkVals(green);
 	if (blue < min)		min = checkVals(blue);
 	return min;
+}
+
+void Color::calculateRGB(int total, int entry)
+{
+	int base		= (3 * entry) / total;
+	int remainder	= (3 * entry) % total;
+	
+	if (base==0)
+	{
+		r = total - remainder;
+		g = remainder;
+	}
+	else if (base==1)
+	{
+		g = total - remainder;
+		b = remainder;
+	}
+	else if (base==2)
+	{
+		b = total-remainder;
+		r = remainder;
+	}
 }
 
 void Color::expandNums()
@@ -134,7 +156,7 @@ void Color::expandNums()
 bool Color::isBlack()
 {
 	if (r == 0 && b == 0 && g == 0) return 1;
-	else return 0;
+	else							return 0;
 }
 
 
