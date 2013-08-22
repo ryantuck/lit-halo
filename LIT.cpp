@@ -78,3 +78,25 @@ extern bool longDirection(byte start, byte end)
 {
 	return !shortDirection(start, end);
 }
+
+extern byte checkAddress(int x)
+{
+	while (x > 32)
+	{
+		x -= 32;
+	}
+	
+	return x;
+}
+
+
+
+
+
+
+
+
+
+
+
+

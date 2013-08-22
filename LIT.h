@@ -40,6 +40,8 @@ extern byte longDistance(byte x, byte y);
 extern bool shortDirection(byte x, byte y);
 extern bool longDirection(byte x, byte y);
 
+extern byte checkAddress(int x);
+
 #endif
 
 
