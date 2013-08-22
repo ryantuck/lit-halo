@@ -28,14 +28,27 @@ class EphemeralSnake : public MovingFoo
 {
 public:
 	EphemeralSnake();
+	EphemeralSnake(int address, int length, bool direction, Color* aColor);
 	
 	int relevantAddress;
+	int length;
 	Color* color;
 	
 	void grow();
 	void shrink();
 };
 
+class EvenEphemSnakes : public Foo
+{
+public:
+	EvenEphemSnakes();
+	
+	void checkForNoSnakes();
+	
+	int numSnakes;
+	
+	int count;
+};
 
 
 #endif
