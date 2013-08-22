@@ -245,6 +245,6 @@ template void Foo::addStep<EphemeralSnake> (Step<EphemeralSnake>*);
 template void Foo::addStep<EphemeralSnakesFoo> (Step<EphemeralSnakesFoo>*);
 template void Foo::addStep<EvenEphemSnakes> (Step<EvenEphemSnakes>*);
 template void Foo::addStep<RainbowPulser> (Step<RainbowPulser>*);
-
+template void Foo::addStep<ListenerFoo> (Step<ListenerFoo>*);
 
 

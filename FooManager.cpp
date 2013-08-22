@@ -67,7 +67,7 @@ void FooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 5;
+	maxFoodex = 6;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -91,6 +91,9 @@ void DevFooManager::createNewFoo(int index)
 			break;
 		case 5:
 			foo = new RainbowPulser;
+			break;
+		case 6:
+			foo = new ListenerFoo;
 			break;
 	}
 }

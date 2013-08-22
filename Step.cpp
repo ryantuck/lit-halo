@@ -59,3 +59,10 @@ template class Step<EphemeralSnake>;
 template class Step<EphemeralSnakesFoo>;
 template class Step<EvenEphemSnakes>;
 template class Step<RainbowPulser>;
+template class Step<ListenerFoo>;
+
+
+
+
+
+

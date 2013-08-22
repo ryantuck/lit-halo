@@ -104,6 +104,11 @@ void Audio::gatherSpectrumAverages()
 	}
 }
 
+bool Audio::beatJustDetected(byte band)
+{
+	if (beatCounters[band] == 2)	return true;
+	else							return false;
+}
 
 
 

@@ -55,6 +55,8 @@ public:
 	//	For testing.
 	void gatherSpectrumAverages();
 	
+	bool beatJustDetected(byte band);
+	
 	void printBeatCounters();
 	void printSpectrum();
 	void printAvgSpectrum();

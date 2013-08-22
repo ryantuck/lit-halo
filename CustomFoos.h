@@ -23,6 +23,7 @@
 #include "CirclesFoo.h"
 #include "EphemeralSnakesFoo.h"
 #include "RainbowLine.h"
+#include "ListenerFoo.h"
 
 #endif
 
