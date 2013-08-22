@@ -214,7 +214,17 @@ void Foo::updateFoos()
 	if (hasFoos())
 	{
 		for (int n=0;n<countFoos();n++)
-			foos.entry(n)->me->update();
+		{
+			if (foos.entry(n)->me->isRunning)
+			{
+				foos.entry(n)->me->update();
+			}
+			else
+			{
+				foos.removeEntry(n);
+			}
+		}
+			
 	}
 }
 
@@ -271,7 +281,8 @@ template void Foo::addStep<MultipleBouncingFoo> (Step<MultipleBouncingFoo>*);
 template void Foo::addStep<OscillatingFoo> (Step<OscillatingFoo>*);
 template void Foo::addStep<EMFoo>		(Step<EMFoo>*);
 template void Foo::addStep<ChargedFoo>	(Step<ChargedFoo>*);
-
+template void Foo::addStep<EphemeralSnake> (Step<EphemeralSnake>*);
+template void Foo::addStep<EphemeralSnakesFoo> (Step<EphemeralSnakesFoo>*);
 
 
 

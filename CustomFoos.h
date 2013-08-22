@@ -21,6 +21,7 @@
 #include "ChargedFoo.h"
 #include "MemTestingFoo.h"
 #include "CirclesFoo.h"
+#include "EphemeralSnakesFoo.h"
 
 
 #endif

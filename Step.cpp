@@ -55,5 +55,5 @@ template class Step<MultipleBouncingFoo>;
 template class Step<OscillatingFoo>;
 template class Step<EMFoo>;
 template class Step<ChargedFoo>;
-
-
+template class Step<EphemeralSnake>;
+template class Step<EphemeralSnakesFoo>;

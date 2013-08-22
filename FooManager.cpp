@@ -67,7 +67,7 @@ void FooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 2;
+	maxFoodex = 3;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -82,6 +82,9 @@ void DevFooManager::createNewFoo(int index)
 			break;
 		case 2:
 			foo = new CirclesFoo;
+			break;
+		case 3:
+			foo = new EphemeralSnakesFoo;
 			break;
 	}
 }
