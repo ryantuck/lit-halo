@@ -24,6 +24,7 @@
 #include "EphemeralSnakesFoo.h"
 #include "RainbowLine.h"
 #include "ListenerFoo.h"
+#include "InProgressCustomFoos.h"
 
 #endif
 

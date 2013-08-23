@@ -93,7 +93,7 @@ void DevFooManager::createNewFoo(int index)
 			foo = new RainbowPulser;
 			break;
 		case 6:
-			foo = new ListenerFoo;
+			foo = new AListener;
 			break;
 	}
 }

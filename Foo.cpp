@@ -246,5 +246,14 @@ template void Foo::addStep<EphemeralSnakesFoo> (Step<EphemeralSnakesFoo>*);
 template void Foo::addStep<EvenEphemSnakes> (Step<EvenEphemSnakes>*);
 template void Foo::addStep<RainbowPulser> (Step<RainbowPulser>*);
 template void Foo::addStep<ListenerFoo> (Step<ListenerFoo>*);
+template void Foo::addStep<MultiParticleEvent> (Step<MultiParticleEvent>*);
+template void Foo::addStep<AListener> (Step<AListener>*);
+template void Foo::addStep<PulseFromCenter> (Step<PulseFromCenter>*);
+
+
+
+
+
+
 
 
