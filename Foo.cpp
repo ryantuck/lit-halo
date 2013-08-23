@@ -249,7 +249,7 @@ template void Foo::addStep<ListenerFoo> (Step<ListenerFoo>*);
 template void Foo::addStep<MultiParticleEvent> (Step<MultiParticleEvent>*);
 template void Foo::addStep<AListener> (Step<AListener>*);
 template void Foo::addStep<PulseFromCenter> (Step<PulseFromCenter>*);
-
+template void Foo::addStep<BandMeter> (Step<BandMeter>*);
 
 
 

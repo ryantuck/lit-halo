@@ -63,6 +63,6 @@ template class Step<ListenerFoo>;
 template class Step<MultiParticleEvent>;
 template class Step<AListener>;
 template class Step<PulseFromCenter>;
-
+template class Step<BandMeter>;
 
 

@@ -43,8 +43,18 @@ public:
 	void checkForLength();
 };
 
-
-
+class BandMeter : public Foo
+{
+public:
+	BandMeter();
+	
+	int length;
+	
+	int band;
+	
+	void adjustLengthForAudio();
+	
+};
 
 
 #endif

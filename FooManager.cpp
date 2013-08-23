@@ -67,7 +67,7 @@ void FooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 6;
+	maxFoodex = 7;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -94,6 +94,9 @@ void DevFooManager::createNewFoo(int index)
 			break;
 		case 6:
 			foo = new AListener;
+			break;
+		case 7:
+			foo = new BandMeter;
 			break;
 	}
 }

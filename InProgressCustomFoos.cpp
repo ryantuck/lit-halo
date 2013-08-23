@@ -109,11 +109,27 @@ void PulseFromCenter::checkForLength()
 	if (!hasFoos())	isRunning = false;
 }
 
+BandMeter::BandMeter()
+{
+	length	= 10;
+	band	= 0;
+	
+	Step<BandMeter>* aStep = new Step<BandMeter>;
+	aStep->fnPtr = &BandMeter::adjustLengthForAudio;
+	addStep(aStep);
+}
 
-
-
-
-
+void BandMeter::adjustLengthForAudio()
+{
+	int num = length * audio.eq.spectrum[band] / 1023;
+	
+	fLEDs.removeAllEntries();
+	
+	for (int n=0;n<num;n++)
+	{
+		addLEDs(LITColor.lavender, maxBrightness, n,n);
+	}
+}
 
 
 
