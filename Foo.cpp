@@ -7,7 +7,6 @@
 //	########################################################################
 
 #include "Foo.h"
-#include "CustomFoos.h"
 
 //	========================================================
 
@@ -64,14 +63,6 @@ void Foo::addLEDs(Color aColor, int aBrightness, int aStart, int aEnd)
 		
 		addLED(aLED);
 	}
-}
-
-template <class T>
-void Foo::addStep(Step<T>* aStep)
-{
-	ListObject<Step<Foo> >* entry = new ListObject<Step<Foo> >;
-	entry->me = (Step<Foo>*)aStep;
-	steps.addToEnd(entry);
 }
 
 //	========================================================
@@ -226,31 +217,6 @@ void Foo::merge(Foo *aFoo)
 {
 	
 }
-
-//	========================================================
-
-//	list of possible templates for the addStep function
-template void Foo::addStep<StepFoo1>	(Step<StepFoo1>*);
-template void Foo::addStep<RainbowFoo>	(Step<RainbowFoo>*);
-template void Foo::addStep<LinkedFoo>	(Step<LinkedFoo>*);
-template void Foo::addStep<KernFoo>		(Step<KernFoo>*);
-template void Foo::addStep<Foo2>		(Step<Foo2>*);
-template void Foo::addStep<EventFoo>	(Step<EventFoo>*);
-template void Foo::addStep<MovingFoo>	(Step<MovingFoo>*);
-template void Foo::addStep<MultipleBouncingFoo> (Step<MultipleBouncingFoo>*);
-template void Foo::addStep<OscillatingFoo> (Step<OscillatingFoo>*);
-template void Foo::addStep<EMFoo>		(Step<EMFoo>*);
-template void Foo::addStep<ChargedFoo>	(Step<ChargedFoo>*);
-template void Foo::addStep<EphemeralSnake> (Step<EphemeralSnake>*);
-template void Foo::addStep<EphemeralSnakesFoo> (Step<EphemeralSnakesFoo>*);
-template void Foo::addStep<EvenEphemSnakes> (Step<EvenEphemSnakes>*);
-template void Foo::addStep<RainbowPulser> (Step<RainbowPulser>*);
-template void Foo::addStep<ListenerFoo> (Step<ListenerFoo>*);
-template void Foo::addStep<MultiParticleEvent> (Step<MultiParticleEvent>*);
-template void Foo::addStep<AListener> (Step<AListener>*);
-template void Foo::addStep<PulseFromCenter> (Step<PulseFromCenter>*);
-template void Foo::addStep<BandMeter> (Step<BandMeter>*);
-
 
 
 

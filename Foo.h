@@ -43,7 +43,13 @@ public:
 	void addLEDs(Color aColor, int aBrightness, int aStart, int aEnd);
 	
 	template <class T>
-	void addStep(Step<T>* aStep);
+	void addStep(Step<T>* aStep)
+	{
+		// template requires definition in h file
+		ListObject<Step<Foo> >* entry = new ListObject<Step<Foo> >;
+		entry->me = (Step<Foo>*)aStep;
+		steps.addToEnd(entry);
+	}
 	
 	//	Counting -----------------------
 	int	 countFoos();
