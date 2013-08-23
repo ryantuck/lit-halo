@@ -79,8 +79,16 @@ EphemeralSnake::EphemeralSnake(int aAddress,
 
 void EphemeralSnake::grow()
 {
-	relevantAddress = updateValue(relevantAddress, direction, 0, 31, cycles);
-	
+	if (hasLEDs())
+	{
+		relevantAddress = updateValue(relevantAddress,
+									  direction,
+									  0,
+									  31,
+									  cycles);
+
+	}
+		
 	addLEDs(*color, maxBrightness, relevantAddress, relevantAddress);
 }
 
