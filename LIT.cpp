@@ -89,7 +89,60 @@ extern byte checkAddress(int x)
 	return x;
 }
 
-
+extern Color SRColor(int srIndex)
+{
+	// check index for bounds
+	
+	Color aColor(LITColor.black);
+	
+	int sR = 0;
+	int sG = 0;
+	int sB = 0;
+	
+	int base	= srIndex / 8;
+	int rem		= srIndex % 8;
+	base		= base*8;
+	
+	if (rem < 3)		// 0-2
+	{
+		int var = 5 % (rem+3);
+		int var2 = (rem-var+3) % 3;
+		
+		//	n	v	v2
+		//	0	2	1
+		//	1	1	0
+		//	2	0	2
+		
+		sR = leds[base+var].color.g;
+		sG = leds[base+var].color.r;
+		sB = leds[base+var2].color.b;
+	}
+	else if (rem < 5)	// 3-4
+	{
+		int var = 4 % rem;
+		
+		sR = leds[base+4+var].color.r;
+		sG = leds[base+3+var].color.b;
+		sB = leds[base+3+var].color.g;
+	}
+	else if (rem < 6)	// 5
+	{
+		sR = leds[base+3].color.r;
+		sG = leds[base+5].color.g;
+		sB = leds[base+5].color.b;
+	}
+	else if (rem < 8)	// 6-7
+	{
+		int var = 7 % rem;
+		
+		sR = leds[base+6+var].color.b;
+		sG = leds[base+6+var].color.g;
+		sB = leds[base+6+var].color.r;
+	}
+	
+	aColor.setColor(sR,sG,sB);
+	return aColor;
+}
 
 
 
