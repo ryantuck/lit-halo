@@ -8,9 +8,9 @@
 
 MSGEQ7::MSGEQ7()
 {
-	analogPin	= 0;
-	strobePin	= 8;
-	resetPin	= 7;
+	analogPin	= 6;
+	strobePin	= 9;
+	resetPin	= 8;
 	
 	pinMode(analogPin,	INPUT);
 	pinMode(strobePin,	OUTPUT);

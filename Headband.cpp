@@ -26,8 +26,8 @@ void Headband::update()
 
 void Headband::checkButtons()
 {
-	//	upButton.checkState();
-	//	downButton.checkState();
+	upButton.checkState();
+	downButton.checkState();
 	
 	if (upButton.pressed)
 	{
