@@ -8,8 +8,8 @@
 
 Headband::Headband()
 {
-	downButton	= Button(8);
-	upButton	= Button(9);
+	downButton	= Button(5);
+	upButton	= Button(6);
 	
 	strip = LPD8806(numLEDs,2,3);
 	strip.begin();

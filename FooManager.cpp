@@ -90,7 +90,7 @@ void DevFooManager::createNewFoo(int index)
 			foo = new EvenEphemSnakes;
 			break;
 		case 5:
-			foo = new RainbowPulser;
+			foo = new RainbowLine(32,0);
 			break;
 		case 6:
 			foo = new AListener;
