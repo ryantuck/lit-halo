@@ -14,6 +14,7 @@
 #include "MSGEQ7.h"
 #include "MCP4131.h"
 #include "Arduino.h"
+//#include "LITFunctions.h"
 
 class Audio
 {
@@ -27,6 +28,10 @@ public:
 									//	since last beat on each band.
 	
 	int averagedSpectrum[7];
+	int avgCounter;
+	
+	double silenceSlopes[7];
+	double silenceIntercepts[7];
 	
 	//	Constructor
 	Audio();
@@ -56,6 +61,12 @@ public:
 	void gatherSpectrumAverages();
 	
 	bool beatJustDetected(byte band);
+	
+	int baseline(int band, int potValue);
+	void subtractBaselines();
+	void updateRunningAverages(int numDataPoints);
+	void checkRunningAverages();
+	void updateWeightSpectrum();
 	
 	void printBeatCounters();
 	void printSpectrum();

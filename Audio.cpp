@@ -18,6 +18,24 @@ Audio::Audio()
 	weightSpectrum[4] = 110;
 	weightSpectrum[5] = 120;
 	weightSpectrum[6] = 150;
+	
+	silenceSlopes[0] = -0.035;
+	silenceSlopes[1] = -0.113;
+	silenceSlopes[2] = -0.196;
+	silenceSlopes[3] = -0.320;
+	silenceSlopes[4] = -0.463;
+	silenceSlopes[5] = -0.790;
+	silenceSlopes[6] = -0.665;
+	
+	silenceIntercepts[0] = 63.4;
+	silenceIntercepts[1] = 75.2;
+	silenceIntercepts[2] = 100.4;
+	silenceIntercepts[3] = 108.8;
+	silenceIntercepts[4] = 135.1;
+	silenceIntercepts[5] = 178.2;
+	silenceIntercepts[6] = 205.7;
+	
+	avgCounter = 0;
 }
 
 void Audio::update()
@@ -25,7 +43,7 @@ void Audio::update()
 	getEQ();
 	weighEQ();
 	checkBeats();
-    pot.update(100);
+    pot.update(64);
 }
 
 void Audio::getEQ()
@@ -93,7 +111,7 @@ void Audio::gatherSpectrumAverages()
 	}
 	
 	
-	for (int n=1;n<10000;n++)
+	for (int n=1;n<50;n++)
 	{
 		eq.sample();
 		
@@ -145,6 +163,58 @@ void Audio::printAvgSpectrum()
 	}
 	Serial.println();
 }
+
+int Audio::baseline(int band, int potValue)
+{
+	int bl = silenceSlopes[band] * potValue + silenceIntercepts[band];
+	return bl;
+}
+
+void Audio::subtractBaselines()
+{
+	int potVal = pot.currentValue;
+	
+	for (int n=0;n<7;n++)
+	{
+		int bl = baseline(n,potVal);
+		eq.spectrum[n] -= bl;
+	}
+}
+
+void Audio::updateRunningAverages(int numDataPoints)
+{
+	for (int n=0;n<7;n++)
+	{
+		averagedSpectrum[n] += (eq.spectrum[n] - averagedSpectrum[n])/numDataPoints;
+	}
+}
+
+void Audio::checkRunningAverages()
+{
+	if (avgCounter >= 1000)
+	{
+		updateWeightSpectrum();
+		
+		avgCounter = 0;
+		for (int n=0;n<7;n++)	averagedSpectrum[n] = 0;
+	}
+	else
+	{
+		avgCounter++;
+		updateRunningAverages(avgCounter);
+	}
+}
+
+void Audio::updateWeightSpectrum()
+{
+	
+}
+
+
+
+
+
+
 
 
 
