@@ -29,21 +29,6 @@ extern Audio		audio;
 #define down   0
 #define cycles 1
 
-extern byte	updateValue(byte parameter,
-						bool direction,
-						byte minVal,
-						byte maxVal,
-						bool doesCycle);
-
-extern byte shortDistance(byte x, byte y);
-extern byte longDistance(byte x, byte y);
-extern bool shortDirection(byte x, byte y);
-extern bool longDirection(byte x, byte y);
-
-extern byte checkAddress(int x);
-
-extern Color SRColor(int index);
-
 #endif
 
 

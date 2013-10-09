@@ -10,6 +10,7 @@
 #define __LIT_Headband_Simulator__MovingFoo__
 
 #include "Foo.h"
+#include "LITFunctions.h"
 
 class MovingFoo : public Foo
 {

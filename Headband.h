@@ -8,6 +8,7 @@
 #define ____Headband__
 
 #include "LIT.h"
+#include "LITFunctions.h"
 #include "Hardware.h"
 #include "FooManager.h"
 #include "Foo.h"
