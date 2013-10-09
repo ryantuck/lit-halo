@@ -25,6 +25,7 @@
 #include "RainbowLine.h"
 #include "ListenerFoo.h"
 #include "InProgressCustomFoos.h"
+#include "BandMeterFoo.h"
 
 #endif
 
