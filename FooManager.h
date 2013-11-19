@@ -33,6 +33,14 @@ public:
 	void createNewFoo(int index);
 };
 
+class BandFooManager : public FooManager
+{
+public:
+	BandFooManager();
+	void createNewFoo(int index);
+};
+
+
 
 #endif
 

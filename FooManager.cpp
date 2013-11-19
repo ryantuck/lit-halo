@@ -13,6 +13,8 @@ FooManager::FooManager()
 	foo			= NULL;
 	foodex		= 0;
 	maxFoodex	= 8;
+	
+	updateFoo(foodex);
 }
 
 void FooManager::update()
@@ -100,11 +102,20 @@ void DevFooManager::createNewFoo(int index)
 			break;
 		case 8:
 			foo = new BandMeterFoo;
+			break;
 	}
 }
 
 
+BandFooManager::BandFooManager()
+{
+	maxFoodex = 6;
+}
 
+void BandFooManager::createNewFoo(int index)
+{
+	foo = new BandMeterFoo(index,*LITColor.spectrum[index]);
+}
 
 
 
