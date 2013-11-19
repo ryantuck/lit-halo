@@ -10,7 +10,18 @@
 
 BandMeterFoo::BandMeterFoo()
 {
-	band = 4;
+	band = 1;
+	bandColor.setColor(LITColor.green);
+	
+	Step<BandMeterFoo>* aStep = new Step<BandMeterFoo>;
+	aStep->fnPtr = &BandMeterFoo::drawLine;
+	addStep(aStep);
+}
+
+BandMeterFoo::BandMeterFoo(int aBand, Color aColor)
+{
+	band = aBand;
+	bandColor.setColor(aColor);
 	
 	Step<BandMeterFoo>* aStep = new Step<BandMeterFoo>;
 	aStep->fnPtr = &BandMeterFoo::drawLine;
@@ -21,9 +32,9 @@ void BandMeterFoo::drawLine()
 {
 	float specVal = audio.eq.spectrum[band];
 	
-	float ratio = 32 * specVal / 1024;
+	float ratio = 32 * specVal / 128;
 	
 	fLEDs.removeAllEntries();
 	
-	addLEDs(LITColor.green, maxBrightness, 0, ratio);
+	addLEDs(bandColor, maxBrightness, 0, ratio);
 }

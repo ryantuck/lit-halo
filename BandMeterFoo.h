@@ -15,9 +15,11 @@ class BandMeterFoo : public Foo
 {
 public:
 	BandMeterFoo();
-	BandMeterFoo(int band);
+	BandMeterFoo(int band, Color aColor);
 	
 	int band;
+	
+	Color bandColor;
 	
 	void drawLine();
 	
