@@ -15,6 +15,7 @@ Headband::Headband()
 	strip.begin();
 	
 	fooManager = new DevFooManager();
+	fooManager->update();
 }
 
 void Headband::update()
