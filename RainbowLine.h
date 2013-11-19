@@ -18,17 +18,6 @@ public:
 	RainbowLine(int length,int start);
 };
 
-class RainbowPulser: public Foo
-{
-public:
-	RainbowPulser();
-	
-	int counter;
-	bool isIncreasing;
-	
-	void drawNewLine();
-};
-
 
 #endif
 

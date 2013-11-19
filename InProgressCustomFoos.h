@@ -13,6 +13,7 @@
 #include "MovingFoo.h"
 #include "ListenerFoo.h"
 #include "EphemeralSnakesFoo.h"
+#include "RainbowLine.h"
 
 class MultiParticleEvent : public Foo
 {
@@ -54,6 +55,17 @@ public:
 	
 	void adjustLengthForAudio();
 	
+};
+
+class RainbowPulser: public Foo
+{
+public:
+	RainbowPulser();
+	
+	int counter;
+	bool isIncreasing;
+	
+	void drawNewLine();
 };
 
 
