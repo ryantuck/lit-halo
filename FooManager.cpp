@@ -117,6 +117,16 @@ void BandFooManager::createNewFoo(int index)
 	foo = new BandMeterFoo(index,*LITColor.spectrum[index]);
 }
 
+MonoBandFooManager::MonoBandFooManager()
+{
+	maxFoodex = 6;
+}
+
+void MonoBandFooManager::createNewFoo(int index)
+{
+	foo = new BandMeterFoo(2,*LITColor.colorList[index],128*(index+1));
+}
+
 
 
 

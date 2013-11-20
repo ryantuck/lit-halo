@@ -16,10 +16,13 @@ class BandMeterFoo : public Foo
 public:
 	BandMeterFoo();
 	BandMeterFoo(int band, Color aColor);
+	BandMeterFoo(int band, Color aColor, int aDenominator);
 	
 	int band;
 	
 	Color bandColor;
+	
+	int denominator;
 	
 	void drawLine();
 	

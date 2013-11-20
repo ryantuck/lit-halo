@@ -40,6 +40,12 @@ public:
 	void createNewFoo(int index);
 };
 
+class MonoBandFooManager : public FooManager
+{
+public:
+	MonoBandFooManager();
+	void createNewFoo(int index);
+};
 
 
 #endif
