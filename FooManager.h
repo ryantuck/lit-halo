@@ -47,6 +47,13 @@ public:
 	void createNewFoo(int index);
 };
 
+class SingleTestManager : public FooManager
+{
+public:
+	SingleTestManager();
+	void createNewFoo(int index);
+};
+
 
 #endif
 

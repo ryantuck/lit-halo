@@ -128,7 +128,15 @@ void MonoBandFooManager::createNewFoo(int index)
 }
 
 
+SingleTestManager::SingleTestManager()
+{
+	maxFoodex = 1;
+}
 
+void SingleTestManager::createNewFoo(int index)
+{
+	foo = new AllWhite;
+}
 
 
 
