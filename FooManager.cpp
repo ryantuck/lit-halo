@@ -145,7 +145,15 @@ Tests::Tests()
 
 void Tests::createNewFoo(int index)
 {
-	foo = new Bunch;
+	switch (index)
+	{
+		case 0:
+			foo = new Bunch;
+			break;
+		case 1:
+			foo = new MovingSwitcher;
+			break;
+	}
 }
 
 

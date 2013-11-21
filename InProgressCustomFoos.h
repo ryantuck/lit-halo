@@ -98,6 +98,13 @@ public:
 	
 };
 
+class MovingSwitcher : public Foo
+{
+public:
+	MovingSwitcher();
+	void listenUp();
+};
+
 
 
 #endif
