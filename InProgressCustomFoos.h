@@ -88,6 +88,16 @@ public:
 	AllWhite();
 };
 
+class Bunch : public MovingFoo
+{
+public:
+	Bunch();
+	void listenUp();
+	
+	int index;
+	
+};
+
 
 
 #endif

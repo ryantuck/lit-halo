@@ -138,7 +138,15 @@ void SingleTestManager::createNewFoo(int index)
 	foo = new AllWhite;
 }
 
+Tests::Tests()
+{
+	maxFoodex = 1;
+}
 
+void Tests::createNewFoo(int index)
+{
+	foo = new Bunch;
+}
 
 
 

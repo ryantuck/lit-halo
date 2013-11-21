@@ -54,6 +54,13 @@ public:
 	void createNewFoo(int index);
 };
 
+class Tests : public FooManager
+{
+public:
+	Tests();
+	void createNewFoo(int index);
+};
+
 
 #endif
 
