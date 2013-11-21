@@ -170,9 +170,10 @@ void RainbowPulser::drawNewLine()
 
 
 
-
-
-
+AllWhite::AllWhite()
+{
+	addLEDs(LITColor.white, maxBrightness, 0, 31);
+}
 
 
 

@@ -68,6 +68,13 @@ public:
 	void drawNewLine();
 };
 
+class AllWhite : public Foo
+{
+public:
+	AllWhite();
+};
+
+
 
 #endif
 
