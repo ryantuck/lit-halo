@@ -75,7 +75,7 @@ AListener::AListener()
 
 void AListener::listen()
 {
-	if (audio.beatJustDetected(0))
+	if (audio.beatJustDetected(2))
 	{
 		PulseFromCenter* a = new PulseFromCenter;
 		addFoo(a);
@@ -93,12 +93,12 @@ PulseFromCenter::PulseFromCenter()
 	EphemeralSnake* aSnake = new EphemeralSnake(0,
 												length,
 												up,
-												&LITColor.yellow);
+												&LITColor.blue);
 	
 	EphemeralSnake* bSnake = new EphemeralSnake(0,
 												length,
 												down,
-												&LITColor.yellow);
+												&LITColor.blue);
 	
 	addFoo(aSnake);
 	addFoo(bSnake);
@@ -167,8 +167,55 @@ void RainbowPulser::drawNewLine()
 	addFoo(myLine);
 }
 
+Alternater::Alternater()
+{
+//	brightness = 1;
+	
+	for (int n=0;n<numLEDs;n++)
+	{
+		float numb = numLEDs;
+		float mb = maxBrightness;
+		float ratio = n/numb;
+		float br = ratio * mb;
+		
+		addLEDs(LITColor.red, br, n, n);
+	}
+	
+	ListenerFoo* listener = new ListenerFoo();
+	addFoo(listener);
+}
 
+TestingFoo::TestingFoo()
+{
+	MovingFoo* aFoo = new MovingFoo();
+	
+	Step<MovingFoo>* mStep = new Step<MovingFoo>;
+	mStep->fnPtr = &MovingFoo::move;
+	mStep->period = 20;
+	aFoo->addStep(mStep);
+	
+	aFoo->addLEDs(LITColor.magenta, maxBrightness, 5, 5);
+	addFoo(aFoo);
+	
+	counter = 0;
+	
+	Step<TestingFoo>* aStep = new Step<TestingFoo>;
+	aStep->period = 20;
+	aStep->fnPtr = &TestingFoo::checkForSwitch;
+	addStep(aStep);
+}
 
+void TestingFoo::checkForSwitch()
+{
+	counter++;
+	
+	if (counter > 10)
+	{
+		MovingFoo* myFoo = (MovingFoo*)foos.entry(0)->me;
+		myFoo->switchDirection();
+		counter = 0;
+	}
+}
 
 AllWhite::AllWhite()
 {

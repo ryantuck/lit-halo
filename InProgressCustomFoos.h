@@ -68,6 +68,20 @@ public:
 	void drawNewLine();
 };
 
+class Alternater: public MovingFoo
+{
+public:
+	Alternater();
+};
+
+class TestingFoo : public Foo
+{
+public:
+	TestingFoo();
+	int counter;
+	void checkForSwitch();
+};
+
 class AllWhite : public Foo
 {
 public:

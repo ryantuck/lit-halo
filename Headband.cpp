@@ -14,7 +14,7 @@ Headband::Headband()
 	strip = LPD8806(numLEDs,2,3);
 	strip.begin();
 	
-	fooManager = new MonoBandFooManager();
+	fooManager = new DevFooManager();
 	fooManager->update();
 }
 

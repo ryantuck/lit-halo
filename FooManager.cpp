@@ -80,7 +80,7 @@ void DevFooManager::createNewFoo(int index)
 			foo = new MultipleBouncingFoo;
 			break;
 		case 1:
-			foo = new RainbowFoo;
+			foo = new TestingFoo;
 			break;
 		case 2:
 			foo = new CirclesFoo;
@@ -95,7 +95,7 @@ void DevFooManager::createNewFoo(int index)
 			foo = new RainbowLine(32,0);
 			break;
 		case 6:
-			foo = new AListener;
+			foo = new ListenerFoo;
 			break;
 		case 7:
 			foo = new BandMeter;
