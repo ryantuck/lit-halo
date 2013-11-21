@@ -68,12 +68,10 @@ void Audio::checkBeats()
 
 bool Audio::checkForBeat(byte band)
 {
-	//	** need to ensure this can return 1 and doesn't default to 0.
-	
 	//	Returns true if beat is detected.
 	
 	if (beatCounters[band] == 0)
-		if (eq.spectrum[band] > 900)
+		if (eq.spectrum[band] > 300)
 			return 1;
 	
 	return 0;
