@@ -187,3 +187,10 @@ void Color::printVitals()
 	Serial.print(" ]");
 	Serial.println();
 }
+
+SRTrio::SRTrio()
+{
+	srR = 0;
+	srG = 0;
+	srB = 0;
+}

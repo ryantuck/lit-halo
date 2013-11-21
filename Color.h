@@ -62,4 +62,13 @@ private:
 
 };
 
+class SRTrio
+{
+public:
+	SRTrio();
+	byte srR;
+	byte srG;
+	byte srB;
+};
+
 #endif

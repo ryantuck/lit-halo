@@ -27,6 +27,7 @@ extern bool longDirection(byte x, byte y);
 extern byte checkAddress(int x);
 
 extern Color SRColor(int index);
+extern SRTrio sr3(int index);
 
 extern double runningAverage(double avg,
 							 double sample,
