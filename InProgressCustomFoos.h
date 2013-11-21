@@ -105,6 +105,13 @@ public:
 	void listenUp();
 };
 
+class BrightnessFrequency : public Foo
+{
+public:
+	BrightnessFrequency();
+	void listenUp();
+};
+
 
 
 #endif

@@ -168,9 +168,7 @@ void RainbowPulser::drawNewLine()
 }
 
 Alternater::Alternater()
-{
-//	brightness = 1;
-	
+{	
 	for (int n=0;n<numLEDs;n++)
 	{
 		float numb = numLEDs;
@@ -286,7 +284,33 @@ void MovingSwitcher::listenUp()
 	}
 }
 
+BrightnessFrequency::BrightnessFrequency()
+{
+	for (int n=0;n<8;n++)
+	{
+		addLEDs(LITColor.green, maxBrightness, 4*n, 4*n);
+	}
+	
+	Step<BrightnessFrequency>* aStep = new Step<BrightnessFrequency>;
+	aStep->fnPtr = &BrightnessFrequency::listenUp;
+	addStep(aStep);
+}
 
+void BrightnessFrequency::listenUp()
+{
+	float val = (float)audio.eq.spectrum[3];
+	
+	float max = 1024 - (float)audio.baseline(3, audio.pot.currentValue);
+	
+	float pct = val/max;
+	
+	float br = pct*100;
+
+	for (int n=0;n<countLEDs();n++)
+	{
+		fLEDs.entry(n)->me->brightness = br;
+	}
+}
 
 
 

@@ -175,6 +175,8 @@ void Foo::updateLEDs()
 		{
 			int addr = fLEDs.entry(n)->me->address;
 			
+//			leds[addr].adjustColor();
+			
 			if (layer > leds[addr].layer)
 			{
 				leds[addr].setAttributes(*fLEDs.entry(n)->me);
@@ -186,6 +188,10 @@ void Foo::updateLEDs()
 				leds[addr].mixWith(*fLEDs.entry(n)->me);
 				leds[addr].adjustColor();
 			}
+			
+			// ok patch for now, but brightness adjustments
+			// should be taken care of elsewhere
+			leds[addr].adjustColor();
 		}
 	}
 }
