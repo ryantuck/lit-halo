@@ -87,7 +87,10 @@ extern byte checkAddress(int x)
 
 extern Color SRColor(int srIndex)
 {
-	// check index for bounds
+	// changes the order of r,g,b values based on
+	// the LED's index due to varied SR pin assignments
+	
+	// ** need to check index for bounds
 	
 	Color aColor(LITColor.black);
 	
