@@ -178,6 +178,8 @@ void Audio::subtractBaselines()
 	{
 		int bl = baseline(n,potVal);
 		eq.spectrum[n] -= bl;
+		
+		if (eq.spectrum[n] < 0) eq.spectrum[n] = 0;
 	}
 }
 
