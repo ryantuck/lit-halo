@@ -17,7 +17,7 @@ ListenerFoo::ListenerFoo()
 
 void ListenerFoo::listen()
 {	
-	if (audio.beatJustDetected(0))
+	if (audio.beatJustDetected(2))
 	{
 		MovingDot* a = new MovingDot;
 		addFoo(a);
@@ -28,9 +28,12 @@ MovingDot::MovingDot()
 {
 	addLEDs(LITColor.green, maxBrightness, 0, 0);
 	
+	layer = 2;
+	
 	Step<MovingFoo>* aStep = new Step<MovingFoo>;
 	aStep->fnPtr = &MovingFoo::move;
 	aStep->count = 32;
+	aStep->period = 16;
 	addStep(aStep);
 	
 	repeats = false;
