@@ -140,7 +140,7 @@ void SingleTestManager::createNewFoo(int index)
 
 Tests::Tests()
 {
-	maxFoodex = 4;
+	maxFoodex = 6;
 }
 
 void Tests::createNewFoo(int index)
@@ -161,8 +161,12 @@ void Tests::createNewFoo(int index)
 			break;
 		case 4:
 			foo = new BF4;
+			break;
 		case 5:
 			foo = new AllWhite;
+			break;
+		case 6:
+			foo = new VarLengthBands;
 			break;
 	}
 }

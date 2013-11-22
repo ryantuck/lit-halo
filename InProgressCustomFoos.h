@@ -151,6 +151,13 @@ public:
 	void checkValues();
 };
 
+class VarLengthBands : public Foo
+{
+public:
+	VarLengthBands();
+	void changeLengths();
+};
+
 
 #endif
 
