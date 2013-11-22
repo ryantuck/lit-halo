@@ -14,6 +14,7 @@
 #include "ListenerFoo.h"
 #include "EphemeralSnakesFoo.h"
 #include "RainbowLine.h"
+#include <math.h>
 
 class MultiParticleEvent : public Foo
 {
@@ -122,10 +123,72 @@ public:
 	BF4();
 };
 
+class BattChecker : public Foo
+{
+public:
+	BattChecker();
+	void checkBatt();
+};
+
+class BinaryValue : public Foo
+{
+public:
+	BinaryValue();
+	BinaryValue(int aStart);
+	void cycle();
+	void display();
+	
+	void changeLEDs(int newVal);
+	
+	int val;
+	int start;
+};
+
+class DoubleMonitor : public Foo
+{
+public:
+	DoubleMonitor();
+	void checkValues();
 };
 
 
-
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

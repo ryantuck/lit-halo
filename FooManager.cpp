@@ -140,7 +140,7 @@ void SingleTestManager::createNewFoo(int index)
 
 Tests::Tests()
 {
-	maxFoodex = 2;
+	maxFoodex = 4;
 }
 
 void Tests::createNewFoo(int index)
@@ -151,10 +151,18 @@ void Tests::createNewFoo(int index)
 			foo = new Bunch;
 			break;
 		case 1:
-			foo = new BrightnessFrequency;
+			foo = new DoubleMonitor;
 			break;
 		case 2:
+			foo = new BrightnessFrequency(2,LITColor.magenta,0);
+			break;
+		case 3:
 			foo = new MovingSwitcher;
+			break;
+		case 4:
+			foo = new BF4;
+		case 5:
+			foo = new AllWhite;
 			break;
 	}
 }
