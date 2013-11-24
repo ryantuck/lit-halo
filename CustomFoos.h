@@ -9,23 +9,44 @@
 #ifndef __LIT_Headband_Simulator__CustomFoos__
 #define __LIT_Headband_Simulator__CustomFoos__
 
-#include "Foo2.h"
-#include "EventFoo.h"
-#include "RainbowFoo.h"
-#include "MultipleBouncingFoos.h"
-#include "OscillatingFoo.h"
-#include "KernFoo.h"
-#include "LinkedFoo.h"
-#include "stepFoo1.h"
-#include "EMFoo.h"
-#include "ChargedFoo.h"
-#include "MemTestingFoo.h"
+// good to go
+#include "BandMeterFoo.h"
+#include "SystemMonitors.h"
+#include "AllSingleColors.h"
+#include "RainbowLine.h"
+
+// need work
+#include "VarLengthBands.h"
+#include "BrightnessFrequency.h"
+#include "MovingSwitcher.h"
+#include "Bunch.h"
+#include "ListenerFoo.h"
 #include "CirclesFoo.h"
 #include "EphemeralSnakesFoo.h"
-#include "RainbowLine.h"
-#include "ListenerFoo.h"
+#include "EventFoo.h"
+#include "MultipleBouncingFoos.h"
+#include "OscillatingFoo.h"
+
+// testing
 #include "InProgressCustomFoos.h"
-#include "BandMeterFoo.h"
+
+
+
+// -----------------------------------
+
+// garbage - get rid of
+#include "MemTestingFoo.h"
+#include "stepFoo1.h"
+#include "LinkedFoo.h"
+#include "KernFoo.h"
+#include "Foo2.h"
+#include "RainbowFoo.h"
+
+
+
+
+
+
 
 #endif
 

@@ -83,80 +83,11 @@ public:
 	void checkForSwitch();
 };
 
-class AllWhite : public Foo
-{
-public:
-	AllWhite();
-};
 
-class Bunch : public MovingFoo
-{
-public:
-	Bunch();
-	void listenUp();
-	
-	int index;
-	
-};
 
-class MovingSwitcher : public Foo
-{
-public:
-	MovingSwitcher();
-	void listenUp();
-};
 
-class BrightnessFrequency : public Foo
-{
-public:
-	BrightnessFrequency();
-	BrightnessFrequency(int aBand,Color aColor,int aStart);
-	void listenUp();
-	
-	int band;
-	int start;
-};
 
-class BF4 : public Foo
-{
-public:
-	BF4();
-};
 
-class BattChecker : public Foo
-{
-public:
-	BattChecker();
-	void checkBatt();
-};
-
-class BinaryValue : public Foo
-{
-public:
-	BinaryValue();
-	BinaryValue(int aStart);
-	void cycle();
-	void display();
-	
-	void changeLEDs(int newVal);
-	
-	int val;
-	int start;
-};
-
-class DoubleMonitor : public Foo
-{
-public:
-	DoubleMonitor();
-	void checkValues();
-};
-
-class VarLengthBands : public Foo
-{
-public:
-	VarLengthBands();
-	void changeLengths();
-};
 
 
 #endif
