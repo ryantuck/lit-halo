@@ -20,7 +20,6 @@ public:
 
 	FooManager*	fooManager;
 	Battery		batt;
-	LPD8806		strip;
 	Button		upButton;
 	Button		downButton;
 	
@@ -28,7 +27,6 @@ public:
 	
 	void update();
 	void updateLEDs();
-	void updateStrip();
 	void getAudio();
 
 	void checkButtons();

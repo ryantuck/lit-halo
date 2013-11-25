@@ -11,9 +11,6 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	strip = LPD8806(numLEDs,2,3);
-	strip.begin();
-	
 	fooManager = new Tests();
 	fooManager->update();
 }
@@ -66,19 +63,6 @@ void Headband::updateLEDs()
 	}
 
 	fooManager->foo->update();
-}
-
-void Headband::updateStrip()
-{
-	for (int n=0;n<numLEDs;n++)
-	{
-		strip.setPixelColor(n,
-							leds[n].color.r,
-							leds[n].color.b,
-							leds[n].color.g);
-	}
-	
-	strip.show();
 }
 
 //	================================================================

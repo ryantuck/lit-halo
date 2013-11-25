@@ -11,7 +11,6 @@
 
 #include "Battery.h"
 #include "Button.h"
-#include "LPD8806.h"
 #include "MSGEQ7.h"
 #include "MCP4131.h"
 #include "Registers.h"
