@@ -6,8 +6,8 @@
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__FooManager__
-#define __LIT_Headband_Simulator__FooManager__
+#ifndef __FooManager__
+#define __FooManager__
 
 #include "Foo.h"
 #include "CustomFoos.h"

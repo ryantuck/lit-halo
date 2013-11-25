@@ -6,8 +6,8 @@
 
 //	####################################################################
 
-#ifndef ____Color__
-#define ____Color__
+#ifndef __Color__
+#define __Color__
 
 #include "Parameters.h"
 #include "Arduino.h"

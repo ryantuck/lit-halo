@@ -2,10 +2,16 @@
 
 //	Headband.h
 
+//	========================
+
+//	The over-arching object in the code architecture.
+//	Ties together button-checking, fooManager, battery monitoring,
+//		and audio functionality.
+
 //	####################################################################
 
-#ifndef ____Headband__
-#define ____Headband__
+#ifndef __Headband__
+#define __Headband__
 
 #include "LIT.h"
 #include "LITFunctions.h"

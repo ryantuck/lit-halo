@@ -70,8 +70,8 @@ void Headband::updateLEDs()
 void Headband::checkBattery()
 {
 	// read battery voltage and 3V line
-	int v = batt.voltage();
-	int t = analogRead(7); // this checks 3V line
+//	int v = batt.voltage();
+//	int t = analogRead(7); // this checks 3V line
 	
 	// based on empirical relationship, determine batt percentage
 	

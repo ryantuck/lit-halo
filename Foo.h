@@ -4,10 +4,14 @@
 
 //	7/26/13
 
+//	========================================
+
+//	The generic object containing LEDs, steps for updating, and other foos.
+
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__Foo__
-#define __LIT_Headband_Simulator__Foo__
+#ifndef __Foo__
+#define __Foo__
 
 #include "LIT.h"
 #include "LinkedList.h"

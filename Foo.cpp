@@ -32,6 +32,7 @@ Foo::~Foo()
 
 void Foo::addFoo(Foo *aFoo)
 {
+	// adds a foo to the foos list
 	ListObject<Foo>* entry = new ListObject<Foo>;
 	entry->me = aFoo;
 	foos.addToEnd(entry);
@@ -39,6 +40,8 @@ void Foo::addFoo(Foo *aFoo)
 
 void Foo::addLED(AddressedLED *aLED)
 {
+	// adds an LED to the LED list
+	// LED is 'addressed' because it needs to retain this info.
 	ListObject<AddressedLED>* entry = new ListObject<AddressedLED>;
 	entry->me = aLED;
 	fLEDs.addToEnd(entry);
@@ -46,7 +49,7 @@ void Foo::addLED(AddressedLED *aLED)
 
 void Foo::addLEDs(Color aColor, int aBrightness, int aStart, int aEnd)
 {
-	// check values
+	// check values - should create a fucntion that does this
 	if (aStart	< 0)			aStart	= 0;
 	if (aStart	>= numLEDs)		aStart	= numLEDs;
 	if (aEnd	< 0)			aEnd	= 0;
@@ -104,6 +107,9 @@ bool Foo::hasSteps()
 
 void Foo::checkSteps()
 {
+	// checks steps to see whether they have run their course.
+	// if a step is done running, next step is selected as current.
+	
 	theCurrentStep = steps.entry(stepIndex)->me;
 	
 	if (theCurrentStep->isFinished)
@@ -119,12 +125,13 @@ void Foo::checkSteps()
 		{
 			theCurrentStep = steps.entry(stepIndex)->me;
 		}
-		
 	}
 }
 
 void Foo::resetSteps()
 {
+	// resets all step counts to zero for a certain foo.
+	
 	stepIndex = 0;
 	theCurrentStep = steps.entry(stepIndex)->me;
 	for (int n=0;n<countSteps();n++)
@@ -136,6 +143,7 @@ void Foo::resetSteps()
 
 void Foo::execute(ListObject<Step<Foo> > *obj)
 {
+	// enables a step to execute its fnPtr function.
 	(*this.*obj->me->fnPtr)();
 }
 
@@ -169,14 +177,15 @@ void Foo::updateSteps()
 
 void Foo::updateLEDs()
 {
+	// goes through foos LEDs and updates meta-LED array.
+	// either overwrites, mixes, or ignores depending on layers.
+	
 	if (hasLEDs())
 	{
 		for (int n=0;n<countLEDs();n++)
 		{
 			int addr = fLEDs.entry(n)->me->address;
-			
-//			leds[addr].adjustColor();
-			
+
 			if (layer > leds[addr].layer)
 			{
 				leds[addr].setAttributes(*fLEDs.entry(n)->me);
@@ -198,6 +207,9 @@ void Foo::updateLEDs()
 
 void Foo::updateFoos()
 {
+	// iterates through child foos and checks if they're running
+	// if one has stopped running, it's removed from the foo list.
+	
 	if (hasFoos())
 	{
 		int index = 0;
@@ -221,7 +233,7 @@ void Foo::updateFoos()
 
 void Foo::merge(Foo *aFoo)
 {
-	
+	// was thinking of including this at one point. 
 }
 
 

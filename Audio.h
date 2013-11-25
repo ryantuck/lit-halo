@@ -8,8 +8,8 @@
 
 //	####################################################################
 
-#ifndef ____Audio__
-#define ____Audio__
+#ifndef __Audio__
+#define __Audio__
 
 #include "MSGEQ7.h"
 #include "MCP4131.h"

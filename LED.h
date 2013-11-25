@@ -4,10 +4,12 @@
 
 //	Contains LED, LayeredLED, and AddressedLED
 
+//	LED is a container for a color (r,g,b mix) and a brightness.
+
 //	####################################################################
 
-#ifndef ____LED__
-#define ____LED__
+#ifndef __LED__
+#define __LED__
 
 #include "Parameters.h"
 #include "Color.h"
@@ -21,8 +23,7 @@ public:
 	
 	LED();
 	LED(Color newColor, byte newBrightness);
-	
-	//	Adjusts color based on LED brightness.
+
 	void adjustColor();
 	
 	void mixWith(LED aLED);
@@ -35,6 +36,9 @@ public:
 };
 
 
+// These two classes were designed for specific use cases.
+//	These classes have allowed main LED class to not require holding
+//		this data, which saves a ton of space.
 
 class AddressedLED : public LED
 {
