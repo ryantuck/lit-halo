@@ -6,6 +6,8 @@
 
 //	########################################################################
 
+//started working on physics classes. enables LEDs reactiving to a "graviational force"
+//This could be developed into PhysicsFoo heirarchy
 #ifndef __LIT_Headband_Simulator__GravityFoo__
 #define __LIT_Headband_Simulator__GravityFoo__
 

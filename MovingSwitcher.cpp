@@ -6,6 +6,10 @@
 
 //	########################################################################
 
+//foo that detects beat and switches direction
+//i've put this into a foomanager and tested it
+//movingSwitcher is not a class to stay, just a test
+
 #include "MovingSwitcher.h"
 
 MovingSwitcher::MovingSwitcher()

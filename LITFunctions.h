@@ -13,6 +13,10 @@
 #include "Color.h"
 #include "LIT.h"
 
+//these are free floating functions, sometimes created out of necsssity to write less code, repeatably
+//think of this space as a testing ground for free floating functions
+//in the future, we might group some of these functions into a class
+
 extern byte	updateValue(byte parameter,
 						bool direction,
 						byte minVal,
