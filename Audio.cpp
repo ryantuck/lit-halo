@@ -36,12 +36,14 @@ Audio::Audio()
 	silenceIntercepts[6] = 205.7;
 	
 	avgCounter = 0;
+	
+	pot.update(1);
 }
 
 void Audio::update()
 {
 	getEQ();
-	subtractBaselines();
+//	subtractBaselines();
 	//weighEQ();
 	checkBeats();
     pot.update(1);
@@ -62,7 +64,7 @@ void Audio::checkBeats()
 		if (checkForBeat(n))			beatCounters[n]++;
 		else if (beatCounters[n] != 0)	beatCounters[n]++;
 		
-		if (beatCounters[n] == 12)		beatCounters[n] = 0;
+		if (beatCounters[n] == 20)		beatCounters[n] = 0;
 	}
 }
 
@@ -71,7 +73,7 @@ bool Audio::checkForBeat(byte band)
 	//	Returns true if beat is detected.
 	
 	if (beatCounters[band] == 0)
-		if (eq.spectrum[band] > 300)
+		if (eq.spectrum[band] > 50)
 			return 1;
 	
 	return 0;

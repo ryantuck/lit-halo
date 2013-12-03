@@ -15,6 +15,7 @@ class MultipleBouncingFoo : public Foo
 {
 public:
 	MultipleBouncingFoo();
+	MultipleBouncingFoo(int number);
 	
 	void checkForBounces();
 	

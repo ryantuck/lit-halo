@@ -102,6 +102,8 @@ EvenEphemSnakes::EvenEphemSnakes()
 	Step<EvenEphemSnakes>* aStep = new Step<EvenEphemSnakes>;
 	aStep->fnPtr = &EvenEphemSnakes::checkForNoSnakes;
 	addStep(aStep);
+	
+	baseCycler = 0;
 }
 
 void EvenEphemSnakes::checkForNoSnakes()
@@ -110,9 +112,13 @@ void EvenEphemSnakes::checkForNoSnakes()
 	{
 		for (int n=0;n<2;n++)
 		{
-			EphemeralSnake* aSnake = new EphemeralSnake(n*16,16,1,LITColor.spectrum[n]);
+			int theIndex = 3*n + baseCycler;
+			
+			EphemeralSnake* aSnake = new EphemeralSnake(n*16,16,1,LITColor.colorList[theIndex]);
 			addFoo(aSnake);
 		}
+		
+		baseCycler = updateValue(baseCycler, up, 0, 2, cycles);
 	}
 }
 

@@ -31,7 +31,7 @@ MovingSwitcher::MovingSwitcher()
 
 void MovingSwitcher::listenUp()
 {
-	if (audio.beatJustDetected(3))
+	if (audio.beatJustDetected(2))
 	{
 		MovingFoo* mfPtr = (MovingFoo*)foos.entry(0)->me;
 		mfPtr->switchDirection();

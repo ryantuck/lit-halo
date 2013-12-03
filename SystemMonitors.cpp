@@ -22,7 +22,7 @@ BinaryValue::BinaryValue()
 	
 	Step<BinaryValue>* myStep = new Step<BinaryValue>;
 	myStep->fnPtr = &BinaryValue::display;
-	myStep->period = 4;
+//	myStep->period = 4;
 	addStep(myStep);
 }
 
@@ -40,7 +40,7 @@ BinaryValue::BinaryValue(int aStart)
 	
 	Step<BinaryValue>* myStep = new Step<BinaryValue>;
 	myStep->fnPtr = &BinaryValue::display;
-	myStep->period = 4;
+//	myStep->period = 4;
 	addStep(myStep);
 }
 
@@ -68,7 +68,7 @@ void BinaryValue::changeLEDs(int newVal)
 	// then go through newVal and change to green if 1
 	for (int n=0;n<countLEDs();n++)
 	{
-		int threshold = pow(2,9-n);
+		double threshold = pow(2,9-n);
 		
 		if (newVal >= threshold)
 		{

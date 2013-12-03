@@ -17,6 +17,11 @@ void SerialClass::print(float myFloat)
 	std::cout << myFloat;
 }
 
+void SerialClass::print(double myDouble)
+{
+	std::cout << myDouble;
+}
+
 void SerialClass::print(std::string myString)
 {
 	std::cout << myString;
@@ -40,4 +45,9 @@ void SerialClass::println(std::string myString)
 void SerialClass::println(float myFloat)
 {
 	std::cout << myFloat << std::endl;
+}
+
+void SerialClass::println(double myDouble)
+{
+	std::cout << myDouble << std::endl;
 }

@@ -61,6 +61,27 @@ public:
 	void createNewFoo(int index);
 };
 
+class AudioTester : public FooManager
+{
+public:
+	AudioTester();
+	void createNewFoo(int index);
+};
+
+class BestFooManager : public FooManager
+{
+public:
+	BestFooManager();
+	void createNewFoo(int index);
+};
+
+class VarTester : public FooManager
+{
+public:
+	VarTester();
+	void createNewFoo(int index);
+};
+
 
 #endif
 

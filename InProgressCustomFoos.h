@@ -15,6 +15,8 @@
 #include "EphemeralSnakesFoo.h"
 #include "RainbowLine.h"
 #include <math.h>
+#include "LITFunctions.h"
+#include "SystemMonitors.h"
 
 class MultiParticleEvent : public Foo
 {
@@ -84,11 +86,103 @@ public:
 };
 
 
+class DoubleRainbow : public MovingFoo
+{
+public:
+	DoubleRainbow();
+};
 
+class BackgroundStepper : public MovingFoo
+{
+public:
+	BackgroundStepper();
+};
 
+class Sparkle : public Foo
+{
+public:
+	Sparkle();
+	void flicker();
+	void changeColor();
+	
+	int index;
+};
 
+class Pulsater : public Foo
+{
+public:
+	Pulsater();
+	void upBrightness();
+	void downBrightness();
+};
 
+class ListenerWithBunch : public Foo
+{
+public:
+	ListenerWithBunch();
+	void listenUp();
+};
 
+class FiniteBunch : public MovingFoo
+{
+public:
+	FiniteBunch();
+};
+
+class DRwithListener : public Foo
+{
+public:
+	DRwithListener();
+};
+
+class SparkleWithListener : public Sparkle
+{
+public:
+	SparkleWithListener();
+	void changeColor();
+	
+	int index;
+};
+
+class BigAudioTester : public Foo
+{
+public:
+	BigAudioTester();
+	void collect1KDataPoints();
+	void displayData();
+	void serialPrintData();
+	void setUpLEDs();
+	
+	int spectrumData[7];
+	int count;
+	int rollingIndex;
+};
+
+class BinaryTester : public Foo
+{
+public:
+	BinaryTester();
+	void increment();
+	
+	int number;
+};
+
+class VarianceTester : public Foo
+{
+public:
+	VarianceTester(int aBand);
+	void increment();
+	void computeVariance();
+	void resetValues();
+	
+	int dataPoints[100];
+	
+	double	variance;
+	int		index;
+	int		band;
+	double	avg;
+	
+};
 
 #endif
 

@@ -48,6 +48,8 @@ public:
 	int numSnakes;
 	
 	int count;
+	
+	int baseCycler;
 };
 
 

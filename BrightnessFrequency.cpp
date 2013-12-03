@@ -47,7 +47,7 @@ void BrightnessFrequency::listenUp()
 	
 	float pct = val/max;
 	
-	float br = pct*100;
+	float br = pct*200;		// note no checking here - just testing
 	
 	for (int n=0;n<countLEDs();n++)
 	{

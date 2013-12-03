@@ -140,7 +140,7 @@ void SingleTestManager::createNewFoo(int index)
 
 Tests::Tests()
 {
-	maxFoodex = 6;
+	maxFoodex = 11;
 }
 
 void Tests::createNewFoo(int index)
@@ -154,7 +154,7 @@ void Tests::createNewFoo(int index)
 			foo = new DoubleMonitor;
 			break;
 		case 2:
-			foo = new BrightnessFrequency(2,LITColor.magenta,0);
+			foo = new BrightnessFrequency(1,LITColor.magenta,0);
 			break;
 		case 3:
 			foo = new MovingSwitcher;
@@ -168,13 +168,84 @@ void Tests::createNewFoo(int index)
 		case 6:
 			foo = new VarLengthBands;
 			break;
+		case 7:
+			foo = new DoubleRainbow;
+			break;
+		case 8:
+			foo = new MultipleBouncingFoo(8);
+			break;
+		case 9:
+			foo = new Sparkle;
+			break;
+		case 10:
+			foo = new Pulsater;
+			break;
+		case 11:
+			foo = new DRwithListener;
+			break;
 	}
 }
 
+AudioTester::AudioTester()
+{
+	maxFoodex = 1;
+}
 
+void AudioTester::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new BigAudioTester;
+			break;
+		case 1:
+			foo = new BigAudioTester;
+			break;
+	}
+}
 
+BestFooManager::BestFooManager()
+{
+	maxFoodex = 6;
+}
 
+void BestFooManager::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new DoubleRainbow;
+			break;
+		case 1:
+			foo = new MultipleBouncingFoo;
+			break;
+		case 2:
+			foo = new Sparkle;
+			break;
+		case 3:
+			foo = new BF4;
+			break;
+		case 4:
+			foo = new Bunch;
+			break;
+		case 5:
+			foo = new EvenEphemSnakes;
+			break;
+		case 6:
+			foo = new CirclesFoo;
+			break;
+	}
+}
 
+VarTester::VarTester()
+{
+	maxFoodex = 1;
+}
+
+void VarTester::createNewFoo(int index)
+{
+	foo = new VarianceTester(0);
+}
 
 
 

@@ -27,6 +27,27 @@ MultipleBouncingFoo::MultipleBouncingFoo()
 	addStep(myStep);
 }
 
+MultipleBouncingFoo::MultipleBouncingFoo(int number)
+{
+	for (int n=0;n<number;n++)
+	{
+		int x = numLEDs/number;
+		
+		MovingFoo* aFoo = new MovingFoo;
+		aFoo->addLEDs(*LITColor.spectrum[n], maxBrightness, n*x, n*x);
+		Step<MovingFoo>* aStep = new Step<MovingFoo>;
+		aStep->fnPtr	= &MovingFoo::move;
+		aStep->period	= n+1;
+		aFoo->addStep(aStep);
+		aFoo->direction = 1;
+		addFoo(aFoo);
+	}
+	
+	Step<MultipleBouncingFoo>* myStep = new Step<MultipleBouncingFoo>;
+	myStep->fnPtr = &MultipleBouncingFoo::checkForBounces;
+	addStep(myStep);
+}
+
 
 void MultipleBouncingFoo::checkForBounces()
 {
