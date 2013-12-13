@@ -18,6 +18,8 @@
 #include "LITFunctions.h"
 #include "SystemMonitors.h"
 
+#include "Stats.h"
+
 class MultiParticleEvent : public Foo
 {
 public:
@@ -183,6 +185,54 @@ public:
 	double	avg;
 	
 };
+
+class EverythingTester : public Foo
+{
+public:
+	EverythingTester();
+	void collectData();
+	void displayData();
+	void updateParameters();
+	void changeFoos();
+	
+	int numSamples;
+	int sampleCount;
+	
+	int potIndex;
+	int brIndex;
+	int numIndex;
+	
+	int spectrumData[7];
+	
+	Stats* stats[7];
+};
+
+class BeatCollector : public Foo
+{
+public:
+	BeatCollector();
+	
+	
+	void stopLight();
+	void collectData();
+	void printData();
+	
+	int sampleCount;
+	int lightCounter;
+	int dataPoints;
+	
+	byte specData[7][120];
+	
+};
+
+class FullSongListener : public Foo
+{
+public:
+	FullSongListener();
+	
+	void collectData();
+};
+
 
 #endif
 

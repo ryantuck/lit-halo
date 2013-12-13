@@ -193,15 +193,7 @@ AudioTester::AudioTester()
 
 void AudioTester::createNewFoo(int index)
 {
-	switch (index)
-	{
-		case 0:
-			foo = new BigAudioTester;
-			break;
-		case 1:
-			foo = new BigAudioTester;
-			break;
-	}
+	foo = new FullSongListener;
 }
 
 BestFooManager::BestFooManager()

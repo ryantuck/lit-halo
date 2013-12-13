@@ -11,7 +11,7 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new VarTester();
+	fooManager = new AudioTester();
 	fooManager->update();
 }
 

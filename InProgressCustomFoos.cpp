@@ -629,13 +629,237 @@ void VarianceTester::resetValues()
 }
 
 
+EverythingTester::EverythingTester()
+{
+	numSamples	= 100;
+	sampleCount = 0;
+	
+	potIndex	= 0;
+	brIndex		= 0;
+	numIndex	= 0;
+	
+	for (int n=0;n<7;n++)
+	{
+		spectrumData[n] = 0;
+	}
+	
+	for (int n=0;n<7;n++)
+	{
+		stats[n] = new Stats(110);
+	}
+	
+	Step<EverythingTester>* collect = new Step<EverythingTester>;
+	collect->fnPtr = &EverythingTester::collectData;
+	collect->count = numSamples;
+	addStep(collect);
+	
+	Step<EverythingTester>* display = new Step<EverythingTester>;
+	display->fnPtr = &EverythingTester::displayData;
+	display->count = 1;
+	addStep(display);
+	
+	Step<EverythingTester>* updParams = new Step<EverythingTester>;
+	updParams->fnPtr = &EverythingTester::updateParameters;
+	updParams->count = 1;
+	addStep(updParams);
+	
+	Step<EverythingTester>* change = new Step<EverythingTester>;
+	change->fnPtr = &EverythingTester::changeFoos;
+	change->count = 1;
+	addStep(change);
+	
+}
+
+void EverythingTester::collectData()
+{
+	// sample 100 times
+	sampleCount++;
+	
+	for (int n=0;n<7;n++)
+	{
+		int x = spectrumData[n];
+		x += (audio.eq.spectrum[n] - x)/sampleCount;
+		spectrumData[n] = x;
+		
+		stats[n]->update(audio.eq.spectrum[n]);
+	}
+}
+
+void EverythingTester::displayData()
+{
+	// print out data
+	Serial.print(8*potIndex+1);		Serial.print(",");
+	Serial.print(25*brIndex);	Serial.print(",");
+	Serial.print(8*numIndex);	Serial.print(",");
+	
+	for (int n=0;n<7;n++)
+	{
+		Serial.print(spectrumData[n]);
+		Serial.print(",");
+	}
+	
+	for (int n=0;n<7;n++)
+	{
+		stats[n]->getStats();
+		Serial.print(stats[n]->stdev);
+		Serial.print(",");
+	}
+	Serial.println();
+	
+	// delay
+	delay(500);
+}
+
+void EverythingTester::updateParameters()
+{
+	// change pot, num, brightness if necessary
+	
+	potIndex = updateValue(potIndex, up, 0, 15, cycles);
+	
+	if (potIndex == 0)
+	{
+		numIndex = updateValue(numIndex, up, 0, 4, cycles);
+		
+		if (numIndex == 0)
+		{
+			brIndex	 = updateValue(brIndex, up, 0, 4, cycles);
+		}
+	}
+	
+	for (int n=0;n<7;n++)
+	{
+		spectrumData[n] = 0;
+		stats[n]->clear();
+	}
+	sampleCount = 0;
+}
+
+void EverythingTester::changeFoos()
+{
+	audio.pot.update(8*potIndex+1);
+	
+	fLEDs.removeAllEntries();
+	
+	// 0 - none
+	// 1 - 8 - every 4
+	// 2 - 16 - every 2
+	// 3 - 24 - 3 on, 1 off
+	// 4 - 32 - all on
+	
+	if (numIndex > 0)
+	{
+		for (int n=0;n<8;n++)
+		{
+			addLEDs(LITColor.white, 25*brIndex, 4*n, 4*n + numIndex - 1);
+		}
+	}
+	
+}
+
+BeatCollector::BeatCollector()
+{
+	sampleCount = 0;
+	lightCounter = 0;
+	dataPoints = 120;
+	
+	for (int n=0;n<7;n++)
+	{
+		for (int m=0;m<dataPoints;m++)
+		{
+			specData[n][m] = 0;
+		}
+	}
+	
+	addLEDs(LITColor.red, maxBrightness, 0, 0);
+	
+	Serial.println("constructor works!");
+	
+	Step<BeatCollector>* step0 = new Step<BeatCollector>;
+	step0->fnPtr = &BeatCollector::stopLight;
+	step0->count = 3;
+	addStep(step0);
+	
+	Step<BeatCollector>* stepA = new Step<BeatCollector>;
+	stepA->fnPtr = &BeatCollector::collectData;
+	stepA->count = dataPoints;
+	addStep(stepA);
+	
+//	Step<BeatCollector>* stepB = new Step<BeatCollector>;
+//	stepB->fnPtr = &BeatCollector::printData;
+//	stepB->count = 1;
+//	addStep(stepB);
+}
+
+void BeatCollector::stopLight()
+{
+	fLEDs.entry(0)->me->color.setColor(*LITColor.colorList[lightCounter]);
+	delay(1000);
+	lightCounter++;
+	
+	if (lightCounter == 3)
+	{
+		fLEDs.entry(0)->me->brightness = 0;
+	}
+	
+}
+
+void BeatCollector::collectData()
+{
+	for (int n=0;n<7;n++)
+	{
+		int tmp = audio.eq.spectrum[n]/8;
+		specData[n][sampleCount] = (byte) tmp;
+		
+		Serial.print(specData[n][sampleCount]);
+		Serial.print(",");
+	}
+	Serial.println();
+	
+	sampleCount++;
+}
+
+void BeatCollector::printData()
+{
+	for (int m=0;m<dataPoints;m++)
+	{
+		for (int n=0;n<7;n++)
+		{
+			Serial.print(specData[n][m]);
+			Serial.print(",");
+		}
+		Serial.println();
+	}
+	
+	Serial.println();
+	Serial.println();
+	Serial.println();
+	
+	delay(5000);
+	
+	sampleCount = 0;
+	lightCounter = 0;
+	fLEDs.entry(0)->me->brightness = maxBrightness;
+}
 
 
+FullSongListener::FullSongListener()
+{
+	Step<FullSongListener>* collect = new Step<FullSongListener>;
+	collect->fnPtr = &FullSongListener::collectData;
+	addStep(collect);
+	
+	Serial.println("==========================");
+}
 
-
-
-
-
+void FullSongListener::collectData()
+{
+	for (int n=0;n<7;n++)
+	{
+		Serial.print(audio.eq.spectrum[n]);
+		Serial.print(",");
+	}
+	Serial.println();
+}
 
 
 

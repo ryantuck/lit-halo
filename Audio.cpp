@@ -46,7 +46,7 @@ void Audio::update()
 //	subtractBaselines();
 	//weighEQ();
 	checkBeats();
-    pot.update(1);
+//    pot.update(1);
 }
 
 void Audio::getEQ()
