@@ -35,6 +35,13 @@ Audio::Audio()
 	silenceIntercepts[5] = 178.2;
 	silenceIntercepts[6] = 205.7;
 	
+	for (int n=0;n<7;n++)
+	{
+		// set these values high so beat isn't automatically detected
+		//	on the first iteration
+		lastSpectrum[n] = 1000;
+	}
+	
 	avgCounter = 0;
 	
 	pot.update(1);
@@ -44,14 +51,25 @@ void Audio::update()
 {
 	getEQ();
 //	subtractBaselines();
-	//weighEQ();
+//	weighEQ();
 	checkBeats();
 //    pot.update(1);
+	recordSpectrum();
 }
 
 void Audio::getEQ()
 {
 	eq.sample();
+}
+
+void Audio::recordSpectrum()
+{
+	// stores current spectrum to be used in the next iteration
+	
+	for (int n=0;n<7;n++)
+	{
+		lastSpectrum[n] = eq.spectrum[n];
+	}
 }
 
 
@@ -64,7 +82,7 @@ void Audio::checkBeats()
 		if (checkForBeat(n))			beatCounters[n]++;
 		else if (beatCounters[n] != 0)	beatCounters[n]++;
 		
-		if (beatCounters[n] == 20)		beatCounters[n] = 0;
+		if (beatCounters[n] == 10)		beatCounters[n] = 0;
 	}
 }
 
@@ -73,7 +91,7 @@ bool Audio::checkForBeat(byte band)
 	//	Returns true if beat is detected.
 	
 	if (beatCounters[band] == 0)
-		if (eq.spectrum[band] > 50)
+		if (eq.spectrum[band] - lastSpectrum[band] > 100)
 			return 1;
 	
 	return 0;

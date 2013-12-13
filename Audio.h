@@ -27,6 +27,8 @@ public:
 	byte		beatCounters[7];	//	tracks how many iterations
 									//	since last beat on each band.
 	
+	int lastSpectrum[7];
+	
 	int averagedSpectrum[7];
 	int avgCounter;
 	
@@ -44,6 +46,8 @@ public:
 	
 	//	Sample.
 	void getEQ();
+	
+	void recordSpectrum();
 	
 	//	Multiply eq.spectrum by weights.
 	void weighEQ();
