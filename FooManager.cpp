@@ -193,7 +193,7 @@ AudioTester::AudioTester()
 
 void AudioTester::createNewFoo(int index)
 {
-	foo = new FullSongListener;
+	foo = new BeatCollector;
 }
 
 BestFooManager::BestFooManager()
@@ -238,6 +238,53 @@ void VarTester::createNewFoo(int index)
 {
 	foo = new VarianceTester(0);
 }
+
+
+ChristmasManager::ChristmasManager()
+{
+	maxFoodex = 4;
+}
+
+void ChristmasManager::createNewFoo(int index)
+{
+	switch(index)
+	{
+		case 0:
+			foo = new RedGreenMover();
+			break;
+		case 1:
+			foo = new RedGreenAlternater();
+			break;
+		case 2:
+			foo = new RedGreenPulser();
+			break;
+		case 3:
+			foo = new ChristmasSnakes();
+			break;
+		case 4:
+			foo = new ChristmasSparkler();
+			break;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

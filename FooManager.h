@@ -82,6 +82,13 @@ public:
 	void createNewFoo(int index);
 };
 
+class ChristmasManager : public FooManager
+{
+public:
+	ChristmasManager();
+	void createNewFoo(int index);
+};
+
 
 #endif
 

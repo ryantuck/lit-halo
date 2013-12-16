@@ -33,7 +33,7 @@ Bunch::Bunch()
 
 void Bunch::listenUp()
 {
-	if (audio.beatJustDetected(1))
+	if (audio.beatJustDetected(2))
 	{
 		index = updateValue(index, up, 0, 6, cycles);
 		
