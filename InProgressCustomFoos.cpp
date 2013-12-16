@@ -1150,6 +1150,96 @@ void InAndOutFader::fade()
 
 
 
+JoshFoo::JoshFoo()
+{
+	// create 16 LEDs
+	for (int n=0;n<16;n++)
+	{
+		int addr = 2*n;
+		
+		addLEDs(LITColor.white, maxBrightness, addr,addr);
+	}
+	
+	colorIndex = 0;
+	
+	Step<MovingFoo>* m = new Step<MovingFoo>;
+	m->fnPtr = &MovingFoo::move;
+	m->period = 4;
+	m->count = 10;
+	addStep(m);
+	
+	Step<JoshFoo>* cc = new Step<JoshFoo>;
+	cc->fnPtr = &JoshFoo::changeColor;
+	cc->count = 1;
+	addStep(cc);
+}
+
+void JoshFoo::changeColor()
+{
+	for (int n=0;n<16;n++)
+	{
+		fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[colorIndex]);
+	}
+	
+	colorIndex = updateValue(colorIndex, up, 0, 5, cycles);
+}
+
+
+TwoMovers::TwoMovers()
+{
+	MovingDot* a = new MovingDot(LITColor.red,0,5);
+	MovingDot* b = new MovingDot(LITColor.yellow,1,16);
+	
+	addFoo(a);
+	addFoo(b);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -269,6 +269,23 @@ void ChristmasManager::createNewFoo(int index)
 }
 
 
+JoshManager::JoshManager()
+{
+	maxFoodex = 1;
+}
+
+void JoshManager::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new JoshFoo();
+			break;
+		case 1:
+			foo = new MultipleBouncingFoo();
+			break;
+	}
+}
 
 
 

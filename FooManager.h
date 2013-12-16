@@ -89,6 +89,13 @@ public:
 	void createNewFoo(int index);
 };
 
+class JoshManager : public FooManager
+{
+public:
+	JoshManager();
+	void createNewFoo(int index);
+};
+
 
 #endif
 

@@ -311,6 +311,22 @@ public:
 	int totalIterations;
 };
 
+class JoshFoo : public MovingFoo
+{
+public:
+	JoshFoo();
+	
+	void changeColor();
+	
+	int colorIndex;
+};
+
+class TwoMovers : public Foo
+{
+public:
+	TwoMovers();
+};
+
 
 #endif
 

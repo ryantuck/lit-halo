@@ -20,11 +20,11 @@ public:
 	void listen();
 };
 
-class MovingDot : public MovingFoo
-{
-public:
-	MovingDot();
-};
+//class MovingDot : public MovingFoo
+//{
+//public:
+//	MovingDot();
+//};
 
 
 #endif
