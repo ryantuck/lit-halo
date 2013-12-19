@@ -297,13 +297,13 @@ void BullshitManager::createNewFoo(int index)
 	switch(index)
 	{
 		case 0:
-			foo = new MultiParticleEvent(LITColor.red,LITColor.cyan);
+			foo = new TwoColorParticleJam(LITColor.red,LITColor.cyan);
 			break;
 		case 1:
-			foo = new MultiParticleEvent(LITColor.green,LITColor.magenta);
+			foo = new TwoColorParticleJam(LITColor.green,LITColor.magenta);
 			break;
 		case 2:
-			foo = new MultiParticleEvent(LITColor.blue,LITColor.yellow);
+			foo = new TwoColorParticleJam(LITColor.blue,LITColor.yellow);
 			break;
 	}
 }

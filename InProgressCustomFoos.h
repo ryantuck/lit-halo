@@ -20,15 +20,7 @@
 
 #include "Stats.h"
 
-class MultiParticleEvent : public Foo
-{
-public:
-	MultiParticleEvent();
-	
-	int counter;
-	
-	void checkForAllOverlap();
-};
+
 
 
 class PulseFromCenter : public Foo
