@@ -30,14 +30,6 @@ public:
 	void checkForAllOverlap();
 };
 
-class AListener : public Foo
-{
-public:
-	AListener();
-	
-	void listen();
-
-};
 
 class PulseFromCenter : public Foo
 {
@@ -49,18 +41,6 @@ public:
 	void checkForLength();
 };
 
-class BandMeter : public Foo
-{
-public:
-	BandMeter();
-	
-	int length;
-	
-	int band;
-	
-	void adjustLengthForAudio();
-	
-};
 
 class RainbowPulser: public Foo
 {
@@ -327,6 +307,23 @@ public:
 	TwoMovers();
 };
 
+class RainbowShooter : public Foo
+{
+public:
+	RainbowShooter();
+	
+	void addNewDot();
+	
+	int colorCount;
+};
+
+class SwitchingDR : public Foo
+{
+public:
+	SwitchingDR();
+	
+	void checkers();
+};
 
 #endif
 

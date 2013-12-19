@@ -66,21 +66,7 @@ void MultiParticleEvent::checkForAllOverlap()
 	counter++;
 }
 
-AListener::AListener()
-{
-	Step<AListener>* aStep = new Step<AListener>;
-	aStep->fnPtr = &AListener::listen;
-	addStep(aStep);
-}
 
-void AListener::listen()
-{
-	if (audio.beatJustDetected(2))
-	{
-		PulseFromCenter* a = new PulseFromCenter;
-		addFoo(a);
-	}
-}
 
 PulseFromCenter::PulseFromCenter()
 {
@@ -107,28 +93,6 @@ PulseFromCenter::PulseFromCenter()
 void PulseFromCenter::checkForLength()
 {
 	if (!hasFoos())	isRunning = false;
-}
-
-BandMeter::BandMeter()
-{
-	length	= 10;
-	band	= 0;
-	
-	Step<BandMeter>* aStep = new Step<BandMeter>;
-	aStep->fnPtr = &BandMeter::adjustLengthForAudio;
-	addStep(aStep);
-}
-
-void BandMeter::adjustLengthForAudio()
-{
-	int num = length * audio.eq.spectrum[band] / 1023;
-	
-	fLEDs.removeAllEntries();
-	
-	for (int n=0;n<num;n++)
-	{
-		addLEDs(LITColor.lavender, maxBrightness, n,n);
-	}
 }
 
 
@@ -1196,10 +1160,38 @@ TwoMovers::TwoMovers()
 
 
 
+RainbowShooter::RainbowShooter()
+{
+	Step<RainbowShooter>* a = new Step<RainbowShooter>;
+	a->fnPtr = &RainbowShooter::addNewDot;
+	a->period = 16;
+	addStep(a);
+}
+
+void RainbowShooter::addNewDot()
+{
+	MovingDot* x = new MovingDot(*LITColor.colorList[colorCount],1,0);
+	x->repeats = false;
+	x->steps.entry(0)->me->count = 31;
+	addFoo(x);
+	
+	colorCount = updateValue(colorCount, up, 0, 5, cycles);
+}
 
 
+SwitchingDR::SwitchingDR()
+{
+	DoubleRainbow* dr = new DoubleRainbow();
+	addFoo(dr);
+}
 
-
+void SwitchingDR::checkers()
+{
+	if (audio.beatJustDetected(1))
+	{
+		
+	}
+}
 
 
 

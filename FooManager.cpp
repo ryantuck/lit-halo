@@ -69,7 +69,7 @@ void FooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 8;
+	maxFoodex = 7;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -98,9 +98,6 @@ void DevFooManager::createNewFoo(int index)
 			foo = new ListenerFoo;
 			break;
 		case 7:
-			foo = new BandMeter;
-			break;
-		case 8:
 			foo = new BandMeterFoo;
 			break;
 	}
@@ -140,7 +137,7 @@ void SingleTestManager::createNewFoo(int index)
 
 Tests::Tests()
 {
-	maxFoodex = 11;
+	maxFoodex = 12;
 }
 
 void Tests::createNewFoo(int index)
@@ -182,6 +179,9 @@ void Tests::createNewFoo(int index)
 			break;
 		case 11:
 			foo = new DRwithListener;
+			break;
+		case 12:
+			foo = new RainbowShooter;
 			break;
 	}
 }

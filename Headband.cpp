@@ -11,7 +11,7 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new JoshManager();
+	fooManager = new Tests();
 	fooManager->update();
 }
 
@@ -25,8 +25,8 @@ void Headband::update()
 
 void Headband::checkButtons()
 {
-	upButton.checkState();
-	downButton.checkState();
+//	upButton.checkState();
+//	downButton.checkState();
 	
 	if (upButton.pressed)
 	{
