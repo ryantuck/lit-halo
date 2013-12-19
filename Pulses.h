@@ -15,12 +15,12 @@
 class Pulse4 : public Foo
 {
 public:
-	Pulse4();
-	
+	Pulse4();	
 	void runIt();
 	
 private:
-	bool orientation;
+	bool	orientation;
+	int		colIndex;
 };
 
 

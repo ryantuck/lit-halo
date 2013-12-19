@@ -11,6 +11,7 @@
 Pulse4::Pulse4()
 {
 	orientation = 0;
+	colIndex	= 0;
 	
 	Step<Pulse4>* x = new Step<Pulse4>;
 	x->fnPtr = &Pulse4::runIt;
@@ -46,9 +47,12 @@ void Pulse4::runIt()
 				EphemeralSnake* x = new EphemeralSnake(start,
 													   8,
 													   dir,
-													   &LITColor.red);
+													   LITColor.colorList[colIndex]);
 				addFoo(x);
 			}
 		}
+		
+		colIndex = updateValue(colIndex, up, 0, 5, cycles);
 	}
 }
+
