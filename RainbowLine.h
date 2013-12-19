@@ -12,7 +12,7 @@
 #include "Foo.h"
 #include "MovingFoo.h"
 
-class RainbowLine : public MovingFoo
+class RainbowLine : public Foo
 {
 public:
 	RainbowLine(int length,int start);

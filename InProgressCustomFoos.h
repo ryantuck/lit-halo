@@ -20,11 +20,6 @@
 
 #include "Stats.h"
 
-
-
-
-
-
 class RainbowPulser: public Foo
 {
 public:

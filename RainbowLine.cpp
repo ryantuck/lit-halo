@@ -18,7 +18,7 @@ RainbowLine::RainbowLine(int length,int start)
 		addLEDs(aColor, maxBrightness, checkAddress(start + n), checkAddress(start + n));
 	}
 	
-	Step<MovingFoo>* aStep = new Step<MovingFoo>;
-	aStep->fnPtr = &MovingFoo::move;
-	addStep(aStep);
+//	Step<MovingFoo>* aStep = new Step<MovingFoo>;
+//	aStep->fnPtr = &MovingFoo::move;
+//	addStep(aStep);
 }
