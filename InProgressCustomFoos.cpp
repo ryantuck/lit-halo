@@ -10,33 +10,6 @@
 
 
 
-PulseFromCenter::PulseFromCenter()
-{
-	length = 17;
-	
-	Step<PulseFromCenter>* aStep = new Step<PulseFromCenter>;
-	aStep->fnPtr = &PulseFromCenter::checkForLength;
-	addStep(aStep);
-	
-	EphemeralSnake* aSnake = new EphemeralSnake(0,
-												length,
-												up,
-												&LITColor.blue);
-	
-	EphemeralSnake* bSnake = new EphemeralSnake(0,
-												length,
-												down,
-												&LITColor.blue);
-	
-	addFoo(aSnake);
-	addFoo(bSnake);
-}
-
-void PulseFromCenter::checkForLength()
-{
-	if (!hasFoos())	isRunning = false;
-}
-
 
 
 RainbowPulser::RainbowPulser()

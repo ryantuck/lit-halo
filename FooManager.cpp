@@ -300,10 +300,10 @@ void BullshitManager::createNewFoo(int index)
 			foo = new TwoColorParticleJam(LITColor.red,LITColor.cyan);
 			break;
 		case 1:
-			foo = new TwoColorParticleJam(LITColor.green,LITColor.magenta);
+			foo = new AllOn(LITColor.cyan);
 			break;
 		case 2:
-			foo = new TwoColorParticleJam(LITColor.blue,LITColor.yellow);
+			foo = new Pulse4;
 			break;
 	}
 }

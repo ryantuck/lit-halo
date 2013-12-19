@@ -23,15 +23,6 @@
 
 
 
-class PulseFromCenter : public Foo
-{
-public:
-	PulseFromCenter();
-	
-	int length;
-	
-	void checkForLength();
-};
 
 
 class RainbowPulser: public Foo
