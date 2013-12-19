@@ -11,10 +11,10 @@
 
 #include "Foo.h"
 
-class AllWhite : public Foo
+class AllOn : public Foo
 {
 public:
-	AllWhite();
+	AllOn(Color aColor);
 };
 
 #endif

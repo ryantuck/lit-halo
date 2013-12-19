@@ -132,7 +132,7 @@ SingleTestManager::SingleTestManager()
 
 void SingleTestManager::createNewFoo(int index)
 {
-	foo = new AllWhite;
+	foo = new AllOn(LITColor.white);
 }
 
 Tests::Tests()
@@ -160,7 +160,7 @@ void Tests::createNewFoo(int index)
 			foo = new BF4;
 			break;
 		case 5:
-			foo = new AllWhite;
+			foo = new AllOn(LITColor.white);
 			break;
 		case 6:
 			foo = new VarLengthBands;
