@@ -287,7 +287,26 @@ void JoshManager::createNewFoo(int index)
 	}
 }
 
+BullshitManager::BullshitManager()
+{
+	maxFoodex = 2;
+}
 
+void BullshitManager::createNewFoo(int index)
+{
+	switch(index)
+	{
+		case 0:
+			foo = new MultiParticleEvent(LITColor.red,LITColor.cyan);
+			break;
+		case 1:
+			foo = new MultiParticleEvent(LITColor.green,LITColor.magenta);
+			break;
+		case 2:
+			foo = new MultiParticleEvent(LITColor.blue,LITColor.yellow);
+			break;
+	}
+}
 
 
 

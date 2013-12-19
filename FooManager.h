@@ -96,6 +96,13 @@ public:
 	void createNewFoo(int index);
 };
 
+class BullshitManager : public FooManager
+{
+public:
+	BullshitManager();
+	void createNewFoo(int index);
+};
+
 
 #endif
 
