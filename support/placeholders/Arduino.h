@@ -34,7 +34,7 @@ inline void	pinMode(int a, int b){};
 inline void	analogReference(int a){};
 inline void	delayMicroseconds(int a){};
 inline int	analogRead(int a){return 0;};
-inline int	digitalRead(int a){return 1;};
+inline int	digitalRead(int a){return 0;};
 inline void shiftOut(int a,int b,int c, int d);
 inline int	millis(){return 1;};
 inline void delay(int a){};
