@@ -36,15 +36,6 @@
 
 
 
-// -----------------------------------
-
-// garbage - get rid of
-#include "MemTestingFoo.h"
-#include "stepFoo1.h"
-#include "LinkedFoo.h"
-#include "KernFoo.h"
-#include "RainbowFoo.h"
-
 
 
 
