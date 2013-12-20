@@ -317,6 +317,7 @@ void BullshitManager::createNewFoo(int index)
         case 6:
             foo = new TestingFoo;
             break;
+
         case 7:
             foo = new BackgroundStepper;
             break;
