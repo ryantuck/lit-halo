@@ -13,21 +13,7 @@
 
 
 
-Alternater::Alternater()
-{	
-	for (int n=0;n<numLEDs;n++)
-	{
-		float numb = numLEDs;
-		float mb = maxBrightness;
-		float ratio = n/numb;
-		float br = ratio * mb;
-		
-		addLEDs(LITColor.red, br, n, n);
-	}
-	
-	ListenerFoo* listener = new ListenerFoo();
-	addFoo(listener);
-}
+
 
 TestingFoo::TestingFoo()
 {

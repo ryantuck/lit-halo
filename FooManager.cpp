@@ -289,7 +289,7 @@ void JoshManager::createNewFoo(int index)
 
 BullshitManager::BullshitManager()
 {
-	maxFoodex = 3;
+	maxFoodex = 4;
 }
 
 void BullshitManager::createNewFoo(int index)
@@ -308,6 +308,9 @@ void BullshitManager::createNewFoo(int index)
 		case 3:
 			foo = new RainbowPulser;
 			break;
+        case 4:
+            foo = new HiToLowBrightnessTrail(LITColor.green,10,10,0);
+            break;
 	}
 }
 

@@ -21,12 +21,6 @@
 #include "Stats.h"
 
 
-class Alternater: public MovingFoo
-{
-public:
-	Alternater();
-};
-
 class TestingFoo : public Foo
 {
 public:

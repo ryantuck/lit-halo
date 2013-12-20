@@ -17,6 +17,7 @@
 #include "TwoColorParticleJam.h"
 #include "Pulses.h"
 #include "RainbowPulser.h"
+#include "HiToLowBrightnessTrail.h"
 
 // need work
 #include "VarLengthBands.h"
