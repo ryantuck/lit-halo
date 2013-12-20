@@ -44,7 +44,7 @@ void FooManager::createNewFoo(int index)
 			foo = new StepFoo1;
 			break;
 		case 2:
-			foo = new KernFoo;
+			foo = new RainbowFoo;
 			break;
 		case 3:
 			foo = new LinkedFoo;
