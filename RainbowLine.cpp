@@ -20,4 +20,14 @@ RainbowLine::RainbowLine(int length,int start)
 }
 
 
+DoubleRainbow::DoubleRainbow()
+{
+	RainbowLine* r1 = new RainbowLine(16,0);
+	RainbowLine* r2 = new RainbowLine(16,16);
+	
+	addFoo(r1);
+	addFoo(r2);
+}
+
+
 

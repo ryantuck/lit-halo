@@ -21,7 +21,7 @@ TestingFoo::TestingFoo()
 	
 	Step<MovingFoo>* mStep = new Step<MovingFoo>;
 	mStep->fnPtr = &MovingFoo::move;
-	mStep->period = 20;
+	mStep->period = 5;
 	aFoo->addStep(mStep);
 	
 	aFoo->addLEDs(LITColor.magenta, maxBrightness, 5, 5);
@@ -30,7 +30,7 @@ TestingFoo::TestingFoo()
 	counter = 0;
 	
 	Step<TestingFoo>* aStep = new Step<TestingFoo>;
-	aStep->period = 20;
+	aStep->period = 5;
 	aStep->fnPtr = &TestingFoo::checkForSwitch;
 	addStep(aStep);
 }
@@ -47,14 +47,6 @@ void TestingFoo::checkForSwitch()
 	}
 }
 
-DoubleRainbow::DoubleRainbow()
-{
-	RainbowLine* r1 = new RainbowLine(16,0);
-	RainbowLine* r2 = new RainbowLine(16,16);
-	
-	addFoo(r1);
-	addFoo(r2);
-}
 
 BackgroundStepper::BackgroundStepper()
 {

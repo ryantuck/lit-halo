@@ -29,13 +29,6 @@ public:
 	void checkForSwitch();
 };
 
-
-class DoubleRainbow : public MovingFoo
-{
-public:
-	DoubleRainbow();
-};
-
 class BackgroundStepper : public MovingFoo
 {
 public:

@@ -18,6 +18,14 @@ public:
 	RainbowLine(int length,int start);
 };
 
+class DoubleRainbow : public MovingFoo
+{
+public:
+	DoubleRainbow();
+};
+
+
+
 
 
 
