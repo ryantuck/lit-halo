@@ -38,19 +38,19 @@ void FooManager::createNewFoo(int index)
 	switch (index)
 	{
 		case 0:
-			foo = new KernFoo;
+			foo = new Sparkle;
 			break;
 		case 1:
-			foo = new StepFoo1;
+			foo = new Sparkle;
 			break;
 		case 2:
-			foo = new KernFoo;
+			foo = new Sparkle;
 			break;
 		case 3:
-			foo = new LinkedFoo;
+			foo = new Sparkle;
 			break;
 		case 4:
-			foo = new RainbowFoo;
+			foo = new Sparkle;
 			break;
 		case 5:
 			foo = new EventFoo;
