@@ -62,11 +62,13 @@ BackgroundStepper::BackgroundStepper()
 		Step<MovingFoo>* moveL = new Step<MovingFoo>;
 		moveL->fnPtr = &MovingFoo::moveLeft;
 		moveL->count = x;
+        moveL->period = 4;
 		addStep(moveL);
 		
 		Step<MovingFoo>* moveR = new Step<MovingFoo>;
-		moveR->fnPtr = &MovingFoo::moveLeft;
+		moveR->fnPtr = &MovingFoo::moveRight;
 		moveR->count = x;
+        moveR->period = 4;
 		addStep(moveR);
 	}
 }

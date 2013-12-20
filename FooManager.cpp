@@ -289,7 +289,7 @@ void JoshManager::createNewFoo(int index)
 
 BullshitManager::BullshitManager()
 {
-	maxFoodex = 6;
+	maxFoodex = 7;
 }
 
 void BullshitManager::createNewFoo(int index)
@@ -316,6 +316,9 @@ void BullshitManager::createNewFoo(int index)
             break;
         case 6:
             foo = new TestingFoo;
+            break;
+        case 7:
+            foo = new BackgroundStepper;
             break;
 	}
 }
