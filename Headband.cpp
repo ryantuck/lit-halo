@@ -8,115 +8,46 @@
 
 Headband::Headband()
 {
-	//	initial value for pattern index.
-
-	patternIndex = 0;
-	pattern = createPattern(patternIndex);
-
-	//	Button initialization
-	colorButton		= Button(5);
-	patternButton	= Button(4);
+	downButton	= Button(5);
+	upButton	= Button(6);
 	
-	//	Strip needs initialization bc of non-default constructor.
-	//	DAT - D3
-	//	CLK - D2
-	strip = LPD8806(16,3,2);
-	strip.begin();
+	fooManager = new BullshitManager();
+	fooManager->update();
 }
 
 void Headband::update()
 {
 	checkButtons();
+//	checkBattery();
 	getAudio();
-	updateColors();
 	updateLEDs();
-	updateStrip();	
-}
-
-void Headband::linkUp()
-{
-	pattern->numLEDs	= sizeof(leds)/sizeof(LED);
-	
-	Serial.println(pattern->numLEDs);
-	pattern->leds		= leds;
-	pattern->audio		= &audio;
-	pattern->colors		= LITColor.currentColors;
-	
-	pattern->linkUp();
-}
-
-void Headband::updateLEDs()
-{
-	int numLEDs = sizeof(leds) / sizeof(LED);
-	for (int n=0;n<numLEDs;n++)
-	{
-		leds[n].color.setColor(0, 0, 0);
-		leds[n].currentLayer = 1;
-	}
-	
-	pattern->update();
-}
-
-void Headband::updateColors()
-{	
-	for (int n=0;n<3;n++)
-		LITColor.currentColors[n] = *LITColor.colorList[LITColor.colorCombos[LITColor.colorIndex][n]];
-}
-
-void Headband::updateStrip()
-{
-	int numLEDs = sizeof(leds)/sizeof(LED);
-	
-	for (int n=0;n<numLEDs;n++)
-	{
-		//	adjust r,g,b values based on led brightness and write to strip.
-		
-		Serial.print(leds[n].color.r); Serial.print(" ");
-		Serial.print(leds[n].color.g); Serial.print(" ");
-		Serial.print(leds[n].color.b); Serial.print(" ");
-		Serial.println();
-		
-		float ratio = leds[n].brightness / 100;
-		
-		int tmpR = leds[n].color.r * ratio;
-		int tmpG = leds[n].color.g * ratio;
-		int tmpB = leds[n].color.b * ratio;
-		
-		
-		
-		strip.setPixelColor(n,
-							leds[n].color.r,
-							leds[n].color.g,
-							leds[n].color.b);
-	}
-	
-	strip.show();
 }
 
 void Headband::checkButtons()
 {
-	colorButton.checkState();
-	if (colorButton.pressed)
+//    upButton.checkState();
+//    downButton.checkState();
+    
+	if (upButton.pressed)
 	{
-		Serial.println("pressed");
-		if (LITColor.colorIndex == 7)	LITColor.colorIndex = 0;
-		else							LITColor.colorIndex++;
+        Serial.println("up button pressed by default");
+        
+		fooManager->foodex = updateValue(fooManager->foodex,
+										up,
+										0,
+										fooManager->maxFoodex,
+										cycles);
+		fooManager->update();
 	}
-	
-	patternButton.checkState();
-	if (patternButton.pressed)
+	else if (downButton.pressed)
 	{
-		Serial.println("pressed");
-		delete pattern;
-		pattern = NULL;
-		pattern = createPattern(patternIndex);
-		linkUp();
-		if (patternIndex == 10)		patternIndex = 0;
-		else						patternIndex++;
+		fooManager->foodex = updateValue(fooManager->foodex,
+										down,
+										0,
+										fooManager->maxFoodex,
+										cycles);
+		fooManager->update();
 	}
-	
-	
-	
 }
 
 void Headband::getAudio()
@@ -124,38 +55,29 @@ void Headband::getAudio()
 	audio.update();
 }
 
-Pattern* Headband::createPattern(int index)
+void Headband::updateLEDs()
 {
-	switch (index)
+	for (int n=0;n<numLEDs;n++)
 	{
-		case 0:
-			return new MovingDotPattern;
-			break;
-		case 1:
-			return new kernPattern;
-			break;
-		case 2:
-			return new Pattern0;
-			break;
-		case 3:
-			return new Pattern1;
-			break;
+		leds[n].color.setColor(LITColor.black);
+		leds[n].layer = 0;
 	}
-	return NULL;
+
+	fooManager->foo->update();
 }
 
+//	================================================================
 
-void Headband::printLEDs()
+void Headband::checkBattery()
 {
-	Serial.println("LEDs");
-	Serial.println("----");
-	for (int n=0;n<16;n++)
-	{
-		Serial.print(n);
-		Serial.print(" ");
-		if (n<10) Serial.print(" ");
-		leds[n].color.printVitals();
-	}
+	// read battery voltage and 3V line
+//	int v = batt.voltage();
+//	int t = analogRead(7); // this checks 3V line
+	
+	// based on empirical relationship, determine batt percentage
+	
+	// based on batt percentage, do something.
+	//  possibly shut off if too low? 
 }
 
 

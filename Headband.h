@@ -2,31 +2,33 @@
 
 //	Headband.h
 
-//	*	Acts as over-arching object in code structure.
+//	========================
+
+//	The over-arching object in the code architecture.
+//	Ties together button-checking, fooManager, battery monitoring,
+//		and audio functionality.
 
 //	####################################################################
 
-#ifndef ____Headband__
-#define ____Headband__
+#ifndef __Headband__
+#define __Headband__
 
-#include "Audio.h"
-#include "LED.h"
-#include "Pattern.h"
+
+#include "LIT.h"
+#include "LITFunctions.h"
 #include "Hardware.h"
-#include "LITColor.h"
-#include "CustomPatterns.h"
+#include "FooManager.h"
+#include "Foo.h"
+#include "CustomFoos.h"
 
 class Headband
 {
 public:
-	
-	Pattern*	pattern;
-	Audio		audio;
-	LED			leds[16];
-	
+    
+	FooManager*	fooManager;
 	Battery		batt;
-	
-	LPD8806		strip;
+	Button		upButton;
+	Button		downButton;
 	
 	Button		colorButton;
 	Button		patternButton;
@@ -35,33 +37,13 @@ public:
 		
 	//	Constructor
 	Headband();
-	
-	//	Links pattern with vitals
-	void		linkUp();
-	
-	//	Runs each iteration. Updates everything.
-	void		update();
-	
-	//	Updates Pattern, etc, which updates LEDs.
-	void		updateLEDs();
-	
-	//	Changes current colors.
-	void		updateColors();
-	
-	//	Writes LED data to LPD8806.
-	void		updateStrip();
-	
-	//	Checks buttons for presses and updates counters accordingly.
-	void		checkButtons();
-	
-	//	Updates audio object.
-	void		getAudio();
-	
-	//	Creates new instance of pattern object.
-	Pattern* createPattern(int index);
-	
-	//	For testing.
-	void		printLEDs();
+
+	void update();
+	void updateLEDs();
+	void getAudio();
+
+	void checkButtons();
+	void checkBattery();
 };
 
 

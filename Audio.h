@@ -7,12 +7,13 @@
 
 //	####################################################################
 
-#ifndef ____Audio__
-#define ____Audio__
+#ifndef __Audio__
+#define __Audio__
 
 #include "MSGEQ7.h"
 #include "MCP4131.h"
 #include "Arduino.h"
+//#include "LITFunctions.h"
 
 class Audio
 {
@@ -24,6 +25,15 @@ public:
 	int			weightSpectrum[7];
 	byte		beatCounters[7];	//	tracks how many iterations
 									//	since last beat on each band.
+	
+	int lastSpectrum[7];
+	
+	int averagedSpectrum[7];
+	int avgCounter;
+	
+	double silenceSlopes[7];
+	double silenceIntercepts[7];
+	
 	//	Constructor
 	Audio();
 	
@@ -35,6 +45,8 @@ public:
 	
 	//	Sample.
 	void getEQ();
+	
+	void recordSpectrum();
 	
 	//	Multiply eq.spectrum by weights.
 	void weighEQ();
@@ -49,6 +61,17 @@ public:
 	void adjustPot();
 	
 	//	For testing.
+
+	void gatherSpectrumAverages();
+	
+	bool beatJustDetected(byte band);
+	
+	int baseline(int band, int potValue);
+	void subtractBaselines();
+	void updateRunningAverages(int numDataPoints);
+	void checkRunningAverages();
+	void updateWeightSpectrum();
+	
 	void printBeatCounters();
 	void printSpectrum();
 	

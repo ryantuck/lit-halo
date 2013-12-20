@@ -26,6 +26,40 @@ LED::LED(Color newColor, byte newBrightness, byte newLayer)
 	currentLayer	= newLayer;
 }
 
+void LED::adjustColor()
+{
+	// adjusts r,g,b values based on brightness
+	
+	float ratio = (float) brightness / maxBrightness;
+		
+	color.r *= ratio;
+	color.g *= ratio;
+	color.b *= ratio;
+}
+
+void LED::mixWith(LED aLED)
+{
+	adjustColor();
+	aLED.adjustColor();
+	
+	if (aLED.brightness > brightness)
+		brightness = aLED.brightness;
+
+	
+	color.mixWith(aLED.color);
+}
+
+void LED::setAttributes(LED aLED)
+{
+	color.setColor(aLED.color);
+	brightness = aLED.brightness;
+}
+
+void LED::setAttributes(Color aColor,byte aBrightness)
+{
+	color.setColor(aColor);
+	brightness = aBrightness;
+}
 
 
 void LED::printVitals()

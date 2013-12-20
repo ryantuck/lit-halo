@@ -6,8 +6,8 @@
 
 //	####################################################################
 
-#ifndef ____Color__
-#define ____Color__
+#ifndef __Color__
+#define __Color__
 
 #include "Arduino.h"
 
@@ -37,6 +37,11 @@ public:
     //convert rgb color to equivalent rgb at specified brightness (0-127)
     void findRGB(byte brightness);
 	
+
+	void calculateRGB(int total, int entry);
+	
+	bool isBlack();
+
 	//	For testing
 	void printVitals();
 	
@@ -55,6 +60,15 @@ private:
 	
 	void expandNums();
 
+};
+
+class SRTrio
+{
+public:
+	SRTrio();
+	byte srR;
+	byte srG;
+	byte srB;
 };
 
 #endif

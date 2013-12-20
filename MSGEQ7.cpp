@@ -8,9 +8,15 @@
 
 MSGEQ7::MSGEQ7()
 {
+<<<<<<< HEAD
 	analogPin	= 0;
 	strobePin	= 7;
 	resetPin	= 6;
+=======
+	analogPin	= 6;
+	strobePin	= 9;
+	resetPin	= 8;
+>>>>>>> ryanDev
 	
 	pinMode(analogPin,	INPUT);
 	pinMode(strobePin,	OUTPUT);

@@ -9,7 +9,7 @@
 
 Battery::Battery()
 {
-	pin = 1;
+	pin = 0;
 }
 
 void Battery::readVoltage()
