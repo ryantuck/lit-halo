@@ -16,6 +16,7 @@
 #include "RainbowLine.h"
 #include "TwoColorParticleJam.h"
 #include "Pulses.h"
+#include "RainbowPulser.h"
 
 // need work
 #include "VarLengthBands.h"

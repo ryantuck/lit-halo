@@ -20,16 +20,6 @@
 
 #include "Stats.h"
 
-class RainbowPulser: public Foo
-{
-public:
-	RainbowPulser();
-	
-	int counter;
-	bool isIncreasing;
-	
-	void drawNewLine();
-};
 
 class Alternater: public MovingFoo
 {
