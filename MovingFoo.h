@@ -29,6 +29,12 @@ public:
 	void switchDirection();
 };
 
+class MovingDot : public MovingFoo
+{
+public:
+	MovingDot(Color aColor, bool aDirection, int aAddress);
+};
+
 
 
 #endif

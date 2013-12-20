@@ -69,7 +69,7 @@ void FooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 8;
+	maxFoodex = 7;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -98,9 +98,6 @@ void DevFooManager::createNewFoo(int index)
 			foo = new ListenerFoo;
 			break;
 		case 7:
-			foo = new BandMeter;
-			break;
-		case 8:
 			foo = new BandMeterFoo;
 			break;
 	}
@@ -135,12 +132,12 @@ SingleTestManager::SingleTestManager()
 
 void SingleTestManager::createNewFoo(int index)
 {
-	foo = new AllWhite;
+	foo = new AllOn(LITColor.white);
 }
 
 Tests::Tests()
 {
-	maxFoodex = 11;
+	maxFoodex = 12;
 }
 
 void Tests::createNewFoo(int index)
@@ -163,7 +160,7 @@ void Tests::createNewFoo(int index)
 			foo = new BF4;
 			break;
 		case 5:
-			foo = new AllWhite;
+			foo = new AllOn(LITColor.white);
 			break;
 		case 6:
 			foo = new VarLengthBands;
@@ -183,6 +180,9 @@ void Tests::createNewFoo(int index)
 		case 11:
 			foo = new DRwithListener;
 			break;
+		case 12:
+			foo = new RainbowShooter;
+			break;
 	}
 }
 
@@ -193,7 +193,7 @@ AudioTester::AudioTester()
 
 void AudioTester::createNewFoo(int index)
 {
-	foo = new FullSongListener;
+	foo = new BeatCollector;
 }
 
 BestFooManager::BestFooManager()
@@ -238,6 +238,101 @@ void VarTester::createNewFoo(int index)
 {
 	foo = new VarianceTester(0);
 }
+
+
+ChristmasManager::ChristmasManager()
+{
+	maxFoodex = 4;
+}
+
+void ChristmasManager::createNewFoo(int index)
+{
+	switch(index)
+	{
+		case 0:
+			foo = new RedGreenMover();
+			break;
+		case 1:
+			foo = new RedGreenAlternater();
+			break;
+		case 2:
+			foo = new RedGreenPulser();
+			break;
+		case 3:
+			foo = new ChristmasSnakes();
+			break;
+		case 4:
+			foo = new ChristmasSparkler();
+			break;
+	}
+
+}
+
+
+JoshManager::JoshManager()
+{
+	maxFoodex = 1;
+}
+
+void JoshManager::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new JoshFoo();
+			break;
+		case 1:
+			foo = new MultipleBouncingFoo();
+			break;
+	}
+}
+
+BullshitManager::BullshitManager()
+{
+	maxFoodex = 6;
+}
+
+void BullshitManager::createNewFoo(int index)
+{
+	switch(index)
+	{
+		case 0:
+			foo = new TwoColorParticleJam(LITColor.red,LITColor.cyan);
+			break;
+		case 1:
+			foo = new AllOn(LITColor.cyan);
+			break;
+		case 2:
+			foo = new Pulse4;
+			break;
+		case 3:
+			foo = new RainbowPulser;
+			break;
+        case 4:
+            foo = new HiToLowBrightnessTrail(LITColor.green,10,10,0);
+            break;
+        case 5:
+            foo = new DoubleRainbow;
+            break;
+        case 6:
+            foo = new TestingFoo;
+            break;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

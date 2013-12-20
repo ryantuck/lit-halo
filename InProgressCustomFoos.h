@@ -20,64 +20,6 @@
 
 #include "Stats.h"
 
-class MultiParticleEvent : public Foo
-{
-public:
-	MultiParticleEvent();
-	
-	int counter;
-	
-	void checkForAllOverlap();
-};
-
-class AListener : public Foo
-{
-public:
-	AListener();
-	
-	void listen();
-
-};
-
-class PulseFromCenter : public Foo
-{
-public:
-	PulseFromCenter();
-	
-	int length;
-	
-	void checkForLength();
-};
-
-class BandMeter : public Foo
-{
-public:
-	BandMeter();
-	
-	int length;
-	
-	int band;
-	
-	void adjustLengthForAudio();
-	
-};
-
-class RainbowPulser: public Foo
-{
-public:
-	RainbowPulser();
-	
-	int counter;
-	bool isIncreasing;
-	
-	void drawNewLine();
-};
-
-class Alternater: public MovingFoo
-{
-public:
-	Alternater();
-};
 
 class TestingFoo : public Foo
 {
@@ -85,13 +27,6 @@ public:
 	TestingFoo();
 	int counter;
 	void checkForSwitch();
-};
-
-
-class DoubleRainbow : public MovingFoo
-{
-public:
-	DoubleRainbow();
 };
 
 class BackgroundStepper : public MovingFoo
@@ -221,7 +156,7 @@ public:
 	int lightCounter;
 	int dataPoints;
 	
-	byte specData[7][120];
+	byte specData[7][100];
 	
 };
 
@@ -233,6 +168,117 @@ public:
 	void collectData();
 };
 
+class RedGreenMover : public Foo
+{
+public:
+	RedGreenMover();
+	
+	
+};
+
+class RedGreenPulser : public Foo
+{
+public:
+	RedGreenPulser();
+	
+	void redUpGreenDown();
+	void redDownGreenUp();
+	
+	int pulseCounter;
+};
+
+class RedGreenAlternater : public Foo
+{
+public:
+	RedGreenAlternater();
+	
+	void aUp();
+	void bUp();
+	
+	void add1Up();
+	void add2Up();
+	
+	int add1;
+	int add2;
+};
+
+class ChristmasSnakes : public Foo
+{
+public:
+	ChristmasSnakes();
+	
+	void checkForNoSnakes();
+	
+	int numSnakes;
+	
+	int count;
+	
+	int baseCycler;
+};
+
+class ChristmasSparkler : public Foo
+{
+public:
+	ChristmasSparkler();
+	
+	void newSparkle();
+	void stall();
+	bool checkAddresses(int x);
+	
+	Color rgw[3];
+	
+	int totalSparkles;
+	
+	int colorCount;
+};
+
+class InAndOutFader : public Foo
+{
+public:
+	InAndOutFader(Color aColor, int addr);
+	
+	void getBrighter();
+	
+	void dimDown();
+	
+	void fade();
+	
+	int totalIterations;
+};
+
+class JoshFoo : public MovingFoo
+{
+public:
+	JoshFoo();
+	
+	void changeColor();
+	
+	int colorIndex;
+};
+
+class TwoMovers : public Foo
+{
+public:
+	TwoMovers();
+};
+
+class RainbowShooter : public Foo
+{
+public:
+	RainbowShooter();
+	
+	void addNewDot();
+	
+	int colorCount;
+};
+
+class SwitchingDR : public Foo
+{
+public:
+	SwitchingDR();
+	
+	void checkers();
+};
 
 #endif
 

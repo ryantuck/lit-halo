@@ -46,3 +46,27 @@ void MovingFoo::switchDirection()
 	if (direction)	direction = 0;
 	else			direction = 1;
 }
+
+// ===========================================================
+
+MovingDot::MovingDot(Color aColor, bool aDirection, int aAddress)
+{
+	aAddress = checkAddress(aAddress);
+	
+	addLEDs(aColor, maxBrightness, aAddress, aAddress);
+	
+	direction = aDirection;
+	
+	Step<MovingFoo>* m = new Step<MovingFoo>;
+	m->fnPtr = &MovingFoo::move;
+	addStep(m);
+}
+
+
+
+
+
+
+
+
+

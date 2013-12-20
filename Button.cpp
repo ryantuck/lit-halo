@@ -22,6 +22,8 @@ Button::Button(int newPin)
 	digitalWrite(pin, HIGH);
 
     lastButtonState = 0;
+    pressed         = 0;
+    released        = 0;
 }
 
 void Button::checkState()

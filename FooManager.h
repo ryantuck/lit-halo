@@ -82,6 +82,27 @@ public:
 	void createNewFoo(int index);
 };
 
+class ChristmasManager : public FooManager
+{
+public:
+	ChristmasManager();
+	void createNewFoo(int index);
+};
+
+class JoshManager : public FooManager
+{
+public:
+	JoshManager();
+	void createNewFoo(int index);
+};
+
+class BullshitManager : public FooManager
+{
+public:
+	BullshitManager();
+	void createNewFoo(int index);
+};
+
 
 #endif
 

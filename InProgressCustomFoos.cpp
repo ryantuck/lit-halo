@@ -8,180 +8,12 @@
 
 #include "InProgressCustomFoos.h"
 
-MultiParticleEvent::MultiParticleEvent()
-{
-	Step<MultiParticleEvent>* myStep = new Step<MultiParticleEvent>;
-	myStep->fnPtr = &MultiParticleEvent::checkForAllOverlap;
-	addStep(myStep);
-	
-	MovingFoo* aFoo = new MovingFoo;
-	MovingFoo* bFoo = new MovingFoo;
-	MovingFoo* cFoo = new MovingFoo;
-	MovingFoo* dFoo = new MovingFoo;
-	
-	Color* foosColor = &LITColor.green;
-	
-	aFoo->addLEDs(*foosColor, maxBrightness, 0, 0);
-	bFoo->addLEDs(*foosColor, maxBrightness, 0, 0);
-	cFoo->addLEDs(*foosColor, maxBrightness, 0, 0);
-	dFoo->addLEDs(*foosColor, maxBrightness, 0, 0);
-	
-	aFoo->direction = down;
-	bFoo->direction = up;
-	cFoo->direction = down;
-	dFoo->direction = up;
-	
-	Step<MovingFoo>* aStep = new Step<MovingFoo>;
-	Step<MovingFoo>* bStep = new Step<MovingFoo>;
-	Step<MovingFoo>* cStep = new Step<MovingFoo>;
-	Step<MovingFoo>* dStep = new Step<MovingFoo>;
-	
-	aStep->fnPtr = &MovingFoo::move;
-	bStep->fnPtr = &MovingFoo::move;
-	cStep->fnPtr = &MovingFoo::move;
-	dStep->fnPtr = &MovingFoo::move;
-	
-	aStep->period = 1;
-	bStep->period = 1;
-	cStep->period = 2;
-	dStep->period = 2;
-	
-	aFoo->addStep(aStep);
-	bFoo->addStep(bStep);
-	cFoo->addStep(cStep);
-	dFoo->addStep(dStep);
-	
-	addFoo(aFoo);
-	addFoo(bFoo);
-	addFoo(cFoo);
-	addFoo(dFoo);
-}
-
-void MultiParticleEvent::checkForAllOverlap()
-{
-	int cAddress = foos.entry(2)->me->fLEDs.entry(0)->me->address;
-	
-	if (cAddress == 0 && counter > 2) isRunning = false;
-	
-	counter++;
-}
-
-AListener::AListener()
-{
-	Step<AListener>* aStep = new Step<AListener>;
-	aStep->fnPtr = &AListener::listen;
-	addStep(aStep);
-}
-
-void AListener::listen()
-{
-	if (audio.beatJustDetected(2))
-	{
-		PulseFromCenter* a = new PulseFromCenter;
-		addFoo(a);
-	}
-}
-
-PulseFromCenter::PulseFromCenter()
-{
-	length = 17;
-	
-	Step<PulseFromCenter>* aStep = new Step<PulseFromCenter>;
-	aStep->fnPtr = &PulseFromCenter::checkForLength;
-	addStep(aStep);
-	
-	EphemeralSnake* aSnake = new EphemeralSnake(0,
-												length,
-												up,
-												&LITColor.blue);
-	
-	EphemeralSnake* bSnake = new EphemeralSnake(0,
-												length,
-												down,
-												&LITColor.blue);
-	
-	addFoo(aSnake);
-	addFoo(bSnake);
-}
-
-void PulseFromCenter::checkForLength()
-{
-	if (!hasFoos())	isRunning = false;
-}
-
-BandMeter::BandMeter()
-{
-	length	= 10;
-	band	= 0;
-	
-	Step<BandMeter>* aStep = new Step<BandMeter>;
-	aStep->fnPtr = &BandMeter::adjustLengthForAudio;
-	addStep(aStep);
-}
-
-void BandMeter::adjustLengthForAudio()
-{
-	int num = length * audio.eq.spectrum[band] / 1023;
-	
-	fLEDs.removeAllEntries();
-	
-	for (int n=0;n<num;n++)
-	{
-		addLEDs(LITColor.lavender, maxBrightness, n,n);
-	}
-}
 
 
 
-RainbowPulser::RainbowPulser()
-{
-	counter			= 0;
-	isIncreasing	= true;
-	
-	Step<RainbowPulser>* aStep = new Step<RainbowPulser>;
-	aStep->fnPtr = &RainbowPulser::drawNewLine;
-	addStep(aStep);
-}
 
-void RainbowPulser::drawNewLine()
-{
-	foos.removeAllEntries();
-	
-	int start;
-	
-	if (isIncreasing)
-	{
-		counter++;
-		start = 0;
-	}
-	else
-	{
-		counter--;
-		start = 32-counter;
-	}
-	
-	if (counter == 32)	isIncreasing = false;
-	if (counter ==  1)	isIncreasing = true;
-	
-	RainbowLine* myLine = new RainbowLine(counter,start);
-	addFoo(myLine);
-}
 
-Alternater::Alternater()
-{	
-	for (int n=0;n<numLEDs;n++)
-	{
-		float numb = numLEDs;
-		float mb = maxBrightness;
-		float ratio = n/numb;
-		float br = ratio * mb;
-		
-		addLEDs(LITColor.red, br, n, n);
-	}
-	
-	ListenerFoo* listener = new ListenerFoo();
-	addFoo(listener);
-}
+
 
 TestingFoo::TestingFoo()
 {
@@ -189,7 +21,7 @@ TestingFoo::TestingFoo()
 	
 	Step<MovingFoo>* mStep = new Step<MovingFoo>;
 	mStep->fnPtr = &MovingFoo::move;
-	mStep->period = 20;
+	mStep->period = 5;
 	aFoo->addStep(mStep);
 	
 	aFoo->addLEDs(LITColor.magenta, maxBrightness, 5, 5);
@@ -198,7 +30,7 @@ TestingFoo::TestingFoo()
 	counter = 0;
 	
 	Step<TestingFoo>* aStep = new Step<TestingFoo>;
-	aStep->period = 20;
+	aStep->period = 5;
 	aStep->fnPtr = &TestingFoo::checkForSwitch;
 	addStep(aStep);
 }
@@ -215,14 +47,6 @@ void TestingFoo::checkForSwitch()
 	}
 }
 
-DoubleRainbow::DoubleRainbow()
-{
-	RainbowLine* r1 = new RainbowLine(16,0);
-	RainbowLine* r2 = new RainbowLine(16,16);
-	
-	addFoo(r1);
-	addFoo(r2);
-}
 
 BackgroundStepper::BackgroundStepper()
 {
@@ -760,7 +584,7 @@ BeatCollector::BeatCollector()
 {
 	sampleCount = 0;
 	lightCounter = 0;
-	dataPoints = 120;
+	dataPoints = 100;
 	
 	for (int n=0;n<7;n++)
 	{
@@ -784,10 +608,10 @@ BeatCollector::BeatCollector()
 	stepA->count = dataPoints;
 	addStep(stepA);
 	
-//	Step<BeatCollector>* stepB = new Step<BeatCollector>;
-//	stepB->fnPtr = &BeatCollector::printData;
-//	stepB->count = 1;
-//	addStep(stepB);
+	Step<BeatCollector>* stepB = new Step<BeatCollector>;
+	stepB->fnPtr = &BeatCollector::printData;
+	stepB->count = 1;
+	addStep(stepB);
 }
 
 void BeatCollector::stopLight()
@@ -809,11 +633,7 @@ void BeatCollector::collectData()
 	{
 		int tmp = audio.eq.spectrum[n]/8;
 		specData[n][sampleCount] = (byte) tmp;
-		
-		Serial.print(specData[n][sampleCount]);
-		Serial.print(",");
 	}
-	Serial.println();
 	
 	sampleCount++;
 }
@@ -860,6 +680,396 @@ void FullSongListener::collectData()
 	}
 	Serial.println();
 }
+
+
+
+RedGreenMover::RedGreenMover()
+{
+	for (int n=0;n<8;n++)
+	{
+		addLEDs(LITColor.red, maxBrightness, 4*n, 4*n);
+//		addLEDs(LITColor.green, maxBrightness, 4*n+1, 4*n+1);
+		addLEDs(LITColor.green, maxBrightness, 4*n+2, 4*n+2);
+	}
+	
+	Step<MovingFoo>* m = new Step<MovingFoo>;
+	m->fnPtr = &MovingFoo::move;
+	m->period = 3;
+	addStep(m);
+}
+
+RedGreenPulser::RedGreenPulser()
+{
+	for (int n=0;n<16;n++)
+	{
+		addLEDs(LITColor.red, 0, 2*n,2*n);
+	}
+	
+	for (int n=0;n<16;n++)
+	{
+		addLEDs(LITColor.green, maxBrightness, 2*n+1, 2*n+1);
+	}
+	
+	pulseCounter = 0;
+	
+	Step<RedGreenPulser>* r = new Step<RedGreenPulser>;
+	r->fnPtr = &RedGreenPulser::redUpGreenDown;
+	r->count = 50;
+	addStep(r);
+	
+	Step<RedGreenPulser>* g = new Step<RedGreenPulser>;
+	g->fnPtr = &RedGreenPulser::redDownGreenUp;
+	g->count = 50;
+	addStep(g);
+}
+
+void RedGreenPulser::redUpGreenDown()
+{
+	for (int r=0;r<16;r++)
+	{
+		fLEDs.entry(r)->me->brightness += 2;
+	}
+	
+	for (int g=16;g<32;g++)
+	{
+		fLEDs.entry(g)->me->brightness -= 2;
+	}
+}
+
+void RedGreenPulser::redDownGreenUp()
+{
+	for (int r=0;r<16;r++)
+	{
+		fLEDs.entry(r)->me->brightness -= 2;
+	}
+	
+	for (int g=16;g<32;g++)
+	{
+		fLEDs.entry(g)->me->brightness += 2;
+	}
+}
+
+
+
+RedGreenAlternater::RedGreenAlternater()
+{
+	for (int n=0;n<4;n++)
+	{
+		addLEDs(LITColor.red, maxBrightness, 8*n, 8*n);
+	}
+	
+	for (int n=0;n<4;n++)
+	{
+		addLEDs(LITColor.green, 0, 8*n+1, 8*n+1);
+	}
+	
+	add1 = 0;
+	add2 = 1;
+	
+	Step<RedGreenAlternater>* a = new Step<RedGreenAlternater>;
+	a->fnPtr = &RedGreenAlternater::aUp;
+	a->count = 20;
+	addStep(a);
+	
+	Step<RedGreenAlternater>* x = new Step<RedGreenAlternater>;
+	x->fnPtr = &RedGreenAlternater::add1Up;
+	x->count = 1;
+	addStep(x);
+	
+	Step<RedGreenAlternater>* b = new Step<RedGreenAlternater>;
+	b->fnPtr = &RedGreenAlternater::bUp;
+	b->count = 20;
+	addStep(b);
+	
+	Step<RedGreenAlternater>* y = new Step<RedGreenAlternater>;
+	y->fnPtr = &RedGreenAlternater::add2Up;
+	y->count = 1;
+	addStep(y);
+}
+
+void RedGreenAlternater::aUp()
+{
+	for (int r=0;r<4;r++)
+	{
+		fLEDs.entry(r)->me->brightness -= 5;
+	}
+	
+	for (int g=4;g<8;g++)
+	{
+		fLEDs.entry(g)->me->brightness += 5;
+	}
+	
+	Serial.println("aUp");
+	Serial.print("r: ");
+	Serial.println(fLEDs.entry(0)->me->brightness);
+	Serial.print("g: ");
+	Serial.println(fLEDs.entry(4)->me->brightness);
+}
+
+void RedGreenAlternater::bUp()
+{
+	for (int r=0;r<4;r++)
+	{
+		fLEDs.entry(r)->me->brightness += 5;
+	}
+	
+	for (int g=4;g<8;g++)
+	{
+		fLEDs.entry(g)->me->brightness -= 5;
+	}
+}
+
+void RedGreenAlternater::add1Up()
+{
+	add1 = updateValue(add1, up, 0, 7, cycles);
+	add1 = updateValue(add1, up, 0, 7, cycles);
+	
+	for (int n=0;n<4;n++)
+	{
+		fLEDs.entry(n)->me->address = 8*n + add1;
+	}
+}
+
+void RedGreenAlternater::add2Up()
+{
+	add2 = updateValue(add2, up, 0, 7, cycles);
+	add2 = updateValue(add2, up, 0, 7, cycles);
+	
+	for (int n=0;n<4;n++)
+	{
+		fLEDs.entry(4+n)->me->address = 8*n + add2;
+	}
+}
+
+ChristmasSnakes::ChristmasSnakes()
+{
+	Step<ChristmasSnakes>* aStep = new Step<ChristmasSnakes>;
+	aStep->fnPtr = &ChristmasSnakes::checkForNoSnakes;
+	addStep(aStep);
+	
+	baseCycler = 0;
+}
+
+void ChristmasSnakes::checkForNoSnakes()
+{
+	if (!hasFoos())
+	{
+		EphemeralSnake* aSnake = new EphemeralSnake(0,16,1,&LITColor.red);
+		addFoo(aSnake);
+		
+		EphemeralSnake* bSnake = new EphemeralSnake(16,16,1,&LITColor.green);
+		addFoo(bSnake);
+	}
+}
+
+ChristmasSparkler::ChristmasSparkler()
+{
+	rgw[0].setColor(LITColor.red);
+	rgw[1].setColor(LITColor.green);
+	rgw[2].setColor(LITColor.white);
+	
+	totalSparkles = 12;
+	colorCount = 0;
+	
+	Step<ChristmasSparkler>* n = new Step<ChristmasSparkler>;
+	n->fnPtr = &ChristmasSparkler::newSparkle;
+	n->count = 1;
+	addStep(n);
+	
+	Step<ChristmasSparkler>* s = new Step<ChristmasSparkler>;
+	s->fnPtr = &ChristmasSparkler::stall;
+	s->count = 10;
+	addStep(s);
+}
+
+void ChristmasSparkler::newSparkle()
+{
+	int addr = rand()%32;
+	
+	while (!checkAddresses(addr))
+	{
+		addr = rand()%32;
+	}
+	
+	InAndOutFader* x = new InAndOutFader(rgw[colorCount],addr);
+	addFoo(x);
+	
+	colorCount = updateValue(colorCount, up, 0, 2, cycles);
+}
+
+void ChristmasSparkler::stall()
+{
+	// wait to create a new one
+}
+
+bool ChristmasSparkler::checkAddresses(int x)
+{
+	bool check = true;
+	
+	for (int n=0;n<countFoos();n++)
+	{
+		int z = foos.entry(n)->me->fLEDs.entry(0)->me->address;
+		
+		if (z == x)
+		{
+			check = false;
+		}
+	}
+	
+	return check;
+}
+
+
+InAndOutFader::InAndOutFader(Color aColor,int addr)
+{
+	repeats = false;
+	
+	addLEDs(aColor, 0, addr, addr);
+	
+	totalIterations = 0;
+	
+	Step<InAndOutFader>* a = new Step<InAndOutFader>;
+	a->fnPtr = &InAndOutFader::fade;
+	a->count = 100;
+	addStep(a);
+	
+	
+	
+}
+
+void InAndOutFader::getBrighter()
+{
+	int x = fLEDs.entry(0)->me->brightness;
+	x = updateValue(x, up, 0, 100, !cycles);
+	fLEDs.entry(0)->me->brightness = x;
+	
+}
+
+void InAndOutFader::dimDown()
+{
+	int x = fLEDs.entry(0)->me->brightness;
+	x--;
+	fLEDs.entry(0)->me->brightness = x;
+}
+
+void InAndOutFader::fade()
+{
+	int x = fLEDs.entry(0)->me->brightness;
+	
+	if (totalIterations < 50)
+	{
+		x = updateValue(x, up, 0, 100, !cycles);
+		x = updateValue(x, up, 0, 100, !cycles);
+	}
+	else
+	{
+		x = updateValue(x, down, 0, 100, !cycles);
+		x = updateValue(x, down, 0, 100, !cycles);
+	}
+
+	fLEDs.entry(0)->me->brightness = x;
+	
+	totalIterations++;
+}
+
+
+
+JoshFoo::JoshFoo()
+{
+	// create 16 LEDs
+	for (int n=0;n<16;n++)
+	{
+		int addr = 2*n;
+		
+		addLEDs(LITColor.white, maxBrightness, addr,addr);
+	}
+	
+	colorIndex = 0;
+	
+	Step<MovingFoo>* m = new Step<MovingFoo>;
+	m->fnPtr = &MovingFoo::move;
+	m->period = 4;
+	m->count = 10;
+	addStep(m);
+	
+	Step<JoshFoo>* cc = new Step<JoshFoo>;
+	cc->fnPtr = &JoshFoo::changeColor;
+	cc->count = 1;
+	addStep(cc);
+}
+
+void JoshFoo::changeColor()
+{
+	for (int n=0;n<16;n++)
+	{
+		fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[colorIndex]);
+	}
+	
+	colorIndex = updateValue(colorIndex, up, 0, 5, cycles);
+}
+
+
+TwoMovers::TwoMovers()
+{
+	MovingDot* a = new MovingDot(LITColor.red,0,5);
+	MovingDot* b = new MovingDot(LITColor.yellow,1,16);
+	
+	addFoo(a);
+	addFoo(b);
+}
+
+
+
+RainbowShooter::RainbowShooter()
+{
+	Step<RainbowShooter>* a = new Step<RainbowShooter>;
+	a->fnPtr = &RainbowShooter::addNewDot;
+	a->period = 16;
+	addStep(a);
+}
+
+void RainbowShooter::addNewDot()
+{
+	MovingDot* x = new MovingDot(*LITColor.colorList[colorCount],1,0);
+	x->repeats = false;
+	x->steps.entry(0)->me->count = 31;
+	addFoo(x);
+	
+	colorCount = updateValue(colorCount, up, 0, 5, cycles);
+}
+
+
+SwitchingDR::SwitchingDR()
+{
+	DoubleRainbow* dr = new DoubleRainbow();
+	addFoo(dr);
+}
+
+void SwitchingDR::checkers()
+{
+	if (audio.beatJustDetected(1))
+	{
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

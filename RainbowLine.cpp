@@ -17,8 +17,17 @@ RainbowLine::RainbowLine(int length,int start)
 		
 		addLEDs(aColor, maxBrightness, checkAddress(start + n), checkAddress(start + n));
 	}
-	
-	Step<MovingFoo>* aStep = new Step<MovingFoo>;
-	aStep->fnPtr = &MovingFoo::move;
-	addStep(aStep);
 }
+
+
+DoubleRainbow::DoubleRainbow()
+{
+	RainbowLine* r1 = new RainbowLine(16,0);
+	RainbowLine* r2 = new RainbowLine(16,16);
+	
+	addFoo(r1);
+	addFoo(r2);
+}
+
+
+

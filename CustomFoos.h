@@ -14,6 +14,10 @@
 #include "SystemMonitors.h"
 #include "AllSingleColors.h"
 #include "RainbowLine.h"
+#include "TwoColorParticleJam.h"
+#include "Pulses.h"
+#include "RainbowPulser.h"
+#include "HiToLowBrightnessTrail.h"
 
 // need work
 #include "VarLengthBands.h"
