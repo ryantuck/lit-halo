@@ -43,7 +43,6 @@
 #include "stepFoo1.h"
 #include "LinkedFoo.h"
 #include "KernFoo.h"
-#include "Foo2.h"
 #include "RainbowFoo.h"
 
 
