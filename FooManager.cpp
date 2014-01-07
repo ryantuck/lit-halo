@@ -166,6 +166,43 @@ void ChristmasManager::createNewFoo(int index)
 }
 
 
+//  ================================================================
+
+StillManager::StillManager()
+{
+	maxFoodex = 7;
+}
+
+void StillManager::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new StillRainbow;
+			break;
+		case 1:
+			foo = new StillDoubleRainbow;
+			break;
+		case 2:
+			foo = new AllOn(LITColor.white);
+			break;
+		case 3:
+			foo = new AllOn(LITColor.green);
+			break;
+		case 4:
+			foo = new AllOn(LITColor.yellow);
+			break;
+		case 5:
+			foo = new StillEvenlySpaced(LITColor.magenta,4,0);
+			break;
+		case 6:
+			foo = new StillEvenlySpaced(LITColor.cyan,16,0);
+			break;
+		case 7:
+			foo = new StillDubz;
+			break;
+	}
+}
 
 
 

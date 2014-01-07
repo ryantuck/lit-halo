@@ -59,6 +59,14 @@ public:
 	void createNewFoo(int index);
 };
 
+// all still patterns (for photos)
+class StillManager : public FooManager
+{
+public:
+	StillManager();
+	void createNewFoo(int index);
+};
+
 
 
 
