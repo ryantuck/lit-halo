@@ -12,7 +12,6 @@ Headband::Headband()
 	upButton	= Button(6);
 	
 	fooManager = new StillManager();
-	fooManager->update();
 }
 
 void Headband::update()
