@@ -14,7 +14,7 @@ FooManager::FooManager()
 	foodex		= 0;
 	maxFoodex	= 8;
 	
-	updateFoo(foodex);
+	update();
 }
 
 void FooManager::update()
@@ -170,7 +170,8 @@ void ChristmasManager::createNewFoo(int index)
 
 StillManager::StillManager()
 {
-	maxFoodex = 7;
+	maxFoodex = 8;
+//	foo = new BatteryFoo;
 }
 
 void StillManager::createNewFoo(int index)
@@ -200,6 +201,9 @@ void StillManager::createNewFoo(int index)
 			break;
 		case 7:
 			foo = new StillDubz;
+			break;
+		case 8:
+			foo = new BatteryFoo;
 			break;
 	}
 }

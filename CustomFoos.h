@@ -31,6 +31,8 @@
 #include "MultipleBouncingFoos.h"
 #include "OscillatingFoo.h"
 
+#include "BatteryFoo.h"
+
 // stills
 #include "StillFoos.h"
 
