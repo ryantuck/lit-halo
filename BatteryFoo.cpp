@@ -23,30 +23,28 @@ BatteryFoo::BatteryFoo()
 void BatteryFoo::readAndCalculate()
 {
 	// calculate battery percentage remaining
-	value = 20;
-	
-	// adjust color accordingly
+	int pct = batt.percentage();
+	int ledsToTurnOn = pct * 32 / 100;
+	value = ledsToTurnOn;
 	
 	Step<BatteryFoo>* b = new Step<BatteryFoo>;
 	b->fnPtr = &BatteryFoo::grow;
 	b->count = value;
 	addStep(b);
-	
-	Step<BatteryFoo>* c = new Step<BatteryFoo>;
-	c->fnPtr = &BatteryFoo::stall;
-	c->count = 60;
-	addStep(c);
 }
 
 void BatteryFoo::grow()
 {
-	addLEDs(LITColor.red, maxBrightness, valueCounter, valueCounter);
+	// set the color of each subsequent LED as some range from red to green
+	// this is a bit of a hack, but it works and looks cool.
+	// calculateRGB is the same function used to create a rainbow line of
+	//	arbitrary length.
+	Color tmpColor = Color(LITColor.black);
+	tmpColor.calculateRGB(96, valueCounter);
+	
+	addLEDs(tmpColor, maxBrightness, valueCounter, valueCounter);
 	
 	valueCounter = updateValue(valueCounter, up, 0, value, !cycles);
 }
 
-void BatteryFoo::stall()
-{
-	// do nothing for about 60 iterations
-}
 
