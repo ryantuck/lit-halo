@@ -10,11 +10,9 @@
 
 FooManager::FooManager()
 {
-	foo			= NULL;
+	foo			= new BatteryFoo;
 	foodex		= 0;
 	maxFoodex	= 8;
-	
-	updateFoo(foodex);
 }
 
 void FooManager::update()
