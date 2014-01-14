@@ -19,6 +19,7 @@ MCP4131::MCP4131()
 
 void MCP4131::update(int newValue)
 {
+    //Serial.println(newValue);
 	digitalWrite(slaveSelectPin,LOW);
 	
 	SPI.transfer(0);

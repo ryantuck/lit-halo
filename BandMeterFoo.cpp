@@ -44,11 +44,14 @@ BandMeterFoo::BandMeterFoo(int aBand, Color aColor, int aDenominator)
 
 void BandMeterFoo::drawLine()
 {
-	float specVal = audio.eq.spectrum[band];
-	
-	float ratio = 32 * specVal / denominator;
+//	float specVal = audio.eq.spectrum[band];
+//	
+//    
+//	float ratio = 32 * specVal / denominator;
 	
 	fLEDs.removeAllEntries();
-	
-	addLEDs(bandColor, maxBrightness, 0, ratio);
+	if(audio.beatDetected[band])
+    {
+        addLEDs(bandColor, maxBrightness, 0, 32);
+    }
 }

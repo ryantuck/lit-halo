@@ -8,6 +8,8 @@
 
 Audio::Audio()
 {
+    
+
 	//	Initialize weight spectrum.
 	//	Values are percentages.
 	
@@ -36,15 +38,26 @@ Audio::Audio()
 	silenceIntercepts[6] = 205.7;
 	
 	avgCounter = 0;
+    
+    for(int n=0;n<7;n++)
+    {
+        beatCounters[n] = 0;
+        beatDetected[n] = 0;
+    }
+    
+    //initialize pot value upon startup -DK
+    pot.update(2);
 }
 
 void Audio::update()
 {
 	getEQ();
-	subtractBaselines();
-	//weighEQ();
+    for(int n=0;n<7;n++)
+    {
+        stats[n].update(eq.spectrum[n]);
+    }
+    
 	checkBeats();
-    pot.update(1);
 }
 
 void Audio::getEQ()
@@ -55,15 +68,22 @@ void Audio::getEQ()
 
 void Audio::checkBeats()
 {
-	//	Updates beatCounters[].
-	
-	for (int n=0;n<7;n++)
-	{
-		if (checkForBeat(n))			beatCounters[n]++;
-		else if (beatCounters[n] != 0)	beatCounters[n]++;
-		
-		if (beatCounters[n] == 12)		beatCounters[n] = 0;
-	}
+    for(int n=0;n<6;n++)
+    {
+        if(beatCounters[n] < 5)  beatCounters[n]++;
+        beatDetected[n] = 0;
+       
+        //if sample is larger than 2 standard devs
+        if(abs(eq.spectrum[n] - stats[n].getMean())
+           > 2*stats[n].getStdev() && beatCounters[n] >= 5)
+        {
+            beatCounters[n] = 0;
+            beatDetected[n] = 1;
+            
+//            Serial.println("beat detected on band ");
+//            Serial.println(n);
+        }
+    }
 }
 
 bool Audio::checkForBeat(byte band)

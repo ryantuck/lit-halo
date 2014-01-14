@@ -14,7 +14,9 @@ Headband::Headband()
 	strip = LPD8806(numLEDs,2,3);
 	strip.begin();
 	
-	fooManager = new Tests();
+    //set foo manager here. a foo manager will determine which
+    //set of patterns are available to run on the headband
+	fooManager = new BandFooManager();
 	fooManager->update();
 }
 
@@ -24,6 +26,7 @@ void Headband::update()
 //	checkBattery();
 	getAudio();
 	updateLEDs();
+    //audio.printSpectrum();
 }
 
 void Headband::checkButtons()

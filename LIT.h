@@ -20,6 +20,7 @@
 #include "Parameters.h"
 #include "Arduino.h"
 #include "Force.h"
+#include "Stats.h"
 
 extern int			numLEDs;
 extern LayeredLED	leds[32];

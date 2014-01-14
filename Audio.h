@@ -14,6 +14,7 @@
 #include "MSGEQ7.h"
 #include "MCP4131.h"
 #include "Arduino.h"
+#include "Stats.h"
 //#include "LITFunctions.h"
 
 class Audio
@@ -22,11 +23,12 @@ public:
 	
 	MSGEQ7		eq;
 	MCP4131		pot;
+    Stats       stats[7]; //computes running variance, mean, std
 	
 	int			weightSpectrum[7];
-	byte		beatCounters[7];	//	tracks how many iterations
-									//	since last beat on each band.
-	
+	byte		beatCounters[7];    //tracks iterations since last beat
+	bool        beatDetected[7];    //tracks if beat detected on        current iteration
+    
 	int averagedSpectrum[7];
 	int avgCounter;
 	

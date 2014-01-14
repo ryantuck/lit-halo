@@ -39,6 +39,8 @@ inline void shiftOut(int a,int b,int c, int d);
 inline int	millis(){return 1;};
 inline void delay(int a){};
 
+//inline double sqrt(double);
+
 //inline void cli(){};
 //inline void sei(){};
 
