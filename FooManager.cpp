@@ -109,23 +109,23 @@ void DevFooManager::createNewFoo(int index)
 
 BandFooManager::BandFooManager()
 {
-	maxFoodex = 6;
+	maxFoodex = 1;
 }
 
 void BandFooManager::createNewFoo(int index)
 {
-	foo = new BandMeterFoo(index,*LITColor.spectrum[index]);
+	foo = new BandMeterFoo();
 }
 
-MonoBandFooManager::MonoBandFooManager()
-{
-	maxFoodex = 6;
-}
-
-void MonoBandFooManager::createNewFoo(int index)
-{
-	foo = new BandMeterFoo(2,*LITColor.colorList[index],128*(index+1));
-}
+//MonoBandFooManager::MonoBandFooManager()
+//{
+//	maxFoodex = 6;
+//}
+//
+//void MonoBandFooManager::createNewFoo(int index)
+//{
+//	foo = new BandMeterFoo(2,*LITColor.colorList[index],128*(index+1));
+//}
 
 
 SingleTestManager::SingleTestManager()

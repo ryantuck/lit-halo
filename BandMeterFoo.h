@@ -15,8 +15,7 @@ class BandMeterFoo : public Foo
 {
 public:
 	BandMeterFoo();
-	BandMeterFoo(int band, Color aColor);
-	BandMeterFoo(int band, Color aColor, int aDenominator);
+//	BandMeterFoo(int band, Color aColor, int aDenominator);
 	
 	int band;
 	
