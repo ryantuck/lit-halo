@@ -11,7 +11,6 @@
 BandMeterFoo::BandMeterFoo()
 {
     denominator = 1024;
-    
 	
 	Step<BandMeterFoo>* aStep = new Step<BandMeterFoo>;
 	aStep->fnPtr = &BandMeterFoo::drawLine;
@@ -52,31 +51,33 @@ void BandMeterFoo::drawLine()
     {
         if(audio.beatDetected[n])
         {
+            Serial.println("beat detected");
             switch(n)
             {
                 case 0:
-                    bandColor = LITColor.magenta;
+                    bandColor.setColor(LITColor.magenta);
                     break;
                 case 1:
-                    bandColor = LITColor.blue;
+                    bandColor.setColor(LITColor.blue);
                     break;
                 case 2:
-                    bandColor = LITColor.green;
+                    bandColor.setColor(LITColor.green);
                     break;
                 case 3:
-                    bandColor = LITColor.yellow;
+                    bandColor.setColor(LITColor.yellow);
                     break;
                 case 4:
-                    bandColor = LITColor.orange;
+                    bandColor.setColor(LITColor.orange);
                     break;
                 case 5:
-                    bandColor = LITColor.red;
+                    bandColor.setColor(LITColor.red);
                     break;
-                case 6:
-                    bandColor = LITColor.white;
+                default:
+                    bandColor.setColor(LITColor.white);
                     break;
             }
             addLEDs(bandColor, maxBrightness, 0, 32);
+            break;
         }
     }
 }

@@ -109,12 +109,12 @@ void DevFooManager::createNewFoo(int index)
 
 BandFooManager::BandFooManager()
 {
-	maxFoodex = 1;
+	maxFoodex = 0;
 }
 
 void BandFooManager::createNewFoo(int index)
 {
-	foo = new BandMeterFoo();
+	foo = new BandMeterFoo;
 }
 
 //MonoBandFooManager::MonoBandFooManager()

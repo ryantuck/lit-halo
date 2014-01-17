@@ -70,12 +70,12 @@ void Audio::checkBeats()
 {
     for(int n=0;n<6;n++)
     {
-        if(beatCounters[n] < 10)  beatCounters[n]++;
+        if(beatCounters[n] < 5)  beatCounters[n]++;
         beatDetected[n] = 0;
        
         //if sample is larger than 2 standard devs
         if(abs(eq.spectrum[n] - stats[n].getMean())
-           > 2*stats[n].getStdev() && beatCounters[n] >= 10)
+           > 4*stats[n].getStdev() && beatCounters[n] >= 5)
         {
             beatCounters[n] = 0;
             beatDetected[n] = 1;
