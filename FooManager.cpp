@@ -112,6 +112,8 @@ void BandFooManager::createNewFoo(int index)
 	foo = new BandMeterFoo(index,*LITColor.spectrum[index]);
 }
 
+//  ================================================================
+
 SystemTests::SystemTests()
 {
     maxFoodex = 2;
@@ -119,19 +121,24 @@ SystemTests::SystemTests()
 
 void SystemTests::createNewFoo(int index)
 {
-    switch (index)
-    {
-        case 0:
-            foo = new VarianceTester(0);
-            break;
-        case 1:
-			foo = new DoubleMonitor;
-			break;
-        case 2:
-            foo = new BeatCollector;
-            break;
-            
-    }
+	// commented this out to run a quick test on BeatCollector.
+	// for some reason, bc won't work when one of many foos.
+	// probably has something to do with huge bc memory usage.
+	
+//    switch (index)
+//    {
+//        case 0:
+//            foo = new VarianceTester(0);
+//            break;
+//        case 1:
+//			foo = new DoubleMonitor;
+//			break;
+//        case 2:
+//            foo = new BeatCollector;
+//            break;
+//            
+//    }
+	foo = new BeatCollector;
 }
 
 //  ================================================================
