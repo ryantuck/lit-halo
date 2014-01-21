@@ -17,6 +17,7 @@
 #include "Stats.h"
 //#include "LITFunctions.h"
 
+
 class Audio
 {
 public:
@@ -40,6 +41,8 @@ public:
 	
 	//	Grabs eq, weighs it, and checks for beats.
 	void update();
+    //reads from adc, computes fht
+    void update1();
 	
 	//	Updates beatCounters.
 	void checkBeats();

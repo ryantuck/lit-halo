@@ -57,7 +57,7 @@ void Headband::checkButtons()
 
 void Headband::getAudio()
 {
-	audio.update();
+	audio.update1();
 }
 
 void Headband::updateLEDs()

@@ -41,8 +41,8 @@ inline void delay(int a){};
 
 //inline double sqrt(double);
 
-//inline void cli(){};
-//inline void sei(){};
+inline void cli(){};
+inline void sei(){};
 
 
 
