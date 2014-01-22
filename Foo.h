@@ -66,6 +66,16 @@ public:
 		a->period = aPeriod;
 		addStep(a);
 	}
+	
+	template <class T>
+	void addStepWithFunction(void (T::*x)(),int aPeriod, int aCount)
+	{
+		Step<T>* a = new Step<T>;
+		a->fnPtr = x;
+		a->period = aPeriod;
+		a->count = aCount;
+		addStep(a);
+	}
 	// =================================================
 	
 	
