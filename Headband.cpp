@@ -11,7 +11,7 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new SystemTests();
+	fooManager = new ContinuousOutput();
 }
 
 void Headband::update()

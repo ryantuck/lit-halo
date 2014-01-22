@@ -209,7 +209,17 @@ void StillManager::createNewFoo(int index)
 	}
 }
 
+//  ================================================================
 
+ContinuousOutput::ContinuousOutput()
+{
+	maxFoodex = 1;
+}
+
+void ContinuousOutput::createNewFoo(int index)
+{
+	foo = new FullSongListener;
+}
 
 
 

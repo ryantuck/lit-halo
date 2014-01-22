@@ -67,6 +67,14 @@ public:
 	void createNewFoo(int index);
 };
 
+// live music listener (should work with processing example)
+class ContinuousOutput : public FooManager
+{
+public:
+	ContinuousOutput();
+	void createNewFoo(int index);
+};
+
 
 
 
