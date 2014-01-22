@@ -59,10 +59,11 @@ public:
 	
 	// ==== current working on this ====================
 	template <class T>
-	void addStepWithFunction(void (T::*x)())
+	void addStepWithFunction(void (T::*x)(),int aPeriod)
 	{
 		Step<T>* a = new Step<T>;
 		a->fnPtr = x;
+		a->period = aPeriod;
 		addStep(a);
 	}
 	// =================================================

@@ -14,9 +14,11 @@ RainbowPulser::RainbowPulser()
 	counter			= 0;
 	isIncreasing	= true;
 	
-	Step<RainbowPulser>* aStep = new Step<RainbowPulser>;
-	aStep->fnPtr = &RainbowPulser::drawNewLine;
-	addStep(aStep);
+//	Step<RainbowPulser>* aStep = new Step<RainbowPulser>;
+//	aStep->fnPtr = &RainbowPulser::drawNewLine;
+//	addStep(aStep);
+	
+	addStepWithFunction<RainbowPulser>(&RainbowPulser::drawNewLine,1);
 }
 
 void RainbowPulser::drawNewLine()

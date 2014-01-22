@@ -1059,7 +1059,7 @@ void SwitchingDR::checkers()
 FnPasser::FnPasser()
 {
 	addLEDs(LITColor.green, maxBrightness, 0, 0);
-	addStepWithFunction<MovingFoo>(&MovingFoo::moveLeft);
+	addStepWithFunction<MovingFoo>(&MovingFoo::moveLeft,1);
 }
 
 
