@@ -11,7 +11,7 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new ContinuousOutput();
+	fooManager = new DevFooManager();
 }
 
 void Headband::update()
@@ -23,13 +23,9 @@ void Headband::update()
 
 void Headband::checkButtons()
 {
-    upButton.checkState();
-    downButton.checkState();
     
 	if (upButton.pressed)
 	{
-        Serial.println("up button pressed by default");
-        
 		fooManager->foodex = updateValue(fooManager->foodex,
 										up,
 										0,

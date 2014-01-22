@@ -55,6 +55,20 @@ public:
 		steps.addToEnd(entry);
 	}
 	
+	
+	
+	// ==== current working on this ====================
+	template <class T>
+	void addStepWithFunction(void (T::*x)())
+	{
+		Step<T>* a = new Step<T>;
+		a->fnPtr = x;
+		addStep(a);
+	}
+	// =================================================
+	
+	
+	
 	//	Counting -----------------------
 	int	 countFoos();
 	int  countLEDs();

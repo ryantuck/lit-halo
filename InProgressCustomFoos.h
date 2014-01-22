@@ -280,6 +280,12 @@ public:
 	void checkers();
 };
 
+class FnPasser : public Foo
+{
+public:
+	FnPasser();
+};
+
 #endif
 
 
