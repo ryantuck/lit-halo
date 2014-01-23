@@ -105,6 +105,46 @@ void DevFooManager::createNewFoo(int index)
 
 //  ================================================================
 
+NonAudioManager::NonAudioManager()
+{
+	maxFoodex = 2;
+}
+
+void NonAudioManager::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new RainbowPulser;
+			break;
+		case 1:
+			foo = new TwoColorParticleJam(LITColor.green,LITColor.magenta);
+			break;
+		case 2:
+			foo = new Pulse4;
+			break;
+	}
+}
+
+//  ================================================================
+
+AudioFooManager::AudioFooManager()
+{
+	maxFoodex = 0;
+}
+
+void AudioFooManager::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new Sparkle;
+			break;
+	}
+}
+
+//  ================================================================
+
 BandFooManager::BandFooManager()
 {
 	maxFoodex = 6;

@@ -42,6 +42,20 @@ public:
 	void createNewFoo(int index);
 };
 
+class NonAudioManager : public FooManager
+{
+public:
+	NonAudioManager();
+	void createNewFoo(int index);
+};
+
+class AudioFooManager : public FooManager
+{
+public:
+	AudioFooManager();
+	void createNewFoo(int index);
+};
+
 // testing foos that query system performance
 class SystemTests : public FooManager
 {

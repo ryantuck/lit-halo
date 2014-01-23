@@ -11,7 +11,7 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new DevFooManager();
+	fooManager = new AudioFooManager();
 }
 
 void Headband::update()
@@ -23,7 +23,9 @@ void Headband::update()
 
 void Headband::checkButtons()
 {
-    
+    upButton.checkState();
+	downButton.checkState();
+	
 	if (upButton.pressed)
 	{
 		fooManager->foodex = updateValue(fooManager->foodex,
