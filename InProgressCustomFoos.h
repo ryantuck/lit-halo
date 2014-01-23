@@ -35,15 +35,6 @@ public:
 	BackgroundStepper();
 };
 
-class Sparkle : public Foo
-{
-public:
-	Sparkle();
-	void flicker();
-	void changeColor();
-	
-	int index;
-};
 
 class Pulsater : public Foo
 {
@@ -72,14 +63,6 @@ public:
 	DRwithListener();
 };
 
-class SparkleWithListener : public Sparkle
-{
-public:
-	SparkleWithListener();
-	void changeColor();
-	
-	int index;
-};
 
 class BigAudioTester : public Foo
 {

@@ -74,57 +74,6 @@ BackgroundStepper::BackgroundStepper()
 }
 
 
-Sparkle::Sparkle()
-{
-	index = 0;
-	
-	Serial.println("Sparkle constructor");
-	for (int n=0;n<6;n++)
-	{
-		int x = rand()%32;
-		addLEDs(LITColor.white, maxBrightness, x, x);
-	}
-	
-	Step<Sparkle>* flicker = new Step<Sparkle>;
-	flicker->fnPtr = &Sparkle::flicker;
-	flicker->period = 2;
-	addStep(flicker);
-	
-//	Step<Sparkle>* change = new Step<Sparkle>;
-//	change->fnPtr = &Sparkle::changeColor;
-//	addStep(change);
-}
-
-void Sparkle::flicker()
-{
-	for (int n=0;n<countLEDs();n++)
-	{
-		fLEDs.entry(n)->me->address = rand()%32;
-	}
-	
-	if (audio.beatJustDetected(2))
-	{
-		index = updateValue(index, up, 0, 6, cycles);
-		
-		for (int n=0;n<countLEDs();n++)
-		{
-			fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[index]);
-		}
-	}
-}
-void Sparkle::changeColor()
-{
-	if (audio.beatJustDetected(2))
-	{
-		index = updateValue(index, up, 0, 6, cycles);
-		
-		for (int n=0;n<countLEDs();n++)
-		{
-			fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[index]);
-		}
-	}
-}
-
 Pulsater::Pulsater()
 {
 	for (int n=0;n<8;n++)
@@ -203,37 +152,6 @@ DRwithListener::DRwithListener()
 	
 	ListenerWithBunch* lb = new ListenerWithBunch;
 	addFoo(lb);
-}
-
-SparkleWithListener::SparkleWithListener()
-{
-	Serial.println("SparkleWithListener constructor");
-	
-	Serial.println(countSteps());
-	
-	Step<SparkleWithListener>* aStep = new Step<SparkleWithListener>;
-	aStep->fnPtr = &SparkleWithListener::changeColor;
-	addStep(aStep);
-	
-	Serial.println(countSteps());
-	
-	index = 0;
-}
-
-void SparkleWithListener::changeColor()
-{
-	Serial.println(" in changeColor");
-	
-	if (audio.beatJustDetected(2))
-	{
-		index = updateValue(index, up, 0, 6, cycles);
-		
-		for (int n=0;n<countLEDs();n++)
-		{
-			
-			fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[index]);
-		}
-	}
 }
 
 BigAudioTester::BigAudioTester()

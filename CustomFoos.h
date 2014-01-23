@@ -18,6 +18,7 @@
 #include "Pulses.h"
 #include "RainbowPulser.h"
 #include "HiToLowBrightnessTrail.h"
+#include "Sparkle.h"
 
 // need work
 #include "VarLengthBands.h"
