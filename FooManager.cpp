@@ -63,7 +63,7 @@ void FooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 9;
+	maxFoodex = 6;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -89,17 +89,8 @@ void DevFooManager::createNewFoo(int index)
             foo = new DoubleRainbow;
             break;
         case 6:
-            foo = new TestingFoo;
-            break;
-        case 7:
-            foo = new BackgroundStepper;
-            break;
-        case 8:
             foo = new Sparkle;
             break;
-		case 9:
-			foo = new FnPasser;
-			break;
 	}
 }
 
@@ -107,7 +98,7 @@ void DevFooManager::createNewFoo(int index)
 
 NonAudioManager::NonAudioManager()
 {
-	maxFoodex = 2;
+	maxFoodex = 4;
 }
 
 void NonAudioManager::createNewFoo(int index)
@@ -123,6 +114,10 @@ void NonAudioManager::createNewFoo(int index)
 		case 2:
 			foo = new Pulse4;
 			break;
+		case 3:
+			foo = new Pulsater;
+			break;
+		
 	}
 }
 
@@ -261,7 +256,7 @@ ContinuousOutput::ContinuousOutput()
 
 void ContinuousOutput::createNewFoo(int index)
 {
-	foo = new FullSongListener;
+	foo = new ContinuousListener;
 }
 
 

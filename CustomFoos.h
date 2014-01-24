@@ -19,6 +19,11 @@
 #include "RainbowPulser.h"
 #include "HiToLowBrightnessTrail.h"
 #include "Sparkle.h"
+#include "Pulsater.h"
+#include "EverythingTester.h"
+#include "BeatCollector.h"
+#include "ContinuousListener.h"
+#include "ChristmasFoos.h"
 
 // need work
 #include "VarLengthBands.h"
