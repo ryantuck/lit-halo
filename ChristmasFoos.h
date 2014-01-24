@@ -12,6 +12,7 @@
 #include "Foo.h"
 #include "MovingFoo.h"
 #include "EphemeralSnakesFoo.h"
+#include "InAndOutFader.h"
 
 class RedGreenMover : public Foo
 {
@@ -75,19 +76,7 @@ public:
 	int colorCount;
 };
 
-class InAndOutFader : public Foo
-{
-public:
-	InAndOutFader(Color aColor, int addr);
-	
-	void getBrighter();
-	
-	void dimDown();
-	
-	void fade();
-	
-	int totalIterations;
-};
+
 
 
 
