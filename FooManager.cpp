@@ -12,7 +12,7 @@ FooManager::FooManager()
 {
 	foo			= new BatteryFoo;
 	foodex		= 0;
-	maxFoodex	= 8;
+	maxFoodex	= 5;
 }
 
 void FooManager::update()
@@ -52,9 +52,6 @@ void FooManager::createNewFoo(int index)
 			break;
 		case 5:
 			foo = new EvenEphemSnakes;
-			break;
-		case 6:
-			foo = new CirclesFoo;
 			break;
 	}
 }
@@ -98,7 +95,7 @@ void DevFooManager::createNewFoo(int index)
 
 NonAudioManager::NonAudioManager()
 {
-	maxFoodex = 4;
+	maxFoodex = 5;
 }
 
 void NonAudioManager::createNewFoo(int index)
@@ -117,7 +114,12 @@ void NonAudioManager::createNewFoo(int index)
 		case 3:
 			foo = new Pulsater;
 			break;
-		
+		case 4:
+			foo = new EvenEphemSnakes;
+			break;
+		case 5:
+			foo = new MultipleBouncingFoo;
+			break;
 	}
 }
 

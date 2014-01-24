@@ -22,6 +22,19 @@ MultipleBouncingFoo::MultipleBouncingFoo()
 		addFoo(aFoo);
 	}
 	
+	
+	// this is a cool implementation with only one dot moving at a time
+//	for (int n=0;n<8;n++)
+//	{
+//		MovingDot* aDot = new MovingDot(*LITColor.spectrum[n],0,4*n);
+//		aDot->steps.entry(0)->me->period = 1000;
+//		addFoo(aDot);
+//	}
+//	
+//	MovingDot* aDot = new MovingDot(LITColor.blue,0,0);
+//	aDot->steps.entry(0)->me->period = 1;
+//	addFoo(aDot);
+	
 	Step<MultipleBouncingFoo>* myStep = new Step<MultipleBouncingFoo>;
 	myStep->fnPtr = &MultipleBouncingFoo::checkForBounces;
 	addStep(myStep);

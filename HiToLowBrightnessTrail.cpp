@@ -30,6 +30,8 @@ HiToLowBrightnessTrail::HiToLowBrightnessTrail(Color aColor,
         
 		addLEDs(aColor, br, addr, addr);
 	}
+	
+	addStepWithFunction<MovingFoo>(&MovingFoo::moveLeft,1);
 }
 
 

@@ -11,6 +11,7 @@
 
 #include "Foo.h"
 #include "LITFunctions.h"
+#include "MovingFoo.h"	
 
 class HiToLowBrightnessTrail : public Foo
 {

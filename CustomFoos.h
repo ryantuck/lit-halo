@@ -26,14 +26,9 @@
 #include "ChristmasFoos.h"
 
 // need work
-#include "VarLengthBands.h"
 #include "BrightnessFrequency.h"
-#include "MovingSwitcher.h"
 #include "Bunch.h"
-#include "ListenerFoo.h"
-#include "CirclesFoo.h"
 #include "EphemeralSnakesFoo.h"
-#include "EventFoo.h"
 #include "MultipleBouncingFoos.h"
 #include "OscillatingFoo.h"
 

@@ -16,11 +16,7 @@ class InAndOutFader : public Foo
 {
 public:
 	InAndOutFader(Color aColor, int addr);
-	
-	void getBrighter();
-	
-	void dimDown();
-	
+
 	void fade();
 	
 	int totalIterations;
