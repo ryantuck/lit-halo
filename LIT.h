@@ -11,6 +11,7 @@
 #ifndef __Headband__LIT__
 #define __Headband__LIT__
 
+//#include "FHT.h"
 #include "LED.h"
 #include "Audio.h"
 #include "Step.h"
@@ -21,6 +22,7 @@
 #include "Arduino.h"
 #include "Force.h"
 #include "Stats.h"
+
 
 extern int			numLEDs;
 extern LayeredLED	leds[32];

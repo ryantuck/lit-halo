@@ -15,6 +15,7 @@
 #include "MCP4131.h"
 #include "Arduino.h"
 #include "Stats.h"
+//#include "FHT.h"
 //#include "LITFunctions.h"
 
 
@@ -40,7 +41,7 @@ public:
 	Audio();
 	
 	//	Grabs eq, weighs it, and checks for beats.
-	void update();
+	//void update();
     //reads from adc, computes fht
     void update1();
 	

@@ -9,6 +9,10 @@ please read the read_me file for more info
 #ifndef _fht_h // include guard
 #define _fht_h
 
+//pre-compiler directives for FHT functionality
+#define LOG_OUT 1 // use the log output function
+#define FHT_N 256 // set to 256 point fht
+
 #define STRINGIFY_(a) #a
 #define STRINGIFY(a) STRINGIFY_(a)
 
@@ -71,37 +75,37 @@ please read the read_me file for more info
 
 PROGMEM  prog_int16_t _cas_constants[]  = {
 #if (FHT_N ==  256)
-  #include <cas_lookup_256.inc>
+  #include "cas_lookup_256.inc"
 #elif (FHT_N ==  128)
-  #include <cas_lookup_128.inc>
+  #include "cas_lookup_128.inc"
 #elif (FHT_N ==  64)
-  #include <cas_lookup_64.inc>
+  #include "cas_lookup_64.inc"
 #elif (FHT_N ==  32)
-  #include <cas_lookup_32.inc>
+  #include "cas_lookup_32.inc>
 #elif (FHT_N ==  16)
-  #include <cas_lookup_16.inc>
+  #include "cas_lookup_16.inc"
 #endif
 };
 
 #if (REORDER == 1)
   PROGMEM  prog_uint8_t _reorder_table[]  = {
   #if (FHT_N == 256)
-    #include <256_reorder.inc>
+    #include "256_reorder.inc"
   #elif (FHT_N == 128)
-    #include <128_reorder.inc>
+    #include "128_reorder.inc"
   #elif (FHT_N == 64)
-    #include <64_reorder.inc>
+    #include "64_reorder.inc"
   #elif (FHT_N == 32)
-    #include <32_reorder.inc>
+    #include "32_reorder.inc"
   #elif (FHT_N == 16)
-    #include <16_reorder.inc>
+    #include "16_reorder.inc"
   #endif
   };
 #endif
 
 #if ((LOG_OUT == 1)||(OCTAVE == 1))
   PROGMEM  prog_uint8_t _log_table[]  = {
-    #include <decibel.inc>
+    #include "decibel.inc"
   };
 #endif
 
@@ -111,14 +115,14 @@ PROGMEM  prog_int16_t _cas_constants[]  = {
 
 #if (LIN_OUT == 1)
   PROGMEM  prog_uint8_t _lin_table[]  = {
-    #include <sqrtlookup16.inc>
+    #include "sqrtlookup16.inc"
   };
   uint16_t fht_lin_out[(FHT_N/2)]; // FHT linear output magintude buffer
 #endif
 
 #if (LIN_OUT8 == 1)
   PROGMEM  prog_uint8_t _lin_table8[]  = {
-    #include <sqrtlookup8.inc>
+    #include "sqrtlookup8.inc"
   };
   uint8_t fht_lin_out8[(FHT_N/2)]; // FHT linear output magintude buffer
 #endif
@@ -130,15 +134,15 @@ PROGMEM  prog_int16_t _cas_constants[]  = {
 #if (WINDOW == 1) // window functions are in 16b signed format
   PROGMEM  prog_int16_t _window_func[]  = {
   #if (FHT_N ==  256)
-    #include <hann_256.inc>
+    #include "hann_256.inc"
   #elif (FHT_N ==  128)
-    #include <hann_128.inc>
+    #include "hann_128.inc"
   #elif (FHT_N ==  64)
-    #include <hann_64.inc>
+    #include "hann_64.inc"
   #elif (FHT_N ==  32)
-    #include <hann_32.inc>
+    #include "hann_32.inc"
   #elif (FHT_N ==  16)
-    #include <hann_16.inc>
+    #include "hann_16.inc"
   #endif
   };
 #endif
