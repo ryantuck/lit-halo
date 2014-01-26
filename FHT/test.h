@@ -73,7 +73,7 @@ please read the read_me file for more info
 
 #include <avr/pgmspace.h>
 
-static PROGMEM  prog_int16_t _cas_constants[]  = {
+PROGMEM  prog_int16_t _cas_constants[]  = {
 #if (FHT_N ==  256)
   #include "cas_lookup_256.inc"
 #elif (FHT_N ==  128)
@@ -88,7 +88,7 @@ static PROGMEM  prog_int16_t _cas_constants[]  = {
 };
 
 #if (REORDER == 1)
-  static PROGMEM  prog_uint8_t _reorder_table[]  = {
+  PROGMEM  prog_uint8_t _reorder_table[]  = {
   #if (FHT_N == 256)
     #include "256_reorder.inc"
   #elif (FHT_N == 128)
@@ -104,35 +104,35 @@ static PROGMEM  prog_int16_t _cas_constants[]  = {
 #endif
 
 #if ((LOG_OUT == 1)||(OCTAVE == 1))
-  static PROGMEM  prog_uint8_t _log_table[]  = {
+  PROGMEM  prog_uint8_t _log_table[]  = {
     #include "decibel.inc"
   };
 #endif
 
 #if (LOG_OUT == 1)
-  static uint8_t fht_log_out[(FHT_N/2)]; // FHT log output magintude buffer
+  uint8_t fht_log_out[(FHT_N/2)]; // FHT log output magintude buffer
 #endif
 
 #if (LIN_OUT == 1)
-  static PROGMEM  prog_uint8_t _lin_table[]  = {
+  PROGMEM  prog_uint8_t _lin_table[]  = {
     #include "sqrtlookup16.inc"
   };
   uint16_t fht_lin_out[(FHT_N/2)]; // FHT linear output magintude buffer
 #endif
 
 #if (LIN_OUT8 == 1)
-  static PROGMEM  prog_uint8_t _lin_table8[]  = {
+  PROGMEM  prog_uint8_t _lin_table8[]  = {
     #include "sqrtlookup8.inc"
   };
   uint8_t fht_lin_out8[(FHT_N/2)]; // FHT linear output magintude buffer
 #endif
 
 #if (OCTAVE == 1)
-  static uint8_t fht_oct_out[(LOG_N)]; // FHT octave output magintude buffer
+  uint8_t fht_oct_out[(LOG_N)]; // FHT octave output magintude buffer
 #endif
 
 #if (WINDOW == 1) // window functions are in 16b signed format
-  static PROGMEM  prog_int16_t _window_func[]  = {
+  PROGMEM  prog_int16_t _window_func[]  = {
   #if (FHT_N ==  256)
     #include "hann_256.inc"
   #elif (FHT_N ==  128)
@@ -148,7 +148,7 @@ static PROGMEM  prog_int16_t _cas_constants[]  = {
 #endif
 
 
-extern int fht_input[(FHT_N)]; // FHT input data buffer
+int fht_input[(FHT_N)]; // FHT input data buffer
 
 
 static inline void fht_run(void) {

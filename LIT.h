@@ -11,7 +11,6 @@
 #ifndef __Headband__LIT__
 #define __Headband__LIT__
 
-//#include "FHT.h"
 #include "LED.h"
 #include "Audio.h"
 #include "Step.h"
