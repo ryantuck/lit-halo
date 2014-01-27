@@ -15,7 +15,6 @@
 #include "MCP4131.h"
 #include "Arduino.h"
 #include "Stats.h"
-#include "FHT2.h"
 //#include "LITFunctions.h"
 
 class Audio
@@ -25,7 +24,6 @@ public:
 	MSGEQ7		eq;
 	MCP4131		pot;
     Stats       stats[7]; //computes running variance, mean, std
-    FHT2        fht2;
 	
 	int			weightSpectrum[7];
 	byte		beatCounters[7];    //tracks iterations since last beat
@@ -42,8 +40,6 @@ public:
 	
 	//	Grabs eq, weighs it, and checks for beats.
     void update();
-    //reads from adc, computes fht
-    void update1();
 	
 	//	Updates beatCounters.
 	void checkBeats();

@@ -24,7 +24,7 @@ void Headband::update()
 {
 	checkButtons();
 //	checkBattery();
-	getAudio();
+	//getAudio();
 	updateLEDs();
     //audio.printSpectrum();
 }
