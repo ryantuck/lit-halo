@@ -13,7 +13,7 @@ Pulse4::Pulse4()
 	orientation = 0;
 	colIndex	= 0;
 	
-	addStepWithFunction<Pulse4>(&Pulse4::runIt,1);
+	addStepWithFunction(&Pulse4::runIt,1);
 }
 
 void Pulse4::runIt()

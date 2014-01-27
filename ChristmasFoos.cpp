@@ -16,10 +16,7 @@ RedGreenMover::RedGreenMover()
 		addLEDs(LITColor.green, maxBrightness, 4*n+2, 4*n+2);
 	}
 	
-	Step<MovingFoo>* m = new Step<MovingFoo>;
-	m->fnPtr = &MovingFoo::move;
-	m->period = 3;
-	addStep(m);
+	addStepWithFunction(&MovingFoo::move, 3);
 }
 
 RedGreenPulser::RedGreenPulser()
@@ -36,15 +33,8 @@ RedGreenPulser::RedGreenPulser()
 	
 	pulseCounter = 0;
 	
-	Step<RedGreenPulser>* r = new Step<RedGreenPulser>;
-	r->fnPtr = &RedGreenPulser::redUpGreenDown;
-	r->count = 50;
-	addStep(r);
-	
-	Step<RedGreenPulser>* g = new Step<RedGreenPulser>;
-	g->fnPtr = &RedGreenPulser::redDownGreenUp;
-	g->count = 50;
-	addStep(g);
+	addStepWithFunction(&RedGreenPulser::redUpGreenDown, 1, 50);
+	addStepWithFunction(&RedGreenPulser::redDownGreenUp, 1, 50);
 }
 
 void RedGreenPulser::redUpGreenDown()
@@ -90,25 +80,10 @@ RedGreenAlternater::RedGreenAlternater()
 	add1 = 0;
 	add2 = 1;
 	
-	Step<RedGreenAlternater>* a = new Step<RedGreenAlternater>;
-	a->fnPtr = &RedGreenAlternater::aUp;
-	a->count = 20;
-	addStep(a);
-	
-	Step<RedGreenAlternater>* x = new Step<RedGreenAlternater>;
-	x->fnPtr = &RedGreenAlternater::add1Up;
-	x->count = 1;
-	addStep(x);
-	
-	Step<RedGreenAlternater>* b = new Step<RedGreenAlternater>;
-	b->fnPtr = &RedGreenAlternater::bUp;
-	b->count = 20;
-	addStep(b);
-	
-	Step<RedGreenAlternater>* y = new Step<RedGreenAlternater>;
-	y->fnPtr = &RedGreenAlternater::add2Up;
-	y->count = 1;
-	addStep(y);
+	addStepWithFunction(&RedGreenAlternater::aUp, 1, 20);
+	addStepWithFunction(&RedGreenAlternater::add1Up, 1, 1);
+	addStepWithFunction(&RedGreenAlternater::bUp, 1, 20);
+	addStepWithFunction(&RedGreenAlternater::add2Up, 1, 1);
 }
 
 void RedGreenAlternater::aUp()
@@ -167,9 +142,7 @@ void RedGreenAlternater::add2Up()
 
 ChristmasSnakes::ChristmasSnakes()
 {
-	Step<ChristmasSnakes>* aStep = new Step<ChristmasSnakes>;
-	aStep->fnPtr = &ChristmasSnakes::checkForNoSnakes;
-	addStep(aStep);
+	addStepWithFunction(&ChristmasSnakes::checkForNoSnakes, 1);
 	
 	baseCycler = 0;
 }
@@ -195,15 +168,8 @@ ChristmasSparkler::ChristmasSparkler()
 	totalSparkles = 12;
 	colorCount = 0;
 	
-	Step<ChristmasSparkler>* n = new Step<ChristmasSparkler>;
-	n->fnPtr = &ChristmasSparkler::newSparkle;
-	n->count = 1;
-	addStep(n);
-	
-	Step<ChristmasSparkler>* s = new Step<ChristmasSparkler>;
-	s->fnPtr = &ChristmasSparkler::stall;
-	s->count = 10;
-	addStep(s);
+	addStepWithFunction(&ChristmasSparkler::newSparkle, 1, 1);
+	addStepWithFunction(&ChristmasSparkler::stall, 1, 10);
 }
 
 void ChristmasSparkler::newSparkle()

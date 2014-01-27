@@ -12,9 +12,7 @@
 
 ListenerWithBunch::ListenerWithBunch()
 {
-	Step<ListenerWithBunch>* myStep = new Step<ListenerWithBunch>;
-	myStep->fnPtr = &ListenerWithBunch::listenUp;
-	addStep(myStep);
+	addStepWithFunction(&ListenerWithBunch::listenUp, 1);
 }
 
 void ListenerWithBunch::listenUp()
@@ -37,10 +35,7 @@ FiniteBunch::FiniteBunch()
 	
 	repeats = false;
 	
-	Step<MovingFoo>* myStep = new Step<MovingFoo>;
-	myStep->fnPtr = &MovingFoo::move;
-	myStep->count = 32;
-	addStep(myStep);
+	addStepWithFunction(&MovingFoo::move, 1, 32);
 }
 
 

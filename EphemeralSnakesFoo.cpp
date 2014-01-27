@@ -42,8 +42,8 @@ EphemeralSnake::EphemeralSnake()
 	color = LITColor.spectrum[rand()%12];
 	layer = rand()%5+1;
 	
-	addStepWithFunction<EphemeralSnake>(&EphemeralSnake::grow,1,length);
-	addStepWithFunction<EphemeralSnake>(&EphemeralSnake::shrink,1,length);
+	addStepWithFunction(&EphemeralSnake::grow,1,length);
+	addStepWithFunction(&EphemeralSnake::shrink,1,length);
 }
 
 EphemeralSnake::EphemeralSnake(int aAddress,
@@ -57,8 +57,8 @@ EphemeralSnake::EphemeralSnake(int aAddress,
 	color = aColor;
 	repeats = false;
 	
-	addStepWithFunction<EphemeralSnake>(&EphemeralSnake::grow,1,length);
-	addStepWithFunction<EphemeralSnake>(&EphemeralSnake::shrink,1,length);
+	addStepWithFunction(&EphemeralSnake::grow,1,length);
+	addStepWithFunction(&EphemeralSnake::shrink,1,length);
 }
 
 void EphemeralSnake::grow()
@@ -83,9 +83,6 @@ void EphemeralSnake::shrink()
 
 EvenEphemSnakes::EvenEphemSnakes()
 {
-	Step<EvenEphemSnakes>* aStep = new Step<EvenEphemSnakes>;
-	aStep->fnPtr = &EvenEphemSnakes::checkForNoSnakes;
-	addStep(aStep);
 	addStepWithFunction<EvenEphemSnakes>(&EvenEphemSnakes::checkForNoSnakes,1);
 	
 	baseCycler = 0;

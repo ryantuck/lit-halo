@@ -19,15 +19,9 @@ Bunch::Bunch()
 	{
 		mover->addLEDs(*LITColor.colorList[index], maxBrightness, 4*n, 4*n);
 	}
-	
-	Step<MovingFoo>* aStep = new Step<MovingFoo>;
-	aStep->period = 2;
-	aStep->fnPtr = &MovingFoo::move;
-	mover->addStep(aStep);
-	
-	Step<Bunch>* listen = new Step<Bunch>;
-	listen->fnPtr = &Bunch::listenUp;
-	addStep(listen);
+		
+	mover->addStepWithFunction(&MovingFoo::move, 2);
+	addStepWithFunction(&Bunch::listenUp, 1);
 	
 }
 

@@ -19,7 +19,7 @@ Sparkle::Sparkle()
 		addLEDs(LITColor.white, maxBrightness, x, x);
 	}
 		
-	addStepWithFunction<Sparkle>(&Sparkle::flicker,2);
+	addStepWithFunction(&Sparkle::flicker,2);
 }
 
 void Sparkle::flicker()

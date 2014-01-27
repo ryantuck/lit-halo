@@ -15,15 +15,8 @@ Pulsater::Pulsater()
 		addLEDs(LITColor.white, 0, 4*n, 4*n);
 	}
 	
-	Step<Pulsater>* upStep = new Step<Pulsater>;
-	upStep->fnPtr = &Pulsater::upBrightness;
-	upStep->count = 100;
-	addStep(upStep);
-	
-	Step<Pulsater>* downStep = new Step<Pulsater>;
-	downStep->fnPtr = &Pulsater::downBrightness;
-	downStep->count = 100;
-	addStep(downStep);
+	addStepWithFunction(&Pulsater::upBrightness, 1, 100);
+	addStepWithFunction(&Pulsater::downBrightness, 1, 100);
 }
 
 void Pulsater::upBrightness()
