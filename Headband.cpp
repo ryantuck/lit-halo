@@ -11,7 +11,7 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new ChristmasManager();
+	fooManager = new NonAudioManager();
 }
 
 void Headband::update()
@@ -23,8 +23,12 @@ void Headband::update()
 
 void Headband::checkButtons()
 {
-//    upButton.checkState();
-//	downButton.checkState();
+	bool hardware = false;
+	if (hardware)
+	{
+		upButton.checkState();
+		downButton.checkState();
+	}
 	
 	if (upButton.pressed)
 	{
