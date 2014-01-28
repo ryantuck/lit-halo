@@ -35,6 +35,8 @@ public:
 	double silenceSlopes[7];
 	double silenceIntercepts[7];
 	
+	int bandThresholds[7];
+	
 	//	Constructor
 	Audio();
 	
