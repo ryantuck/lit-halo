@@ -95,7 +95,7 @@ void DevFooManager::createNewFoo(int index)
 
 NonAudioManager::NonAudioManager()
 {
-	maxFoodex = 9;
+	maxFoodex = 12;
 }
 
 void NonAudioManager::createNewFoo(int index)
@@ -131,6 +131,15 @@ void NonAudioManager::createNewFoo(int index)
 			break;
 		case 9:
 			foo = new SixDots;
+			break;
+		case 10:
+			foo = new TenDotFaders;
+			break;
+		case 11:
+			foo = new LotsOfMovingFadingDots;
+			break;
+		case 12:
+			foo = new TwoLines;
 			break;
 	}
 }

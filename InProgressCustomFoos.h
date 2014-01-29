@@ -18,7 +18,7 @@
 #include "SystemMonitors.h"
 #include "Stats.h"
 #include "BandMeterFoo.h"
-
+#include "InAndOutFader.h"
 
 
 class ListenerWithBunch : public Foo
@@ -120,10 +120,44 @@ public:
 	bool isPassing;
 };
 
+class TenDotFaders : public Foo
+{
+public:
+	TenDotFaders();
+	void checkForFoos();
+	void addTen();
+};
 
+class MovingFadingDot : public Foo
+{
+public:
+	MovingFadingDot();
+	void reduceBrightness();
+	
+	AddressedLED* theLED;
+};
 
+class LotsOfMovingFadingDots : public Foo
+{
+public:
+	LotsOfMovingFadingDots();
+	void checkFoos();
+	
+	int maxFoos;
+};
 
-
+class TwoLines : public Foo
+{
+public:
+	TwoLines();
+	void checkForOverlap();
+	
+	bool areSameColor;
+	
+	AddressedLED* head1;
+	AddressedLED* tail2;
+	
+};
 
 
 

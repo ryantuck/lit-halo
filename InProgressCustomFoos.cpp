@@ -289,15 +289,152 @@ void ZeroColorSwitcher::checkForColorTriggers()
 	}
 }
 
+TenDotFaders::TenDotFaders()
+{
+	addStepWithFunction(&TenDotFaders::checkForFoos, 1);
+}
 
+void TenDotFaders::checkForFoos()
+{
+	if (!hasFoos())
+	{
+		addTen();
+	}
+}
 
+void TenDotFaders::addTen()
+{
+	int usedAddresses[12];
+	for (int n=0;n<12;n++)
+	{
+		usedAddresses[n] = 0;
+	}
+	
+	for (int n=0;n<12;n++)
+	{
+		int cIndex = n % 6;
+		
+		bool addrOk = false;
+		
+		int addr = rand() % 32;
+		
+		while (!addrOk)
+		{
+			addr = rand() % 32;
+			addrOk = true;
+			
+			for (int a=0;a<n;a++)
+			{
+				if (addr == usedAddresses[a])
+				{
+					addrOk = false;
+				}
+			}
+			
+			if (addrOk)
+			{
+				usedAddresses[n] = addr;
+			}
+		}
+		
+		InAndOutFader* x = new InAndOutFader(*LITColor.colorList[cIndex],
+											 addr);
+		addFoo(x);
+	}
+}
 
+MovingFadingDot::MovingFadingDot()
+{
+	MovingDot* x = new MovingDot(LITColor.green,up,0);
+	addFoo(x);
+	
+	theLED = x->fLEDs.entry(0)->me;
+	
+	repeats = false;
+	
+	addStepWithFunction(&MovingFadingDot::reduceBrightness, 1, 100);
+}
 
+void MovingFadingDot::reduceBrightness()
+{
+	theLED->brightness = updateValue(theLED->brightness,
+									 down,
+									 0,
+									 100,
+									 !cycles);
+}
 
+LotsOfMovingFadingDots::LotsOfMovingFadingDots()
+{
+	maxFoos = 12;
+	
+	// looks pretty cool setting period to 5
+	addStepWithFunction(&LotsOfMovingFadingDots::checkFoos, 12);
+}
 
+void LotsOfMovingFadingDots::checkFoos()
+{
+	if (countFoos() < maxFoos)
+	{
+		MovingFadingDot* x = new MovingFadingDot();
+		addFoo(x);
+	}
+}
 
+TwoLines::TwoLines()
+{
+	MovingFoo* a1 = new MovingFoo;
+	MovingFoo* a2 = new MovingFoo;
+	
+	a1->addLEDs(LITColor.red, maxBrightness, 0, 3);
+	a2->addLEDs(LITColor.green, maxBrightness, 28, 31);
+	
+	a1->direction = up;
+	a2->direction = down;
+	
+	a1->addStepWithFunction(&MovingFoo::move, 1);
+	a2->addStepWithFunction(&MovingFoo::move, 1);
+	
+	addFoo(a1);
+	addFoo(a2);
+	
+	head1 = a1->fLEDs.entry(3)->me;
+	tail2 = a2->fLEDs.entry(3)->me;
+	
+	areSameColor = false;
+	
+	addStepWithFunction(&TwoLines::checkForOverlap, 1);
+}
 
-
+void TwoLines::checkForOverlap()
+{
+	if (head1->address == tail2->address)
+	{
+		// overlapping
+		
+		if (areSameColor)
+		{
+			// change colors to independent colors
+			for (int n=0;n<4;n++)
+			{
+				foos.entry(0)->me->fLEDs.entry(n)->me->color.setColor(LITColor.red);
+				foos.entry(1)->me->fLEDs.entry(n)->me->color.setColor(LITColor.green);
+			}
+		}
+		else
+		{
+			// make colors the same
+			for (int n=0;n<4;n++)
+			{
+				foos.entry(0)->me->fLEDs.entry(n)->me->color.setColor(LITColor.yellow);
+				foos.entry(1)->me->fLEDs.entry(n)->me->color.setColor(LITColor.yellow);
+				
+			}
+		}
+		
+		areSameColor = !areSameColor;
+	}
+}
 
 
 
