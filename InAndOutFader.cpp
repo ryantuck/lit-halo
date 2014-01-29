@@ -16,7 +16,7 @@ InAndOutFader::InAndOutFader(Color aColor,int addr)
 	
 	totalIterations = 0;
 	
-	addStepWithFunction(&InAndOutFader::fade,100);
+	addStepWithFunction(&InAndOutFader::fade,1,100);
 }
 
 void InAndOutFader::fade()
