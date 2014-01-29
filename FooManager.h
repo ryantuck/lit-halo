@@ -89,6 +89,13 @@ public:
 	void createNewFoo(int index);
 };
 
+class BeatTestingManager : public FooManager
+{
+public:
+	BeatTestingManager();
+	void createNewFoo(int index);
+};
+
 
 
 

@@ -10,24 +10,24 @@
 
 MultipleBouncingFoo::MultipleBouncingFoo()
 {	
-	for (int n=0;n<4;n++)
-	{
-		MovingDot* aDot = new MovingDot(*LITColor.colorList[n], up, n*8);
-		aDot->steps.entry(0)->me->period = n+1;
-		addFoo(aDot);
-	}
+//	for (int n=0;n<4;n++)
+//	{
+//		MovingDot* aDot = new MovingDot(*LITColor.colorList[n], up, n*8);
+//		aDot->steps.entry(0)->me->period = n+1;
+//		addFoo(aDot);
+//	}
 	
 	
 	// this is a cool implementation with only one dot moving at a time
-//	for (int n=0;n<8;n++)
-//	{
-//		MovingDot* aDot = new MovingDot(*LITColor.spectrum[n],0,4*n);
-//		aDot->steps.entry(0)->me->period = 1000;
-//		addFoo(aDot);
-//	}
-//	MovingDot* aDot = new MovingDot(LITColor.blue,0,0);
-//	aDot->steps.entry(0)->me->period = 1;
-//	addFoo(aDot);
+	for (int n=0;n<8;n++)
+	{
+		MovingDot* aDot = new MovingDot(*LITColor.spectrum[n],0,4*n);
+		aDot->steps.entry(0)->me->period = 1000;
+		addFoo(aDot);
+	}
+	MovingDot* aDot = new MovingDot(LITColor.blue,0,0);
+	aDot->steps.entry(0)->me->period = 1;
+	addFoo(aDot);
 	
 	addStepWithFunction(&MultipleBouncingFoo::checkForBounces,1);
 }

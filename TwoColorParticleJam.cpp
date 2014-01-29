@@ -31,3 +31,71 @@ TwoColorParticleJam::TwoColorParticleJam(Color c1, Color c2)
 	e->steps.entry(0)->me->period = 2;
 	f->steps.entry(0)->me->period = 4;
 }
+
+void TwoColorParticleJam::changeColors(Color c1, Color c2)
+{
+	for (int n=0;n<3;n++)
+	{
+		foos.entry(n)->me->fLEDs.entry(0)->me->color.setColor(c1);
+	}
+	
+	for (int n=0;n<3;n++)
+	{
+		foos.entry(n+3)->me->fLEDs.entry(0)->me->color.setColor(c2);
+	}
+}
+
+TCPJwL::TCPJwL()
+{
+	TwoColorParticleJam* x = new TwoColorParticleJam(LITColor.red,
+													 LITColor.cyan);
+	addFoo(x);
+	
+	addStepWithFunction(&TCPJwL::listen, 1);
+	
+	baseCycler = 0;
+	
+}
+
+void TCPJwL::listen()
+{
+	if (audio.beatJustDetected(1))
+	{
+		baseCycler = updateValue(baseCycler, up, 0, 2, cycles);
+		
+		TwoColorParticleJam* x = (TwoColorParticleJam*)foos.entry(0)->me;
+		
+		int a1 = baseCycler;
+		int a2 = baseCycler+3;
+		
+		x->changeColors(*LITColor.colorList[a1],*LITColor.colorList[a2]);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

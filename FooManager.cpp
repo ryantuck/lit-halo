@@ -95,7 +95,7 @@ void DevFooManager::createNewFoo(int index)
 
 NonAudioManager::NonAudioManager()
 {
-	maxFoodex = 5;
+	maxFoodex = 9;
 }
 
 void NonAudioManager::createNewFoo(int index)
@@ -106,19 +106,31 @@ void NonAudioManager::createNewFoo(int index)
 			foo = new RainbowPulser;
 			break;
 		case 1:
-			foo = new TwoColorParticleJam(LITColor.green,LITColor.magenta);
+			foo = new TCPJwL;
 			break;
 		case 2:
 			foo = new Pulse4;
 			break;
 		case 3:
-			foo = new Pulsater;
-			break;
-		case 4:
 			foo = new EvenEphemSnakes;
 			break;
-		case 5:
+		case 4:
 			foo = new MultipleBouncingFoo;
+			break;
+		case 5:
+			foo = new Bunch;
+			break;
+		case 6:
+			foo = new SuperSlowDot;
+			break;
+		case 7:
+			foo = new BrightnessTest;
+			break;
+		case 8:
+			foo = new ZeroColorSwitcher;
+			break;
+		case 9:
+			foo = new SixDots;
 			break;
 	}
 }
@@ -178,7 +190,7 @@ void SystemTests::createNewFoo(int index)
 //            break;
 //            
 //    }
-	foo = new BeatCollector;
+	foo = new EverythingTester;
 }
 
 //  ================================================================
@@ -261,7 +273,17 @@ void ContinuousOutput::createNewFoo(int index)
 	foo = new ContinuousListener;
 }
 
+//  ================================================================
 
+BeatTestingManager::BeatTestingManager()
+{
+	maxFoodex = 6;
+}
+
+void BeatTestingManager::createNewFoo(int index)
+{
+	foo = new MeterWithFlash(index, *LITColor.spectrum[index]);
+}
 
 
 

@@ -16,7 +16,19 @@ class TwoColorParticleJam : public Foo
 {
 public:
 	TwoColorParticleJam(Color c1, Color c2);
+	
+	void changeColors(Color c1, Color c2);
 };
+
+class TCPJwL : public Foo
+{
+public:
+	TCPJwL();
+	void listen();
+	
+	int baseCycler;
+};
+
 
 #endif
 
