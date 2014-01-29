@@ -17,11 +17,20 @@
 //think of this space as a testing ground for free floating functions
 //in the future, we might group some of these functions into a class
 
+
+// these guys should probably deal with ints, and handle byte checking later
 extern byte	updateValue(byte parameter,
 						bool direction,
 						byte minVal,
 						byte maxVal,
 						bool doesCycle);
+
+extern byte updateValueBy(byte parameter,
+						  bool direction,
+						  byte amount,
+						  byte minVal,
+						  byte maxVal,
+						  bool doesCycle);
 
 extern byte shortDistance(byte x, byte y);
 extern byte longDistance(byte x, byte y);
