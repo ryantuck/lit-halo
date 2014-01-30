@@ -10,7 +10,7 @@
 
 EphemeralSnakesFoo::EphemeralSnakesFoo()
 {
-	maxFoos = 8;
+	maxFoos = 6;
 	
 	Step<EphemeralSnakesFoo>* aStep = new Step<EphemeralSnakesFoo>;
 	aStep->fnPtr = &EphemeralSnakesFoo::doStuff;
@@ -42,17 +42,8 @@ EphemeralSnake::EphemeralSnake()
 	color = LITColor.spectrum[rand()%12];
 	layer = rand()%5+1;
 	
-	//addLEDs(*color, maxBrightness, relevantAddress,relevantAddress);
-	
-	Step<EphemeralSnake>* growStep = new Step<EphemeralSnake>;
-	growStep->fnPtr = &EphemeralSnake::grow;
-	growStep->count = length;
-	addStep(growStep);
-	
-	Step<EphemeralSnake>* shrinkStep = new Step<EphemeralSnake>;
-	shrinkStep->fnPtr = &EphemeralSnake::shrink;
-	shrinkStep->count = length;
-	addStep(shrinkStep);
+	addStepWithFunction(&EphemeralSnake::grow,1,length);
+	addStepWithFunction(&EphemeralSnake::shrink,1,length);
 }
 
 EphemeralSnake::EphemeralSnake(int aAddress,
@@ -66,15 +57,8 @@ EphemeralSnake::EphemeralSnake(int aAddress,
 	color = aColor;
 	repeats = false;
 	
-	Step<EphemeralSnake>* growStep = new Step<EphemeralSnake>;
-	growStep->fnPtr = &EphemeralSnake::grow;
-	growStep->count = length;
-	addStep(growStep);
-	
-	Step<EphemeralSnake>* shrinkStep = new Step<EphemeralSnake>;
-	shrinkStep->fnPtr = &EphemeralSnake::shrink;
-	shrinkStep->count = length;
-	addStep(shrinkStep);
+	addStepWithFunction(&EphemeralSnake::grow,1,length);
+	addStepWithFunction(&EphemeralSnake::shrink,1,length);
 }
 
 void EphemeralSnake::grow()
@@ -99,9 +83,7 @@ void EphemeralSnake::shrink()
 
 EvenEphemSnakes::EvenEphemSnakes()
 {
-	Step<EvenEphemSnakes>* aStep = new Step<EvenEphemSnakes>;
-	aStep->fnPtr = &EvenEphemSnakes::checkForNoSnakes;
-	addStep(aStep);
+	addStepWithFunction<EvenEphemSnakes>(&EvenEphemSnakes::checkForNoSnakes,1);
 	
 	baseCycler = 0;
 }

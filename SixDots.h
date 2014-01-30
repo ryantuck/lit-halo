@@ -1,24 +1,25 @@
 //	########################################################################
 
-//  EventFoo.h
+//  SixDots.h
 
-//	7/30/13
+//	1/30/14
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__EventFoo__
-#define __LIT_Headband_Simulator__EventFoo__
+#ifndef __litHeadbandSimulator__SixDots__
+#define __litHeadbandSimulator__SixDots__
 
+#include "Foo.h"
 #include "MovingFoo.h"
 
-class EventFoo : public MovingFoo
+class SixDots : public Foo
 {
 public:
-	EventFoo();
+	SixDots();
+	void listen();
 	
-	int killCounter;
+	bool switcher;
 };
-
 
 
 #endif

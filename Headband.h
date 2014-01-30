@@ -25,7 +25,6 @@ class Headband
 public:
 
 	FooManager*	fooManager;
-	Battery		batt;
 	Button		upButton;
 	Button		downButton;
 	
@@ -34,9 +33,7 @@ public:
 	void update();
 	void updateLEDs();
 	void getAudio();
-
 	void checkButtons();
-	void checkBattery();
 };
 
 

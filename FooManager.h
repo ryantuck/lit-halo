@@ -26,13 +26,32 @@ public:
 	virtual void createNewFoo(int index);
 };
 
-// in progress testing
+//  ================================================================
+//	Master
+//	The best non-buggy foos we have.
+//  ================================================================
+class MasterFooManager : public FooManager
+{
+public:
+	MasterFooManager();
+	void createNewFoo(int index);
+};
+
+//  ================================================================
+//	Dev
+//	Stuff that's being tested.
+//  ================================================================
 class DevFooManager : public FooManager
 {
 public:
 	DevFooManager();
 	void createNewFoo(int index);
 };
+
+//  ================================================================
+//	Testing Managers
+//	Certain managers designed for certain tests.
+//  ================================================================
 
 // has seven foos that each react to a different band
 class BandFooManager : public FooManager
@@ -50,6 +69,26 @@ public:
     void createNewFoo(int index);
 };
 
+// live music listener (should work with processing example)
+class ContinuousOutput : public FooManager
+{
+public:
+	ContinuousOutput();
+	void createNewFoo(int index);
+};
+
+// has meters with flash for beat detection.
+class BeatTestingManager : public FooManager
+{
+public:
+	BeatTestingManager();
+	void createNewFoo(int index);
+};
+
+//  ================================================================
+//	Other Shit Managers
+//	Made for certain occasions.
+//  ================================================================
 
 // all red and green patterns
 class ChristmasManager : public FooManager
@@ -67,13 +106,7 @@ public:
 	void createNewFoo(int index);
 };
 
-// live music listener (should work with processing example)
-class ContinuousOutput : public FooManager
-{
-public:
-	ContinuousOutput();
-	void createNewFoo(int index);
-};
+
 
 
 

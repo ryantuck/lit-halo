@@ -36,6 +36,24 @@ extern byte updateValue(byte parameter,
 	return parameter;
 }
 
+extern byte updateValueBy(byte parameter,
+						  bool direction,
+						  byte amount,
+						  byte minVal,
+						  byte maxVal,
+						  bool doesCycle)
+{
+	byte x = parameter;
+	
+	for (int n=0;n<amount;n++)
+	{
+		x = updateValue(x, direction, minVal, maxVal, doesCycle);
+	}
+	
+	return x;
+}
+
+
 extern byte shortDistance(byte x, byte y)
 {
 	int difference = x-y;

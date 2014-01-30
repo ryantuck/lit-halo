@@ -57,9 +57,11 @@ MovingDot::MovingDot(Color aColor, bool aDirection, int aAddress)
 	
 	direction = aDirection;
 	
-	Step<MovingFoo>* m = new Step<MovingFoo>;
-	m->fnPtr = &MovingFoo::move;
-	addStep(m);
+//	Step<MovingFoo>* m = new Step<MovingFoo>;
+//	m->fnPtr = &MovingFoo::move;
+//	addStep(m);
+	
+	addStepWithFunction(&MovingFoo::move, 1);
 }
 
 

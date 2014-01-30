@@ -35,6 +35,14 @@ Audio::Audio()
 	silenceIntercepts[5] = 178.2;
 	silenceIntercepts[6] = 205.7;
 	
+	bandThresholds[0] = 60;
+	bandThresholds[1] = 80;
+	bandThresholds[2] = 80;
+	bandThresholds[3] = 80;
+	bandThresholds[4] = 80;
+	bandThresholds[5] = 80;
+	bandThresholds[6] = 80;
+	
 	for (int n=0;n<7;n++)
 	{
 		// set these values high so beat isn't automatically detected
@@ -91,7 +99,7 @@ bool Audio::checkForBeat(byte band)
 	//	Returns true if beat is detected.
 	
 	if (beatCounters[band] == 0)
-		if (eq.spectrum[band] - lastSpectrum[band] > 80)
+		if (eq.spectrum[band] - lastSpectrum[band] > bandThresholds[band])
 			return 1;
 	
 	return 0;

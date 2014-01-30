@@ -11,26 +11,27 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new ContinuousOutput();
+	fooManager = new MasterFooManager();
 }
 
 void Headband::update()
 {
 	checkButtons();
-//	checkBattery();
 	getAudio();
 	updateLEDs();
 }
 
 void Headband::checkButtons()
 {
-    upButton.checkState();
-    downButton.checkState();
-    
+	bool hardware = true;
+	if (hardware)
+	{
+		upButton.checkState();
+		downButton.checkState();
+	}
+	
 	if (upButton.pressed)
 	{
-        Serial.println("up button pressed by default");
-        
 		fooManager->foodex = updateValue(fooManager->foodex,
 										up,
 										0,
@@ -66,19 +67,7 @@ void Headband::updateLEDs()
 	fooManager->foo->update();
 }
 
-//	================================================================
 
-void Headband::checkBattery()
-{
-	// read battery voltage and 3V line
-//	int v = batt.voltage();
-//	int t = analogRead(7); // this checks 3V line
-	
-	// based on empirical relationship, determine batt percentage
-	
-	// based on batt percentage, do something.
-	//  possibly shut off if too low? 
-}
 
 
 

@@ -14,10 +14,7 @@ BatteryFoo::BatteryFoo()
 	valueCounter	= 0;
 	repeats			= false;
 	
-	Step<BatteryFoo>* a = new Step<BatteryFoo>;
-	a->fnPtr = &BatteryFoo::readAndCalculate;
-	a->count = 1;
-	addStep(a);
+	addStepWithFunction(&BatteryFoo::readAndCalculate, 1, 1);
 }
 
 void BatteryFoo::readAndCalculate()
@@ -26,11 +23,8 @@ void BatteryFoo::readAndCalculate()
 	int pct = batt.percentage();
 	int ledsToTurnOn = pct * 32 / 100;
 	value = ledsToTurnOn;
-	
-	Step<BatteryFoo>* b = new Step<BatteryFoo>;
-	b->fnPtr = &BatteryFoo::grow;
-	b->count = value;
-	addStep(b);
+
+	addStepWithFunction(&BatteryFoo::grow, 1, value);
 }
 
 void BatteryFoo::grow()

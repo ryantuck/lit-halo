@@ -18,9 +18,7 @@ BrightnessFrequency::BrightnessFrequency()
 		addLEDs(LITColor.green, maxBrightness, 4*n+start, 4*n+start);
 	}
 	
-	Step<BrightnessFrequency>* aStep = new Step<BrightnessFrequency>;
-	aStep->fnPtr = &BrightnessFrequency::listenUp;
-	addStep(aStep);
+	addStepWithFunction(&BrightnessFrequency::listenUp, 1);
 }
 
 BrightnessFrequency::BrightnessFrequency(int aBand,Color aColor,int aStart)
@@ -33,9 +31,7 @@ BrightnessFrequency::BrightnessFrequency(int aBand,Color aColor,int aStart)
 		addLEDs(aColor, maxBrightness, 4*n+start, 4*n+start);
 	}
 	
-	Step<BrightnessFrequency>* aStep = new Step<BrightnessFrequency>;
-	aStep->fnPtr = &BrightnessFrequency::listenUp;
-	addStep(aStep);
+	addStepWithFunction(&BrightnessFrequency::listenUp, 1);
 	
 }
 

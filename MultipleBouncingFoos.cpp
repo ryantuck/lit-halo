@@ -12,19 +12,23 @@ MultipleBouncingFoo::MultipleBouncingFoo()
 {	
 	for (int n=0;n<4;n++)
 	{
-		MovingFoo* aFoo = new MovingFoo;
-		aFoo->addLEDs(*LITColor.colorList[n], maxBrightness, n*8, n*8);
-		Step<MovingFoo>* aStep = new Step<MovingFoo>;
-		aStep->fnPtr	= &MovingFoo::move;
-		aStep->period	= n+1;
-		aFoo->addStep(aStep);
-		aFoo->direction = 1;
-		addFoo(aFoo);
+		MovingDot* aDot = new MovingDot(*LITColor.colorList[n], up, n*8);
+		aDot->steps.entry(0)->me->period = n+1;
+		addFoo(aDot);
 	}
+		
+	// this is a cool implementation with only one dot moving at a time
+//	for (int n=0;n<8;n++)
+//	{
+//		MovingDot* aDot = new MovingDot(*LITColor.spectrum[n],0,4*n);
+//		aDot->steps.entry(0)->me->period = 1000;
+//		addFoo(aDot);
+//	}
+//	MovingDot* aDot = new MovingDot(LITColor.blue,0,0);
+//	aDot->steps.entry(0)->me->period = 1;
+//	addFoo(aDot);
 	
-	Step<MultipleBouncingFoo>* myStep = new Step<MultipleBouncingFoo>;
-	myStep->fnPtr = &MultipleBouncingFoo::checkForBounces;
-	addStep(myStep);
+	addStepWithFunction(&MultipleBouncingFoo::checkForBounces,1);
 }
 
 MultipleBouncingFoo::MultipleBouncingFoo(int number)
@@ -33,19 +37,12 @@ MultipleBouncingFoo::MultipleBouncingFoo(int number)
 	{
 		int x = numLEDs/number;
 		
-		MovingFoo* aFoo = new MovingFoo;
-		aFoo->addLEDs(*LITColor.spectrum[n], maxBrightness, n*x, n*x);
-		Step<MovingFoo>* aStep = new Step<MovingFoo>;
-		aStep->fnPtr	= &MovingFoo::move;
-		aStep->period	= n+1;
-		aFoo->addStep(aStep);
-		aFoo->direction = 1;
-		addFoo(aFoo);
+		MovingDot* aDot = new MovingDot(*LITColor.colorList[n], up, n*x);
+		aDot->steps.entry(0)->me->period = n+1;
+		addFoo(aDot);
 	}
 	
-	Step<MultipleBouncingFoo>* myStep = new Step<MultipleBouncingFoo>;
-	myStep->fnPtr = &MultipleBouncingFoo::checkForBounces;
-	addStep(myStep);
+	addStepWithFunction(&MultipleBouncingFoo::checkForBounces,1);
 }
 
 

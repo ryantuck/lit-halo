@@ -1,10 +1,10 @@
-//
+//	########################################################################
+
 //  RainbowPulser.cpp
-//  litHeadbandSimulator
-//
-//  Created by Alyssa Lerch on 12/20/13.
-//  Copyright (c) 2013 Ryan Tuck. All rights reserved.
-//
+
+//	12/20/13
+
+//	########################################################################
 
 #include "RainbowPulser.h"
 
@@ -14,9 +14,7 @@ RainbowPulser::RainbowPulser()
 	counter			= 0;
 	isIncreasing	= true;
 	
-	Step<RainbowPulser>* aStep = new Step<RainbowPulser>;
-	aStep->fnPtr = &RainbowPulser::drawNewLine;
-	addStep(aStep);
+	addStepWithFunction(&RainbowPulser::drawNewLine,1);
 }
 
 void RainbowPulser::drawNewLine()

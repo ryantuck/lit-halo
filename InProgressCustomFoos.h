@@ -11,47 +11,15 @@
 
 #include "Foo.h"
 #include "MovingFoo.h"
-#include "ListenerFoo.h"
 #include "EphemeralSnakesFoo.h"
 #include "RainbowLine.h"
 #include <math.h>
 #include "LITFunctions.h"
 #include "SystemMonitors.h"
-
 #include "Stats.h"
+#include "BandMeterFoo.h"
+#include "InAndOutFader.h"
 
-
-class TestingFoo : public Foo
-{
-public:
-	TestingFoo();
-	int counter;
-	void checkForSwitch();
-};
-
-class BackgroundStepper : public MovingFoo
-{
-public:
-	BackgroundStepper();
-};
-
-class Sparkle : public Foo
-{
-public:
-	Sparkle();
-	void flicker();
-	void changeColor();
-	
-	int index;
-};
-
-class Pulsater : public Foo
-{
-public:
-	Pulsater();
-	void upBrightness();
-	void downBrightness();
-};
 
 class ListenerWithBunch : public Foo
 {
@@ -66,219 +34,96 @@ public:
 	FiniteBunch();
 };
 
-class DRwithListener : public Foo
+class SlowMovingDot : public Foo
 {
 public:
-	DRwithListener();
+	SlowMovingDot();
+	
+	void changeEdges();
+	void changeEntries();
+	void changeAddresses();
+	
+	int back;
+	int middle;
+	int lead;
 };
 
-class SparkleWithListener : public Sparkle
+class BrightnessTest : public Foo
 {
 public:
-	SparkleWithListener();
-	void changeColor();
-	
-	int index;
+	BrightnessTest();
 };
 
-class BigAudioTester : public Foo
+class SuperSlowDot : public Foo
 {
 public:
-	BigAudioTester();
-	void collect1KDataPoints();
-	void displayData();
-	void serialPrintData();
-	void setUpLEDs();
+	SuperSlowDot();
 	
-	int spectrumData[7];
-	int count;
-	int rollingIndex;
-};
-
-class BinaryTester : public Foo
-{
-public:
-	BinaryTester();
-	void increment();
+	void changeBrightness();
+	void moveBack();
 	
-	int number;
-};
-
-class VarianceTester : public Foo
-{
-public:
-	VarianceTester(int aBand);
-	void increment();
-	void computeVariance();
-	void resetValues();
-	
-	int dataPoints[100];
-	
-	double	variance;
-	int		index;
-	int		band;
-	double	avg;
-	
-};
-
-class EverythingTester : public Foo
-{
-public:
-	EverythingTester();
-	void collectData();
-	void displayData();
-	void updateParameters();
-	void changeFoos();
-	
-	int numSamples;
-	int sampleCount;
-	
-	int potIndex;
 	int brIndex;
-	int numIndex;
 	
-	int spectrumData[7];
-	
-	Stats* stats[7];
+	int leadAddress;
+	int leadIndex;
+	int trailIndex;
 };
 
-class BeatCollector : public Foo
+class ASlowDot : public Foo
 {
 public:
-	BeatCollector();
-	
-	
-	void stopLight();
-	void collectData();
-	void printData();
-	
-	int sampleCount;
-	int lightCounter;
-	int dataPoints;
-	
-	byte specData[7][100];
-	
+	ASlowDot();
 };
 
-class FullSongListener : public Foo
+class TwoSnakes : public Foo
 {
 public:
-	FullSongListener();
-	
-	void collectData();
+	TwoSnakes();
 };
 
-class RedGreenMover : public Foo
+class ZeroColorSwitcher : public Foo
 {
 public:
-	RedGreenMover();
+	ZeroColorSwitcher();
+	void checkForColorTriggers();
 	
+	MovingFoo* thisGuy;
 	
-};
-
-class RedGreenPulser : public Foo
-{
-public:
-	RedGreenPulser();
-	
-	void redUpGreenDown();
-	void redDownGreenUp();
-	
-	int pulseCounter;
-};
-
-class RedGreenAlternater : public Foo
-{
-public:
-	RedGreenAlternater();
-	
-	void aUp();
-	void bUp();
-	
-	void add1Up();
-	void add2Up();
-	
-	int add1;
-	int add2;
-};
-
-class ChristmasSnakes : public Foo
-{
-public:
-	ChristmasSnakes();
-	
-	void checkForNoSnakes();
-	
-	int numSnakes;
-	
-	int count;
-	
-	int baseCycler;
-};
-
-class ChristmasSparkler : public Foo
-{
-public:
-	ChristmasSparkler();
-	
-	void newSparkle();
-	void stall();
-	bool checkAddresses(int x);
-	
-	Color rgw[3];
-	
-	int totalSparkles;
-	
-	int colorCount;
-};
-
-class InAndOutFader : public Foo
-{
-public:
-	InAndOutFader(Color aColor, int addr);
-	
-	void getBrighter();
-	
-	void dimDown();
-	
-	void fade();
-	
-	int totalIterations;
-};
-
-class JoshFoo : public MovingFoo
-{
-public:
-	JoshFoo();
-	
-	void changeColor();
+	AddressedLED* headLED;
+	AddressedLED* tailLED;
 	
 	int colorIndex;
+	bool isPassing;
 };
 
-class TwoMovers : public Foo
+class TenDotFaders : public Foo
 {
 public:
-	TwoMovers();
+	TenDotFaders();
+	void checkForFoos();
+	void addTen();
 };
 
-class RainbowShooter : public Foo
+class MovingFadingDot : public Foo
 {
 public:
-	RainbowShooter();
+	MovingFadingDot();
+	void reduceBrightness();
 	
-	void addNewDot();
-	
-	int colorCount;
+	AddressedLED* theLED;
 };
 
-class SwitchingDR : public Foo
+class LotsOfMovingFadingDots : public Foo
 {
 public:
-	SwitchingDR();
+	LotsOfMovingFadingDots();
+	void checkFoos();
 	
-	void checkers();
+	int maxFoos;
 };
+
+
+
 
 #endif
 

@@ -12,7 +12,7 @@ FooManager::FooManager()
 {
 	foo			= new BatteryFoo;
 	foodex		= 0;
-	maxFoodex	= 8;
+	maxFoodex	= 1;
 }
 
 void FooManager::update()
@@ -33,28 +33,40 @@ void FooManager::updateFoo(int index)
 
 void FooManager::createNewFoo(int index)
 {
+	foo = new DoubleRainbow;
+}
+
+//  ================================================================
+//  ================================================================
+//  ================================================================
+
+
+MasterFooManager::MasterFooManager()
+{
+	maxFoodex = 5;
+}
+
+void MasterFooManager::createNewFoo(int index)
+{
 	switch (index)
 	{
 		case 0:
-			foo = new DoubleRainbow;
+			foo = new RainbowPulser;
 			break;
 		case 1:
 			foo = new MultipleBouncingFoo;
 			break;
 		case 2:
-			foo = new Sparkle;
-			break;
-		case 3:
-			foo = new BF4;
-			break;
-		case 4:
-			foo = new Bunch;
-			break;
-		case 5:
 			foo = new EvenEphemSnakes;
 			break;
-		case 6:
-			foo = new CirclesFoo;
+		case 3:
+			foo = new Bunch;
+			break;
+		case 4:
+			foo = new TCPJwL();
+			break;
+		case 5:
+			foo = new Pulse4;
 			break;
 	}
 }
@@ -63,7 +75,7 @@ void FooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 7;
+	maxFoodex = 6;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -89,18 +101,15 @@ void DevFooManager::createNewFoo(int index)
             foo = new DoubleRainbow;
             break;
         case 6:
-            foo = new TestingFoo;
-            break;
-        case 7:
-            foo = new BackgroundStepper;
-            break;
-        case 8:
             foo = new Sparkle;
             break;
 	}
 }
 
 //  ================================================================
+//  ================================================================
+//  ================================================================
+
 
 BandFooManager::BandFooManager()
 {
@@ -138,10 +147,37 @@ void SystemTests::createNewFoo(int index)
 //            break;
 //            
 //    }
-	foo = new BeatCollector;
+	foo = new EverythingTester;
 }
 
 //  ================================================================
+
+ContinuousOutput::ContinuousOutput()
+{
+	maxFoodex = 1;
+}
+
+void ContinuousOutput::createNewFoo(int index)
+{
+	foo = new ContinuousListener;
+}
+
+//  ================================================================
+
+BeatTestingManager::BeatTestingManager()
+{
+	maxFoodex = 6;
+}
+
+void BeatTestingManager::createNewFoo(int index)
+{
+	foo = new MeterWithFlash(index, *LITColor.spectrum[index]);
+}
+
+//  ================================================================
+//  ================================================================
+//  ================================================================
+
 
 ChristmasManager::ChristmasManager()
 {
@@ -169,7 +205,6 @@ void ChristmasManager::createNewFoo(int index)
 			break;
 	}
 }
-
 
 //  ================================================================
 
@@ -208,25 +243,6 @@ void StillManager::createNewFoo(int index)
 			break;
 	}
 }
-
-//  ================================================================
-
-ContinuousOutput::ContinuousOutput()
-{
-	maxFoodex = 1;
-}
-
-void ContinuousOutput::createNewFoo(int index)
-{
-	foo = new FullSongListener;
-}
-
-
-
-
-
-
-
 
 
 
