@@ -52,3 +52,42 @@ void BandMeterFoo::drawLine()
 	
 	addLEDs(bandColor, maxBrightness, 0, ratio);
 }
+
+
+// ================================================================
+
+MeterWithFlash::MeterWithFlash(int aBand, Color aColor)
+{
+	BandMeterFoo* x = new BandMeterFoo(aBand, aColor);
+	addFoo(x);
+	
+	band = aBand;
+	
+	addStepWithFunction(&MeterWithFlash::listen, 1);
+}
+
+void MeterWithFlash::listen()
+{
+	if (audio.beatJustDetected(band))
+	{
+		DotFlash* a = new DotFlash(10);
+		addFoo(a);
+	}
+}
+
+DotFlash::DotFlash(int addr)
+{
+	repeats = false;
+	
+	addLEDs(LITColor.white, maxBrightness, addr, addr);
+	
+	addStepWithFunction(&DotFlash::shine, 1, 6);
+}
+
+void DotFlash::shine()
+{
+	
+}
+
+
+

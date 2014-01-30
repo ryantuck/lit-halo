@@ -30,6 +30,22 @@ public:
 };
 
 
+class MeterWithFlash : public Foo
+{
+public:
+	MeterWithFlash(int aBand, Color aColor);
+	void listen();
+	int band;
+};
+
+class DotFlash : public Foo
+{
+public:
+	DotFlash(int addr);
+	void shine();
+};
+
+
 
 
 #endif
