@@ -315,15 +315,123 @@ void LotsOfMovingFadingDots::checkFoos()
 // ========================================================================
 
 
+PairHolder::PairHolder()
+{
+	DotPair* x1 = new DotPair(true);
+	DotPair* x2 = new DotPair(false);
+	addFoo(x1);
+	addFoo(x2);
+	
+}
+
+void PairHolder::checkForFoos()
+{
+	if (!hasFoos())
+	{
+		int s = 16;
+		
+		if (startAtZero)
+		{
+			s = 0;
+		}
+		startAtZero = !startAtZero;
+		
+		SlowingDot* a = new SlowingDot(s);
+		SpeedingDot* b = new SpeedingDot(s);
+		addFoo(a);
+		addFoo(b);
+	}
+}
 
 
+SlowingDot::SlowingDot(int start)
+{
+	addLEDs(LITColor.red, maxBrightness, start, start);
+	addStepWithFunction(&SlowingDot::iterate, 1, 35);
+	direction	= up;
+	sPeriod		= 5;
+	spCounter	= 0;
+	sMoves		= 1;
+	smCounter	= 0;
+	
+	repeats = false;
+}
 
+void SlowingDot::iterate()
+{
+	spCounter++;
+	
+	if (spCounter == sPeriod)
+	{
+		move();
+		spCounter = 0;
+		
+		smCounter++;
+		if (smCounter == sMoves)
+		{
+			sPeriod--;
+			sMoves++;
+			smCounter = 0;
+		}
+	}
+}
 
+SpeedingDot::SpeedingDot(int start)
+{
+	addLEDs(LITColor.blue, maxBrightness, start, start);
+	addStepWithFunction(&SpeedingDot::iterate, 1, 35);
+	direction	= up;
+	sPeriod		= 1;
+	spCounter	= 0;
+	sMoves		= 5;
+	smCounter	= 0;
+	
+	repeats = false;
+}
 
+void SpeedingDot::iterate()
+{
+	spCounter++;
+	
+	if (spCounter == sPeriod)
+	{
+		move();
+		spCounter = 0;
+		
+		smCounter++;
+		if (smCounter == sMoves)
+		{
+			sPeriod++;
+			sMoves--;
+			smCounter = 0;
+		}
+	}
+}
 
+DotPair::DotPair(bool start)
+{
+	startAtZero = start;
+	addStepWithFunction(&DotPair::checkForFoos, 1);
+}
 
-
-
+void DotPair::checkForFoos()
+{
+	if (!hasFoos())
+	{
+		int s = 16;
+		
+		if (startAtZero)
+		{
+			s = 0;
+		}
+		startAtZero = !startAtZero;
+		
+		SlowingDot* a = new SlowingDot(s);
+		SpeedingDot* b = new SpeedingDot(s);
+		addFoo(a);
+		addFoo(b);
+	}
+}
 
 
 

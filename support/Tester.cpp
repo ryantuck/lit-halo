@@ -13,6 +13,21 @@ Tester::Tester()
 	
 }
 
+void Tester::ptrTesting()
+{
+	int a = 5;
+	
+	int* aPtr;
+	
+	aPtr = &a;
+	
+	*aPtr = 6;
+	
+	Serial.print("a = ");
+	Serial.println(a);
+	
+}
+
 void Tester::functionTesting()
 {
 	int a = shortDistance(0, 16);

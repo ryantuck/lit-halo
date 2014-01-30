@@ -6,8 +6,8 @@
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__InProgressCustomFoos__
-#define __LIT_Headband_Simulator__InProgressCustomFoos__
+#ifndef __InProgressCustomFoos__
+#define __InProgressCustomFoos__
 
 #include "Foo.h"
 #include "MovingFoo.h"
@@ -122,6 +122,48 @@ public:
 	int maxFoos;
 };
 
+class PairHolder : public Foo
+{
+public:
+	PairHolder();
+	void checkForFoos();
+	
+	bool startAtZero;
+	
+};
+
+class SlowingDot : public MovingFoo
+{
+public:
+	SlowingDot(int start);
+	void iterate();
+	
+	int sPeriod;
+	int spCounter;
+	int sMoves;
+	int smCounter;
+};
+
+class SpeedingDot : public MovingFoo
+{
+public:
+	SpeedingDot(int start);
+	void iterate();
+	
+	int sPeriod;
+	int spCounter;
+	int sMoves;
+	int smCounter;
+};
+
+class DotPair : public Foo
+{
+public:
+	DotPair(bool start);
+	void checkForFoos();
+	
+	bool startAtZero;
+};
 
 
 
