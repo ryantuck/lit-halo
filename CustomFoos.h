@@ -6,41 +6,63 @@
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__CustomFoos__
-#define __LIT_Headband_Simulator__CustomFoos__
+#ifndef __CustomFoos__
+#define __CustomFoos__
 
-// good to go
+
+
+//  ================================================================
+//	Good
+//  ================================================================
+
+//	Audio
+//	========================================
 #include "BandMeterFoo.h"
-#include "SystemMonitors.h"
-#include "AllSingleColors.h"
-#include "RainbowLine.h"
+#include "Bunch.h"
 #include "TwoColorParticleJam.h"
+
+//	Non-audio
+//	========================================
 #include "Pulses.h"
 #include "RainbowPulser.h"
+#include "EphemeralSnakesFoo.h"
+#include "MultipleBouncingFoos.h"
+
+//	LED Setups
+//	========================================
+#include "AllSingleColors.h"
+#include "RainbowLine.h"
+#include "StillFoos.h"
+
+//	Testing
+//	========================================
+#include "SystemMonitors.h"
+#include "BeatCollector.h"
+#include "ContinuousListener.h"
+#include "EverythingTester.h"
+
+//	System
+//	========================================
+#include "BatteryFoo.h"
+
+//  ================================================================
+//	In Progress
+//  ================================================================
+
+#include "InProgressCustomFoos.h"
+
 #include "HiToLowBrightnessTrail.h"
 #include "Sparkle.h"
 #include "Pulsater.h"
-#include "EverythingTester.h"
-#include "BeatCollector.h"
-#include "ContinuousListener.h"
 #include "ChristmasFoos.h"
-
-// need work
 #include "BrightnessFrequency.h"
-#include "Bunch.h"
-#include "EphemeralSnakesFoo.h"
-#include "MultipleBouncingFoos.h"
 #include "OscillatingFoo.h"
 #include "SixDots.h"
 #include "TwoLines.h"
 
-#include "BatteryFoo.h"
 
-// stills
-#include "StillFoos.h"
 
-// testing
-#include "InProgressCustomFoos.h"
+
 
 
 
