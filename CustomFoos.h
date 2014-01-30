@@ -59,6 +59,7 @@
 #include "OscillatingFoo.h"
 #include "SixDots.h"
 #include "TwoLines.h"
+#include "InAndOutFader.h"
 
 
 
