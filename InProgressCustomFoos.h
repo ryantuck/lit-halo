@@ -157,6 +157,7 @@ public:
 	AddressedLED* head1;
 	AddressedLED* tail2;
 	
+	int addrCheck;
 };
 
 

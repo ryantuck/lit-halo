@@ -387,13 +387,13 @@ TwoLines::TwoLines()
 	MovingFoo* a2 = new MovingFoo;
 	
 	a1->addLEDs(LITColor.red, maxBrightness, 0, 3);
-	a2->addLEDs(LITColor.green, maxBrightness, 28, 31);
+	a2->addLEDs(LITColor.blue, maxBrightness, 16, 19);
 	
 	a1->direction = up;
 	a2->direction = down;
 	
-	a1->addStepWithFunction(&MovingFoo::move, 1);
-	a2->addStepWithFunction(&MovingFoo::move, 1);
+	a1->addStepWithFunction(&MovingFoo::move, 4);
+	a2->addStepWithFunction(&MovingFoo::move, 4);
 	
 	addFoo(a1);
 	addFoo(a2);
@@ -404,35 +404,42 @@ TwoLines::TwoLines()
 	areSameColor = false;
 	
 	addStepWithFunction(&TwoLines::checkForOverlap, 1);
+	
+	addrCheck = 45; // for now
 }
 
 void TwoLines::checkForOverlap()
 {
 	if (head1->address == tail2->address)
 	{
-		// overlapping
-		
-		if (areSameColor)
+		if (head1->address != addrCheck)
 		{
-			// change colors to independent colors
-			for (int n=0;n<4;n++)
+			// overlapping
+			
+			if (areSameColor)
 			{
-				foos.entry(0)->me->fLEDs.entry(n)->me->color.setColor(LITColor.red);
-				foos.entry(1)->me->fLEDs.entry(n)->me->color.setColor(LITColor.green);
+				// change colors to independent colors
+				for (int n=0;n<4;n++)
+				{
+					foos.entry(0)->me->fLEDs.entry(n)->me->color.setColor(LITColor.red);
+					foos.entry(1)->me->fLEDs.entry(n)->me->color.setColor(LITColor.blue);
+				}
 			}
-		}
-		else
-		{
-			// make colors the same
-			for (int n=0;n<4;n++)
+			else
 			{
-				foos.entry(0)->me->fLEDs.entry(n)->me->color.setColor(LITColor.yellow);
-				foos.entry(1)->me->fLEDs.entry(n)->me->color.setColor(LITColor.yellow);
-				
+				// make colors the same
+				for (int n=0;n<4;n++)
+				{
+					foos.entry(0)->me->fLEDs.entry(n)->me->color.setColor(LITColor.magenta);
+					foos.entry(1)->me->fLEDs.entry(n)->me->color.setColor(LITColor.magenta);
+					
+				}
 			}
+			
+			areSameColor = !areSameColor;
+			addrCheck = head1->address;
+
 		}
-		
-		areSameColor = !areSameColor;
 	}
 }
 
