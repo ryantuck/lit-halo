@@ -54,21 +54,6 @@ public:
 	BrightnessTest();
 };
 
-class MeterWithFlash : public Foo
-{
-public:
-	MeterWithFlash(int aBand, Color aColor);
-	void listen();
-	int band;
-};
-
-class DotFlash : public Foo
-{
-public:
-	DotFlash(int addr);
-	void shine();
-};
-
 class SuperSlowDot : public Foo
 {
 public:
@@ -88,15 +73,6 @@ class ASlowDot : public Foo
 {
 public:
 	ASlowDot();
-};
-
-class SixDots : public Foo
-{
-public:
-	SixDots();
-	void listen();
-	
-	bool switcher;
 };
 
 class TwoSnakes : public Foo
@@ -144,20 +120,6 @@ public:
 	void checkFoos();
 	
 	int maxFoos;
-};
-
-class TwoLines : public Foo
-{
-public:
-	TwoLines();
-	void checkForOverlap();
-	
-	bool areSameColor;
-	
-	AddressedLED* head1;
-	AddressedLED* tail2;
-	
-	int addrCheck;
 };
 
 

@@ -31,6 +31,8 @@
 #include "EphemeralSnakesFoo.h"
 #include "MultipleBouncingFoos.h"
 #include "OscillatingFoo.h"
+#include "SixDots.h"
+#include "TwoLines.h"
 
 #include "BatteryFoo.h"
 
