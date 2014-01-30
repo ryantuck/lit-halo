@@ -318,19 +318,26 @@ void LotsOfMovingFadingDots::checkFoos()
 PairHolder::PairHolder()
 {
 	DotPair* x1 = new DotPair(true);
-	DotPair* x2 = new DotPair(false);
+	//DotPair* x2 = new DotPair(false);
 	addFoo(x1);
-	addFoo(x2);
+	//addFoo(x2);
 	
 }
 
 
-SpeedChangerDot::SpeedChangerDot(Color aColor, int start, bool increasing)
+SpeedChangerDot::SpeedChangerDot(Color aColor, int start, bool increasing, int longest)
 {
 	repeats = false;
 	
+	int total = 0;
+	for (int n=0;n<longest;n++)
+	{
+		int iter = (n+1)*(longest-n);
+		total += iter;
+	}
+	
 	addLEDs(aColor, maxBrightness, start, start);
-	addStepWithFunction(&SpeedChangerDot::iterate, 1, 35);
+	addStepWithFunction(&SpeedChangerDot::iterate, 1, total);
 	isIncreasing = increasing;
 	
 	direction	= up;
@@ -340,11 +347,11 @@ SpeedChangerDot::SpeedChangerDot(Color aColor, int start, bool increasing)
 	if (isIncreasing)
 	{
 		per	= 1;
-		mov	= 5;
+		mov	= longest;
 	}
 	else
 	{
-		per	= 5;
+		per	= longest;
 		mov	= 1;
 	}
 }
@@ -391,13 +398,13 @@ void DotPair::checkForFoos()
 	{
 		int s = 16;
 		if (startAtZero) s = 0;
-		startAtZero = !startAtZero;
+		//startAtZero = !startAtZero;
 		
 		index = updateValue(index, up, 0, 5, cycles);
 		int index2 = updateValueBy(index, up, 2, 0, 5, cycles);
 		
-		SpeedChangerDot* a = new SpeedChangerDot(*LITColor.colorList[index],s,true);
-		SpeedChangerDot* b = new SpeedChangerDot(*LITColor.colorList[index2],s,false);
+		SpeedChangerDot* a = new SpeedChangerDot(*LITColor.colorList[index],s,true,7);
+		SpeedChangerDot* b = new SpeedChangerDot(*LITColor.colorList[index2],s,false,7);
 
 		addFoo(a);
 		addFoo(b);
