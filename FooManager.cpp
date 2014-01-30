@@ -37,6 +37,9 @@ void FooManager::createNewFoo(int index)
 }
 
 //  ================================================================
+//  ================================================================
+//  ================================================================
+
 
 MasterFooManager::MasterFooManager()
 {
@@ -104,76 +107,9 @@ void DevFooManager::createNewFoo(int index)
 }
 
 //  ================================================================
-
-NonAudioManager::NonAudioManager()
-{
-	maxFoodex = 12;
-}
-
-void NonAudioManager::createNewFoo(int index)
-{
-	switch (index)
-	{
-		case 0:
-			foo = new RainbowPulser;
-			break;
-		case 1:
-			foo = new TCPJwL;
-			break;
-		case 2:
-			foo = new Pulse4;
-			break;
-		case 3:
-			foo = new EvenEphemSnakes;
-			break;
-		case 4:
-			foo = new MultipleBouncingFoo;
-			break;
-		case 5:
-			foo = new Bunch;
-			break;
-		case 6:
-			foo = new SuperSlowDot;
-			break;
-		case 7:
-			foo = new BrightnessTest;
-			break;
-		case 8:
-			foo = new ZeroColorSwitcher;
-			break;
-		case 9:
-			foo = new SixDots;
-			break;
-		case 10:
-			foo = new TenDotFaders;
-			break;
-		case 11:
-			foo = new LotsOfMovingFadingDots;
-			break;
-		case 12:
-			foo = new TwoLines;
-			break;
-	}
-}
-
+//  ================================================================
 //  ================================================================
 
-AudioFooManager::AudioFooManager()
-{
-	maxFoodex = 0;
-}
-
-void AudioFooManager::createNewFoo(int index)
-{
-	switch (index)
-	{
-		case 0:
-			foo = new Sparkle;
-			break;
-	}
-}
-
-//  ================================================================
 
 BandFooManager::BandFooManager()
 {
@@ -216,6 +152,33 @@ void SystemTests::createNewFoo(int index)
 
 //  ================================================================
 
+ContinuousOutput::ContinuousOutput()
+{
+	maxFoodex = 1;
+}
+
+void ContinuousOutput::createNewFoo(int index)
+{
+	foo = new ContinuousListener;
+}
+
+//  ================================================================
+
+BeatTestingManager::BeatTestingManager()
+{
+	maxFoodex = 6;
+}
+
+void BeatTestingManager::createNewFoo(int index)
+{
+	foo = new MeterWithFlash(index, *LITColor.spectrum[index]);
+}
+
+//  ================================================================
+//  ================================================================
+//  ================================================================
+
+
 ChristmasManager::ChristmasManager()
 {
 	maxFoodex = 4;
@@ -242,7 +205,6 @@ void ChristmasManager::createNewFoo(int index)
 			break;
 	}
 }
-
 
 //  ================================================================
 
@@ -281,35 +243,6 @@ void StillManager::createNewFoo(int index)
 			break;
 	}
 }
-
-//  ================================================================
-
-ContinuousOutput::ContinuousOutput()
-{
-	maxFoodex = 1;
-}
-
-void ContinuousOutput::createNewFoo(int index)
-{
-	foo = new ContinuousListener;
-}
-
-//  ================================================================
-
-BeatTestingManager::BeatTestingManager()
-{
-	maxFoodex = 6;
-}
-
-void BeatTestingManager::createNewFoo(int index)
-{
-	foo = new MeterWithFlash(index, *LITColor.spectrum[index]);
-}
-
-
-
-
-
 
 
 

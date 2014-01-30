@@ -26,7 +26,10 @@ public:
 	virtual void createNewFoo(int index);
 };
 
-// best we've got
+//  ================================================================
+//	Master
+//	The best non-buggy foos we have.
+//  ================================================================
 class MasterFooManager : public FooManager
 {
 public:
@@ -34,7 +37,10 @@ public:
 	void createNewFoo(int index);
 };
 
-// in progress testing
+//  ================================================================
+//	Dev
+//	Stuff that's being tested.
+//  ================================================================
 class DevFooManager : public FooManager
 {
 public:
@@ -42,25 +48,16 @@ public:
 	void createNewFoo(int index);
 };
 
+//  ================================================================
+//	Testing Managers
+//	Certain managers designed for certain tests.
+//  ================================================================
+
 // has seven foos that each react to a different band
 class BandFooManager : public FooManager
 {
 public:
 	BandFooManager();
-	void createNewFoo(int index);
-};
-
-class NonAudioManager : public FooManager
-{
-public:
-	NonAudioManager();
-	void createNewFoo(int index);
-};
-
-class AudioFooManager : public FooManager
-{
-public:
-	AudioFooManager();
 	void createNewFoo(int index);
 };
 
@@ -72,6 +69,26 @@ public:
     void createNewFoo(int index);
 };
 
+// live music listener (should work with processing example)
+class ContinuousOutput : public FooManager
+{
+public:
+	ContinuousOutput();
+	void createNewFoo(int index);
+};
+
+// has meters with flash for beat detection.
+class BeatTestingManager : public FooManager
+{
+public:
+	BeatTestingManager();
+	void createNewFoo(int index);
+};
+
+//  ================================================================
+//	Other Shit Managers
+//	Made for certain occasions.
+//  ================================================================
 
 // all red and green patterns
 class ChristmasManager : public FooManager
@@ -89,20 +106,7 @@ public:
 	void createNewFoo(int index);
 };
 
-// live music listener (should work with processing example)
-class ContinuousOutput : public FooManager
-{
-public:
-	ContinuousOutput();
-	void createNewFoo(int index);
-};
 
-class BeatTestingManager : public FooManager
-{
-public:
-	BeatTestingManager();
-	void createNewFoo(int index);
-};
 
 
 
