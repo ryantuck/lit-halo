@@ -132,28 +132,19 @@ public:
 	
 };
 
-class SlowingDot : public MovingFoo
-{
-public:
-	SlowingDot(int start);
-	void iterate();
-	
-	int sPeriod;
-	int spCounter;
-	int sMoves;
-	int smCounter;
-};
 
-class SpeedingDot : public MovingFoo
+
+class SpeedChangerDot : public MovingFoo
 {
 public:
-	SpeedingDot(int start);
+	SpeedChangerDot(Color aColor, int start, bool increasing);
 	void iterate();
 	
-	int sPeriod;
-	int spCounter;
-	int sMoves;
-	int smCounter;
+	bool isIncreasing;
+	int per;
+	int pCounter;
+	int mov;
+	int mCounter;
 };
 
 class DotPair : public Foo
@@ -163,6 +154,7 @@ public:
 	void checkForFoos();
 	
 	bool startAtZero;
+	int index;
 };
 
 

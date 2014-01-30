@@ -324,86 +324,56 @@ PairHolder::PairHolder()
 	
 }
 
-void PairHolder::checkForFoos()
+
+SpeedChangerDot::SpeedChangerDot(Color aColor, int start, bool increasing)
 {
-	if (!hasFoos())
+	repeats = false;
+	
+	addLEDs(aColor, maxBrightness, start, start);
+	addStepWithFunction(&SpeedChangerDot::iterate, 1, 35);
+	isIncreasing = increasing;
+	
+	direction	= up;
+	pCounter	= 0;
+	mCounter	= 0;
+	
+	if (isIncreasing)
 	{
-		int s = 16;
-		
-		if (startAtZero)
-		{
-			s = 0;
-		}
-		startAtZero = !startAtZero;
-		
-		SlowingDot* a = new SlowingDot(s);
-		SpeedingDot* b = new SpeedingDot(s);
-		addFoo(a);
-		addFoo(b);
+		per	= 1;
+		mov	= 5;
+	}
+	else
+	{
+		per	= 5;
+		mov	= 1;
 	}
 }
 
-
-SlowingDot::SlowingDot(int start)
+void SpeedChangerDot::iterate()
 {
-	addLEDs(LITColor.red, maxBrightness, start, start);
-	addStepWithFunction(&SlowingDot::iterate, 1, 35);
-	direction	= up;
-	sPeriod		= 5;
-	spCounter	= 0;
-	sMoves		= 1;
-	smCounter	= 0;
+	pCounter++;
 	
-	repeats = false;
-}
-
-void SlowingDot::iterate()
-{
-	spCounter++;
-	
-	if (spCounter == sPeriod)
+	if (pCounter == per)
 	{
 		move();
-		spCounter = 0;
 		
-		smCounter++;
-		if (smCounter == sMoves)
-		{
-			sPeriod--;
-			sMoves++;
-			smCounter = 0;
-		}
-	}
-}
-
-SpeedingDot::SpeedingDot(int start)
-{
-	addLEDs(LITColor.blue, maxBrightness, start, start);
-	addStepWithFunction(&SpeedingDot::iterate, 1, 35);
-	direction	= up;
-	sPeriod		= 1;
-	spCounter	= 0;
-	sMoves		= 5;
-	smCounter	= 0;
-	
-	repeats = false;
-}
-
-void SpeedingDot::iterate()
-{
-	spCounter++;
-	
-	if (spCounter == sPeriod)
-	{
-		move();
-		spCounter = 0;
+		pCounter = 0;
+		mCounter++;
 		
-		smCounter++;
-		if (smCounter == sMoves)
+		if (mCounter == mov)
 		{
-			sPeriod++;
-			sMoves--;
-			smCounter = 0;
+			if (isIncreasing)
+			{
+				per++;
+				mov--;
+			}
+			else
+			{
+				per--;
+				mov++;
+			}
+			
+			mCounter = 0;
 		}
 	}
 }
@@ -412,6 +382,7 @@ DotPair::DotPair(bool start)
 {
 	startAtZero = start;
 	addStepWithFunction(&DotPair::checkForFoos, 1);
+	index = 0;
 }
 
 void DotPair::checkForFoos()
@@ -419,15 +390,15 @@ void DotPair::checkForFoos()
 	if (!hasFoos())
 	{
 		int s = 16;
-		
-		if (startAtZero)
-		{
-			s = 0;
-		}
+		if (startAtZero) s = 0;
 		startAtZero = !startAtZero;
 		
-		SlowingDot* a = new SlowingDot(s);
-		SpeedingDot* b = new SpeedingDot(s);
+		index = updateValue(index, up, 0, 5, cycles);
+		int index2 = updateValueBy(index, up, 2, 0, 5, cycles);
+		
+		SpeedChangerDot* a = new SpeedChangerDot(*LITColor.colorList[index],s,true);
+		SpeedChangerDot* b = new SpeedChangerDot(*LITColor.colorList[index2],s,false);
+
 		addFoo(a);
 		addFoo(b);
 	}
