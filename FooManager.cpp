@@ -12,7 +12,7 @@ FooManager::FooManager()
 {
 	foo			= new BatteryFoo;
 	foodex		= 0;
-	maxFoodex	= 5;
+	maxFoodex	= 1;
 }
 
 void FooManager::update()
@@ -33,25 +33,37 @@ void FooManager::updateFoo(int index)
 
 void FooManager::createNewFoo(int index)
 {
+	foo = new DoubleRainbow;
+}
+
+//  ================================================================
+
+MasterFooManager::MasterFooManager()
+{
+	maxFoodex = 5;
+}
+
+void MasterFooManager::createNewFoo(int index)
+{
 	switch (index)
 	{
 		case 0:
-			foo = new DoubleRainbow;
+			foo = new RainbowPulser;
 			break;
 		case 1:
 			foo = new MultipleBouncingFoo;
 			break;
 		case 2:
-			foo = new Sparkle;
+			foo = new EvenEphemSnakes;
 			break;
 		case 3:
-			foo = new BF4;
-			break;
-		case 4:
 			foo = new Bunch;
 			break;
+		case 4:
+			foo = new TCPJwL();
+			break;
 		case 5:
-			foo = new EvenEphemSnakes;
+			foo = new Pulse4;
 			break;
 	}
 }

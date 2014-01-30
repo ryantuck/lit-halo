@@ -26,6 +26,14 @@ public:
 	virtual void createNewFoo(int index);
 };
 
+// best we've got
+class MasterFooManager : public FooManager
+{
+public:
+	MasterFooManager();
+	void createNewFoo(int index);
+};
+
 // in progress testing
 class DevFooManager : public FooManager
 {
