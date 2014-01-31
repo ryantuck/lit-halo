@@ -161,6 +161,12 @@ public:
 	bool direction;
 };
 
+class WhiteBrightnessTest : public Foo
+{
+public:
+	WhiteBrightnessTest();
+};
+
 
 
 #endif

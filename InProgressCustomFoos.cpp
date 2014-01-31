@@ -420,7 +420,25 @@ void DotPair::checkForFoos()
 	}
 }
 
-
+WhiteBrightnessTest::WhiteBrightnessTest()
+{
+	// empirical test to determine how brightness can be adjusted
+	// to make combination colors (white, yellow, cyan, etc) match
+	// single colors (red,green,blue).
+	
+	addLEDs(LITColor.yellow, 50, 9, 9);
+	addLEDs(LITColor.green, maxBrightness, 10, 10);
+	addLEDs(LITColor.white, 25, 11, 11);
+	
+	addLEDs(LITColor.yellow, maxBrightness, 15, 15);
+	addLEDs(LITColor.green, maxBrightness, 16, 16);
+	addLEDs(LITColor.white, maxBrightness, 17, 17);
+	
+	// i think this relationship works the best
+	addLEDs(LITColor.yellow, 67, 20, 20);
+	addLEDs(LITColor.green, maxBrightness, 21, 21);
+	addLEDs(LITColor.white, 33, 22, 22);
+}
 
 
 

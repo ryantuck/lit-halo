@@ -75,7 +75,7 @@ void MasterFooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 7;
+	maxFoodex = 8;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -105,6 +105,9 @@ void DevFooManager::createNewFoo(int index)
             break;
 		case 7:
 			foo = new PairHolder;
+			break;
+		case 8:
+			foo = new WhiteBrightnessTest;
 			break;
 	}
 }
