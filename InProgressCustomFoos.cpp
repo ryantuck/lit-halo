@@ -441,47 +441,6 @@ WhiteBrightnessTest::WhiteBrightnessTest()
 }
 
 
-RainbowFountain::RainbowFountain(bool aDirection)
-{
-	cIndex		= 0;
-	direction	= aDirection;
-	addStepWithFunction(&RainbowFountain::iterate, 8);
-}
-
-void RainbowFountain::iterate()
-{
-	bool dir1 = up;
-	bool dir2 = down;
-	int addr1 = 0;
-	int addr2 = 31;
-	
-	if (direction)
-	{
-		dir1	= !dir1;
-		dir2	= !dir2;
-		addr1	= 16;
-		addr2	= 15;
-	}
-	
-	MovingDot* a = new MovingDot(*LITColor.colorList[cIndex],dir1,addr1);
-	MovingDot* b = new MovingDot(*LITColor.colorList[cIndex],dir2,addr2);
-	addFoo(a);
-	addFoo(b);
-	
-	a->repeats = false;
-	b->repeats = false;
-	
-	a->steps.entry(0)->me->count = 15;
-	b->steps.entry(0)->me->count = 15;
-	
-	a->steps.entry(0)->me->period = 2;
-	b->steps.entry(0)->me->period = 2;
-	
-	
-	cIndex = updateValue(cIndex, up, 0, 5, cycles);
-}
-
-
 
 
 

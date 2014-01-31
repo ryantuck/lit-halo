@@ -167,15 +167,7 @@ public:
 	WhiteBrightnessTest();
 };
 
-class RainbowFountain : public Foo
-{
-public:
-	RainbowFountain(bool aDirection);
-	void iterate();
-	
-	bool direction;
-	int cIndex;
-};
+
 
 
 #endif
