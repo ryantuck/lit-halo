@@ -441,9 +441,32 @@ WhiteBrightnessTest::WhiteBrightnessTest()
 }
 
 
+RainbowFountain::RainbowFountain()
+{
+	cIndex = 0;
+	
+	addStepWithFunction(&RainbowFountain::iterate, 8);
+}
 
-
-
+void RainbowFountain::iterate()
+{
+	MovingDot* a = new MovingDot(*LITColor.colorList[cIndex],down,16);
+	MovingDot* b = new MovingDot(*LITColor.colorList[cIndex],up,15);
+	addFoo(a);
+	addFoo(b);
+	
+	a->repeats = false;
+	b->repeats = false;
+	
+	a->steps.entry(0)->me->count = 16;
+	b->steps.entry(0)->me->count = 16;
+	
+	a->steps.entry(0)->me->period = 2;
+	b->steps.entry(0)->me->period = 2;
+	
+	
+	cIndex = updateValue(cIndex, up, 0, 5, cycles);
+}
 
 
 

@@ -167,6 +167,14 @@ public:
 	WhiteBrightnessTest();
 };
 
+class RainbowFountain : public Foo
+{
+public:
+	RainbowFountain();
+	void iterate();
+	
+	int cIndex;
+};
 
 
 #endif
