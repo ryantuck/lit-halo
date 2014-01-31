@@ -20,6 +20,11 @@
 #include "BandMeterFoo.h"
 #include "InAndOutFader.h"
 
+#include "RainbowFountain.h"
+#include "RainbowPulser.h"
+#include "EphemeralSnakesFoo.h"
+#include "TwoColorParticleJam.h"
+
 
 class ListenerWithBunch : public Foo
 {
@@ -167,6 +172,14 @@ public:
 	WhiteBrightnessTest();
 };
 
+class BackgroundCycler : public Foo
+{
+public:
+	BackgroundCycler();
+	void checkForBeat();
+	
+	int cycler;
+};
 
 
 

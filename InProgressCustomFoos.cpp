@@ -440,6 +440,50 @@ WhiteBrightnessTest::WhiteBrightnessTest()
 	addLEDs(LITColor.white, 33, 22, 22);
 }
 
+BackgroundCycler::BackgroundCycler()
+{
+	cycler = 0;
+	
+	addStepWithFunction(&BackgroundCycler::checkForBeat, 1);
+}
+
+void BackgroundCycler::checkForBeat()
+{
+	if (audio.beatJustDetected(1))
+	{
+		foos.removeAllEntries();
+		
+		switch (cycler)
+		{
+			case 0:
+			{
+				RainbowFountain* a = new RainbowFountain(up);
+				addFoo(a);
+				break;
+			}
+			case 1:
+			{
+				RainbowPulser* b = new RainbowPulser;
+				addFoo(b);
+				break;
+			}
+			case 2:
+			{
+				EvenEphemSnakes* c = new EvenEphemSnakes;
+				addFoo(c);
+				break;
+			}
+			case 3:
+			{
+				TwoColorParticleJam* d = new TwoColorParticleJam(LITColor.green,LITColor.blue);
+				addFoo(d);
+				break;
+			}
+		}
+		
+		cycler = updateValue(cycler, up, 0, 3, cycles);
+	}
+}
 
 
 
