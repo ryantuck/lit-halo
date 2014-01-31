@@ -317,15 +317,16 @@ void LotsOfMovingFadingDots::checkFoos()
 
 PairHolder::PairHolder()
 {
-	DotPair* x1 = new DotPair(true);
-	//DotPair* x2 = new DotPair(false);
+	DotPair* x1 = new DotPair(0,6,up);
+	DotPair* x2 = new DotPair(0,6,down);
+	//DotPair* x3 = new DotPair(0,5,up);
 	addFoo(x1);
-	//addFoo(x2);
+	addFoo(x2);
 	
 }
 
 
-SpeedChangerDot::SpeedChangerDot(Color aColor, int start, bool increasing, int longest)
+SpeedChangerDot::SpeedChangerDot(Color aColor, int start, bool increasing, int longest, bool aDirection)
 {
 	repeats = false;
 	
@@ -340,7 +341,7 @@ SpeedChangerDot::SpeedChangerDot(Color aColor, int start, bool increasing, int l
 	addStepWithFunction(&SpeedChangerDot::iterate, 1, total);
 	isIncreasing = increasing;
 	
-	direction	= up;
+	direction	= aDirection;
 	pCounter	= 0;
 	mCounter	= 0;
 	
@@ -385,26 +386,34 @@ void SpeedChangerDot::iterate()
 	}
 }
 
-DotPair::DotPair(bool start)
+DotPair::DotPair(int start, int longest, bool aDirection)
 {
 	startAtZero = start;
 	addStepWithFunction(&DotPair::checkForFoos, 1);
-	index = 0;
+	index			= 1;
+	per				= longest;
+	startAddress	= start;
+	startOffset		= 1;
+	direction		= aDirection;
+	
+	
+	for (int n=0;n<longest;n++)
+	{
+		startOffset += n+1;
+	}
 }
 
 void DotPair::checkForFoos()
 {
 	if (!hasFoos())
 	{
-		int s = 16;
-		if (startAtZero) s = 0;
-		//startAtZero = !startAtZero;
+		index		= updateValueBy(index, up, 2, 0, 5, cycles);
+		int index2	= updateValueBy(index, up, 3, 0, 5, cycles);
 		
-		index = updateValue(index, up, 0, 5, cycles);
-		int index2 = updateValueBy(index, up, 2, 0, 5, cycles);
+		startAddress = updateValueBy(startAddress, direction, startOffset, 0, 31, cycles);
 		
-		SpeedChangerDot* a = new SpeedChangerDot(*LITColor.colorList[index],s,true,7);
-		SpeedChangerDot* b = new SpeedChangerDot(*LITColor.colorList[index2],s,false,7);
+		SpeedChangerDot* a = new SpeedChangerDot(*LITColor.colorList[index],startAddress,true,per,direction);
+		SpeedChangerDot* b = new SpeedChangerDot(*LITColor.colorList[index2],startAddress,false,per,direction);
 
 		addFoo(a);
 		addFoo(b);

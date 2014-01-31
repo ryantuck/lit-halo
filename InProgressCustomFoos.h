@@ -137,7 +137,7 @@ public:
 class SpeedChangerDot : public MovingFoo
 {
 public:
-	SpeedChangerDot(Color aColor, int start, bool increasing, int longest);
+	SpeedChangerDot(Color aColor, int start, bool increasing, int longest, bool aDirection);
 	void iterate();
 	
 	bool isIncreasing;
@@ -150,11 +150,15 @@ public:
 class DotPair : public Foo
 {
 public:
-	DotPair(bool start);
+	DotPair(int start, int longest, bool aDirection);
 	void checkForFoos();
 	
 	bool startAtZero;
 	int index;
+	int startAddress;
+	int startOffset;
+	int per;
+	bool direction;
 };
 
 
