@@ -110,7 +110,7 @@ void DevFooManager::createNewFoo(int index)
 			foo = new WhiteBrightnessTest;
 			break;
 		case 9:
-			foo = new RainbowFountain;
+			foo = new RainbowFountain(down);
 			break;
 	}
 }

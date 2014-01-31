@@ -170,9 +170,10 @@ public:
 class RainbowFountain : public Foo
 {
 public:
-	RainbowFountain();
+	RainbowFountain(bool aDirection);
 	void iterate();
 	
+	bool direction;
 	int cIndex;
 };
 
