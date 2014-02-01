@@ -60,6 +60,23 @@ void Audio::update()
 	checkBeats();
 }
 
+void Audio::update(uint8_t* fht_log_out)
+{
+    
+    for(int i=0;i<16;i++)
+    {
+        int s = 0;
+        for(int j=0;j<8;j++)
+        {
+            s += (int)fht_log_out[i*8 + j];
+        }
+        double m = s/8;
+        stats[i].update(m);
+        stats[i].printStats();
+    }
+}
+
+
 void Audio::getEQ()
 {
 	eq.sample();

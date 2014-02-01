@@ -23,7 +23,7 @@ public:
 	
 	MSGEQ7		eq;
 	MCP4131		pot;
-    Stats       stats[7]; //computes running variance, mean, std
+    Stats       stats[16]; //computes running variance, mean, std
 	
 	int			weightSpectrum[7];
 	byte		beatCounters[7];    //tracks iterations since last beat
@@ -40,6 +40,9 @@ public:
 	
 	//	Grabs eq, weighs it, and checks for beats.
     void update();
+    
+    //update with respect to FHT
+    void update(uint8_t* fht_log_out);
 	
 	//	Updates beatCounters.
 	void checkBeats();

@@ -26,10 +26,9 @@ public:
 	
 	Headband();
 	
-	void update();
+	void update(uint8_t* fht_log_out);
 	void updateLEDs();
 	void updateStrip();
-	void getAudio();
 
 	void checkButtons();
 	void checkBattery();

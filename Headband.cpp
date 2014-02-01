@@ -20,12 +20,13 @@ Headband::Headband()
 	fooManager->update();
 }
 
-void Headband::update()
+void Headband::update(uint8_t* fht_log_out)
 {
+    Serial.println("updating headband");
 	checkButtons();
 //	checkBattery();
-	//getAudio();
 	updateLEDs();
+    audio.update(fht_log_out);
     //audio.printSpectrum();
 }
 
@@ -53,11 +54,6 @@ void Headband::checkButtons()
 		fooManager->update();
 	}
 	
-}
-
-void Headband::getAudio()
-{
-	audio.update();
 }
 
 void Headband::updateLEDs()

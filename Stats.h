@@ -23,6 +23,9 @@ public:
     
     double getStdev(); //get variance of last sample set
     double getMean(); //get mean of last sample set
+    int band;
+    
+    void printStats(); //print out statistics to serial monitor
     
 private:
     //statistics only calculated when k increments to K (number of samples)
@@ -39,7 +42,6 @@ private:
     double S;
     
     void calcStats();
-    void printStats(); //print out statistics to serial monitor
     void clear(); //clear variables for running var algo
 
 };
