@@ -485,6 +485,101 @@ void BackgroundCycler::checkForBeat()
 	}
 }
 
+// ========================================================================
+
+Fireworks::Fireworks()
+{
+	numberOfLEDs		= 1;
+	isIncreasing		= true;
+	maxLEDs				= 6;
+
+	addStepWithFunction(&Fireworks::flashLEDs, 5, 10);
+	addStepWithFunction(&Fireworks::changeNumberOfLEDs, 1, 1);
+}
+
+void Fireworks::flashLEDs()
+{
+	fLEDs.removeAllEntries();
+	
+	for (int n=0;n<numberOfLEDs;n++)
+	{
+		int addr = rand()%32;
+		addLEDs(LITColor.green, maxBrightness, addr, addr);
+	}
+}
+
+void Fireworks::changeNumberOfLEDs()
+{
+	if (isIncreasing)
+	{
+		numberOfLEDs++;
+	}
+	else
+	{
+		numberOfLEDs--;
+	}
+	
+	if (numberOfLEDs == maxLEDs)
+	{
+		isIncreasing = false;
+	}
+	
+	if (numberOfLEDs == 0)
+	{
+		repeats = false;
+	}
+}
+
+FireworksHolder::FireworksHolder()
+{
+	Fireworks* x = new Fireworks();
+	addFoo(x);
+}
+
+void FireworksHolder::checkMyShit()
+{
+	if (audio.beatJustDetected(1))
+	{
+		foos.removeAllEntries();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

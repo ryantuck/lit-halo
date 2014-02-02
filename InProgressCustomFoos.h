@@ -181,6 +181,33 @@ public:
 	int cycler;
 };
 
+class Fireworks : public Foo
+{
+public:
+	Fireworks();
+	void iterate();
+	
+	void flashLEDs();
+	void changeNumberOfLEDs();
+	
+	int numberOfLEDs;
+	bool isIncreasing;
+	
+	int maxLEDs;
+};
+
+class FireworksHolder : public Foo
+{
+public:
+	FireworksHolder();
+	void checkMyShit();
+};
+
+
+
+
+
+
 
 
 #endif
