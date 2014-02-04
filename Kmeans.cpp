@@ -65,8 +65,8 @@ short Kmeans::update(short point)
             updateCentroids();
         }
     }
-    
-    return (centroids[0] + centroids[1]) / 2;
+    threshold = (centroids[0] + centroids[1]) / 2;
+    return threshold;
 }
 
 void Kmeans::initCentroids()
@@ -107,9 +107,13 @@ void Kmeans::updateCentroids()
         }
     }
     
+    if(cnt0 == 0) cnt0 = 1;
+    if(cnt1 == 0) cnt1 = 1;
+    
     lastCentroids[0] = centroids[0];
     lastCentroids[1] = centroids[1];
     
+    cout << cnt0;
     centroids[0] = sum0/cnt0;
     centroids[1] = sum1/cnt1;
 }
