@@ -17,10 +17,6 @@ using namespace std;
 class Kmeans{
     
 private:
-    //constructors
-    Kmeans();
-    Kmeans(short numPoints);
-    
     //algo data
     vector<short> points;
     vector<bool> clusters;
@@ -47,6 +43,9 @@ private:
     void updateCentroids();
     
 public:
+    //constructors
+    Kmeans();
+    Kmeans(short numPoints);
  
     //runs kmeans algo and calculates new threshold
     short update(short point);
