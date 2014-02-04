@@ -14,10 +14,12 @@ Kmeans::Kmeans(short numPoints)
     centroids[1] = 0;
     lastCentroids[0] = 0;
     lastCentroids[1] = 0;
-  
-    epsilon = 0;
     numPoints = numPoints;
-    
+    for (int n = 0; n < numPoints; n++)
+    {
+        clusters.push_back(0);
+    }
+    epsilon = 0;
     threshold = 0;
 
 }
@@ -29,6 +31,12 @@ Kmeans::Kmeans()
     lastCentroids[0] = 0;
     lastCentroids[1] = 0;
     numPoints = 100;
+    for (int n = 0; n < numPoints; n++)
+    {
+        clusters.push_back(0);
+    }
+    epsilon = 0;
+    threshold = 0;
 }
 
 void Kmeans::addPoint(short point)
