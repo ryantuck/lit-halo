@@ -29,7 +29,6 @@ public:
 	byte		beatCounters[7];	//	tracks how many iterations
 									//	since last beat on each band.
 	
-    bool bassBeatDetected = 0;
 	int lastSpectrum[7];
 	
 	int averagedSpectrum[7];
@@ -39,6 +38,11 @@ public:
 	double silenceIntercepts[7];
 	
 	int bandThresholds[7];
+    
+    //member variables for kmeans algo
+    byte bandSpectrum[200];
+    byte centroid1;
+    byte centroid2;
     
 	
 	//	Constructor
