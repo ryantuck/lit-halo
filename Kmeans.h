@@ -9,10 +9,10 @@
 #ifndef __LIT_Headband_Simulator__Kmeans__
 #define __LIT_Headband_Simulator__Kmeans__
 
-#include <stdlib.h>
 #include <vector>
-#include <iostream>
+#include "stdlib.h"
 using namespace std;
+//std library is not compatible w arduino but this code will compile in xcode
 
 
 class Kmeans{

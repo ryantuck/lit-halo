@@ -39,10 +39,7 @@ public:
 	
 	int bandThresholds[7];
     
-    //member variables for kmeans algo
-    byte bandSpectrum[200];
-    byte centroid1;
-    byte centroid2;
+    bool bassBeatDetected;
     
 	
 	//	Constructor

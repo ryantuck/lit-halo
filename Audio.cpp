@@ -61,6 +61,13 @@ void Audio::update()
 	checkBeats();
 	recordSpectrum();
     kmeans.update(eq.spectrum[1]);
+    
+    if(lastSpectrum[1] < kmeans.getThreshold() &&
+       eq.spectrum[1]  < kmeans.getThreshold()   )
+    {
+        bassBeatDetected = 1;
+    }
+    else bassBeatDetected = 0;
 }
 
 void Audio::getEQ()

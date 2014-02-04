@@ -491,9 +491,9 @@ Fireworks::Fireworks()
 {
 	numberOfLEDs		= 1;
 	isIncreasing		= true;
-	maxLEDs				= 6;
+	maxLEDs				= 8;
 
-	addStepWithFunction(&Fireworks::flashLEDs, 5, 10);
+	addStepWithFunction(&Fireworks::flashLEDs, 1, 2);
 	addStepWithFunction(&Fireworks::changeNumberOfLEDs, 1, 1);
 }
 
@@ -512,19 +512,19 @@ void Fireworks::changeNumberOfLEDs()
 {
 	if (isIncreasing)
 	{
-		numberOfLEDs++;
+		numberOfLEDs = numberOfLEDs + 2;
 	}
 	else
 	{
-		numberOfLEDs--;
+		numberOfLEDs = numberOfLEDs - 2;
 	}
 	
-	if (numberOfLEDs == maxLEDs)
+	if (numberOfLEDs >- maxLEDs)
 	{
 		isIncreasing = false;
 	}
 	
-	if (numberOfLEDs == 0)
+	if (numberOfLEDs <= 0)
 	{
 		repeats = false;
 	}
@@ -532,16 +532,19 @@ void Fireworks::changeNumberOfLEDs()
 
 FireworksHolder::FireworksHolder()
 {
-	Fireworks* x = new Fireworks();
-	addFoo(x);
+    
 }
 
 void FireworksHolder::checkMyShit()
 {
-	if (audio.beatJustDetected(1))
+	if (audio.bassBeatDetected)
 	{
-		foos.removeAllEntries();
+		addFoo(new Fireworks);
 	}
+    else
+    {
+        foos.removeAllEntries();
+    }
 }
 
 
