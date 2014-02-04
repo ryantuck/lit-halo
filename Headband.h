@@ -32,7 +32,6 @@ public:
 	
 	void update();
 	void updateLEDs();
-	void getAudio();
 	void checkButtons();
 };
 

@@ -58,11 +58,9 @@ Audio::Audio()
 void Audio::update()
 {
 	getEQ();
-//	subtractBaselines();
-//	weighEQ();
 	checkBeats();
-//    pot.update(1);
 	recordSpectrum();
+    kmeans.update(eq.spectrum[1]);
 }
 
 void Audio::getEQ()

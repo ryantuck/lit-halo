@@ -14,6 +14,7 @@
 #include "MSGEQ7.h"
 #include "MCP4131.h"
 #include "Arduino.h"
+#include "Kmeans.h"
 //#include "LITFunctions.h"
 
 class Audio
@@ -22,6 +23,7 @@ public:
 	
 	MSGEQ7		eq;
 	MCP4131		pot;
+    Kmeans      kmeans;
 	
 	int			weightSpectrum[7];
 	byte		beatCounters[7];	//	tracks how many iterations
@@ -36,6 +38,12 @@ public:
 	double silenceIntercepts[7];
 	
 	int bandThresholds[7];
+    
+    //member variables for kmeans algo
+    byte bandSpectrum[200];
+    byte centroid1;
+    byte centroid2;
+    
 	
 	//	Constructor
 	Audio();
