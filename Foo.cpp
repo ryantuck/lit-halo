@@ -32,7 +32,7 @@ Foo::~Foo()
 
 void Foo::addFoo(Foo *aFoo)
 {
-	// adds a foo to the foos list
+	// add a foo to the foos list
 	ListObject<Foo>* entry = new ListObject<Foo>;
 	entry->me = aFoo;
 	foos.addToEnd(entry);
