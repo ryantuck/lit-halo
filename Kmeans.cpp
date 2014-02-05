@@ -8,7 +8,7 @@
 
 #include "Kmeans.h"
 
-Kmeans::Kmeans(short numPoints)
+Kmeans::Kmeans(int numPoints)
 {
     centroids[0]		= 0;
     centroids[1]		= 0;
@@ -21,8 +21,7 @@ Kmeans::Kmeans(short numPoints)
 	
     for (int n = 0; n < numPoints; n++)
     {
-		addCluster(false);
-        //clusters.push_back(0);
+		clusters.add(false);
     }
 }
 
@@ -39,41 +38,27 @@ Kmeans::Kmeans()
 	
     for (int n = 0; n < numPoints; n++)
     {
-		addCluster(false);
-        //clusters.push_back(0);
+		clusters.add(false);
     }
 }
 
 void Kmeans::addPoint(byte point)
 {
-	ListObject<byte>* entry = new ListObject<byte>;
-	entry->me = &point;
-	
-    if(points.length() < numPoints)
+    if(points.size() < numPoints)
     {
-		points.addToEnd(entry);
-        //points.push_back(point);
+		points.add(point);
     }
     else
     {
-		points.removeEntry(0);
-		points.addToEnd(entry);
-//        points.erase(points.begin());
-//        points.push_back(point);
-    }
+		points.shift();
+		points.add(point);
+	}
 }
 
-void Kmeans::addCluster(bool aVal)
-{
-	ListObject<bool>* entry = new ListObject<bool>;
-	entry->me = &aVal;
-	clusters.addToEnd(entry);
-}
-
-short Kmeans::update(short point)
+byte Kmeans::update(byte point)
 {
     addPoint(point);
-    if(points.length() == 100)
+    if(points.size() == 100)
     {
         initCentroids();
         while(abs(lastCentroids[0] - centroids[0]) > epsilon &&
@@ -89,7 +74,7 @@ short Kmeans::update(short point)
 
 void Kmeans::initCentroids()
 {
-    centroids[0] = *points.entry(rand()%numPoints)->me;
+    centroids[0] = points.get(rand()%numPoints);
     centroids[1] = 1024;
 }
 
@@ -100,11 +85,11 @@ void Kmeans::updateDistances()
     {
 		// this math is redundant. should simply check
 		// if( centroids[0] > centroids[1] )
-        if(*points.entry(n)->me - centroids[0] < *points.entry(n)->me - centroids[1])
+        if(abs(points.get(n) - centroids[0]) < abs(points.get(n) - centroids[1]))
         {
-            *clusters.entry(n)->me = 0;
+            clusters.set(n, false);
         }
-        else *clusters.entry(n)->me = 1;
+        else clusters.set(n, true);
     }
 }
 
@@ -115,14 +100,14 @@ void Kmeans::updateCentroids()
     
     for(int n=0;n<numPoints; n++)
     {
-        if(*clusters.entry(n)->me == 0)
+        if(clusters.get(n) == 0)
         {
-            sum0 += *points.entry(n)->me;
+            sum0 += points.get(n);
             cnt0++;
         }
         else
         {
-            sum1 += *points.entry(n)->me;
+            sum1 += points.get(n);
             cnt1++;
         }
     }
@@ -137,7 +122,7 @@ void Kmeans::updateCentroids()
     centroids[1] = sum1/cnt1;
 }
 
-void changeNumPoints(short numPoints)
+void changeNumPoints(int numPoints)
 {
     numPoints = numPoints;
 }

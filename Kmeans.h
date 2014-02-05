@@ -9,31 +9,28 @@
 #ifndef __LIT_Headband_Simulator__Kmeans__
 #define __LIT_Headband_Simulator__Kmeans__
 
-#include "LinkedList.h"
+#include "LinkedList2.h"
 #include "Arduino.h"
 
 class Kmeans{
     
 private:
     //algo data
-	LinkedList<byte> points;
-	LinkedList<bool> clusters;
+	LinkedList2<byte> points;
+	LinkedList2<bool> clusters;
 	
     byte centroids[2];
     byte lastCentroids[2];
     
     //algo params
     short epsilon;
-    short numPoints;
+    int numPoints;
     
     //algo output
     short threshold;
     
     //adds new sample to points vector and deletes oldest point
     void addPoint(byte point);
-	
-	// just adds a cluster
-	void addCluster(bool aVal);
     
     //initialize centroids
     void initCentroids();
@@ -47,13 +44,13 @@ private:
 public:
     //constructors
     Kmeans();
-    Kmeans(short numPoints);
+    Kmeans(int numPoints);
  
     //runs kmeans algo and calculates new threshold
-    short update(short point);
+    byte update(byte point);
     
     //change number of points for which kmeans is calculated on
-    void changeNumPoints(short numPoints);
+    void changeNumPoints(int numPoints);
     
     //get threshold
     short getThreshold();
