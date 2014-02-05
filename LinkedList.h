@@ -9,8 +9,9 @@
 #ifndef __LIT_Headband_Simulator__LinkedList__
 #define __LIT_Headband_Simulator__LinkedList__
 
-#include "LIT.h"
-#include "Step.h"
+//#include "LIT.h"
+//#include "Step.h"
+#include "Arduino.h"
 
 template <class T>
 class ListObject

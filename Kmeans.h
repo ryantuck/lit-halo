@@ -14,6 +14,8 @@
 using namespace std;
 //std library is not compatible w arduino but this code will compile in xcode
 
+#include "LinkedList.h"
+#include "Arduino.h"
 
 class Kmeans{
     
