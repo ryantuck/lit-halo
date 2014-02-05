@@ -59,7 +59,7 @@ void Audio::update()
 {
 	getEQ();
 	checkBeats();
-	recordSpectrum();
+
     kmeans.update(eq.spectrum[1]/4);
     
     Serial.print("last spectrum is: ");
@@ -74,7 +74,12 @@ void Audio::update()
         bassBeatDetected = 1;
         Serial.println("BEEEEEAAAAAAT");
     }
-    else bassBeatDetected = 0;
+    else
+    {
+        bassBeatDetected = 0;
+    }
+    
+    recordSpectrum();
 }
 
 void Audio::getEQ()

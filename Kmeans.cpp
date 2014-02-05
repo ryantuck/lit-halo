@@ -79,7 +79,7 @@ byte Kmeans::update(byte point)
 void Kmeans::initCentroids()
 {
     centroids[0] = points.get(rand()%numPoints);
-    centroids[1] = 255;
+    centroids[1] = points.get(rand()%numPoints);
 }
 
 
@@ -102,7 +102,7 @@ void Kmeans::updateCentroids()
     
     for(int n=0;n<numPoints; n++)
     {
-        if(clusters.get(n) == 0)
+        if(clusters.get(n) == false)
         {
             sum0 += points.get(n);
             cnt0++;
