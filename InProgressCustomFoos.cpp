@@ -532,19 +532,16 @@ void Fireworks::changeNumberOfLEDs()
 
 FireworksHolder::FireworksHolder()
 {
-    
+    addFoo(new Fireworks);
+    addStepWithFunction(&FireworksHolder::checkMyShit, 1);
 }
 
 void FireworksHolder::checkMyShit()
 {
-	if (audio.bassBeatDetected)
-	{
+	if (audio.bassBeatDetected && foos.length() < 4)
+    {
 		addFoo(new Fireworks);
-	}
-//    else
-//    {
-//        foos.removeAllEntries();
-//    }
+    }
 }
 
 

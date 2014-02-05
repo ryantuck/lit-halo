@@ -79,7 +79,7 @@ byte Kmeans::update(byte point)
 void Kmeans::initCentroids()
 {
     centroids[0] = points.get(rand()%numPoints);
-    centroids[1] = 1024;
+    centroids[1] = 255;
 }
 
 
