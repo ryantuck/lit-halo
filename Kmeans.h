@@ -2,17 +2,12 @@
 //  Kmeans.h
 //  LIT Headband Simulator
 //
-//  Created by Daniel Kern on 2/2/14.
+//  Created by Daniel Kern's butt on 2/2/14.
 //  Copyright (c) 2014 Ryan Tuck. All rights reserved.
 //
 
 #ifndef __LIT_Headband_Simulator__Kmeans__
 #define __LIT_Headband_Simulator__Kmeans__
-
-#include <vector>
-#include "stdlib.h"
-using namespace std;
-//std library is not compatible w arduino but this code will compile in xcode
 
 #include "LinkedList.h"
 #include "Arduino.h"
@@ -21,10 +16,11 @@ class Kmeans{
     
 private:
     //algo data
-    vector<short> points;
-    vector<bool> clusters;
-    short centroids[2];
-    short lastCentroids[2];
+	LinkedList<byte> points;
+	LinkedList<bool> clusters;
+	
+    byte centroids[2];
+    byte lastCentroids[2];
     
     //algo params
     short epsilon;
@@ -34,7 +30,10 @@ private:
     short threshold;
     
     //adds new sample to points vector and deletes oldest point
-    void addPoint(short point);
+    void addPoint(byte point);
+	
+	// just adds a cluster
+	void addCluster(bool aVal);
     
     //initialize centroids
     void initCentroids();
