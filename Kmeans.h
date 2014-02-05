@@ -23,7 +23,7 @@ private:
     byte lastCentroids[2];
     
     //algo params
-    short epsilon;
+    byte epsilon;
     int numPoints;
     
     //algo output
@@ -53,7 +53,7 @@ public:
     void changeNumPoints(int numPoints);
     
     //get threshold
-    short getThreshold();
+    byte getThreshold();
 };
 
 #endif /* defined(__LIT_Headband_Simulator__Kmeans__) */

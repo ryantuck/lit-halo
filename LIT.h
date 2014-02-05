@@ -27,6 +27,7 @@ extern int			numLEDs;
 extern LayeredLED	leds[32];
 extern Audio		audio;
 
+
 #define up     1
 #define down   0
 #define cycles 1

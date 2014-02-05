@@ -23,7 +23,7 @@ void Headband::update()
 
 void Headband::checkButtons()
 {
-	bool hardware = false;
+	bool hardware = true;
 	if (hardware)
 	{
 		upButton.checkState();

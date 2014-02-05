@@ -42,7 +42,7 @@ Audio::Audio()
 	bandThresholds[4] = 80;
 	bandThresholds[5] = 80;
 	bandThresholds[6] = 80;
-	
+    
 	for (int n=0;n<7;n++)
 	{
 		// set these values high so beat isn't automatically detected
@@ -60,14 +60,14 @@ void Audio::update()
 	getEQ();
 	checkBeats();
 	recordSpectrum();
-    //kmeans.update(eq.spectrum[1]/4);
+    kmeans.update(eq.spectrum[1]/4);
     
-//    if(lastSpectrum[1] < kmeans.getThreshold() &&
-//       eq.spectrum[1]  > kmeans.getThreshold()   )
-//    {
-//        bassBeatDetected = 1;
-//    }
-//    else bassBeatDetected = 0;
+    if(lastSpectrum[1] < kmeans.getThreshold() &&
+       eq.spectrum[1]  > kmeans.getThreshold()   )
+    {
+        bassBeatDetected = 1;
+    }
+    else bassBeatDetected = 0;
 }
 
 void Audio::getEQ()

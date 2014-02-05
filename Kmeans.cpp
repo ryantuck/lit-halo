@@ -16,7 +16,7 @@ Kmeans::Kmeans(int numPoints)
     lastCentroids[1]	= 0;
 	
     numPoints = numPoints;
-	epsilon		= 0;
+	epsilon		= 2;
     threshold	= 0;
 	
     for (int n = 0; n < numPoints; n++)
@@ -32,8 +32,8 @@ Kmeans::Kmeans()
     lastCentroids[0]	= 0;
     lastCentroids[1]	= 0;
 	
-    numPoints	= 100;
-	epsilon		= 0;
+    numPoints	= 10;
+	epsilon		= 2;
     threshold	= 0;
 	
     for (int n = 0; n < numPoints; n++)
@@ -58,11 +58,11 @@ void Kmeans::addPoint(byte point)
 byte Kmeans::update(byte point)
 {
     addPoint(point);
-    if(points.size() == 100)
+    if(points.size() == numPoints)
     {
         initCentroids();
-        while(abs(lastCentroids[0] - centroids[0]) > epsilon &&
-              abs(lastCentroids[1] - centroids[1]) > epsilon)
+        while(abs(lastCentroids[0] - centroids[0]) < epsilon &&
+              abs(lastCentroids[1] - centroids[1]) < epsilon)
         {
             updateDistances();
             updateCentroids();
@@ -87,8 +87,6 @@ void Kmeans::updateDistances()
 {
     for(int n=0; n<numPoints; n++)
     {
-		// this math is redundant. should simply check
-		// if( centroids[0] > centroids[1] )
         if(abs(points.get(n) - centroids[0]) < abs(points.get(n) - centroids[1]))
         {
             clusters.set(n, false);
@@ -131,7 +129,7 @@ void changeNumPoints(int numPoints)
     numPoints = numPoints;
 }
 
-short Kmeans::getThreshold()
+byte Kmeans::getThreshold()
 {
     return threshold;
 }
