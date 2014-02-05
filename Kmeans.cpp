@@ -69,6 +69,10 @@ byte Kmeans::update(byte point)
         }
     }
     threshold = (centroids[0] + centroids[1]) / 2;
+	
+	Serial.print("thresh: ");
+	Serial.println(threshold);
+	
     return threshold;
 }
 

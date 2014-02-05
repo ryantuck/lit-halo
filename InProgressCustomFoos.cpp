@@ -541,10 +541,10 @@ void FireworksHolder::checkMyShit()
 	{
 		addFoo(new Fireworks);
 	}
-    else
-    {
-        foos.removeAllEntries();
-    }
+//    else
+//    {
+//        foos.removeAllEntries();
+//    }
 }
 
 
