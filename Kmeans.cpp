@@ -32,7 +32,7 @@ Kmeans::Kmeans()
     lastCentroids[0]	= 0;
     lastCentroids[1]	= 0;
 	
-    numPoints	= 10;
+    numPoints	= 25;
 	epsilon		= 2;
     threshold	= 0;
 	
