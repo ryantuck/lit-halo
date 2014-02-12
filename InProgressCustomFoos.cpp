@@ -491,7 +491,7 @@ Fireworks::Fireworks()
 {
 	numberOfLEDs		= 1;
 	isIncreasing		= true;
-	maxLEDs				= 14;
+	maxLEDs				= 8;
 
 	addStepWithFunction(&Fireworks::flashLEDs, 2, 2);
 	addStepWithFunction(&Fireworks::changeNumberOfLEDs, 1, 1);

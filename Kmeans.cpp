@@ -17,25 +17,27 @@ Kmeans::Kmeans()
 	
 	epsilon		= 2;
     threshold	= 0;
+    
+    points_size = 0;
 }
 
 void Kmeans::addPoint(byte point)
 {
-    if(points.size() < numPoints)
+    
+    if(points_size < NUM_POINTS) points_size++;
+    
+    for(int i = points_size-1; i >= 1; i--)
     {
-		points.add(point);
+        points[i] = points[i-1];
     }
-    else
-    {
-		points.shift();
-		points.add(point);
-	}
+ 
+    points[0] = point;
 }
 
 byte Kmeans::update(byte point)
 {
     addPoint(point);
-    if(points.size() == numPoints)
+    if(points_size == NUM_POINTS)
     {
         initCentroids();
         while(abs(lastCentroids[0] - centroids[0]) < epsilon &&
@@ -55,20 +57,20 @@ byte Kmeans::update(byte point)
 
 void Kmeans::initCentroids()
 {
-    centroids[0] = points.get(rand()%numPoints);
-    centroids[1] = points.get(rand()%numPoints);
+    centroids[0] = points[rand()%NUM_POINTS];
+    centroids[1] = points[rand()%NUM_POINTS];
 }
 
 
 void Kmeans::updateDistances()
 {
-    for(int n=0; n<numPoints; n++)
+    for(int n=0; n<NUM_POINTS; n++)
     {
-        if(abs(points.get(n) - centroids[0]) < abs(points.get(n) - centroids[1]))
+        if(abs(points[n] - centroids[0]) < abs(points[n] - centroids[1]))
         {
-            clusters.set(n, false);
+            clusters[n] = false;
         }
-        else clusters.set(n, true);
+        else clusters[n] = true;
     }
 }
 
@@ -77,16 +79,16 @@ void Kmeans::updateCentroids()
     byte sum0 = 0; byte sum1 = 0;
     byte cnt0 = 0; byte cnt1 = 0;
     
-    for(int n=0;n<numPoints; n++)
+    for(int n=0;n<NUM_POINTS; n++)
     {
-        if(clusters.get(n) == false)
+        if(clusters[n] == false)
         {
-            sum0 += points.get(n);
+            sum0 += points[n];
             cnt0++;
         }
         else
         {
-            sum1 += points.get(n);
+            sum1 += points[n];
             cnt1++;
         }
     }
@@ -99,11 +101,6 @@ void Kmeans::updateCentroids()
     
     centroids[0] = sum0/cnt0;
     centroids[1] = sum1/cnt1;
-}
-
-void changeNumPoints(int numPoints)
-{
-    numPoints = numPoints;
 }
 
 byte Kmeans::getThreshold()

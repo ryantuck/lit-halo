@@ -9,7 +9,7 @@
 #ifndef __LIT_Headband_Simulator__Kmeans__
 #define __LIT_Headband_Simulator__Kmeans__
 
-#define NUM_POINTS 50
+#define NUM_POINTS 100
 #include "Arduino.h"
 
 class Kmeans{
@@ -18,6 +18,7 @@ private:
     //algo data
 	byte points[NUM_POINTS];
 	bool clusters[NUM_POINTS];
+    byte points_size;
 	
     byte centroids[2];
     byte lastCentroids[2];
