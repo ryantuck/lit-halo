@@ -8,23 +8,6 @@
 
 #include "Kmeans.h"
 
-Kmeans::Kmeans(int numPoints)
-{
-    centroids[0]		= 0;
-    centroids[1]		= 0;
-    lastCentroids[0]	= 0;
-    lastCentroids[1]	= 0;
-	
-    numPoints = numPoints;
-	epsilon		= 2;
-    threshold	= 0;
-	
-    for (int n = 0; n < numPoints; n++)
-    {
-		clusters.add(false);
-    }
-}
-
 Kmeans::Kmeans()
 {
     centroids[0]		= 0;
@@ -32,14 +15,8 @@ Kmeans::Kmeans()
     lastCentroids[0]	= 0;
     lastCentroids[1]	= 0;
 	
-    numPoints	= 25;
 	epsilon		= 2;
     threshold	= 0;
-	
-    for (int n = 0; n < numPoints; n++)
-    {
-		clusters.add(false);
-    }
 }
 
 void Kmeans::addPoint(byte point)

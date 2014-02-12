@@ -9,22 +9,21 @@
 #ifndef __LIT_Headband_Simulator__Kmeans__
 #define __LIT_Headband_Simulator__Kmeans__
 
-#include "LinkedList2.h"
+#define NUM_POINTS 50
 #include "Arduino.h"
 
 class Kmeans{
     
 private:
     //algo data
-	LinkedList2<byte> points;
-	LinkedList2<bool> clusters;
+	byte points[NUM_POINTS];
+	bool clusters[NUM_POINTS];
 	
     byte centroids[2];
     byte lastCentroids[2];
     
     //algo params
     byte epsilon;
-    int numPoints;
     
     //algo output
     short threshold;
