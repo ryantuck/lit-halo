@@ -184,7 +184,7 @@ public:
 class Fireworks : public Foo
 {
 public:
-	Fireworks();
+	Fireworks(Color aColor);
 	void iterate();
 	
 	void flashLEDs();
@@ -194,11 +194,15 @@ public:
 	bool isIncreasing;
 	
 	int maxLEDs;
+    
+    Color myColor;
+    bool location;
 };
 
 class FireworksHolder : public Foo
 {
 public:
+    bool state;
 	FireworksHolder();
 	void checkMyShit();
 };

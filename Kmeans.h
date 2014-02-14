@@ -9,7 +9,7 @@
 #ifndef __LIT_Headband_Simulator__Kmeans__
 #define __LIT_Headband_Simulator__Kmeans__
 
-#define NUM_POINTS 100
+#define NUM_POINTS 50
 #include "Arduino.h"
 
 class Kmeans{

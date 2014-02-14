@@ -487,11 +487,13 @@ void BackgroundCycler::checkForBeat()
 
 // ========================================================================
 
-Fireworks::Fireworks()
+Fireworks::Fireworks(Color aColor)
 {
 	numberOfLEDs		= 1;
 	isIncreasing		= true;
 	maxLEDs				= 8;
+    
+    myColor = aColor;
 
 	addStepWithFunction(&Fireworks::flashLEDs, 2, 2);
 	addStepWithFunction(&Fireworks::changeNumberOfLEDs, 1, 1);
@@ -504,7 +506,7 @@ void Fireworks::flashLEDs()
 	for (int n=0;n<numberOfLEDs;n++)
 	{
 		int addr = rand()%32;
-		addLEDs(LITColor.green, maxBrightness, addr, addr);
+		addLEDs(myColor, maxBrightness, addr, addr);
 	}
 }
 
@@ -532,7 +534,9 @@ void Fireworks::changeNumberOfLEDs()
 
 FireworksHolder::FireworksHolder()
 {
-    addFoo(new Fireworks);
+    
+    state = 1;
+    addFoo(new Fireworks(LITColor.green));
     addStepWithFunction(&FireworksHolder::checkMyShit, 1);
 }
 
@@ -540,7 +544,17 @@ void FireworksHolder::checkMyShit()
 {
 	if (audio.bassBeatDetected && foos.length() < 4)
     {
-		addFoo(new Fireworks);
+        if(state)
+        {
+            addFoo(new Fireworks(LITColor.green));
+            state = 0;
+        }
+        else
+        {
+            addFoo(new Fireworks(LITColor.white));
+            state = 1;
+        }
+
     }
 }
 
