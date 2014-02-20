@@ -60,17 +60,18 @@ void Audio::update()
 	getEQ();
 	checkBeats();
 
-    kmeans.update(eq.spectrum[1]/4);
+    byte s = 1;
+    kmeans.update(eq.spectrum[s]/4);
     
     Serial.print("last spectrum is: ");
-    Serial.print(lastSpectrum[1]/4);
+    Serial.print(lastSpectrum[s]/4);
     Serial.print("  ||  ");
     Serial.print("current spectrum is: ");
-    Serial.println(eq.spectrum[1]/4);
+    Serial.println(eq.spectrum[s]/4);
     
-    if(lastSpectrum[1]/4 < kmeans.getThreshold() &&
-       eq.spectrum[1]/4  > kmeans.getThreshold() &&
-       eq.spectrum[1] > 200)
+    if(lastSpectrum[s]/4 < kmeans.getThreshold() &&
+       eq.spectrum[s]/4  > kmeans.getThreshold() &&
+       eq.spectrum[s] > 200)
     {
         bassBeatDetected = 1;
         Serial.println("BEEEEEAAAAAAT");
