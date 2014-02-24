@@ -40,8 +40,8 @@ byte Kmeans::update(byte point)
     if(points_size == NUM_POINTS)
     {
         initCentroids();
-        while(abs(lastCentroids[0] - centroids[0]) < epsilon &&
-              abs(lastCentroids[1] - centroids[1]) < epsilon)
+        while(abs(lastCentroids[0] - centroids[0]) > epsilon &&
+              abs(lastCentroids[1] - centroids[1]) > epsilon)
         {
             updateDistances();
             updateCentroids();
