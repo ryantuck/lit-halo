@@ -1,4 +1,4 @@
-function [ finalThresh ] = kmean_dk( input )
+function [ finalThresh, finalD ] = kmean_dk( input )
 %UNTITLED2 calculates kmeans on input array
 %   Detailed explanation goes here
 
@@ -11,7 +11,7 @@ finalD = 1000000;
 
 epsilon = 2;
 thresh = 0;
-R = 30;
+R = 20;
 N = length(input);
 
 finalThresh = 0;
@@ -56,7 +56,8 @@ for r = 1:R
         centroid1 = sum1/cnt1;
         centroid2 = sum2/cnt2;
         
-        D = (cnt1*sum1 + cnt2*sum2)/N;
+        %D = (cnt1*sum1 + cnt2*sum2)/N;
+        D = sum(abs(input(clusters == false) - centroid1)) + sum(abs(input(clusters == true) - centroid2));
 
         thresh = (centroid1 + centroid2)/2;
     
