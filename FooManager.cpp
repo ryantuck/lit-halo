@@ -75,7 +75,7 @@ void MasterFooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 11;
+	maxFoodex = 12;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -118,6 +118,9 @@ void DevFooManager::createNewFoo(int index)
 		case 11:
 			foo = new FireworksHolder;
 			break;
+        case 12:
+            foo = new BeatMania;
+            break;
 	}
 }
 

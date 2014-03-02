@@ -559,7 +559,58 @@ void FireworksHolder::checkMyShit()
 }
 
 
+// ========================================================================
+BeatMania::BeatMania()
+{
+    addStepWithFunction(&BeatMania::checkMyShit, 1);
+    addStepWithFunction(&BeatMania::clear, 2);
+}
 
+void BeatMania::checkMyShit()
+{
+    if (audio.bassBeatDetected)
+    {
+        foos.removeAllEntries();
+        int index = rand()%7;
+        
+        switch (index)
+        {
+            case 0:
+                addFoo(new StillRainbow);
+                break;
+            case 1:
+                addFoo(new StillDoubleRainbow);
+                break;
+            case 2:
+                addFoo(new AllOn(LITColor.white));
+                break;
+            case 3:
+                addFoo(new AllOn(LITColor.green));
+                break;
+            case 4:
+                addFoo(new AllOn(LITColor.yellow));
+                break;
+            case 5:
+                addFoo(new StillEvenlySpaced(LITColor.magenta,4,0));
+                break;
+            case 6:
+                addFoo(new StillEvenlySpaced(LITColor.cyan,16,0));
+                break;
+            case 7:
+                addFoo(new StillDubz);
+                break;
+        }
+    }
+}
+
+void BeatMania::clear()
+{
+    foos.removeAllEntries();
+}
+
+
+
+// ========================================================================
 
 
 

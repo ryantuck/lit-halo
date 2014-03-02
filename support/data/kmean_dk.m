@@ -9,9 +9,9 @@ lastCentroid2 = 0;
 D = 0;
 finalD = 1000000;
 
-epsilon = 2;
+epsilon = 1;
 thresh = 0;
-R = 20;
+R = 10;
 N = length(input);
 
 finalThresh = 0;

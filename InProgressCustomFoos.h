@@ -24,6 +24,8 @@
 #include "RainbowPulser.h"
 #include "EphemeralSnakesFoo.h"
 #include "TwoColorParticleJam.h"
+#include "StillFoos.h"
+#include "AllSingleColors.h"
 
 
 class ListenerWithBunch : public Foo
@@ -205,6 +207,14 @@ public:
     bool state;
 	FireworksHolder();
 	void checkMyShit();
+};
+
+class BeatMania : public Foo
+{
+public:
+    BeatMania();
+    void checkMyShit();
+    void clear();
 };
 
 

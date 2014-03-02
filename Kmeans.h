@@ -9,7 +9,7 @@
 #ifndef __LIT_Headband_Simulator__Kmeans__
 #define __LIT_Headband_Simulator__Kmeans__
 
-#define NUM_POINTS 50
+#define NUM_POINTS 40
 #include "Arduino.h"
 
 class Kmeans{
@@ -25,6 +25,10 @@ private:
     
     //algo params
     byte epsilon;
+    byte R;
+    double lastSumD;
+    double sumD;
+
     
     //algo output
     short threshold;
@@ -40,6 +44,10 @@ private:
     
     //calculates the new centroids for each cluster
     void updateCentroids();
+    
+    //calculates the sum of the distances from each centroid
+    void updateSumDistances();
+
     
 public:
     //constructors

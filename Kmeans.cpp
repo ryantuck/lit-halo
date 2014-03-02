@@ -16,6 +16,9 @@ Kmeans::Kmeans()
     lastCentroids[1]	= 0;
 	
 	epsilon		= 2;
+    lastSumD = 1E7;
+    sumD = 0;
+    R = 1;
     threshold	= 0;
     
     points_size = 0;
@@ -39,19 +42,28 @@ byte Kmeans::update(byte point)
     addPoint(point);
     if(points_size == NUM_POINTS)
     {
-        initCentroids();
-        while(abs(lastCentroids[0] - centroids[0]) > epsilon &&
-              abs(lastCentroids[1] - centroids[1]) > epsilon)
+        for(int r = 0; r < R; r++)
         {
-            updateDistances();
-            updateCentroids();
+            initCentroids();
+            while(abs(lastCentroids[0] - centroids[0]) > epsilon &&
+                  abs(lastCentroids[1] - centroids[1]) > epsilon)
+            {
+                updateDistances();
+                updateCentroids();
+            }
+            
+            updateSumDistances();
+            
+            if(sumD < lastSumD)
+            {
+                threshold = (centroids[0] + centroids[1]) / 2;
+            }
+//            Serial.print("sumD: ");
+//            Serial.println(sumD);
+//            Serial.print("thresh: ");
+//            Serial.println(threshold);
         }
     }
-    threshold = (centroids[0] + centroids[1]) / 2;
-	
-	Serial.print("thresh: ");
-	Serial.println(threshold);
-	
     return threshold;
 }
 
@@ -59,6 +71,11 @@ void Kmeans::initCentroids()
 {
     centroids[0] = points[rand()%NUM_POINTS];
     centroids[1] = points[rand()%NUM_POINTS];
+    
+//    Serial.print("init centroids: ");
+//    Serial.print(centroids[0]);
+//    Serial.print(", ");
+//    Serial.println(centroids[1]);
 }
 
 
@@ -70,13 +87,16 @@ void Kmeans::updateDistances()
         {
             clusters[n] = false;
         }
-        else clusters[n] = true;
+        else
+        {
+            clusters[n] = true;
+        }
     }
 }
 
 void Kmeans::updateCentroids()
 {
-    byte sum0 = 0; byte sum1 = 0;
+    double sum0 = 0; double sum1 = 0;
     byte cnt0 = 0; byte cnt1 = 0;
     
     for(int n=0;n<NUM_POINTS; n++)
@@ -101,6 +121,24 @@ void Kmeans::updateCentroids()
     
     centroids[0] = sum0/cnt0;
     centroids[1] = sum1/cnt1;
+    
+}
+
+void Kmeans::updateSumDistances()
+{
+    lastSumD = sumD;
+    sumD = 0;
+    for(int n=0; n<NUM_POINTS; n++)
+    {
+        if(abs(points[n] - centroids[0]) < abs(points[n] - centroids[1]))
+        {
+            sumD += abs(points[n] - centroids[0]);
+        }
+        else
+        {
+            sumD += abs(points[n] - centroids[1]);
+        }
+    }
 }
 
 byte Kmeans::getThreshold()
