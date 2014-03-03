@@ -122,6 +122,18 @@ public:
 	int maxFoos;
 };
 
+class FadinDubbyBowz : public Foo
+{
+public:
+	FadinDubbyBowz();
+	
+	void checkMyShit();
+	
+	Foo* dr;
+	Foo* r1;
+	Foo* r2;
+};
+
 
 
 
