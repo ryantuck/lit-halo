@@ -58,11 +58,9 @@ Audio::Audio()
 void Audio::update()
 {
 	getEQ();
-//	subtractBaselines();
-//	weighEQ();
-	checkBeats();
-//    pot.update(1);
-	recordSpectrum();
+	beats.addPoint(eq.spectrum[1]);
+//	checkBeats();
+//	recordSpectrum();
 }
 
 void Audio::getEQ()
@@ -83,6 +81,10 @@ void Audio::recordSpectrum()
 
 void Audio::checkBeats()
 {
+	// beat detection shit
+	beats.addPoint(eq.spectrum[1]);
+	
+	
 	//	Updates beatCounters[].
 	
 	for (int n=0;n<7;n++)
