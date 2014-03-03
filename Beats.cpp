@@ -23,15 +23,12 @@ bool Beats::detected()
 {
 	bool beatDetected = false;
 	
-	if (currentValue() > midPoint())
+	if (	currentValue() > midPoint()
+		&&	lastValue() < midPoint()
+		&&	currentDerivative() > derivativeMidPoint()
+		&&	currentDerivative() > derivativeLimit)
 	{
-		if (currentDerivative() > derivativeMidPoint())
-		{
-			if (currentDerivative() > derivativeLimit)
-			{
-				beatDetected = true;
-			}
-		}
+		beatDetected = true;
 	}
 	
 	return beatDetected;
@@ -40,6 +37,11 @@ bool Beats::detected()
 byte Beats::currentValue()
 {
 	return points[0];
+}
+
+byte Beats::lastValue()
+{
+	return points[1];
 }
 
 byte Beats::currentDerivative()

@@ -9,7 +9,7 @@
 #ifndef __litHeadbandSimulator__Beats__
 #define __litHeadbandSimulator__Beats__
 
-#define NUMPOINTS 40
+#define NUMPOINTS 100
 
 #include "Arduino.h"
 
@@ -26,6 +26,7 @@ public:
 	void addPoint(int newPoint);
 	
 	byte currentValue();
+	byte lastValue();
 	byte currentDerivative();
 	
 	byte midPoint();
