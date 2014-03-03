@@ -29,6 +29,7 @@ bool Beats::detected()
 		&&	currentDerivative() > derivativeLimit)
 	{
 		beatDetected = true;
+		Serial.println("beat detected!");
 	}
 	
 	return beatDetected;
