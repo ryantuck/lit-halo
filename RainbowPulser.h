@@ -23,4 +23,16 @@ public:
 	void drawNewLine();
 };
 
+class DoubleRainbowPulser : public Foo
+{
+	// this thing looks ok. improve or remove.
+	
+public:
+	DoubleRainbowPulser();
+	
+	int counter;
+	
+	void drawNewLines();
+};
+
 #endif

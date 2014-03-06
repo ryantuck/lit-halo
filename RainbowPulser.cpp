@@ -41,4 +41,26 @@ void RainbowPulser::drawNewLine()
 	addFoo(myLine);
 }
 
+DoubleRainbowPulser::DoubleRainbowPulser()
+{
+	counter	= 0;
+	addStepWithFunction(&DoubleRainbowPulser::drawNewLines, 1);
+}
 
+void DoubleRainbowPulser::drawNewLines()
+{
+	foos.removeAllEntries();
+	
+	counter++;
+	
+	if (counter == 32)
+	{
+		counter = 0;
+	}
+	
+	RainbowLine* line1 = new RainbowLine(counter,0);
+	addFoo(line1);
+	
+	RainbowLine* line2 = new RainbowLine(32-counter,counter);
+	addFoo(line2);
+}
