@@ -17,7 +17,7 @@ ListenerWithBunch::ListenerWithBunch()
 
 void ListenerWithBunch::listenUp()
 {
-	if (audio.beatJustDetected(1))
+	if (audio.beats.detected())
 	{
 		FiniteBunch* fb = new FiniteBunch;
 		addFoo(fb);
@@ -483,7 +483,7 @@ BackgroundCycler::BackgroundCycler()
 
 void BackgroundCycler::checkForBeat()
 {
-	if (audio.beatJustDetected(1))
+	if (audio.beats.detected())
 	{
 		foos.removeAllEntries();
 		

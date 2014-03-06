@@ -72,7 +72,6 @@ public:
 	//	For testing.
 	void gatherSpectrumAverages();
 	
-	bool beatJustDetected(byte band);
 	
 	int baseline(int band, int potValue);
 	void subtractBaselines();

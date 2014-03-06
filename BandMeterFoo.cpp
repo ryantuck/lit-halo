@@ -68,7 +68,7 @@ MeterWithFlash::MeterWithFlash(int aBand, Color aColor)
 
 void MeterWithFlash::listen()
 {
-	if (audio.beatJustDetected(band))
+	if (audio.beats.detected())
 	{
 		DotFlash* a = new DotFlash(10);
 		addFoo(a);
