@@ -17,7 +17,7 @@ Headband::Headband()
 void Headband::update()
 {
 	checkButtons();
-	getAudio();
+	audio.update();
 	updateLEDs();
 }
 
@@ -49,11 +49,6 @@ void Headband::checkButtons()
 		fooManager->update();
 	}
 	
-}
-
-void Headband::getAudio()
-{
-	audio.update();
 }
 
 void Headband::updateLEDs()

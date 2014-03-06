@@ -75,7 +75,9 @@ void MasterFooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
+
 	maxFoodex = 7;
+
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -113,6 +115,30 @@ void DevFooManager::createNewFoo(int index)
 //  ================================================================
 //  ================================================================
 
+//  ================================================================
+
+DevFooManager2::DevFooManager2()
+{
+	maxFoodex = 3;
+}
+
+void DevFooManager2::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new TwoColorParticleJam(LITColor.red,LITColor.cyan);
+			break;
+		case 1:
+			foo = new FireworksHolder;
+			break;
+		case 2:
+			foo = new FireworksHolder;
+			break;
+	}
+}
+
+//  ================================================================
 
 BandFooManager::BandFooManager()
 {

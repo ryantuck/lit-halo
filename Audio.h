@@ -14,8 +14,8 @@
 #include "MSGEQ7.h"
 #include "MCP4131.h"
 #include "Arduino.h"
-
 #include "Beats.h"
+
 //#include "LITFunctions.h"
 
 class Audio
@@ -39,6 +39,9 @@ public:
 	double silenceIntercepts[7];
 	
 	int bandThresholds[7];
+    
+    bool bassBeatDetected;
+    
 	
 	//	Constructor
 	Audio();

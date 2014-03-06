@@ -49,6 +49,17 @@ public:
 };
 
 //  ================================================================
+//	Dev
+//	Stuff that's being tested.
+//  ================================================================
+class DevFooManager2 : public FooManager
+{
+public:
+	DevFooManager2();
+	void createNewFoo(int index);
+};
+
+//  ================================================================
 //	Testing Managers
 //	Certain managers designed for certain tests.
 //  ================================================================

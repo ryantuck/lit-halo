@@ -326,6 +326,7 @@ FadinDubbyBowz::FadinDubbyBowz()
 	r2 = dr->foos.entry(1)->me;
 }
 
+
 void FadinDubbyBowz::checkMyShit()
 {
 	if (audio.beats.detected())
@@ -347,6 +348,321 @@ void FadinDubbyBowz::checkMyShit()
 		}
 	}
 }
+
+PairHolder::PairHolder()
+{
+	DotPair* x1 = new DotPair(0,6,up);
+	DotPair* x2 = new DotPair(0,6,down);
+	//DotPair* x3 = new DotPair(0,5,up);
+	addFoo(x1);
+	addFoo(x2);
+	
+}
+
+
+SpeedChangerDot::SpeedChangerDot(Color aColor, int start, bool increasing, int longest, bool aDirection)
+{
+	repeats = false;
+	
+	int total = 0;
+	for (int n=0;n<longest;n++)
+	{
+		int iter = (n+1)*(longest-n);
+		total += iter;
+	}
+	
+	addLEDs(aColor, maxBrightness, start, start);
+	addStepWithFunction(&SpeedChangerDot::iterate, 1, total);
+	isIncreasing = increasing;
+	
+	direction	= aDirection;
+	pCounter	= 0;
+	mCounter	= 0;
+	
+	if (isIncreasing)
+	{
+		per	= 1;
+		mov	= longest;
+	}
+	else
+	{
+		per	= longest;
+		mov	= 1;
+	}
+}
+
+void SpeedChangerDot::iterate()
+{
+	pCounter++;
+	
+	if (pCounter == per)
+	{
+		move();
+		
+		pCounter = 0;
+		mCounter++;
+		
+		if (mCounter == mov)
+		{
+			if (isIncreasing)
+			{
+				per++;
+				mov--;
+			}
+			else
+			{
+				per--;
+				mov++;
+			}
+			
+			mCounter = 0;
+		}
+	}
+}
+
+DotPair::DotPair(int start, int longest, bool aDirection)
+{
+	startAtZero = start;
+	addStepWithFunction(&DotPair::checkForFoos, 1);
+	index			= 1;
+	per				= longest;
+	startAddress	= start;
+	startOffset		= 1;
+	direction		= aDirection;
+	
+	
+	for (int n=0;n<longest;n++)
+	{
+		startOffset += n+1;
+	}
+}
+
+void DotPair::checkForFoos()
+{
+	if (!hasFoos())
+	{
+		index		= updateValueBy(index, up, 2, 0, 5, cycles);
+		int index2	= updateValueBy(index, up, 3, 0, 5, cycles);
+		
+		startAddress = updateValueBy(startAddress, direction, startOffset, 0, 31, cycles);
+		
+		SpeedChangerDot* a = new SpeedChangerDot(*LITColor.colorList[index],startAddress,true,per,direction);
+		SpeedChangerDot* b = new SpeedChangerDot(*LITColor.colorList[index2],startAddress,false,per,direction);
+
+		addFoo(a);
+		addFoo(b);
+	}
+}
+
+WhiteBrightnessTest::WhiteBrightnessTest()
+{
+	// empirical test to determine how brightness can be adjusted
+	// to make combination colors (white, yellow, cyan, etc) match
+	// single colors (red,green,blue).
+	
+	addLEDs(LITColor.yellow, 50, 9, 9);
+	addLEDs(LITColor.green, maxBrightness, 10, 10);
+	addLEDs(LITColor.white, 25, 11, 11);
+	
+	addLEDs(LITColor.yellow, maxBrightness, 15, 15);
+	addLEDs(LITColor.green, maxBrightness, 16, 16);
+	addLEDs(LITColor.white, maxBrightness, 17, 17);
+	
+	// i think this relationship works the best
+	addLEDs(LITColor.yellow, 67, 20, 20);
+	addLEDs(LITColor.green, maxBrightness, 21, 21);
+	addLEDs(LITColor.white, 33, 22, 22);
+}
+
+BackgroundCycler::BackgroundCycler()
+{
+	cycler = 0;
+	
+	addStepWithFunction(&BackgroundCycler::checkForBeat, 1);
+}
+
+void BackgroundCycler::checkForBeat()
+{
+	if (audio.beatJustDetected(1))
+	{
+		foos.removeAllEntries();
+		
+		switch (cycler)
+		{
+			case 0:
+			{
+				RainbowFountain* a = new RainbowFountain(up);
+				addFoo(a);
+				break;
+			}
+			case 1:
+			{
+				RainbowPulser* b = new RainbowPulser;
+				addFoo(b);
+				break;
+			}
+			case 2:
+			{
+				EvenEphemSnakes* c = new EvenEphemSnakes;
+				addFoo(c);
+				break;
+			}
+			case 3:
+			{
+				TwoColorParticleJam* d = new TwoColorParticleJam(LITColor.green,LITColor.blue);
+				addFoo(d);
+				break;
+			}
+		}
+		
+		cycler = updateValue(cycler, up, 0, 3, cycles);
+	}
+}
+
+// ========================================================================
+
+Fireworks::Fireworks(Color aColor)
+{
+	numberOfLEDs		= 1;
+	isIncreasing		= true;
+	maxLEDs				= 8;
+    
+    myColor = aColor;
+
+	addStepWithFunction(&Fireworks::flashLEDs, 2, 2);
+	addStepWithFunction(&Fireworks::changeNumberOfLEDs, 1, 1);
+}
+
+void Fireworks::flashLEDs()
+{
+	fLEDs.removeAllEntries();
+	
+	for (int n=0;n<numberOfLEDs;n++)
+	{
+		int addr = rand()%32;
+		addLEDs(myColor, maxBrightness, addr, addr);
+	}
+}
+
+void Fireworks::changeNumberOfLEDs()
+{
+	if (isIncreasing)
+	{
+		numberOfLEDs = numberOfLEDs + 2;
+	}
+	else
+	{
+		numberOfLEDs = numberOfLEDs - 2;
+	}
+	
+	if (numberOfLEDs >- maxLEDs)
+	{
+		isIncreasing = false;
+	}
+	
+	if (numberOfLEDs <= 0)
+	{
+		repeats = false;
+	}
+}
+
+FireworksHolder::FireworksHolder()
+{
+    
+    state = 1;
+    addFoo(new Fireworks(LITColor.green));
+    addStepWithFunction(&FireworksHolder::checkMyShit, 1);
+}
+
+void FireworksHolder::checkMyShit()
+{
+	if (audio.bassBeatDetected && foos.length() < 4)
+    {
+        if(state)
+        {
+            addFoo(new Fireworks(LITColor.green));
+            state = 0;
+        }
+        else
+        {
+            addFoo(new Fireworks(LITColor.white));
+            state = 1;
+        }
+
+    }
+}
+
+
+// ========================================================================
+BeatMania::BeatMania()
+{
+    addStepWithFunction(&BeatMania::checkMyShit, 1);
+    addStepWithFunction(&BeatMania::clear, 2);
+}
+
+void BeatMania::checkMyShit()
+{
+    if (audio.bassBeatDetected)
+    {
+        foos.removeAllEntries();
+        int index = rand()%7;
+        
+        switch (index)
+        {
+            case 0:
+                addFoo(new StillRainbow);
+                break;
+            case 1:
+                addFoo(new StillDoubleRainbow);
+                break;
+            case 2:
+                addFoo(new AllOn(LITColor.white));
+                break;
+            case 3:
+                addFoo(new AllOn(LITColor.green));
+                break;
+            case 4:
+                addFoo(new AllOn(LITColor.yellow));
+                break;
+            case 5:
+                addFoo(new StillEvenlySpaced(LITColor.magenta,4,0));
+                break;
+            case 6:
+                addFoo(new StillEvenlySpaced(LITColor.cyan,16,0));
+                break;
+            case 7:
+                addFoo(new StillDubz);
+                break;
+        }
+    }
+}
+
+void BeatMania::clear()
+{
+    foos.removeAllEntries();
+}
+
+
+
+// ========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

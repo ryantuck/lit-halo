@@ -27,6 +27,7 @@
 #include "RainbowPulser.h"
 #include "EphemeralSnakesFoo.h"
 #include "MultipleBouncingFoos.h"
+#include "RainbowFountain.h"
 
 //	LED Setups
 //	========================================

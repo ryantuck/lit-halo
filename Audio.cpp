@@ -42,7 +42,7 @@ Audio::Audio()
 	bandThresholds[4] = 80;
 	bandThresholds[5] = 80;
 	bandThresholds[6] = 80;
-	
+    
 	for (int n=0;n<7;n++)
 	{
 		// set these values high so beat isn't automatically detected
@@ -58,6 +58,7 @@ Audio::Audio()
 void Audio::update()
 {
 	getEQ();
+
 	beats.addPoint(eq.spectrum[1]);
 //	checkBeats();
 //	recordSpectrum();

@@ -6,8 +6,8 @@
 
 //	########################################################################
 
-#ifndef __LIT_Headband_Simulator__InProgressCustomFoos__
-#define __LIT_Headband_Simulator__InProgressCustomFoos__
+#ifndef __InProgressCustomFoos__
+#define __InProgressCustomFoos__
 
 #include "Foo.h"
 #include "MovingFoo.h"
@@ -19,6 +19,13 @@
 #include "Stats.h"
 #include "BandMeterFoo.h"
 #include "InAndOutFader.h"
+
+#include "RainbowFountain.h"
+#include "RainbowPulser.h"
+#include "EphemeralSnakesFoo.h"
+#include "TwoColorParticleJam.h"
+#include "StillFoos.h"
+#include "AllSingleColors.h"
 
 
 class ListenerWithBunch : public Foo
@@ -122,6 +129,7 @@ public:
 	int maxFoos;
 };
 
+
 class FadinDubbyBowz : public Foo
 {
 public:
@@ -133,6 +141,100 @@ public:
 	Foo* r1;
 	Foo* r2;
 };
+
+
+class PairHolder : public Foo
+{
+public:
+	PairHolder();
+	void checkForFoos();
+	
+	bool startAtZero;
+	
+};
+
+
+
+class SpeedChangerDot : public MovingFoo
+{
+public:
+	SpeedChangerDot(Color aColor, int start, bool increasing, int longest, bool aDirection);
+	void iterate();
+	
+	bool isIncreasing;
+	int per;
+	int pCounter;
+	int mov;
+	int mCounter;
+};
+
+class DotPair : public Foo
+{
+public:
+	DotPair(int start, int longest, bool aDirection);
+	void checkForFoos();
+	
+	bool startAtZero;
+	int index;
+	int startAddress;
+	int startOffset;
+	int per;
+	bool direction;
+};
+
+class WhiteBrightnessTest : public Foo
+{
+public:
+	WhiteBrightnessTest();
+};
+
+class BackgroundCycler : public Foo
+{
+public:
+	BackgroundCycler();
+	void checkForBeat();
+	
+	int cycler;
+};
+
+class Fireworks : public Foo
+{
+public:
+	Fireworks(Color aColor);
+	void iterate();
+	
+	void flashLEDs();
+	void changeNumberOfLEDs();
+	
+	int numberOfLEDs;
+	bool isIncreasing;
+	
+	int maxLEDs;
+    
+    Color myColor;
+    bool location;
+};
+
+class FireworksHolder : public Foo
+{
+public:
+    bool state;
+	FireworksHolder();
+	void checkMyShit();
+};
+
+class BeatMania : public Foo
+{
+public:
+    BeatMania();
+    void checkMyShit();
+    void clear();
+};
+
+
+
+
+
 
 
 
