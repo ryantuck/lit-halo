@@ -652,6 +652,7 @@ Strobe::Strobe()
 	addLEDs(LITColor.white, maxBrightness, 0, 31);
 	
 	strobePeriod = 2;
+	colorCounter = 0;
 	
 	addStepWithFunction(&Strobe::flashOn, strobePeriod, 1);
 	addStepWithFunction(&Strobe::flashOff, strobePeriod, 1);
@@ -659,9 +660,12 @@ Strobe::Strobe()
 
 void Strobe::flashOn()
 {
+	colorCounter++;
+	if (colorCounter == 32) colorCounter = 0;
+	
 	for (int n=0;n<32;n++)
 	{
-		fLEDs.entry(n)->me->color.setColor(LITColor.white);
+		fLEDs.entry(n)->me->color.calculateRGB(32, colorCounter);
 	}
 }
 

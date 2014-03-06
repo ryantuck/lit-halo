@@ -238,6 +238,8 @@ public:
 	
 	byte strobePeriod;
 	
+	byte colorCounter;
+	
 	void flashOn();
 	void flashOff();
 };
