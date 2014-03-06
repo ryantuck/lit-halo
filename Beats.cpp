@@ -99,6 +99,8 @@ void Beats::addPoint(int newPoint)
     }
 	
     points[0] = newPoint;
+	
+	iterationCounter = iterateCounter();
 }
 
 byte Beats::midPoint()
