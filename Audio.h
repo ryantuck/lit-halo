@@ -14,6 +14,8 @@
 #include "MSGEQ7.h"
 #include "MCP4131.h"
 #include "Arduino.h"
+
+#include "Beats.h"
 //#include "LITFunctions.h"
 
 class Audio
@@ -22,6 +24,7 @@ public:
 	
 	MSGEQ7		eq;
 	MCP4131		pot;
+	Beats		beats;
 	
 	int			weightSpectrum[7];
 	byte		beatCounters[7];	//	tracks how many iterations

@@ -314,8 +314,39 @@ void LotsOfMovingFadingDots::checkFoos()
 
 // ========================================================================
 
+FadinDubbyBowz::FadinDubbyBowz()
+{
+	addStepWithFunction(&FadinDubbyBowz::checkMyShit, 1);
+	
+	addFoo(new DoubleRainbow);
+	
+	dr = foos.entry(0)->me;
+	
+	r1 = dr->foos.entry(0)->me;
+	r2 = dr->foos.entry(1)->me;
+}
 
-
+void FadinDubbyBowz::checkMyShit()
+{
+	if (audio.beats.detected())
+	{
+		// set brightness of DR to max brightness
+		for (int n=0;n<r1->countLEDs();n++)
+		{
+			r1->fLEDs.entry(n)->me->brightness = maxBrightness;
+			r2->fLEDs.entry(n)->me->brightness = maxBrightness;
+		}
+	}
+	else
+	{
+		// reduce brightness
+		for (int n=0;n<r1->countLEDs();n++)
+		{
+			r1->fLEDs.entry(n)->me->brightness *= 0.8;
+			r2->fLEDs.entry(n)->me->brightness *= 0.8;
+		}
+	}
+}
 
 
 
