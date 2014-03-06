@@ -22,6 +22,11 @@ public:
 	byte derivativeLimit;
 	byte points[NUMPOINTS];
 	
+	byte maxIterations;
+	byte iterationCounter;
+	byte iterateCounter();
+	bool beatCanTrigger();
+	
 	bool detected();
 	void addPoint(int newPoint);
 	

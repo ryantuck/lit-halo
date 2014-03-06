@@ -17,6 +17,9 @@ Beats::Beats()
 	
 	pointLength		= 0;
 	derivativeLimit = 60;
+	
+	maxIterations		= 10;
+	iterationCounter	= 0;
 }
 
 bool Beats::detected()
@@ -26,10 +29,11 @@ bool Beats::detected()
 	if (	currentValue() > midPoint()
 		&&	lastValue() < midPoint()
 		&&	currentDerivative() > derivativeMidPoint()
-		&&	currentDerivative() > derivativeLimit)
+		&&	currentDerivative() > derivativeLimit
+		&&	beatCanTrigger())
 	{
 		beatDetected = true;
-		Serial.println("beat detected!");
+		iterationCounter = 1;
 	}
 	
 	return beatDetected;
@@ -43,6 +47,33 @@ byte Beats::currentValue()
 byte Beats::lastValue()
 {
 	return points[1];
+}
+
+byte Beats::iterateCounter()
+{
+	if (iterationCounter != 0)
+	{
+		iterationCounter++;
+		
+		if (iterationCounter == maxIterations)
+		{
+			iterationCounter = 0;
+		}
+	}
+	
+	return iterationCounter;
+}
+
+bool Beats::beatCanTrigger()
+{
+	bool beatReady = false;
+	
+	if (iterationCounter == 0)
+	{
+		beatReady = true;
+	}
+	
+	return beatReady;
 }
 
 byte Beats::currentDerivative()
