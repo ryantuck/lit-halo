@@ -231,6 +231,17 @@ public:
     void clear();
 };
 
+class Strobe : public Foo
+{
+public:
+	Strobe();
+	
+	byte strobePeriod;
+	
+	void flashOn();
+	void flashOff();
+};
+
 
 
 

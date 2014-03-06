@@ -647,9 +647,31 @@ void BeatMania::clear()
 // ========================================================================
 
 
+Strobe::Strobe()
+{
+	addLEDs(LITColor.white, maxBrightness, 0, 31);
+	
+	strobePeriod = 2;
+	
+	addStepWithFunction(&Strobe::flashOn, strobePeriod, 1);
+	addStepWithFunction(&Strobe::flashOff, strobePeriod, 1);
+}
 
+void Strobe::flashOn()
+{
+	for (int n=0;n<32;n++)
+	{
+		fLEDs.entry(n)->me->color.setColor(LITColor.white);
+	}
+}
 
-
+void Strobe::flashOff()
+{
+	for (int n=0;n<32;n++)
+	{
+		fLEDs.entry(n)->me->color.setColor(LITColor.black);
+	}
+}
 
 
 
