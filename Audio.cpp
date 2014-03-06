@@ -92,7 +92,7 @@ void Audio::checkBeats()
        
         //if sample is larger than 2 standard devs
         if(abs(eq.spectrum[n] - stats[n].getMean())
-           > 2*stats[n].getStdev() && beatCounters[n] >= 5)
+           > 4*stats[n].getStdev() && beatCounters[n] >= 5)
         {
             beatCounters[n] = 0;
             beatDetected[n] = 1;
