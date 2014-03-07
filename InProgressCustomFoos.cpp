@@ -714,8 +714,7 @@ void CloseColorDots::cycleThroughColors()
 
 Explosion::Explosion()
 {
-	repeats = false;
-	addStepWithFunction(&Explosion::moveAndFade, 1);
+	addStepWithFunction(&Explosion::moveAndFade, 1,1);
 	
 	for (int n=0;n<6;n++)
 	{
