@@ -752,7 +752,27 @@ void ExplosionHolder::listen()
 }
 
 
+// ========================================================================
 
+FanOut::FanOut()
+{
+	for (int n=0;n<8;n++)
+	{
+		addFoo(new MovingDot(*LITColor.colorList[n/2],n%2, 15+n%2));
+		foos.entry(n)->me->steps.entry(0)->me->period = pow(2,n/2);
+	}
+	
+	addStepWithFunction(&FanOut::fan, 16);
+}
+
+void FanOut::fan()
+{
+	for (int n=0;n<countFoos();n++)
+	{
+		MovingDot* x = (MovingDot*)foos.entry(n)->me;
+		x->switchDirection();
+	}
+}
 
 
 
