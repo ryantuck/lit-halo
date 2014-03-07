@@ -17,7 +17,7 @@ ListenerWithBunch::ListenerWithBunch()
 
 void ListenerWithBunch::listenUp()
 {
-	if (audio.beatJustDetected(1))
+	if (audio.beats.detected())
 	{
 		FiniteBunch* fb = new FiniteBunch;
 		addFoo(fb);
@@ -483,7 +483,7 @@ BackgroundCycler::BackgroundCycler()
 
 void BackgroundCycler::checkForBeat()
 {
-	if (audio.beatJustDetected(1))
+	if (audio.beats.detected())
 	{
 		foos.removeAllEntries();
 		
@@ -647,19 +647,134 @@ void BeatMania::clear()
 // ========================================================================
 
 
+Strobe::Strobe()
+{
+	addLEDs(LITColor.white, maxBrightness, 0, 31);
+	
+	strobePeriod = 2;
+	colorCounter = 0;
+	
+	addStepWithFunction(&Strobe::flashOn, strobePeriod, 1);
+	addStepWithFunction(&Strobe::flashOff, strobePeriod, 1);
+}
+
+void Strobe::flashOn()
+{
+	colorCounter++;
+	if (colorCounter == 32) colorCounter = 0;
+	
+	for (int n=0;n<32;n++)
+	{
+		fLEDs.entry(n)->me->color.calculateRGB(32, colorCounter);
+	}
+}
+
+void Strobe::flashOff()
+{
+	for (int n=0;n<32;n++)
+	{
+		fLEDs.entry(n)->me->color.setColor(LITColor.black);
+	}
+}
+
+
+// ========================================================================
+
+CloseColorDots::CloseColorDots(int number)
+{
+	colorIndex = 0;
+	maxColorIndex = 20;
+	
+	for (int n=0;n<number;n++)
+	{
+		Color myColor;
+		myColor.calculateRGB(maxColorIndex, n);
+		
+		MovingDot* x = new MovingDot(myColor,rand()%2,rand()%32);
+		x->steps.entry(0)->me->period = rand()%4+2;
+		addFoo(x);
+	}
+	
+	addStepWithFunction(&CloseColorDots::cycleThroughColors, 8);
+}
+
+void CloseColorDots::cycleThroughColors()
+{
+	colorIndex = updateValue(colorIndex, up, 0, maxColorIndex, cycles);
+	
+	for (int n=0;n<countFoos();n++)
+	{
+		int tmpIndex = updateValueBy(colorIndex, up, n, 0, maxColorIndex, cycles);
+		
+		foos.entry(n)->me->fLEDs.entry(0)->me->color.calculateRGB(maxColorIndex, tmpIndex);
+	}
+}
 
 
 
+// ========================================================================
+
+Explosion::Explosion()
+{
+	addStepWithFunction(&Explosion::moveAndFade, 1,1);
+	
+	for (int n=0;n<6;n++)
+	{
+		MovingDot* x = new MovingDot(*LITColor.colorList[n],n%2,0);
+		x->steps.entry(0)->me->period = n+1;
+		addFoo(x);
+	}
+}
 
 
+void Explosion::moveAndFade()
+{
+	for (int n=0;n<countFoos();n++)
+	{
+		foos.entry(n)->me->fLEDs.entry(0)->me->brightness *= 0.95;
+		
+		if (foos.entry(n)->me->fLEDs.entry(0)->me->brightness == 0)
+		{
+			repeats = false;
+		}
+	}
+}
+
+ExplosionHolder::ExplosionHolder()
+{
+	addStepWithFunction(&ExplosionHolder::listen, 1);
+}
+
+void ExplosionHolder::listen()
+{
+	if (audio.beats.detected())
+	{
+		addFoo(new Explosion());
+	}
+}
 
 
+// ========================================================================
 
+FanOut::FanOut()
+{
+	for (int n=0;n<8;n++)
+	{
+		addFoo(new MovingDot(*LITColor.colorList[n/2],n%2, 15+n%2));
+		foos.entry(n)->me->steps.entry(0)->me->period = pow(2,n/2);
+	}
+	
+	addStepWithFunction(&FanOut::fan, 16);
+}
 
-
-
-
-
+void FanOut::fan()
+{
+	for (int n=0;n<countFoos();n++)
+	{
+		MovingDot* x = (MovingDot*)foos.entry(n)->me;
+		x->switchDirection();
+	}
+}
 
 
 

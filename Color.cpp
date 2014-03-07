@@ -123,9 +123,11 @@ void Color::calculateRGB(int total, int entry)
 	{
 		r = total - remainder;
 		g = remainder;
+		b = 0;
 	}
 	else if (base==1)
 	{
+		r = 0;
 		g = total - remainder;
 		b = remainder;
 	}
@@ -133,6 +135,7 @@ void Color::calculateRGB(int total, int entry)
 	{
 		b = total-remainder;
 		r = remainder;
+		g = 0;
 	}
 }
 

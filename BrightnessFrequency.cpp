@@ -39,7 +39,7 @@ void BrightnessFrequency::listenUp()
 {
 	float val = (float)audio.eq.spectrum[band];
 	
-	float max = 1024 - (float)audio.baseline(band, audio.pot.currentValue);
+	float max = 1024;
 	
 	float pct = val/max;
 	

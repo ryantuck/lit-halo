@@ -22,7 +22,7 @@ int Battery::percentage()
 	// equation:
 	//	reading = voltage / 0.0048
 	
-	int maxVoltage = 885;	//	4.25 V
+	int maxVoltage = 860;	//	4.25 V
 	int minVoltage = 730;	//	3.50 V
 	
 	float range = maxVoltage - minVoltage;
@@ -32,6 +32,9 @@ int Battery::percentage()
 	Serial.println(ratio);
 	
 	int pct = (voltage() - minVoltage) * ratio;
+	
+	Serial.print("voltage: ");
+	Serial.println(voltage());
 	
 	return pct;
 }
