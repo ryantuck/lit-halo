@@ -710,10 +710,47 @@ void CloseColorDots::cycleThroughColors()
 
 
 
+// ========================================================================
+
+Explosion::Explosion()
+{
+	repeats = false;
+	addStepWithFunction(&Explosion::moveAndFade, 1);
+	
+	for (int n=0;n<6;n++)
+	{
+		MovingDot* x = new MovingDot(*LITColor.colorList[n],n%2,0);
+		x->steps.entry(0)->me->period = n+1;
+		addFoo(x);
+	}
+}
 
 
+void Explosion::moveAndFade()
+{
+	for (int n=0;n<countFoos();n++)
+	{
+		foos.entry(n)->me->fLEDs.entry(0)->me->brightness *= 0.95;
+		
+		if (foos.entry(n)->me->fLEDs.entry(0)->me->brightness == 0)
+		{
+			repeats = false;
+		}
+	}
+}
 
+ExplosionHolder::ExplosionHolder()
+{
+	addStepWithFunction(&ExplosionHolder::listen, 1);
+}
 
+void ExplosionHolder::listen()
+{
+	if (audio.beats.detected())
+	{
+		addFoo(new Explosion());
+	}
+}
 
 
 

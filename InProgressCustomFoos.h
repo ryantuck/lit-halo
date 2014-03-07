@@ -253,11 +253,25 @@ public:
 	int maxColorIndex;
 	
 	void cycleThroughColors();
+	void listen();
 };
 
+class Explosion : public Foo
+{
+public:
+	Explosion();
+	
+	void moveAndFade();
+};
 
-
-
+class ExplosionHolder : public Foo
+{
+	
+	// this shit causes a crash if too many beats are detected too quickly.
+public:
+	ExplosionHolder();
+	void listen();
+};
 
 
 
