@@ -244,7 +244,16 @@ public:
 	void flashOff();
 };
 
-
+class CloseColorDots : public Foo
+{
+public:
+	CloseColorDots(int number);
+	
+	int colorIndex;
+	int maxColorIndex;
+	
+	void cycleThroughColors();
+};
 
 
 

@@ -75,7 +75,7 @@ void MasterFooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 10;
+	maxFoodex = 11;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -114,6 +114,9 @@ void DevFooManager::createNewFoo(int index)
 			break;
 		case 10:
 			foo = new BackgroundCycler;
+			break;
+		case 11:
+			foo = new CloseColorDots(8);
 			break;
 	}
 }

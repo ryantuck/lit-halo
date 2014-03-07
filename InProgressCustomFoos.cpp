@@ -678,6 +678,37 @@ void Strobe::flashOff()
 }
 
 
+// ========================================================================
+
+CloseColorDots::CloseColorDots(int number)
+{
+	colorIndex = 0;
+	maxColorIndex = 20;
+	
+	for (int n=0;n<number;n++)
+	{
+		Color myColor;
+		myColor.calculateRGB(maxColorIndex, n);
+		
+		MovingDot* x = new MovingDot(myColor,rand()%2,rand()%32);
+		x->steps.entry(0)->me->period = rand()%4+2;
+		addFoo(x);
+	}
+	
+	addStepWithFunction(&CloseColorDots::cycleThroughColors, 8);
+}
+
+void CloseColorDots::cycleThroughColors()
+{
+	colorIndex = updateValue(colorIndex, up, 0, maxColorIndex, cycles);
+	
+	for (int n=0;n<countFoos();n++)
+	{
+		foos.entry(n)->me->fLEDs.entry(0)->me->color.calculateRGB(maxColorIndex, colorIndex + n);
+	}
+}
+
+
 
 
 
