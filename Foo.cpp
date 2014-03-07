@@ -193,7 +193,7 @@ void Foo::updateLEDs()
 			}
 			else if (layer == leds[addr].layer)
 			{
-				fLEDs.entry(n)->me->brightness = brightness;
+				//fLEDs.entry(n)->me->brightness = brightness;
 				leds[addr].mixWith(*fLEDs.entry(n)->me);
 				leds[addr].adjustColor();
 			}
