@@ -704,7 +704,9 @@ void CloseColorDots::cycleThroughColors()
 	
 	for (int n=0;n<countFoos();n++)
 	{
-		foos.entry(n)->me->fLEDs.entry(0)->me->color.calculateRGB(maxColorIndex, colorIndex + n);
+		int tmpIndex = updateValueBy(colorIndex, up, n, 0, maxColorIndex, cycles);
+		
+		foos.entry(n)->me->fLEDs.entry(0)->me->color.calculateRGB(maxColorIndex, tmpIndex);
 	}
 }
 
