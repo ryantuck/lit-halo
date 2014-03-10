@@ -822,12 +822,72 @@ void AppearAndFadeEvent::checkForBeats()
 	}
 }
 
+SpringDot::SpringDot(Color aColor, int start, bool aDirection)
+{
+	addFoo(new MovingDot(aColor,aDirection,start));
+	dot = (MovingDot*)foos.entry(0)->me;
+	
+	addStepWithFunction(&SpringDot::adjust, 1);
+}
 
+void SpringDot::adjust()
+{
+	changePeriod();
+	checkDirection();
+}
 
+void SpringDot::changePeriod()
+{
+	int currentAddress = dot->fLEDs.entry(0)->me->address;
+	dot->steps.entry(0)->me->period = newPeriod(currentAddress);
+}
 
+int SpringDot::newPeriod(int addr)
+{
+	// period = C / (256-x^2)^(1/2)
+	
+	int newPeriod = 1;
+	
+	int d = 0;
+	
+	if (addr < 16)
+	{
+		int distance = addr - 15;
+		d = abs(distance);
+	}
+	else
+	{
+		int distance = addr - 16;
+		d = abs(distance);
+	}
+	
+	newPeriod = 28 / (pow(256 - pow(d,2),0.5));
+	
+	return newPeriod;
+}
 
-
-
+void SpringDot::checkDirection()
+{
+	int currentAddress = dot->fLEDs.entry(0)->me->address;
+	
+	bool currentDirection = dot->direction;
+	
+	if (currentAddress == 0)
+	{
+		if (currentDirection == 0)
+		{
+			dot->switchDirection();
+		}
+	}
+	
+	if (currentAddress == 31)
+	{
+		if (currentDirection == 1)
+		{
+			dot->switchDirection();
+		}
+	}
+}
 
 
 

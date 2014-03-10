@@ -291,6 +291,20 @@ public:
 	void checkForBeats();
 };
 
+class SpringDot : public Foo
+{
+public:
+	SpringDot(Color aColor, int start, bool aDirection);
+	void adjust();
+	
+	void changePeriod();
+	int newPeriod(int addr);
+	
+	void checkDirection();
+	
+	
+	MovingDot* dot;
+};
 
 
 

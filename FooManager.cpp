@@ -139,6 +139,9 @@ void DevFooManager::createNewFoo(int index)
 		case 15:
 			foo = new AppearAndFadeEvent;
 			break;
+		case 16:
+			foo = new SpringDot(LITColor.green,16,1);
+			break;
 	}
 }
 
