@@ -43,7 +43,7 @@ void FooManager::createNewFoo(int index)
 
 MasterFooManager::MasterFooManager()
 {
-	maxFoodex = 5;
+	maxFoodex = 8;
 }
 
 void MasterFooManager::createNewFoo(int index)
@@ -67,6 +67,15 @@ void MasterFooManager::createNewFoo(int index)
 			break;
 		case 5:
 			foo = new Pulse4;
+			break;
+		case 6:
+			foo = new Strobe;
+			break;
+		case 7:
+			foo = new RainbowFountain(0);
+			break;
+		case 8:
+			foo = new BackgroundCycler;
 			break;
 	}
 }
