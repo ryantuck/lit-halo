@@ -279,12 +279,8 @@ class FanOut : public Foo
 public:
 	FanOut();
 	
-	
-	
 	void fan();
 };
-
-
 
 
 

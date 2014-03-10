@@ -347,6 +347,12 @@ void FadinDubbyBowz::checkMyShit()
 			r2->fLEDs.entry(n)->me->brightness *= 0.8;
 		}
 	}
+	
+	MovingFoo* x = (MovingFoo*)r1;
+	MovingFoo* y = (MovingFoo*)r2;
+	
+	x->move();
+	y->move();
 }
 
 PairHolder::PairHolder()
