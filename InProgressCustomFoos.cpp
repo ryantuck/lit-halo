@@ -783,7 +783,45 @@ void FanOut::fan()
 }
 
 
+BeatMotionStopper::BeatMotionStopper()
+{
+	motionOn	= true;
+	maxCount	= 15;
+	mCount		= 0;
+	
+	addStepWithFunction(&BeatMotionStopper::checkForBeats, 1);
+	
+	addLEDs(LITColor.orange, maxBrightness, 0, 10);
+}
 
+void BeatMotionStopper::checkForBeats()
+{
+	updateMotionCount();
+	
+	if (audio.beats.detected())
+	{
+		motionOn = false;
+	}
+	
+	if (motionOn)
+	{
+		move(0);
+	}
+}
+
+void BeatMotionStopper::updateMotionCount()
+{
+	if (!motionOn)
+	{
+		mCount++;
+		
+		if (mCount == maxCount)
+		{
+			mCount = 0;
+			motionOn = true;
+		}
+	}
+}
 
 
 

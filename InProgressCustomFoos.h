@@ -282,6 +282,17 @@ public:
 	void fan();
 };
 
+class BeatMotionStopper : public MovingFoo
+{
+public:
+	BeatMotionStopper();
+	void checkForBeats();
+	void updateMotionCount();
+	
+	bool motionOn;
+	int mCount;
+	int maxCount;
+};
 
 
 
