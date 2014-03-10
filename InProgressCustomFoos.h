@@ -231,18 +231,7 @@ public:
     void clear();
 };
 
-class Strobe : public Foo
-{
-public:
-	Strobe();
-	
-	byte strobePeriod;
-	
-	byte colorCounter;
-	
-	void flashOn();
-	void flashOff();
-};
+
 
 class CloseColorDots : public Foo
 {
