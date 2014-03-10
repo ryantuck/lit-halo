@@ -14,7 +14,7 @@
 class AllOn : public Foo
 {
 public:
-	AllOn(Color aColor);
+	AllOn(Color aColor, int aBrightness);
 };
 
 #endif

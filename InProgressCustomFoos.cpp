@@ -622,13 +622,13 @@ void BeatMania::checkMyShit()
                 addFoo(new StillDoubleRainbow(50));
                 break;
             case 2:
-                addFoo(new AllOn(LITColor.white));
+                addFoo(new AllOn(LITColor.white,50));
                 break;
             case 3:
-                addFoo(new AllOn(LITColor.green));
+                addFoo(new AllOn(LITColor.green,50));
                 break;
             case 4:
-                addFoo(new AllOn(LITColor.yellow));
+                addFoo(new AllOn(LITColor.yellow,50));
                 break;
             case 5:
                 addFoo(new StillEvenlySpaced(50,LITColor.magenta,4,0));

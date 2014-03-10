@@ -95,7 +95,7 @@ void DevFooManager::createNewFoo(int index)
 			foo = new TwoColorParticleJam(LITColor.red,LITColor.cyan);
 			break;
 		case 1:
-			foo = new AllOn(LITColor.cyan);
+			foo = new AllOn(LITColor.cyan,50);
 			break;
 		case 2:
 			foo = new Pulse4;
