@@ -231,18 +231,7 @@ public:
     void clear();
 };
 
-class Strobe : public Foo
-{
-public:
-	Strobe();
-	
-	byte strobePeriod;
-	
-	byte colorCounter;
-	
-	void flashOn();
-	void flashOff();
-};
+
 
 class CloseColorDots : public Foo
 {
@@ -279,19 +268,49 @@ class FanOut : public Foo
 public:
 	FanOut();
 	
-	
-	
 	void fan();
 };
 
+class BeatMotionStopper : public MovingFoo
+{
+public:
+	BeatMotionStopper();
+	void checkForBeats();
+	void updateMotionCount();
+	
+	bool motionOn;
+	int mCount;
+	int maxCount;
+};
 
+class AppearAndFadeEvent : public Foo
+{
+public:
+	AppearAndFadeEvent();
+	
+	void checkForBeats();
+};
 
+class SpringDot : public Foo
+{
+public:
+	SpringDot(Color aColor, int start, bool aDirection);
+	void adjust();
+	
+	void changePeriod();
+	int newPeriod(int addr);
+	
+	void checkDirection();
+	
+	
+	MovingDot* dot;
+};
 
-
-
-
-
-
+class OscillatingDots : public Foo
+{
+public:
+	OscillatingDots();
+};
 
 
 

@@ -113,7 +113,8 @@ public:
 class StillManager : public FooManager
 {
 public:
-	StillManager();
+	StillManager(int aBrightness);
+	int myBrightness;
 	void createNewFoo(int index);
 };
 

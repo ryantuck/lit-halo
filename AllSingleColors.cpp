@@ -8,7 +8,7 @@
 
 #include "AllSingleColors.h"
 
-AllOn::AllOn(Color aColor)
+AllOn::AllOn(Color aColor, int aBrightness)
 {
-	addLEDs(aColor, maxBrightness, 0, 31);
+	addLEDs(aColor, aBrightness, 0, 31);
 }

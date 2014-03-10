@@ -347,6 +347,12 @@ void FadinDubbyBowz::checkMyShit()
 			r2->fLEDs.entry(n)->me->brightness *= 0.8;
 		}
 	}
+	
+	MovingFoo* x = (MovingFoo*)r1;
+	MovingFoo* y = (MovingFoo*)r2;
+	
+	x->move();
+	y->move();
 }
 
 PairHolder::PairHolder()
@@ -610,28 +616,28 @@ void BeatMania::checkMyShit()
         switch (index)
         {
             case 0:
-                addFoo(new StillRainbow);
+                addFoo(new StillRainbow(50));
                 break;
             case 1:
-                addFoo(new StillDoubleRainbow);
+                addFoo(new StillDoubleRainbow(50));
                 break;
             case 2:
-                addFoo(new AllOn(LITColor.white));
+                addFoo(new AllOn(LITColor.white,50));
                 break;
             case 3:
-                addFoo(new AllOn(LITColor.green));
+                addFoo(new AllOn(LITColor.green,50));
                 break;
             case 4:
-                addFoo(new AllOn(LITColor.yellow));
+                addFoo(new AllOn(LITColor.yellow,50));
                 break;
             case 5:
-                addFoo(new StillEvenlySpaced(LITColor.magenta,4,0));
+                addFoo(new StillEvenlySpaced(50,LITColor.magenta,4,0));
                 break;
             case 6:
-                addFoo(new StillEvenlySpaced(LITColor.cyan,16,0));
+                addFoo(new StillEvenlySpaced(50,LITColor.cyan,16,0));
                 break;
             case 7:
-                addFoo(new StillDubz);
+                addFoo(new StillDubz(50));
                 break;
         }
     }
@@ -647,35 +653,6 @@ void BeatMania::clear()
 // ========================================================================
 
 
-Strobe::Strobe()
-{
-	addLEDs(LITColor.white, maxBrightness, 0, 31);
-	
-	strobePeriod = 2;
-	colorCounter = 0;
-	
-	addStepWithFunction(&Strobe::flashOn, strobePeriod, 1);
-	addStepWithFunction(&Strobe::flashOff, strobePeriod, 1);
-}
-
-void Strobe::flashOn()
-{
-	colorCounter++;
-	if (colorCounter == 32) colorCounter = 0;
-	
-	for (int n=0;n<32;n++)
-	{
-		fLEDs.entry(n)->me->color.calculateRGB(32, colorCounter);
-	}
-}
-
-void Strobe::flashOff()
-{
-	for (int n=0;n<32;n++)
-	{
-		fLEDs.entry(n)->me->color.setColor(LITColor.black);
-	}
-}
 
 
 // ========================================================================
@@ -777,17 +754,148 @@ void FanOut::fan()
 }
 
 
+BeatMotionStopper::BeatMotionStopper()
+{
+	motionOn	= true;
+	maxCount	= 15;
+	mCount		= 0;
+	
+	addStepWithFunction(&BeatMotionStopper::checkForBeats, 1);
+	
+	addLEDs(LITColor.orange, maxBrightness, 0, 10);
+}
 
+void BeatMotionStopper::checkForBeats()
+{
+	updateMotionCount();
+	
+	if (audio.beats.detected())
+	{
+		motionOn = false;
+	}
+	
+	if (motionOn)
+	{
+		move(0);
+	}
+}
 
+void BeatMotionStopper::updateMotionCount()
+{
+	if (!motionOn)
+	{
+		mCount++;
+		
+		if (mCount == maxCount)
+		{
+			mCount = 0;
+			motionOn = true;
+		}
+	}
+}
 
+AppearAndFadeEvent::AppearAndFadeEvent()
+{
+	addStepWithFunction(&AppearAndFadeEvent::checkForBeats, 1);
+}
 
+void AppearAndFadeEvent::checkForBeats()
+{
+	if (audio.beats.detected())
+	{
+		if (hasLEDs())
+		{
+			fLEDs.removeAllEntries();
+		}
+		
+		// create 10 random LEDs
+		for (int n=0;n<20;n++)
+		{
+			int addr = rand()%32;
+			addLEDs(*LITColor.spectrum[rand()%12], maxBrightness, addr, addr);
+		}
+	}
+	
+	for (int n=0;n<countLEDs();n++)
+	{
+		fLEDs.entry(n)->me->brightness *= 0.9;
+	}
+}
 
+SpringDot::SpringDot(Color aColor, int start, bool aDirection)
+{
+	addFoo(new MovingDot(aColor,aDirection,start));
+	dot = (MovingDot*)foos.entry(0)->me;
+	
+	addStepWithFunction(&SpringDot::adjust, 1);
+}
 
+void SpringDot::adjust()
+{
+	changePeriod();
+	checkDirection();
+}
 
+void SpringDot::changePeriod()
+{
+	int currentAddress = dot->fLEDs.entry(0)->me->address;
+	dot->steps.entry(0)->me->period = newPeriod(currentAddress);
+}
 
+int SpringDot::newPeriod(int addr)
+{
+	// period = C / (256-x^2)^(1/2)
+	
+	int newPeriod = 1;
+	
+	int d = 0;
+	
+	if (addr < 16)
+	{
+		int distance = addr - 15;
+		d = abs(distance);
+	}
+	else
+	{
+		int distance = addr - 16;
+		d = abs(distance);
+	}
+	
+	newPeriod = 28 / (pow(256 - pow(d,2),0.5));
+	
+	return newPeriod;
+}
 
+void SpringDot::checkDirection()
+{
+	int currentAddress = dot->fLEDs.entry(0)->me->address;
+	
+	bool currentDirection = dot->direction;
+	
+	if (currentAddress == 0)
+	{
+		if (currentDirection == 0)
+		{
+			dot->switchDirection();
+		}
+	}
+	
+	if (currentAddress == 31)
+	{
+		if (currentDirection == 1)
+		{
+			dot->switchDirection();
+		}
+	}
+}
 
-
+OscillatingDots::OscillatingDots()
+{
+	addFoo(new SpringDot(LITColor.red,16,1));
+	addFoo(new SpringDot(LITColor.green,15,0));
+	
+	addFoo(new SpringDot(LITColor.blue,8,0));
+}
 
 
 
