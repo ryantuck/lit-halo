@@ -269,10 +269,10 @@ void StillManager::createNewFoo(int index)
 	switch (index)
 	{
 		case 0:
-			foo = new StillRainbow;
+			foo = new StillRainbow(50);
 			break;
 		case 1:
-			foo = new StillDoubleRainbow;
+			foo = new StillDoubleRainbow(50);
 			break;
 		case 2:
 			foo = new AllOn(LITColor.white);
@@ -284,13 +284,13 @@ void StillManager::createNewFoo(int index)
 			foo = new AllOn(LITColor.yellow);
 			break;
 		case 5:
-			foo = new StillEvenlySpaced(LITColor.magenta,4,0);
+			foo = new StillEvenlySpaced(50,LITColor.magenta,4,0);
 			break;
 		case 6:
-			foo = new StillEvenlySpaced(LITColor.cyan,16,0);
+			foo = new StillEvenlySpaced(50,LITColor.cyan,16,0);
 			break;
 		case 7:
-			foo = new StillDubz;
+			foo = new StillDubz(50);
 			break;
 	}
 }

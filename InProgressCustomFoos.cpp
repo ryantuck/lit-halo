@@ -616,10 +616,10 @@ void BeatMania::checkMyShit()
         switch (index)
         {
             case 0:
-                addFoo(new StillRainbow);
+                addFoo(new StillRainbow(50));
                 break;
             case 1:
-                addFoo(new StillDoubleRainbow);
+                addFoo(new StillDoubleRainbow(50));
                 break;
             case 2:
                 addFoo(new AllOn(LITColor.white));
@@ -631,13 +631,13 @@ void BeatMania::checkMyShit()
                 addFoo(new AllOn(LITColor.yellow));
                 break;
             case 5:
-                addFoo(new StillEvenlySpaced(LITColor.magenta,4,0));
+                addFoo(new StillEvenlySpaced(50,LITColor.magenta,4,0));
                 break;
             case 6:
-                addFoo(new StillEvenlySpaced(LITColor.cyan,16,0));
+                addFoo(new StillEvenlySpaced(50,LITColor.cyan,16,0));
                 break;
             case 7:
-                addFoo(new StillDubz);
+                addFoo(new StillDubz(50));
                 break;
         }
     }
