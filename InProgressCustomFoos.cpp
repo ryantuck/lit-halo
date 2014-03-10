@@ -889,6 +889,13 @@ void SpringDot::checkDirection()
 	}
 }
 
+OscillatingDots::OscillatingDots()
+{
+	addFoo(new SpringDot(LITColor.red,16,1));
+	addFoo(new SpringDot(LITColor.green,15,0));
+	
+	addFoo(new SpringDot(LITColor.blue,8,0));
+}
 
 
 

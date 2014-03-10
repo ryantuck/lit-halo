@@ -306,8 +306,11 @@ public:
 	MovingDot* dot;
 };
 
-
-
+class OscillatingDots : public Foo
+{
+public:
+	OscillatingDots();
+};
 
 
 

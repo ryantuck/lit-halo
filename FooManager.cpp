@@ -84,7 +84,7 @@ void MasterFooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 15;
+	maxFoodex = 17;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -141,6 +141,9 @@ void DevFooManager::createNewFoo(int index)
 			break;
 		case 16:
 			foo = new SpringDot(LITColor.green,16,1);
+			break;
+		case 17:
+			foo = new OscillatingDots;
 			break;
 	}
 }
