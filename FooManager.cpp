@@ -268,9 +268,10 @@ void ChristmasManager::createNewFoo(int index)
 
 //  ================================================================
 
-StillManager::StillManager()
+StillManager::StillManager(int aBrightness)
 {
 	maxFoodex = 7;
+	myBrightness = aBrightness;
 }
 
 void StillManager::createNewFoo(int index)
@@ -278,25 +279,25 @@ void StillManager::createNewFoo(int index)
 	switch (index)
 	{
 		case 0:
-			foo = new StillRainbow(50);
+			foo = new StillRainbow(myBrightness);
 			break;
 		case 1:
-			foo = new StillDoubleRainbow(50);
+			foo = new StillDoubleRainbow(myBrightness);
 			break;
 		case 2:
-			foo = new AllOn(LITColor.white);
+			foo = new AllOn(LITColor.white,myBrightness);
 			break;
 		case 3:
-			foo = new AllOn(LITColor.green);
+			foo = new AllOn(LITColor.green,myBrightness);
 			break;
 		case 4:
-			foo = new AllOn(LITColor.yellow);
+			foo = new AllOn(LITColor.yellow,myBrightness);
 			break;
 		case 5:
-			foo = new StillEvenlySpaced(50,LITColor.magenta,4,0);
+			foo = new StillEvenlySpaced(myBrightness,LITColor.magenta,4,0);
 			break;
 		case 6:
-			foo = new StillEvenlySpaced(50,LITColor.cyan,16,0);
+			foo = new StillEvenlySpaced(myBrightness,LITColor.cyan,16,0);
 			break;
 		case 7:
 			foo = new StillDubz(50);
