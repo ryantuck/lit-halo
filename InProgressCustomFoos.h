@@ -294,7 +294,13 @@ public:
 	int maxCount;
 };
 
-
+class AppearAndFadeEvent : public Foo
+{
+public:
+	AppearAndFadeEvent();
+	
+	void checkForBeats();
+};
 
 
 

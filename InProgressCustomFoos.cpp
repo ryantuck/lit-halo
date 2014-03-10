@@ -823,7 +823,33 @@ void BeatMotionStopper::updateMotionCount()
 	}
 }
 
+AppearAndFadeEvent::AppearAndFadeEvent()
+{
+	addStepWithFunction(&AppearAndFadeEvent::checkForBeats, 1);
+}
 
+void AppearAndFadeEvent::checkForBeats()
+{
+	if (audio.beats.detected())
+	{
+		if (hasLEDs())
+		{
+			fLEDs.removeAllEntries();
+		}
+		
+		// create 10 random LEDs
+		for (int n=0;n<20;n++)
+		{
+			int addr = rand()%32;
+			addLEDs(*LITColor.spectrum[rand()%12], maxBrightness, addr, addr);
+		}
+	}
+	
+	for (int n=0;n<countLEDs();n++)
+	{
+		fLEDs.entry(n)->me->brightness *= 0.9;
+	}
+}
 
 
 
