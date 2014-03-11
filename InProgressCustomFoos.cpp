@@ -342,12 +342,53 @@ void FadinDubbyBowz::checkMyShit()
 		// reduce brightness
 		for (int n=0;n<r1->countLEDs();n++)
 		{
-			r1->fLEDs.entry(n)->me->brightness *= 0.8;
-			r2->fLEDs.entry(n)->me->brightness *= 0.8;
+			r1->fLEDs.entry(n)->me->brightness *= 0.5;
+			r2->fLEDs.entry(n)->me->brightness *= 0.5;
 		}
 	}
 }
 
+FountainHead::FountainHead()
+{
+    Foo* a = new Foo;
+    Foo* b = new Foo;
+    a->addLEDs(LITColor.magenta, maxBrightness, 0, 15);
+    b->addLEDs(LITColor.yellow, maxBrightness, 16, 31);
+    
+    addFoo(a);
+    addFoo(b);
+    
+    lineLength = 10;
+    addStepWithFunction(&FountainHead::checkMyShit, 1);
+    
+}
+
+void FountainHead::checkMyShit()
+{
+    
+    Serial.println(lineLength);
+    if(audio.beats.detected())
+    {
+        lineLength = 16;
+    }
+    else
+    {
+        if(lineLength <= 1) lineLength = 0;
+        else lineLength--;
+    }
+    
+    for(int n=0; n< 16; n++)
+    {
+        foos.entry(0)->me->fLEDs.entry(n)->me->color = LITColor.black;
+        foos.entry(1)->me->fLEDs.entry(n)->me->color = LITColor.black;
+    }
+    for(int n=0; n < lineLength; n++)
+    {
+        foos.entry(0)->me->fLEDs.entry(n)->me->color = LITColor.magenta;
+        foos.entry(1)->me->fLEDs.entry(15-n)->me->color = LITColor.yellow;
+    }
+
+}
 
 
 

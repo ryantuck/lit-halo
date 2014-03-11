@@ -134,7 +134,16 @@ public:
 	Foo* r2;
 };
 
-
+class FountainHead : public Foo
+{
+public:
+    FountainHead();
+    
+    void checkMyShit();
+    
+    int lineLength;
+    
+};
 
 
 #endif
