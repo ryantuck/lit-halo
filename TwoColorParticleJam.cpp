@@ -59,7 +59,7 @@ TCPJwL::TCPJwL()
 
 void TCPJwL::listen()
 {
-	if (audio.beatJustDetected(1))
+	if (audio.beats.detected())
 	{
 		baseCycler = updateValue(baseCycler, up, 0, 2, cycles);
 		

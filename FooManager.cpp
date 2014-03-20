@@ -43,7 +43,7 @@ void FooManager::createNewFoo(int index)
 
 MasterFooManager::MasterFooManager()
 {
-	maxFoodex = 5;
+	maxFoodex = 8;
 }
 
 void MasterFooManager::createNewFoo(int index)
@@ -68,6 +68,15 @@ void MasterFooManager::createNewFoo(int index)
 		case 5:
 			foo = new Pulse4;
 			break;
+		case 6:
+			foo = new Strobe;
+			break;
+		case 7:
+			foo = new RainbowFountain(0);
+			break;
+		case 8:
+			foo = new BackgroundCycler;
+			break;
 	}
 }
 
@@ -75,7 +84,7 @@ void MasterFooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 6;
+	maxFoodex = 17;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -86,7 +95,7 @@ void DevFooManager::createNewFoo(int index)
 			foo = new TwoColorParticleJam(LITColor.red,LITColor.cyan);
 			break;
 		case 1:
-			foo = new AllOn(LITColor.cyan);
+			foo = new AllOn(LITColor.cyan,50);
 			break;
 		case 2:
 			foo = new Pulse4;
@@ -103,6 +112,39 @@ void DevFooManager::createNewFoo(int index)
         case 6:
             foo = new Sparkle;
             break;
+		case 7:
+			foo = new FadinDubbyBowz;
+			break;
+		case 8:
+			foo = new Strobe;
+			break;
+		case 9:
+			foo = new DoubleRainbowPulser;
+			break;
+		case 10:
+			foo = new BackgroundCycler;
+			break;
+		case 11:
+			foo = new CloseColorDots(8);
+			break;
+		case 12:
+			foo = new ExplosionHolder;
+			break;
+		case 13:
+			foo = new FanOut;
+			break;
+		case 14:
+			foo = new BeatMotionStopper;
+			break;
+		case 15:
+			foo = new AppearAndFadeEvent;
+			break;
+		case 16:
+			foo = new SpringDot(LITColor.green,16,1);
+			break;
+		case 17:
+			foo = new OscillatingDots;
+			break;
 	}
 }
 
@@ -110,6 +152,30 @@ void DevFooManager::createNewFoo(int index)
 //  ================================================================
 //  ================================================================
 
+//  ================================================================
+
+DevFooManager2::DevFooManager2()
+{
+	maxFoodex = 3;
+}
+
+void DevFooManager2::createNewFoo(int index)
+{
+	switch (index)
+	{
+		case 0:
+			foo = new TwoColorParticleJam(LITColor.red,LITColor.cyan);
+			break;
+		case 1:
+			foo = new FireworksHolder;
+			break;
+		case 2:
+			foo = new FireworksHolder;
+			break;
+	}
+}
+
+//  ================================================================
 
 BandFooManager::BandFooManager()
 {
@@ -208,9 +274,10 @@ void ChristmasManager::createNewFoo(int index)
 
 //  ================================================================
 
-StillManager::StillManager()
+StillManager::StillManager(int aBrightness)
 {
 	maxFoodex = 7;
+	myBrightness = aBrightness;
 }
 
 void StillManager::createNewFoo(int index)
@@ -218,28 +285,28 @@ void StillManager::createNewFoo(int index)
 	switch (index)
 	{
 		case 0:
-			foo = new StillRainbow;
+			foo = new StillRainbow(myBrightness);
 			break;
 		case 1:
-			foo = new StillDoubleRainbow;
+			foo = new StillDoubleRainbow(myBrightness);
 			break;
 		case 2:
-			foo = new AllOn(LITColor.white);
+			foo = new AllOn(LITColor.white,myBrightness);
 			break;
 		case 3:
-			foo = new AllOn(LITColor.green);
+			foo = new AllOn(LITColor.green,myBrightness);
 			break;
 		case 4:
-			foo = new AllOn(LITColor.yellow);
+			foo = new AllOn(LITColor.yellow,myBrightness);
 			break;
 		case 5:
-			foo = new StillEvenlySpaced(LITColor.magenta,4,0);
+			foo = new StillEvenlySpaced(myBrightness,LITColor.magenta,4,0);
 			break;
 		case 6:
-			foo = new StillEvenlySpaced(LITColor.cyan,16,0);
+			foo = new StillEvenlySpaced(myBrightness,LITColor.cyan,16,0);
 			break;
 		case 7:
-			foo = new StillDubz;
+			foo = new StillDubz(50);
 			break;
 	}
 }

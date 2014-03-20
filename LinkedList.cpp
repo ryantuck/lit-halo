@@ -175,7 +175,11 @@ template class ListObject<Foo>;
 template class LinkedList<Step<Foo> >;
 template class ListObject<Step<Foo> >;
 
+template class LinkedList<byte>;
+template class ListObject<byte>;
 
+template class LinkedList<bool>;
+template class ListObject<bool>;
 
 
 

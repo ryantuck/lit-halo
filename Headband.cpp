@@ -11,19 +11,19 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new MasterFooManager();
+	fooManager = new DevFooManager();
 }
 
 void Headband::update()
 {
 	checkButtons();
-	getAudio();
+	audio.update();
 	updateLEDs();
 }
 
 void Headband::checkButtons()
 {
-	bool hardware = true;
+	bool hardware = false;
 	if (hardware)
 	{
 		upButton.checkState();
@@ -49,11 +49,6 @@ void Headband::checkButtons()
 		fooManager->update();
 	}
 	
-}
-
-void Headband::getAudio()
-{
-	audio.update();
 }
 
 void Headband::updateLEDs()

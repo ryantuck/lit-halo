@@ -21,9 +21,12 @@
 #include "Arduino.h"
 #include "Force.h"
 
+#include "LinkedList.h"
+
 extern int			numLEDs;
 extern LayeredLED	leds[32];
 extern Audio		audio;
+
 
 #define up     1
 #define down   0

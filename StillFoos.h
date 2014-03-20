@@ -15,25 +15,25 @@
 class StillRainbow : public Foo
 {
 public:
-	StillRainbow();
+	StillRainbow(int aBrightness);
 };
 
 class StillDoubleRainbow : public Foo
 {
 public:
-	StillDoubleRainbow();
+	StillDoubleRainbow(int aBrightness);
 };
 
 class StillEvenlySpaced : public Foo
 {
 public:
-	StillEvenlySpaced(Color aColor, int aNumber,int start);
+	StillEvenlySpaced(int aBrightness, Color aColor, int aNumber,int start);
 };
 
 class StillDubz : public Foo
 {
 public:
-	StillDubz();
+	StillDubz(int aBrightness);
 };
 
 

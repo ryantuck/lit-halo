@@ -14,6 +14,8 @@
 #include "MSGEQ7.h"
 #include "MCP4131.h"
 #include "Arduino.h"
+#include "Beats.h"
+
 //#include "LITFunctions.h"
 
 class Audio
@@ -22,20 +24,15 @@ public:
 	
 	MSGEQ7		eq;
 	MCP4131		pot;
-	
-	int			weightSpectrum[7];
-	byte		beatCounters[7];	//	tracks how many iterations
-									//	since last beat on each band.
+	Beats		beats;
 	
 	int lastSpectrum[7];
 	
 	int averagedSpectrum[7];
 	int avgCounter;
-	
-	double silenceSlopes[7];
-	double silenceIntercepts[7];
-	
-	int bandThresholds[7];
+    
+    bool bassBeatDetected;
+    
 	
 	//	Constructor
 	Audio();
@@ -51,9 +48,6 @@ public:
 	
 	void recordSpectrum();
 	
-	//	Multiply eq.spectrum by weights.
-	void weighEQ();
-	
 	//	Convert spectrum into more usable data.
 	void convertEQ();
 	
@@ -65,16 +59,10 @@ public:
 	
 	//	For testing.
 	void gatherSpectrumAverages();
-	
-	bool beatJustDetected(byte band);
-	
-	int baseline(int band, int potValue);
-	void subtractBaselines();
+
 	void updateRunningAverages(int numDataPoints);
 	void checkRunningAverages();
-	void updateWeightSpectrum();
-	
-	void printBeatCounters();
+
 	void printSpectrum();
 	void printAvgSpectrum();
 	

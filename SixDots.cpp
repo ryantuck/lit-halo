@@ -38,7 +38,7 @@ SixDots::SixDots()
 
 void SixDots::listen()
 {
-	if (audio.beatJustDetected(1))
+	if (audio.beats.detected())
 	{
 		for (int n=0;n<countFoos();n++)
 		{
