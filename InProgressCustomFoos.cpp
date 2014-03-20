@@ -328,7 +328,7 @@ FadinDubbyBowz::FadinDubbyBowz()
 
 void FadinDubbyBowz::checkMyShit()
 {
-	if (audio.beats.detected())
+    if (audio.beats.detected())
 	{
 		// set brightness of DR to max brightness
 		for (int n=0;n<r1->countLEDs();n++)
@@ -345,6 +345,74 @@ void FadinDubbyBowz::checkMyShit()
 			r1->fLEDs.entry(n)->me->brightness *= 0.5;
 			r2->fLEDs.entry(n)->me->brightness *= 0.5;
 		}
+	}
+}
+
+// ========================================================================
+
+FadinDubbyBowz2::FadinDubbyBowz2()
+{
+	addStepWithFunction(&FadinDubbyBowz2::checkMyShit, 1);
+	
+    
+	addFoo(new DoubleRainbow);
+    //addFoo(new StillEvenlySpaced(LITColor.yellow, 16, 0));
+    addFoo(new Sparkle);
+   
+    
+	
+	dr = foos.entry(0)->me;
+	
+	r1 = dr->foos.entry(0)->me;
+	r2 = dr->foos.entry(1)->me;
+           
+    es = foos.entry(1)->me;
+    
+    Serial.println(es->countLEDs());
+}
+
+void FadinDubbyBowz2::checkMyShit()
+{
+    if (audio.beats.detected())
+	{
+		// set brightness of DR to max brightness
+		for (int n=0;n<r1->countLEDs();n++)
+		{
+			r1->fLEDs.entry(n)->me->brightness = maxBrightness;
+			r2->fLEDs.entry(n)->me->brightness = maxBrightness;
+		}
+	}
+	else
+	{
+		// reduce brightness
+		for (int n=0;n<r1->countLEDs();n++)
+		{
+			r1->fLEDs.entry(n)->me->brightness *= 0.5;
+			r2->fLEDs.entry(n)->me->brightness *= 0.5;
+		}
+	}
+    
+    if (audio.beats2.detected())
+	{
+		// set brightness of ES to max brightness
+		for (int n=0;n<es->countLEDs();n++)
+		{
+			es->fLEDs.entry(n)->me->brightness = maxBrightness;
+           
+		}
+         Serial.println("beat 2 detected");
+	}
+	else
+	{
+		// reduce brightness
+		for (int n=0;n<es->countLEDs();n++)
+		{
+			es->fLEDs.entry(n)->me->brightness *= .5;
+            es->fLEDs.entry(n)->me->brightness *= .5;
+            Serial.println(es->fLEDs.entry(n)->me->brightness);
+            
+		}
+        Serial.println("beat 2 not detected");
 	}
 }
 

@@ -29,15 +29,15 @@ void Sparkle::flicker()
 		fLEDs.entry(n)->me->address = rand()%32;
 	}
 	
-	if (audio.beatJustDetected(2))
-	{
-		index = updateValue(index, up, 0, 6, cycles);
-		
-		for (int n=0;n<countLEDs();n++)
-		{
-			fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[index]);
-		}
-	}
+//	if (audio.beatJustDetected(2))
+//	{
+//		index = updateValue(index, up, 0, 6, cycles);
+//		
+//		for (int n=0;n<countLEDs();n++)
+//		{
+//			fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[index]);
+//		}
+//	}
 }
 
 

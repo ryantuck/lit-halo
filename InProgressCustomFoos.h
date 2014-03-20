@@ -19,6 +19,8 @@
 #include "Stats.h"
 #include "BandMeterFoo.h"
 #include "InAndOutFader.h"
+#include "StillFoos.h"
+#include "Sparkle.h"
 
 
 class ListenerWithBunch : public Foo
@@ -132,6 +134,20 @@ public:
 	Foo* dr;
 	Foo* r1;
 	Foo* r2;
+};
+
+class FadinDubbyBowz2 : public Foo
+{
+public:
+	FadinDubbyBowz2();
+	
+	void checkMyShit();
+	
+	Foo* dr;
+	Foo* r1;
+	Foo* r2;
+    
+    Foo* es;
 };
 
 class FountainHead : public Foo
