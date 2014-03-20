@@ -329,7 +329,7 @@ FadinDubbyBowz::FadinDubbyBowz()
 
 void FadinDubbyBowz::checkMyShit()
 {
-	if (audio.beats.detected())
+    if (audio.beats.detected())
 	{
 		// set brightness of DR to max brightness
 		for (int n=0;n<r1->countLEDs();n++)
@@ -343,8 +343,8 @@ void FadinDubbyBowz::checkMyShit()
 		// reduce brightness
 		for (int n=0;n<r1->countLEDs();n++)
 		{
-			r1->fLEDs.entry(n)->me->brightness *= 0.8;
-			r2->fLEDs.entry(n)->me->brightness *= 0.8;
+			r1->fLEDs.entry(n)->me->brightness *= 0.5;
+			r2->fLEDs.entry(n)->me->brightness *= 0.5;
 		}
 	}
 	
@@ -526,6 +526,114 @@ void BackgroundCycler::checkForBeat()
 }
 
 // ========================================================================
+
+FadinDubbyBowz2::FadinDubbyBowz2()
+{
+	addStepWithFunction(&FadinDubbyBowz2::checkMyShit, 1);
+	
+    
+	addFoo(new DoubleRainbow);
+    //addFoo(new StillEvenlySpaced(LITColor.yellow, 16, 0));
+    addFoo(new Sparkle);
+   
+    
+	
+	dr = foos.entry(0)->me;
+	
+	r1 = dr->foos.entry(0)->me;
+	r2 = dr->foos.entry(1)->me;
+           
+    es = foos.entry(1)->me;
+    
+    Serial.println(es->countLEDs());
+}
+
+void FadinDubbyBowz2::checkMyShit()
+{
+    if (audio.beats.detected())
+	{
+		// set brightness of DR to max brightness
+		for (int n=0;n<r1->countLEDs();n++)
+		{
+			r1->fLEDs.entry(n)->me->brightness = maxBrightness;
+			r2->fLEDs.entry(n)->me->brightness = maxBrightness;
+		}
+	}
+	else
+	{
+		// reduce brightness
+		for (int n=0;n<r1->countLEDs();n++)
+		{
+			r1->fLEDs.entry(n)->me->brightness *= 0.5;
+			r2->fLEDs.entry(n)->me->brightness *= 0.5;
+		}
+	}
+    
+    if (audio.beats2.detected())
+	{
+		// set brightness of ES to max brightness
+		for (int n=0;n<es->countLEDs();n++)
+		{
+			es->fLEDs.entry(n)->me->brightness = maxBrightness;
+           
+		}
+         Serial.println("beat 2 detected");
+	}
+	else
+	{
+		// reduce brightness
+		for (int n=0;n<es->countLEDs();n++)
+		{
+			es->fLEDs.entry(n)->me->brightness *= .5;
+            es->fLEDs.entry(n)->me->brightness *= .5;
+            Serial.println(es->fLEDs.entry(n)->me->brightness);
+            
+		}
+        Serial.println("beat 2 not detected");
+	}
+}
+
+FountainHead::FountainHead()
+{
+    Foo* a = new Foo;
+    Foo* b = new Foo;
+    a->addLEDs(LITColor.magenta, maxBrightness, 0, 15);
+    b->addLEDs(LITColor.yellow, maxBrightness, 16, 31);
+    
+    addFoo(a);
+    addFoo(b);
+    
+    lineLength = 10;
+    addStepWithFunction(&FountainHead::checkMyShit, 1);
+    
+}
+
+void FountainHead::checkMyShit()
+{
+    
+    Serial.println(lineLength);
+    if(audio.beats.detected())
+    {
+        lineLength = 16;
+    }
+    else
+    {
+        if(lineLength <= 1) lineLength = 0;
+        else lineLength--;
+    }
+    
+    for(int n=0; n< 16; n++)
+    {
+        foos.entry(0)->me->fLEDs.entry(n)->me->color = LITColor.black;
+        foos.entry(1)->me->fLEDs.entry(n)->me->color = LITColor.black;
+    }
+    for(int n=0; n < lineLength; n++)
+    {
+        foos.entry(0)->me->fLEDs.entry(n)->me->color = LITColor.magenta;
+        foos.entry(1)->me->fLEDs.entry(15-n)->me->color = LITColor.yellow;
+    }
+
+}
 
 Fireworks::Fireworks(Color aColor)
 {

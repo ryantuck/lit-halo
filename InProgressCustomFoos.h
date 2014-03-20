@@ -19,6 +19,8 @@
 #include "Stats.h"
 #include "BandMeterFoo.h"
 #include "InAndOutFader.h"
+#include "StillFoos.h"
+#include "Sparkle.h"
 
 #include "RainbowFountain.h"
 #include "RainbowPulser.h"
@@ -140,6 +142,20 @@ public:
 	Foo* dr;
 	Foo* r1;
 	Foo* r2;
+};
+
+class FadinDubbyBowz2 : public Foo
+{
+public:
+	FadinDubbyBowz2();
+	
+	void checkMyShit();
+	
+	Foo* dr;
+	Foo* r1;
+	Foo* r2;
+    
+    Foo* es;
 };
 
 
@@ -312,12 +328,16 @@ public:
 	OscillatingDots();
 };
 
-
-
-
-
-
-
+class FountainHead : public Foo
+{
+public:
+    FountainHead();
+    
+    void checkMyShit();
+    
+    int lineLength;
+    
+};
 
 
 #endif

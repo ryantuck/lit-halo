@@ -29,6 +29,7 @@ void Sparkle::flicker()
 		fLEDs.entry(n)->me->address = rand()%32;
 	}
 	
+
 	if (audio.beats.detected())
 	{
 		index = updateValue(index, up, 0, 6, cycles);
@@ -38,6 +39,7 @@ void Sparkle::flicker()
 			fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[index]);
 		}
 	}
+
 }
 
 
