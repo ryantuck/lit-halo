@@ -84,7 +84,7 @@ void MasterFooManager::createNewFoo(int index)
 
 DevFooManager::DevFooManager()
 {
-	maxFoodex = 19;
+	maxFoodex = 20;
 }
 
 void DevFooManager::createNewFoo(int index)
@@ -150,6 +150,9 @@ void DevFooManager::createNewFoo(int index)
         case 19:
 			foo = new FadinDubbyBowz2;
 			break;
+        case 20:
+            foo = new Sparkle2;
+            break;
 	}
 }
 

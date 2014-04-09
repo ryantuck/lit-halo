@@ -533,8 +533,8 @@ FadinDubbyBowz2::FadinDubbyBowz2()
 	
     
 	addFoo(new DoubleRainbow);
-    //addFoo(new StillEvenlySpaced(LITColor.yellow, 16, 0));
-    addFoo(new Sparkle);
+    addFoo(new StillEvenlySpaced(maxBrightness, LITColor.yellow, 16, 0));
+    //addFoo(new Sparkle);
    
     
 	
@@ -553,6 +553,7 @@ void FadinDubbyBowz2::checkMyShit()
     if (audio.beats.detected())
 	{
 		// set brightness of DR to max brightness
+        Serial.println(r2->countLEDs());
 		for (int n=0;n<r1->countLEDs();n++)
 		{
 			r1->fLEDs.entry(n)->me->brightness = maxBrightness;
@@ -570,6 +571,7 @@ void FadinDubbyBowz2::checkMyShit()
 	}
     
     if (audio.beats2.detected())
+    //if(false)
 	{
 		// set brightness of ES to max brightness
 		for (int n=0;n<es->countLEDs();n++)
@@ -577,7 +579,6 @@ void FadinDubbyBowz2::checkMyShit()
 			es->fLEDs.entry(n)->me->brightness = maxBrightness;
            
 		}
-         Serial.println("beat 2 detected");
 	}
 	else
 	{
@@ -585,11 +586,7 @@ void FadinDubbyBowz2::checkMyShit()
 		for (int n=0;n<es->countLEDs();n++)
 		{
 			es->fLEDs.entry(n)->me->brightness *= .5;
-            es->fLEDs.entry(n)->me->brightness *= .5;
-            Serial.println(es->fLEDs.entry(n)->me->brightness);
-            
 		}
-        Serial.println("beat 2 not detected");
 	}
 }
 
@@ -597,11 +594,13 @@ FountainHead::FountainHead()
 {
     Foo* a = new Foo;
     Foo* b = new Foo;
+    Foo* c = new Sparkle2;
     a->addLEDs(LITColor.magenta, maxBrightness, 0, 15);
     b->addLEDs(LITColor.yellow, maxBrightness, 16, 31);
     
     addFoo(a);
     addFoo(b);
+    addFoo(c);
     
     lineLength = 10;
     addStepWithFunction(&FountainHead::checkMyShit, 1);
