@@ -18,6 +18,9 @@ Audio::Audio()
 	avgCounter = 0;
 	
 	pot.update(1);
+    
+    beats.derivativeLimit = 80;
+    beats2.derivativeLimit = 50;
 }
 
 void Audio::update()
@@ -26,8 +29,7 @@ void Audio::update()
 
 	beats.addPoint(eq.spectrum[1]);
     beats2.addPoint(eq.spectrum[2]);
-//	checkBeats();
-//	recordSpectrum();
+    printSpectrum();
 }
 
 void Audio::getEQ()

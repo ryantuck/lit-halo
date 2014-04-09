@@ -105,6 +105,7 @@ void Beats::addPoint(int newPoint)
 
 byte Beats::midPoint()
 {
+    Serial.println(millis());
 	byte min = points[0];
 	byte max = points[0];
 	
@@ -121,6 +122,7 @@ byte Beats::midPoint()
 		}
 	}
 	
+    Serial.println(millis());
 	return (max-min)/2;
 }
 

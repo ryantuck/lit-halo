@@ -22,6 +22,17 @@ public:
 	int index;
 };
 
+/////////////////////////////////////////////////////////////////////
+class Sparkle2 : public Foo
+{
+public:
+	Sparkle2();
+	void flicker();
+	void changeColor();
+	
+	int index;
+};
+
 
 
 
