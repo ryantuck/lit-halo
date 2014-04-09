@@ -43,7 +43,7 @@ void FooManager::createNewFoo(int index)
 
 MasterFooManager::MasterFooManager()
 {
-	maxFoodex = 8;
+	maxFoodex = 13;
 }
 
 void MasterFooManager::createNewFoo(int index)
@@ -76,6 +76,21 @@ void MasterFooManager::createNewFoo(int index)
 			break;
 		case 8:
 			foo = new BackgroundCycler;
+			break;
+		case 9:
+			foo = new Sparkle;
+			break;
+		case 10:
+			foo = new CloseColorDots(8);
+			break;
+		case 11:
+			foo = new OscillatingDots;
+			break;
+		case 12:
+			foo = new FanOut;
+			break;
+		case 13:
+			foo = new HeartBeat;
 			break;
 	}
 }
@@ -164,23 +179,12 @@ void DevFooManager::createNewFoo(int index)
 
 DevFooManager2::DevFooManager2()
 {
-	maxFoodex = 3;
+	maxFoodex = 8;
 }
 
 void DevFooManager2::createNewFoo(int index)
 {
-	switch (index)
-	{
-		case 0:
-			foo = new TwoColorParticleJam(LITColor.red,LITColor.cyan);
-			break;
-		case 1:
-			foo = new FireworksHolder;
-			break;
-		case 2:
-			foo = new FireworksHolder;
-			break;
-	}
+	foo = new DoubleMeter(index*16);
 }
 
 //  ================================================================

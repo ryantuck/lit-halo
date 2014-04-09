@@ -999,17 +999,88 @@ void SpringDot::checkDirection()
 OscillatingDots::OscillatingDots()
 {
 	addFoo(new SpringDot(LITColor.red,16,1));
-	addFoo(new SpringDot(LITColor.green,15,0));
+	addFoo(new SpringDot(LITColor.cyan,15,0));
+	addFoo(new SpringDot(LITColor.blue,0,1));
+	addFoo(new SpringDot(LITColor.yellow,31,0));
+	addFoo(new SpringDot(LITColor.green,8,1));
+	addFoo(new SpringDot(LITColor.magenta,23,0));
 	
-	addFoo(new SpringDot(LITColor.blue,8,0));
 }
 
+DoubleMeter::DoubleMeter(int newPot)
+{
+	addStepWithFunction(&DoubleMeter::drawLines, 1);
+	
+	myColor.setColor(*LITColor.colorList[newPot/8]);
+	
+	audio.pot.update(newPot);
+}
 
+void DoubleMeter::drawLines()
+{
+	float specVal = audio.eq.spectrum[1];
+	
+	float ratio = 16 * specVal / 1024;
+	
+	fLEDs.removeAllEntries();
+	
+	addLEDs(myColor, maxBrightness, 0, ratio);
+	addLEDs(myColor, maxBrightness, 32-ratio, 31);
+}
 
+HeartBeat::HeartBeat()
+{
+	addStepWithFunction(&HeartBeat::listen,1);
+	
+	for (int n=0;n<8;n++)
+	{
+		int addr = n*4 + 2;
+		addLEDs(LITColor.red, maxBrightness, addr, addr);
+	}
+	
+//	addFoo(new MovingDot(LITColor.blue,0,0));
+	
+	lastValue = 0;
+	colorIndex = 0;
+}
 
+void HeartBeat::listen()
+{
+	float a = audio.eq.spectrum[1] - 70;
+	
+	if (a < 0) a = 0;
+	
+	float ratio = a / 950 * maxBrightness;
+	
+	for (int n=0;n<8;n++)
+	{
+		fLEDs.entry(n)->me->brightness = ratio;
+	}
+	
+	if (lastValue == 0)
+	{
+		if (a != 0)
+		{
+			switchColor();
+		}
+	}
+	
+	lastValue = a;
+	
+//	float b = audio.eq.spectrum[5] - 100;
+//	float ratioB = b / 900 * maxBrightness;
+//	foos.entry(0)->me->fLEDs.entry(0)->me->brightness = ratioB;
+}
 
-
-
+void HeartBeat::switchColor()
+{
+	colorIndex = (colorIndex + 1) % 6;
+	
+	for (int n=0;n<8;n++)
+	{
+		fLEDs.entry(n)->me->color.setColor(*LITColor.colorList[colorIndex]);
+	}
+}
 
 
 
