@@ -312,7 +312,29 @@ public:
 	OscillatingDots();
 };
 
+class DoubleMeter : public Foo
+{
+public:
+	DoubleMeter(int newPot);
+	void drawLines();
+	
+	Color myColor;
+	
+};
 
+class HeartBeat : public Foo
+{
+public:
+	HeartBeat();
+	void listen();
+	
+	float lastValue;
+	int colorIndex;
+	
+	void switchColor();
+	void cycleAddresses();
+	
+};
 
 
 

@@ -17,8 +17,12 @@ public:
 	BandMeterFoo();
 	BandMeterFoo(int band, Color aColor);
 	BandMeterFoo(int band, Color aColor, int aDenominator);
+	BandMeterFoo(int band, Color aColor, int aDenominator, int aLength);
+	BandMeterFoo(int band, Color aColor, int aDenominator, int aLength, bool aOrientation);
 	
 	int band;
+	int length;
+	bool direction;
 	
 	Color bandColor;
 	

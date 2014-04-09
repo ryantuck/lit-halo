@@ -11,7 +11,7 @@ Headband::Headband()
 	downButton	= Button(5);
 	upButton	= Button(6);
 	
-	fooManager = new DevFooManager();
+	fooManager = new MasterFooManager();
 }
 
 void Headband::update()
@@ -23,7 +23,7 @@ void Headband::update()
 
 void Headband::checkButtons()
 {
-	bool hardware = false;
+	bool hardware = true;
 	if (hardware)
 	{
 		upButton.checkState();
