@@ -21,7 +21,7 @@ int numRGBleds = 32;
 
 void setup()
 {
-  Serial.begin(28800);
+  Serial.begin(9600);
   ShiftPWM.SetAmountOfRegisters(numRegisters);
   ShiftPWM.Start(pwmFrequency,bright);
 }

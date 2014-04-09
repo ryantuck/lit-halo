@@ -25,6 +25,7 @@ void Audio::update()
 	getEQ();
 
 	beats.addPoint(eq.spectrum[1]);
+    beats2.addPoint(eq.spectrum[2]);
 //	checkBeats();
 //	recordSpectrum();
 }

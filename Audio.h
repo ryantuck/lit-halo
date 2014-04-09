@@ -25,6 +25,7 @@ public:
 	MSGEQ7		eq;
 	MCP4131		pot;
 	Beats		beats;
+    Beats       beats2;
 	
 	int lastSpectrum[7];
 	
