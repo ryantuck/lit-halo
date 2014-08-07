@@ -5,7 +5,7 @@ LIT Halo
 
 Source code for the LIT Halo - the first high quality rave gear designed specifically for the EDM community. 
 
-Kickstarter campaign was ran from 9 May - 9 June 2014. We raised $17k, falling short of the amount necessary to manufacture.
+[Kickstarter campaign](https://www.kickstarter.com/projects/litlitlit/halo-rave-gear-revolutionized) was ran from 9 May - 9 June 2014. We raised $17k, falling short of the amount necessary to manufacture.
 
 This code can be run on most Arduinos and an LED strip if relevant pins are adjusted and custom shift register writing is replaced with or mapped to LED strip library. 
 
