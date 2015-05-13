@@ -6,7 +6,7 @@
 
 //	########################################################################
 
-#include "LIT.cpp"
+#include "ShoeConfig.cpp"
 
 int			numLEDs = 12;
 LayeredLED	leds[12];
