@@ -8,9 +8,10 @@
 
 Headband::Headband()
 {
-	downButton	= Button(5);
-	upButton	= Button(6);
-	
+	button1	= Button(5);
+	button2	= Button(6);
+    button3 = Button(7);
+
 	fooManager = new MasterFooManager();
 }
 
@@ -26,11 +27,12 @@ void Headband::checkButtons()
 	bool hardware = true;
 	if (hardware)
 	{
-		upButton.checkState();
-		downButton.checkState();
+		button1.checkState();
+		button2.checkState();
+        button3.checkState();
 	}
-	
-	if (upButton.pressed)
+
+	if (button1.pressed)
 	{
 		fooManager->foodex = updateValue(fooManager->foodex,
 										up,
@@ -39,7 +41,7 @@ void Headband::checkButtons()
 										cycles);
 		fooManager->update();
 	}
-	else if (downButton.pressed)
+	else if (button2.pressed)
 	{
 		fooManager->foodex = updateValue(fooManager->foodex,
 										down,
@@ -48,7 +50,15 @@ void Headband::checkButtons()
 										cycles);
 		fooManager->update();
 	}
-	
+    else if (button3.pressed)
+    {
+        fooManager->foodex = updateValue(fooManager->foodex,
+                                        down,
+                                        0,
+                                        fooManager->maxFoodex,
+                                        cycles);
+    }
+
 }
 
 void Headband::updateLEDs()

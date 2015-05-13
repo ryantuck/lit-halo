@@ -25,11 +25,12 @@ class Headband
 public:
 
 	FooManager*	fooManager;
-	Button		upButton;
-	Button		downButton;
-	
+	Button		button2;
+	Button		button1;
+    Button      button3;
+
 	Headband();
-	
+
 	void update();
 	void updateLEDs();
 	void checkButtons();
