@@ -25,7 +25,7 @@ void MovingFoo::move(bool direction)
 		for (int n=0;n<countLEDs();n++)
 		{
 			byte addr = fLEDs.entry(n)->me->address;
-			addr = updateValue(addr, direction, 0, 31, cycles);
+			addr = updateValue(addr, direction, 0, numLEDs-1, cycles);
 			fLEDs.entry(n)->me->address = addr;
 		}
 	}

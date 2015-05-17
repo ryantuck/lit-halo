@@ -349,10 +349,10 @@ void Tester::patterns()
 
 void Tester::headband()
 {
-	Headband myHeadband;
+	Shoe myShoe;
 	//emyHeadband.linkUp();
 	
-	myHeadband.update();
+	myShoe.update();
 	//myHeadband.printLEDs();
 	//myHeadband.lights.printLEDs();
 	
@@ -360,7 +360,7 @@ void Tester::headband()
 	
 	for (int n=0;n<200;n++)
 	{
-		myHeadband.update();
+		myShoe.update();
 		//myHeadband.printLEDs();
 		//myHeadband.lights.printLEDs();
 	}

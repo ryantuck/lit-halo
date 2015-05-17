@@ -4,27 +4,27 @@
 //
 //	####################################################################
 
-#include "Headband.h"
+#include "Shoe.h"
 
-Headband::Headband()
+Shoe::Shoe()
 {
 	button1	= Button(5);
 	button2	= Button(6);
     button3 = Button(7);
 
-	fooManager = new MasterFooManager();
+	fooManager = new ChroFooManager();
 }
 
-void Headband::update()
+void Shoe::update()
 {
 	checkButtons();
 	audio.update();
 	updateLEDs();
 }
 
-void Headband::checkButtons()
+void Shoe::checkButtons()
 {
-	bool hardware = true;
+    bool hardware = false;
 	if (hardware)
 	{
 		button1.checkState();
@@ -61,7 +61,7 @@ void Headband::checkButtons()
 
 }
 
-void Headband::updateLEDs()
+void Shoe::updateLEDs()
 {
 	for (int n=0;n<numLEDs;n++)
 	{

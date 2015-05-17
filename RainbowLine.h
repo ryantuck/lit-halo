@@ -15,6 +15,7 @@
 class RainbowLine : public Foo
 {
 public:
+    RainbowLine();
 	RainbowLine(int length,int start);
 };
 

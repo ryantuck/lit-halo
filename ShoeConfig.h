@@ -12,6 +12,7 @@
 #define __Headband__LIT__
 
 #include "LED.h"
+#include "Audio.h"
 #include "Step.h"
 
 #include "Color.h"
@@ -24,6 +25,7 @@
 
 extern int			numLEDs;
 extern LayeredLED	leds[12];
+extern Audio        audio;
 
 #define up     1
 #define down   0

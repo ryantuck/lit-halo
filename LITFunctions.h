@@ -11,7 +11,7 @@
 
 #include "Arduino.h"
 #include "Color.h"
-#include "LIT.h"
+#include "ShoeConfig.h"
 
 //these are free floating functions, sometimes created out of necsssity to write less code, repeatably
 //think of this space as a testing ground for free floating functions

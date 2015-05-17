@@ -9,9 +9,9 @@
 
 #include <iostream>
 using namespace std;
-#include "Headband.h"
+#include "Shoe.h"
 #include "Arduino.h"
-#include "LIT.h"
+#include "ShoeConfig.h"
 #include "LinkedList.h"
 #include "Foo.h"
 

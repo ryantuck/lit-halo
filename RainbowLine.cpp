@@ -8,6 +8,11 @@
 
 #include "RainbowLine.h"
 
+RainbowLine::RainbowLine()
+{
+
+}
+
 RainbowLine::RainbowLine(int length,int start)
 {
 	for (int n=0;n<length;n++)

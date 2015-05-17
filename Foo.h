@@ -13,7 +13,7 @@
 #ifndef __Foo__
 #define __Foo__
 
-#include "LIT.h"
+#include "ShoeConfig.h"
 //#include "LinkedList.h"
 
 class Foo

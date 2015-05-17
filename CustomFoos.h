@@ -9,7 +9,8 @@
 #ifndef __CustomFoos__
 #define __CustomFoos__
 
-
+//  Chromatico Stuff
+#include "ChroFoos.h"
 
 //  ================================================================
 //	Good
@@ -51,7 +52,7 @@
 //	In Progress
 //  ================================================================
 
-#include "InProgressCustomFoos.h"
+//#include "InProgressCustomFoos.h"
 
 #include "HiToLowBrightnessTrail.h"
 #include "Sparkle.h"

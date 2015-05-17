@@ -11,7 +11,7 @@
 #ifndef __LIT_Headband_Simulator__Step__
 #define __LIT_Headband_Simulator__Step__
 
-#include "LIT.h"
+#include "ShoeConfig.h"
 
 template <class T>
 class Step

@@ -10,7 +10,7 @@
 
 Strobe::Strobe()
 {
-	addLEDs(LITColor.white, maxBrightness, 0, 31);
+	addLEDs(LITColor.white, maxBrightness, 0, numLEDs);
 	
 	strobePeriod = 2;
 	colorCounter = 0;
@@ -24,7 +24,7 @@ void Strobe::flashOn()
 	colorCounter++;
 	if (colorCounter == 32) colorCounter = 0;
 	
-	for (int n=0;n<32;n++)
+	for (int n=0;n<numLEDs;n++)
 	{
 		fLEDs.entry(n)->me->color.calculateRGB(32, colorCounter);
 	}
@@ -32,7 +32,7 @@ void Strobe::flashOn()
 
 void Strobe::flashOff()
 {
-	for (int n=0;n<32;n++)
+	for (int n=0;n<numLEDs;n++)
 	{
 		fLEDs.entry(n)->me->color.setColor(LITColor.black);
 	}

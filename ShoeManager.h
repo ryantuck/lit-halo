@@ -26,6 +26,13 @@ public:
 	virtual void createNewFoo(int index);
 };
 
+class ChroFooManager : public FooManager
+{
+public:
+    ChroFooManager();
+    void createNewFoo(int index);
+};
+
 //  ================================================================
 //	Master
 //	The best non-buggy foos we have.

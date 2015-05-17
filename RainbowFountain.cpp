@@ -12,7 +12,7 @@ RainbowFountain::RainbowFountain(bool aDirection)
 {
 	cIndex		= 0;
 	direction	= aDirection;
-	addStepWithFunction(&RainbowFountain::iterate, 8);
+	addStepWithFunction(&RainbowFountain::iterate, 2);
 }
 
 void RainbowFountain::iterate()
@@ -23,14 +23,14 @@ void RainbowFountain::iterate()
 	bool dir1 = up;
 	bool dir2 = down;
 	int addr1 = 0;
-	int addr2 = 31;
+	int addr2 = numLEDs-1;
 	
 	if (direction)
 	{
 		dir1	= !dir1;
 		dir2	= !dir2;
-		addr1	= 16;
-		addr2	= 15;
+		addr1	= numLEDs/2;
+		addr2	= numLEDs/2 - 1;
 	}
 	
 	MovingDot* a = new MovingDot(*LITColor.colorList[cIndex],dir1,addr1);
@@ -42,8 +42,8 @@ void RainbowFountain::iterate()
 	a->repeats = false;
 	b->repeats = false;
 	
-	a->steps.entry(0)->me->count = 15;
-	b->steps.entry(0)->me->count = 15;
+	a->steps.entry(0)->me->count = numLEDs/2 - 1;
+	b->steps.entry(0)->me->count = numLEDs/2 - 1;
 	
 	a->steps.entry(0)->me->period = 2;
 	b->steps.entry(0)->me->period = 2;

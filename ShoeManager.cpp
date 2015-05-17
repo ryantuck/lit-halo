@@ -6,7 +6,7 @@
 
 //	########################################################################
 
-#include "FooManager.h"
+#include "ShoeManager.h"
 
 FooManager::FooManager()
 {
@@ -39,6 +39,30 @@ void FooManager::createNewFoo(int index)
 //  ================================================================
 //  ================================================================
 //  ================================================================
+
+ChroFooManager::ChroFooManager()
+{
+    maxFoodex = 3;
+}
+
+void ChroFooManager::createNewFoo(int index)
+{
+    switch(index)
+    {
+        case 0:
+            foo = new Strobe;
+            break;
+        case 1:
+            foo = new AllOn(LITColor.green,100);
+            break;
+        case 2:
+            foo = new RainbowFountain(down);
+            break;
+        case 3:
+            foo = new ScrollingRainbow(12,0);
+            break;
+    }
+}
 
 
 MasterFooManager::MasterFooManager()
@@ -74,24 +98,7 @@ void MasterFooManager::createNewFoo(int index)
 		case 7:
 			foo = new RainbowFountain(0);
 			break;
-		case 8:
-			foo = new BackgroundCycler;
-			break;
-		case 9:
-			foo = new Sparkle;
-			break;
-		case 10:
-			foo = new CloseColorDots(8);
-			break;
-		case 11:
-			foo = new OscillatingDots;
-			break;
-		case 12:
-			foo = new FanOut;
-			break;
-		case 13:
-			foo = new HeartBeat;
-			break;
+
 	}
 }
 
@@ -128,44 +135,12 @@ void DevFooManager::createNewFoo(int index)
             foo = new Sparkle;
             break;
 		case 7:
-			foo = new FadinDubbyBowz;
-			break;
-		case 8:
 			foo = new Strobe;
 			break;
-		case 9:
+		case 8:
 			foo = new DoubleRainbowPulser;
-			break;
-		case 10:
-			foo = new BackgroundCycler;
-			break;
-		case 11:
-			foo = new CloseColorDots(8);
-			break;
-		case 12:
-			foo = new ExplosionHolder;
-			break;
-		case 13:
-			foo = new FanOut;
-			break;
-		case 14:
-			foo = new BeatMotionStopper;
-			break;
-		case 15:
-			foo = new AppearAndFadeEvent;
-			break;
-		case 16:
-			foo = new SpringDot(LITColor.green,16,1);
-			break;
-		case 17:
-			foo = new OscillatingDots;
-        case 18:
-            foo = new FountainHead;
             break;
-        case 19:
-			foo = new FadinDubbyBowz2;
-			break;
-        case 20:
+        case 9:
             foo = new Sparkle2;
             break;
 	}
@@ -184,7 +159,7 @@ DevFooManager2::DevFooManager2()
 
 void DevFooManager2::createNewFoo(int index)
 {
-	foo = new DoubleMeter(index*16);
+    
 }
 
 //  ================================================================

@@ -2,7 +2,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #define pin 13
-#define num_pixels 12
+#define num_pixels 10
 
 #define b1 25
 
@@ -43,7 +43,7 @@ void loop()
   switch (color) {
       case 0:
         r = 100;
-/g = 0;
+        g = 0;
         b = 0;
         break;
       case 1:
@@ -65,7 +65,7 @@ void loop()
   
   strip.show();
   
-  delay(50);
+  delay(10);
 }
 
 

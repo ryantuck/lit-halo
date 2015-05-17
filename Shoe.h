@@ -13,14 +13,14 @@
 #ifndef __Headband__
 #define __Headband__
 
-#include "LIT.h"
+#include "ShoeConfig.h"
 #include "LITFunctions.h"
 #include "Hardware.h"
-#include "FooManager.h"
+#include "ShoeManager.h"
 #include "Foo.h"
 #include "CustomFoos.h"
 
-class Headband
+class Shoe
 {
 public:
 
@@ -29,7 +29,7 @@ public:
 	Button		button1;
     Button      button3;
 
-	Headband();
+	Shoe();
 
 	void update();
 	void updateLEDs();
